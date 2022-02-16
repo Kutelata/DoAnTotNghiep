@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "73133ecb-bbc8-4d62-84a5-187413025945": {
+      "ProjectGuid": "73133ecb-bbc8-4d62-84a5-187413025945",
+      "DisplayName": "BookSocial.API",
+      "ColorIndex": 0
+    },
+    "8eaf5e15-af28-4844-88e1-075f0ade3858": {
+      "ProjectGuid": "8eaf5e15-af28-4844-88e1-075f0ade3858",
+      "DisplayName": "BookSocial.Presentation",
+      "ColorIndex": 1
+    },
+    "61dc333e-96c3-44a0-b16d-aa60c267c0bd": {
+      "ProjectGuid": "61dc333e-96c3-44a0-b16d-aa60c267c0bd",
+      "DisplayName": "BookSocial.Presentation",
+      "ColorIndex": 2
+    },
+    "3626e077-9e09-480c-9082-7abe2cddc0a2": {
+      "ProjectGuid": "3626e077-9e09-480c-9082-7abe2cddc0a2",
+      "DisplayName": "BookSocial.DAL",
+      "ColorIndex": 3
+    },
+    "d7674a0c-57a0-4291-82a4-d9c8a8f228fd": {
+      "ProjectGuid": "d7674a0c-57a0-4291-82a4-d9c8a8f228fd",
+      "DisplayName": "BookSocial.BLL",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

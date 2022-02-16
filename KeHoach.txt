@@ -1,0 +1,18 @@
+Login, Register
+Profile: 
+	infomation
+	bookshelves: favorite, read, currently-reading, to-read
+	timeline: activity, blog
+Home:
+	timeline friend,author
+	create a blog
+Header:
+	Event: search 
+	Link: Home, My Book, Community, Browse
+Footer:
+Friend list:
+Search:
+My Book:
+
+	
+	

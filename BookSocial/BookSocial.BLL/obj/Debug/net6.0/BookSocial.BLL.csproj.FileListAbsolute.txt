@@ -1,0 +1,12 @@
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\bin\Debug\net6.0\BookSocial.BLL.deps.json
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\bin\Debug\net6.0\BookSocial.BLL.dll
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\bin\Debug\net6.0\ref\BookSocial.BLL.dll
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\bin\Debug\net6.0\BookSocial.BLL.pdb
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.AssemblyInfoInputs.cache
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.AssemblyInfo.cs
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.csproj.CoreCompileInputs.cache
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.dll
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\ref\BookSocial.BLL.dll
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.pdb
+D:\Study\DoAnTotNghiep\BookSocial\BookSocial.BLL\obj\Debug\net6.0\BookSocial.BLL.csproj.AssemblyReference.cache

@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "Hash": "ZdNTzOJtZ7S9Zc4OeO02iNTV54Pcn7jMLVA0qoVb0qg=",
+  "Source": "BookSocial.Presentation",
+  "BasePath": "_content/BookSocial.Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookSocial.Presentation\\wwwroot",
+      "Source": "BookSocial.Presentation",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\css\\output.css",
+      "SourceId": "BookSocial.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation",
+      "RelativePath": "css/output.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\output.css"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\css\\site.css",
+      "SourceId": "BookSocial.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation",
+      "RelativePath": "css/site.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\favicon.ico",
+      "SourceId": "BookSocial.Presentation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation",
+      "RelativePath": "favicon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\favicon.ico"
+    }
+  ]
+}
