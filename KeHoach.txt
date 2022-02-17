@@ -4,7 +4,7 @@ Profile:
 	bookshelves: favorite, read, currently-reading, to-read
 	timeline: activity, blog
 Home:
-	timeline friend,author
+	timeline friend,author you follow: they review and start reading
 	create a blog
 Header:
 	Event: search 
@@ -13,6 +13,15 @@ Footer:
 Friend list:
 Search:
 My Book:
+Community: group, global
+
+Blog được đăng lên 3 nơi : 
+	- Dòng thời gian, bạn bè có thể xem được
+	- Global nơi tất cả cùng thảo luận
+	- Group
+User đăng ký trở thành author:
+Author thì thêm mới được sách:
+
 
 	
 	

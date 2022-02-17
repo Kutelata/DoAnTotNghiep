@@ -8826,11 +8826,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\BookSocial.Presentation.csproj",
+      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\BookSocial.Presentation.csproj",
       "projectName": "BookSocial.Presentation",
-      "projectPath": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\BookSocial.Presentation.csproj",
+      "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\BookSocial.Presentation.csproj",
       "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\obj\\",
+      "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\BookSocial\\BookSocial.Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

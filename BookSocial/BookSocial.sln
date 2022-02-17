@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.API", "BookSocial.API\BookSocial.API.csproj", "{73133ECB-BBC8-4D62-84A5-187413025945}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.API", "BookSocial.API\BookSocial.API.csproj", "{73133ECB-BBC8-4D62-84A5-187413025945}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.Presentation", "BookSocial.Presentation\BookSocial.Presentation.csproj", "{61DC333E-96C3-44A0-B16D-AA60C267C0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation", "BookSocial.Presentation\BookSocial.Presentation.csproj", "{61DC333E-96C3-44A0-B16D-AA60C267C0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.DAL", "BookSocial.DAL\BookSocial.DAL.csproj", "{3626E077-9E09-480C-9082-7ABE2CDDC0A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.DAL", "BookSocial.DAL\BookSocial.DAL.csproj", "{3626E077-9E09-480C-9082-7ABE2CDDC0A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.BLL", "BookSocial.BLL\BookSocial.BLL.csproj", "{D7674A0C-57A0-4291-82A4-D9C8A8F228FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.BLL", "BookSocial.BLL\BookSocial.BLL.csproj", "{D7674A0C-57A0-4291-82A4-D9C8A8F228FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

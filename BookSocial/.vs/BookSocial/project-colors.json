@@ -25,7 +25,12 @@
       "ProjectGuid": "d7674a0c-57a0-4291-82a4-d9c8a8f228fd",
       "DisplayName": "BookSocial.BLL",
       "ColorIndex": 4
+    },
+    "b64bac49-f87a-489f-800e-47c463176f86": {
+      "ProjectGuid": "b64bac49-f87a-489f-800e-47c463176f86",
+      "DisplayName": "BookSocial.DTO",
+      "ColorIndex": 5
     }
   },
-  "NextColorIndex": 5
+  "NextColorIndex": 6
 }
