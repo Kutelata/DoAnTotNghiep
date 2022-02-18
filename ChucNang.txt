@@ -1,0 +1,16 @@
+Đăng ký , đăng nhập
+
+Admin: 
+	- Danh sách user: trạng thái hoạt động, tìm kiếm, phân trang
+		+ blog: Danh sách, xóa, tìm kiếm, phân trang, sắp xếp(lượt like,comment,ngày đăng)
+		+ comment: Danh sách, xóa, tìm kiếm, phân trang, sắp xếp(lượt like,reply,ngày đăng)
+		+ role: 
+			nhân viên: sửa trạng thái hoạt động, xóa người dùng - member
+			admin: thêm, sửa trạng thái hoạt động, xóa nhân viên và người dùng, lọc theo role
+		(bị xóa trên 3 blog, comment thì bị chặn activity đấy)
+	- Danh sách author: thêm, sửa, xóa, tìm kiếm, phân trang, sắp xếp(lượt follow,sách,review)
+		+ sách: Danh sách, thêm, sửa, xóa, tìm kiếm(lọc theo category), phân trang
+	- Kiểm duyệt suggest của người dùng	
+User:
+	- Blog: Thêm sửa xóa
+	

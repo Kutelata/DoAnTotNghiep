@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$my-color: green;
+
+.my-color {
+  background-color: $my-color;
+}
