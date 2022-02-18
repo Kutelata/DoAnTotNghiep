@@ -12,5 +12,10 @@ Admin:
 		+ sách: Danh sách, thêm, sửa, xóa, tìm kiếm(lọc theo category), phân trang
 	- Kiểm duyệt suggest của người dùng	
 User:
-	- Blog: Thêm sửa xóa
-	
+	- Blog: Thêm, sửa, xóa, share, like, lọc theo cộng đồng, bạn bè
+		+ Comment: Thêm, sửa, xóa, reply, like
+	- Group: Thêm sửa xóa 
+	- Sách: Tiến độ, kệ sách, review, đánh giá
+	- Tác giả: Theo dõi
+	- Yêu cầu thêm sách, tác giả
+	- Report user, sách, tác giả
