@@ -19,8 +19,14 @@ Blog được đăng lên 3 nơi :
 	- Dòng thời gian, bạn bè có thể xem được
 	- Global nơi tất cả cùng thảo luận
 	- Group
-User đăng ký trở thành author:
-Author thì thêm mới được sách:
+User 
+	- Yêu cầu thêm sách, tác giả, quote của các tác giả
+	- Report
+Admin:
+	- Quản lý tài khoản user: blog,comment,like
+	- Quản lý author
+		+ Kiểm duyệt các yêu cầu: thêm, sửa sách, quote, author
+		+ Thêm sửa xóa sách, quote, author
 
 
 	
