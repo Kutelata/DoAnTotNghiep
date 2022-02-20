@@ -1,0 +1,7 @@
+﻿body{
+    background: #ffffff;
+}
+
+.navbar-nav .open .dropdown-menu{
+    transform: translate3d(-88px, 42px, 0px) !important;
+}
