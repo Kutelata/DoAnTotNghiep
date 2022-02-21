@@ -1,10 +1,29 @@
-﻿body{
-    background: #ffffff;
-}
-
-.navbar-nav .open .dropdown-menu{
+﻿.navbar-nav .open .dropdown-menu {
     transform: translate3d(-88px, 42px, 0px) !important;
 }
-.right_col_vh{
-    min-height:100vh !important;
+
+.right_col_vh {
+    min-height: 100vh !important;
 }
+
+.my_pagination {
+    float: left;
+    background: #EDEDED;
+    overflow: hidden;
+    border-radius: unset;
+}
+
+    .my_pagination li a {
+        padding: 10px;
+        color: #2A3F54;
+    }
+
+        .my_pagination li a:hover {
+            background: #2A3F54;
+            color: white;
+        }
+
+    .my_pagination li .active {
+        background: #2A3F54;
+        color: white;
+    }

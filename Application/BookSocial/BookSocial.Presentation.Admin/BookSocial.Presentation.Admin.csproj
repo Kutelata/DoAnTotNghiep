@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\AdminAuthorize\**" />
+    <Compile Remove="Views\UserManager\**" />
+    <Content Remove="Views\AdminAuthorize\**" />
+    <Content Remove="Views\UserManager\**" />
+    <EmbeddedResource Remove="Views\AdminAuthorize\**" />
+    <EmbeddedResource Remove="Views\UserManager\**" />
+    <None Remove="Views\AdminAuthorize\**" />
+    <None Remove="Views\UserManager\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\vendors\bootstrap\.github\CODEOWNERS" />
     <None Include="wwwroot\vendors\bootstrap\.github\CONTRIBUTING.md" />
     <None Include="wwwroot\vendors\bootstrap\.github\ISSUE_TEMPLATE\bug.md" />
@@ -21,10 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\AdminAuthorize\" />
-    <Folder Include="Views\UserManager\Blog\" />
-    <Folder Include="Views\UserManager\Comment\" />
-    <Folder Include="Views\UserManager\User\" />
+    <Folder Include="Views\AuthorizeManager\" />
   </ItemGroup>
 
 </Project>

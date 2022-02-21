@@ -6,7 +6,7 @@ namespace BookSocial.Presentation.Admin.Controllers
     {
         public IActionResult AuthorList()
         {
-            return View("~/Views/AuthorManager/Author/List.cshtml");
+            return View("~/Views/LibraryManager/Author/List.cshtml");
         }
     }
 }
