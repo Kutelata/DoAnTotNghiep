@@ -2,11 +2,11 @@
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
-    public class InboxController : Controller
+    public partial class HomeController
     {
-        public IActionResult Index()
+        public IActionResult InboxList()
         {
-            return View();
+            return View("~/Views/Inbox/Index.cshtml");
         }
     }
 }

@@ -1766,19 +1766,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\hclon\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\BookSocial.Entity.csproj",
+      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\BookSocial.Entity.csproj",
       "projectName": "BookSocial.Entity",
-      "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\BookSocial.Entity.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\obj\\",
+      "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\BookSocial.Entity.csproj",
+      "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+      "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Entity\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1825,7 +1829,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

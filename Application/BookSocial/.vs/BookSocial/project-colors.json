@@ -30,7 +30,12 @@
       "ProjectGuid": "b64bac49-f87a-489f-800e-47c463176f86",
       "DisplayName": "BookSocial.DTO",
       "ColorIndex": 5
+    },
+    "5618752e-2342-43fc-817f-032b14c189b5": {
+      "ProjectGuid": "5618752e-2342-43fc-817f-032b14c189b5",
+      "DisplayName": "BookSocial.Presentation.Admin",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

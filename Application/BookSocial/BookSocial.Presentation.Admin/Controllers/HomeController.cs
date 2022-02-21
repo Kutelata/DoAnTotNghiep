@@ -4,23 +4,11 @@ using System.Diagnostics;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View("~/Views/Dashboard/Index.cshtml");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

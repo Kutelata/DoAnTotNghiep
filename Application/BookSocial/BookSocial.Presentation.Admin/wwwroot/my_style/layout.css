@@ -5,3 +5,6 @@
 .navbar-nav .open .dropdown-menu{
     transform: translate3d(-88px, 42px, 0px) !important;
 }
+.right_col_vh{
+    min-height:100vh !important;
+}

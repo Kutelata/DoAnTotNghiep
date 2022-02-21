@@ -20,4 +20,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\AdminAuthorize\" />
+    <Folder Include="Views\UserManager\Blog\" />
+    <Folder Include="Views\UserManager\Comment\" />
+    <Folder Include="Views\UserManager\User\" />
+  </ItemGroup>
+
 </Project>

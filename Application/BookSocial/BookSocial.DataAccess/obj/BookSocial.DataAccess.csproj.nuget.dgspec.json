@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {}
+    "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {}
   },
   "projects": {
-    "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {
+    "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
+        "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
         "projectName": "BookSocial.DataAccess",
-        "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\obj\\",
+        "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
