@@ -8,14 +8,23 @@ Admin:
 			nhân viên: sửa trạng thái hoạt động, xóa người dùng - member
 			admin: thêm, sửa trạng thái hoạt động, xóa nhân viên và người dùng, lọc theo role
 		(bị xóa trên 3 blog, comment thì bị chặn activity đấy)
+			trạng thái hoạt động: active, locked
 	- Danh sách author: thêm, sửa, xóa, tìm kiếm, phân trang, sắp xếp(lượt follow,sách,review)
 		+ sách: Danh sách, thêm, sửa, xóa, tìm kiếm(lọc theo category), phân trang
 	- Kiểm duyệt suggest của người dùng	
 User:
-	- Blog: Thêm, sửa, xóa, share, like, lọc theo cộng đồng, bạn bè
+	- Blog: Thêm, sửa, xóa, like, lọc theo cộng đồng, bạn bè
 		+ Comment: Thêm, sửa, xóa, reply, like
 	- Group: Thêm sửa xóa 
-	- Sách: Tiến độ, kệ sách, review, đánh giá
+	- Sách: Tiến độ, kệ sách, review, rating, các tập của cuốn sách
 	- Tác giả: Theo dõi
 	- Yêu cầu thêm sách, tác giả
 	- Report user, sách, tác giả
+
+	font awesome
+
+	role
+	permission
+	area
+	user
+	role_permission (role đang có permission gì và ở area gì)

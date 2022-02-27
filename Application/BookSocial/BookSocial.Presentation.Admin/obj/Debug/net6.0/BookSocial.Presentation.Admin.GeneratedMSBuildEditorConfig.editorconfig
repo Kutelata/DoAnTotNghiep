@@ -15,8 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = d:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin
 build_property._RazorSourceGeneratorDebug = 
 
-[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Dashboard/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Home/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Inbox/Index.cshtml]
@@ -31,20 +39,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQXV0aG9yXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/LibraryManager/Author/List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQXV0aG9yXExpc3QuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/LibraryManager/Book/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQm9va1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/LibraryManager/Book/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQm9va1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/LibraryManager/Book/List.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQm9va1xMaXN0LmNzaHRtbA==
+[d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/LibraryManager/Author/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicmFyeU1hbmFnZXJcQXV0aG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [d:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Login.cshtml]

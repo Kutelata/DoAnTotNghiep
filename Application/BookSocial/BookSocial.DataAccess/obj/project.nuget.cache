@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "k5dm6cOl2WmM3ChuJ5oVD7vu0PhwRF8NqVtzSSWPlz5YWTcZhweR8lrglEUNXWEeBUKZwdon8Ylf5G8ijTr7TQ==",
+  "dgSpecHash": "OF/SmvxLNmRTrmQ8npBw7nG20r57VKcYlhMxh/hOhmm4OLRCnMlURbDFX+jiOJPP+ksh8Cue6sdQhbMGsgv4nw==",
   "success": true,
   "projectFilePath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+  ],
   "logs": []
 }

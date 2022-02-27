@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/favicon.ico" type="image/ico">
+    <link rel="icon" href="~/images/favicon.ico" type="image/ico">
 
     <title>Admin</title>
 
@@ -14,8 +14,6 @@
     <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="~/build/css/custom.min.css" rel="stylesheet">
@@ -35,8 +33,10 @@
             @await Html.PartialAsync("Partials/TopNav.cshtml")
 
             <!-- page content -->
-            <div class="right_col right_col_vh" role="main">
-                @RenderBody()
+            <div class="right_col my_right_col_vh" role="main">
+                <div class="row">
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
@@ -45,12 +45,11 @@
     <script src="~/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="~/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="~/vendors/nprogress/nprogress.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="~/build/js/custom.min.js"></script>
+
+     <!-- My Script -->
+    @await RenderSectionAsync("script", false)
 </body>
 </html>
