@@ -1,0 +1,47 @@
+﻿.navbar-nav .open .my-dropdown-menu {
+    transform: translate3d(-88px, 42px, 0px) !important;
+}
+
+.my_right_col_vh {
+    min-height: 100vh !important;
+}
+
+.my_pagination {
+    float: left;
+    background: #EDEDED;
+    overflow: hidden;
+    border-radius: unset;
+}
+
+    .my_pagination li a {
+        padding: 10px;
+        color: #2A3F54;
+    }
+
+        .my_pagination li a:hover {
+            background: #2A3F54;
+            color: white;
+        }
+
+    .my_pagination li .active {
+        background: #2A3F54;
+        color: white;
+    }
+
+.my-form-control {
+    border-radius: 0.25rem;
+}
+
+    .my-form-control:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%) !important;
+    }
+
+.my-input-group {
+    margin-bottom: 0;
+}
+
+.my-btn-edit {
+    color: white !important;
+}

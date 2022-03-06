@@ -25,3 +25,14 @@ D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\obj\Debug\net6.0\re
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\obj\Debug\net6.0\BookSocial.API.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\obj\Debug\net6.0\BookSocial.API.genruntimeconfig.cache
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\obj\Debug\net6.0\ref\BookSocial.API.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\Dapper.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\System.Data.SqlClient.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.DataAccess.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.Entity.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.DataAccess.pdb
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.Entity.pdb

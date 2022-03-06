@@ -1,0 +1,41 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\BookSocial.Presentation.Admin.csproj",
+    "projectName": "BookSocial.Presentation.Admin",
+    "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\BookSocial.Presentation.Admin.csproj",
+    "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net60"
+    ],
+    "sources": {
+      "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp6.0": {
+        "projectReferences": {}
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp6.0": {
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

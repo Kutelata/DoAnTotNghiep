@@ -16,9 +16,7 @@ D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\D
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.RazorAssemblyInfo.cs
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\staticwebassets.build.json
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\staticwebassets.development.json
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\scopedcss\bundle\BookSocial.Presentation.User.styles.css
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\scopedcss\projectbundle\BookSocial.Presentation.User.bundle.scp.css
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\refint\BookSocial.Presentation.User.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.pdb

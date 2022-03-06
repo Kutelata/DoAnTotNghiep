@@ -24,13 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Views\AuthorizeManager\" />
     <Folder Include="Views\LibraryManager\Book\" />
     <Folder Include="Views\UserManager\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookSocial.Entity\BookSocial.Entity.csproj" />
   </ItemGroup>
 
 </Project>

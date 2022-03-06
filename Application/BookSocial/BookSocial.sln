@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.Entity", "BookSocial.Entity\BookSocial.Entity.csproj", "{51C05053-3E44-4233-8834-6427487349DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Entity", "BookSocial.Entity\BookSocial.Entity.csproj", "{51C05053-3E44-4233-8834-6427487349DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.DataAccess", "BookSocial.DataAccess\BookSocial.DataAccess.csproj", "{CF580FF8-D9D1-4389-9317-202E5F8B21D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.DataAccess", "BookSocial.DataAccess\BookSocial.DataAccess.csproj", "{CF580FF8-D9D1-4389-9317-202E5F8B21D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.API", "BookSocial.API\BookSocial.API.csproj", "{17B335EF-4DB3-44B6-9E1B-BFFC6CA41D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.API", "BookSocial.API\BookSocial.API.csproj", "{17B335EF-4DB3-44B6-9E1B-BFFC6CA41D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.Presentation.User", "BookSocial.Presentation.User\BookSocial.Presentation.User.csproj", "{21F99B3F-394A-4279-AA33-97A016867A4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.User", "BookSocial.Presentation.User\BookSocial.Presentation.User.csproj", "{21F99B3F-394A-4279-AA33-97A016867A4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.Presentation.Admin", "BookSocial.Presentation.Admin\BookSocial.Presentation.Admin.csproj", "{5618752E-2342-43FC-817F-032B14C189B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.Admin", "BookSocial.Presentation.Admin\BookSocial.Presentation.Admin.csproj", "{685CCC65-18B2-4660-B113-01871E21C946}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{21F99B3F-394A-4279-AA33-97A016867A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21F99B3F-394A-4279-AA33-97A016867A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21F99B3F-394A-4279-AA33-97A016867A4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5618752E-2342-43FC-817F-032B14C189B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5618752E-2342-43FC-817F-032B14C189B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5618752E-2342-43FC-817F-032B14C189B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5618752E-2342-43FC-817F-032B14C189B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685CCC65-18B2-4660-B113-01871E21C946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685CCC65-18B2-4660-B113-01871E21C946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685CCC65-18B2-4660-B113-01871E21C946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685CCC65-18B2-4660-B113-01871E21C946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

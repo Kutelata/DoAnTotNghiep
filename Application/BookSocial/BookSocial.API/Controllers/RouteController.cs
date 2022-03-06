@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BookSocial.DataAccess.DataAccessClass;
+using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.Entity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.SqlClient;
 
 namespace BookSocial.API.Controllers
 {
@@ -7,6 +11,25 @@ namespace BookSocial.API.Controllers
     [ApiController]
     public class RouteController : ControllerBase
     {
-        public async Task<IActionResult> 
+        private readonly IUserRepository _iud;
+
+        public RouteController(IUserRepository iud)
+        {
+            _iud = iud;
+        }
+
+        [HttpGet]
+        public  async Task<IActionResult> GetUserSaveCookie(string account, string password)
+        {
+            try
+            {
+                var Data = await _iud.CheckLogin(account, password);
+                return Ok(Data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

@@ -15,8 +15,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/AuthorizeManager/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXplTWFuYWdlclxFcnJvci5jc2h0bWw=
+[D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Home/Index.cshtml]
