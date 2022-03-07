@@ -7,14 +7,15 @@ go
 create table [Role]
 (
 	id int identity primary key,
-	[name] nvarchar(max) unique not null
+	[name] nvarchar(50) unique not null,
+	is_admin bit default(0)
 )
 go
 
 create table Permission
 (
 	id int identity primary key,
-	[name] nvarchar(max) unique not null, -- Controller-Action
+	[name] nvarchar(50) unique not null, -- Controller-Action
 )
 go
 
@@ -28,38 +29,18 @@ create table [User]
 (
 	id int identity primary key,
 	[name] nvarchar(max) not null,
-	phone nvarchar(max),
-	email nvarchar(max),
-	account nvarchar(max) unique not null,
+	phone varchar(max),
+	email varchar(max),
+	account nvarchar(50) unique not null,
 	[password] nvarchar(max) not null,
-	[image] nvarchar(max),
+	[image] varchar(max),
 	[address] nvarchar(max),
 	[description] nvarchar(max),
 	[birthday] datetime,
-	gender bit,
-	friend nvarchar(max),
-	[status] bit,
+	gender bit default(0),
+	friend varchar(max),
+	[status] bit default(0),
 	role_id int foreign key references [Role](id)
-)
-go
-
-create table [Group]
-(
-	id int identity primary key,
-	[name] nvarchar(max) not null,
-	[description] nvarchar(max),
-	[rule] nvarchar(max),
-	[user_id] int foreign key references [User](id),
-	created_at datetime
-)
-go
-
-create table Blog
-(
-	id int identity primary key,
-	created_at datetime,
-	[text] nvarchar(max) not null,
-	group_id int foreign key references [Group](id),
 )
 go
 
@@ -67,7 +48,7 @@ create table Author
 (
 	id int primary key identity,
 	[name] nvarchar(max) not null,
-	[image] nvarchar(max),
+	[image] varchar(max),
 	[description] nvarchar(max),
 	birthday datetime,
 )
@@ -76,16 +57,16 @@ go
 create table Genre
 (
 	id int primary key identity,
-	[name] nvarchar(max) unique not null 
+	[name] nvarchar(50) unique not null 
 )
 go
 
 create table Book
 (
 	id int primary key identity,
-	isbn int unique,
+	isbn varchar(50) unique,
 	[name] nvarchar(max) not null,
-	[image] nvarchar(max),
+	[image] varchar(max),
 	[description] nvarchar(max),
 	[page_number] int,
 	published datetime,
@@ -101,47 +82,30 @@ create table Author_Book
 )
 go
 
-create table Comment
+create table Progress_Read
+(
+	id int primary key identity,
+	[name] nvarchar(50) unique not null,
+)
+
+create table Article
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
-	created_at datetime,
+	created_at datetime not null,
 	parent_id int,
-	[blog_id] int,
+	level_id int,
 	[book_id] int,
 	[user_id] int,
+	progress_read_id int,
+	review int
 )
 go
 
 create table [Like]
 (
-	[blog_id] int,
-	comment_id int,
-	[book_id] int,
 	author_id int,
-	[user_id] int
+	article_id int,
+	[user_id] int,
 )
 go
-
-create table Progress_Book
-(
-	id int primary key identity,
-	[name] nvarchar(max) unique not null,
-)
-
-create table User_Book
-(
-	[user_id] int foreign key references [User](id),
-	[book_id] int foreign key references Book(id),
-	progress_book_id int foreign key references Progress_Book(id),
-	review int,
-	[text] nvarchar(max),
-	constraint PK_User_Book primary key ([user_id], [book_id])
-)
-go
-
-
-
-
-
-

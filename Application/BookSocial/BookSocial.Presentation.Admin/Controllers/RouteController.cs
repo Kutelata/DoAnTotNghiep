@@ -1,4 +1,5 @@
 ﻿using BookSocial.Entity.DTO;
+using BookSocial.Entity.ViewModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -15,27 +16,37 @@ namespace BookSocial.Presentation.Admin.Controllers
             _client = client;
         }
 
-        public async Task<IActionResult> Login(string account, string password)
+        public IActionResult Login()
         {
-            var response = await _client.GetFromJsonAsync<UserSaveCookie>("api/Route?account=admin&password=admin123");
+            return View("~/Views/Login.cshtml");
+        }
 
-            // create claims
-            List<Claim> claims = new List<Claim>
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel lvm)
+        {
+            var response = await _client
+                .GetAsync("Route/GetUserSaveCookie?account=" + lvm.Account + "&password=" + lvm.Password);
+            if (response.IsSuccessStatusCode)
             {
-                new Claim("Account", response!.Account),
-                new Claim("Password", response.Password),
-            };
+                var data = await response.Content.ReadFromJsonAsync<UserSaveCookie>();
+                //create claims
+                List<Claim> claims = new List<Claim>
+                {
+                    new Claim("Account", data.Account),
+                    new Claim("Password", data.Password),
+                };
 
-            // create identity
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                // create identity
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            // create principal
-            ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
+                // create principal
+                ClaimsPrincipal principal = new ClaimsPrincipal(claimsIdentity);
 
-            // sign-in
-            await HttpContext.SignInAsync(principal);
-
-            return Json(response);
+                // sign-in
+                await HttpContext.SignInAsync(principal);
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("Login","Route");
         }
 
         public async Task<IActionResult> Logout()

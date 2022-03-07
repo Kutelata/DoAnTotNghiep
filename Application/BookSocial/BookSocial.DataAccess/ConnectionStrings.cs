@@ -5,7 +5,7 @@ namespace BookSocial.DataAccess
 {
     public class ConnectionStrings
     {
-        public static string? BookSocialDB { get; set; }
+        public static string BookSocialDB { get; set; }
 
         protected IDbConnection GetConnection()
         {

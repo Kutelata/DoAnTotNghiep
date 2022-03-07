@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace BookSocial.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class RouteController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                var Data = await _iud.CheckLogin(account, password);
+                var Data = await _iud.GetUserSaveCookie(account, password);
                 return Ok(Data);
             }
             catch (Exception ex)
