@@ -30,6 +30,7 @@
                 <section class="login_content">
                     <form action="@Url.Action("Login","Route")" method="post">
                         <h1>Admin</h1>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <div>
                             <input type="text" class="form-control" name="Account" placeholder="Username" />
                         </div>

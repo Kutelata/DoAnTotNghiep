@@ -4,10 +4,10 @@ namespace BookSocial.DataAccess
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(int id);
-        Task<int> CreateAsync(T entity);
-        Task<int> UpdateAsync(T entity);
-        Task<int> DeleteAsync(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> GetById(int id);
+        Task<int> Create(T entity);
+        Task<int> Update(T entity);
+        Task<int> Delete(int id);
     }
 }

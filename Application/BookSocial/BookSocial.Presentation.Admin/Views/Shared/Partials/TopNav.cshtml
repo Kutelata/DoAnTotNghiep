@@ -7,13 +7,7 @@
             <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                        @if(Context.Request.Cookies["Account"] != null)
-                        {
-                            var name = Context.Request.Cookies["Account"];
-                            <img src="~/images/img.jpg" alt="">
-                            @name
-                        }
-                        
+                        <img src="~/images/img.jpg" alt=""> @Context.User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault()
                     </a>
                     <div class="dropdown-menu my-dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Profile","Home")"> Profile</a>

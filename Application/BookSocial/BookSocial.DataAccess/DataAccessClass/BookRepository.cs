@@ -11,7 +11,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 {
     public class BookRepository : ConnectionStrings, IBookRepository
     {
-        public async Task<int> CreateAsync(Book entity)
+        public async Task<int> Create(Book entity)
         {
             using (var con = GetConnection())
             {
@@ -24,7 +24,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> Delete(int id)
         {
             using (var con = GetConnection())
             {
@@ -32,7 +32,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<IEnumerable<Book>> GetAllAsync()
+        public async Task<IEnumerable<Book>> GetAll()
         {
             using (var con = GetConnection())
             {
@@ -40,7 +40,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<Book> GetByIdAsync(int id)
+        public async Task<Book> GetById(int id)
         {
             using (var con = GetConnection())
             {
@@ -48,7 +48,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<int> UpdateAsync(Book entity)
+        public async Task<int> Update(Book entity)
         {
             using (var con = GetConnection())
             {

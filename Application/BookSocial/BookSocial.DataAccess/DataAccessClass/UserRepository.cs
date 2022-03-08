@@ -1,6 +1,7 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.Entity;
 using BookSocial.Entity.DTO;
+using BookSocial.Entity.ViewModel;
 using Dapper;
 using System;
 
@@ -8,7 +9,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 {
     public class UserRepository : ConnectionStrings, IUserRepository
     {
-        public async Task<UserSaveCookie> GetUserSaveCookie(string account, string password)
+        public async Task<UserSaveCookie> GetUserSaveCookie(LoginViewModel lvm)
         {
             using (var con = GetConnection())
             {
@@ -20,31 +21,31 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] u
                     JOIN [ROLE] r ON u.role_id = r.id
                     WHERE u.account = @account and u.[password] = @password",
-                    new { account, password });
+                    new { account = lvm.Account, password = lvm.Password });
             }
         }
 
-        public Task<int> CreateAsync(User entity)
+        public Task<int> Create(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> DeleteAsync(int id)
+        public Task<int> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetAllAsync()
+        public Task<IEnumerable<User>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public Task<User> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> UpdateAsync(User entity)
+        public Task<int> Update(User entity)
         {
             throw new NotImplementedException();
         }
