@@ -22,6 +22,18 @@
           "buildMultiTargeting/Microsoft.Extensions.ApiDescription.Server.targets": {}
         }
       },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -215,8 +227,10 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "BookSocial.Entity": "1.0.0",
+          "BookSocial.EntityClass": "1.0.0",
+          "BookSocial.Service": "1.0.0",
           "Dapper": "2.0.123",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "compile": {
@@ -226,14 +240,28 @@
           "bin/placeholder/BookSocial.DataAccess.dll": {}
         }
       },
-      "BookSocial.Entity/1.0.0": {
+      "BookSocial.EntityClass/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/BookSocial.Entity.dll": {}
+          "bin/placeholder/BookSocial.EntityClass.dll": {}
         },
         "runtime": {
-          "bin/placeholder/BookSocial.Entity.dll": {}
+          "bin/placeholder/BookSocial.EntityClass.dll": {}
+        }
+      },
+      "BookSocial.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BookSocial.EntityClass": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/BookSocial.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookSocial.Service.dll": {}
         }
       }
     }
@@ -282,6 +310,31 @@
         "tools/netcoreapp2.1/GetDocument.Insider.deps.json",
         "tools/netcoreapp2.1/GetDocument.Insider.dll",
         "tools/netcoreapp2.1/GetDocument.Insider.runtimeconfig.json"
+      ]
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+      "sha512": "xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.Abstractions.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
@@ -700,10 +753,15 @@
       "path": "../BookSocial.DataAccess/BookSocial.DataAccess.csproj",
       "msbuildProject": "../BookSocial.DataAccess/BookSocial.DataAccess.csproj"
     },
-    "BookSocial.Entity/1.0.0": {
+    "BookSocial.EntityClass/1.0.0": {
       "type": "project",
-      "path": "../BookSocial.Entity/BookSocial.Entity.csproj",
-      "msbuildProject": "../BookSocial.Entity/BookSocial.Entity.csproj"
+      "path": "../BookSocial.EntityClass/BookSocial.EntityClass.csproj",
+      "msbuildProject": "../BookSocial.EntityClass/BookSocial.EntityClass.csproj"
+    },
+    "BookSocial.Service/1.0.0": {
+      "type": "project",
+      "path": "../BookSocial.Service/BookSocial.Service.csproj",
+      "msbuildProject": "../BookSocial.Service/BookSocial.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -713,19 +771,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\hclon\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
+      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
       "projectName": "BookSocial.API",
-      "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\obj\\",
+      "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
+      "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+      "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -740,8 +802,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {
-              "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj"
+            "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj": {
+              "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj"
             }
           }
         }
@@ -779,7 +841,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

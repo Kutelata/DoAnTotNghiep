@@ -1,6 +1,6 @@
 using BookSocial.DataAccess;
-using BookSocial.DataAccess.DataAccessClass;
-using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,9 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+// AddScoped Repository
+RegisterRepository.Register(builder.Services);
 
+// Add ConnectionString
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectionStrings").Get<ConnectionStrings>());
+
+
 
 var app = builder.Build();
 

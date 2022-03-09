@@ -24,6 +24,7 @@
         }
       },
       "Microsoft.Extensions.ApiDescription.Server/3.0.0": {},
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {},
       "Microsoft.NETCore.Platforms/3.1.0": {},
       "Microsoft.OpenApi/1.2.3": {
         "runtime": {
@@ -147,17 +148,28 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "BookSocial.DataAccess/1.0.0": {
         "dependencies": {
-          "BookSocial.Entity": "1.0.0",
+          "BookSocial.EntityClass": "1.0.0",
+          "BookSocial.Service": "1.0.0",
           "Dapper": "2.0.123",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {
           "BookSocial.DataAccess.dll": {}
         }
       },
-      "BookSocial.Entity/1.0.0": {
+      "BookSocial.EntityClass/1.0.0": {
         "runtime": {
-          "BookSocial.Entity.dll": {}
+          "BookSocial.EntityClass.dll": {}
+        }
+      },
+      "BookSocial.Service/1.0.0": {
+        "dependencies": {
+          "BookSocial.EntityClass": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "BookSocial.Service.dll": {}
         }
       }
     }
@@ -181,6 +193,13 @@
       "sha512": "sha512-LH4OE/76F6sOCslif7+Xh3fS/wUUrE5ryeXAMcoCnuwOQGT5Smw0p57IgDh/pHgHaGz/e+AmEQb7pRgb++wt0w==",
       "path": "microsoft.extensions.apidescription.server/3.0.0",
       "hashPath": "microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -285,7 +304,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BookSocial.Entity/1.0.0": {
+    "BookSocial.EntityClass/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookSocial.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

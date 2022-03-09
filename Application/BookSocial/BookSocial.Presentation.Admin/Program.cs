@@ -1,3 +1,4 @@
+using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// AddScoped HttpClient
 builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("https://localhost:7045/api/") });
+
+// AddScoped Service
+RegisterService.Register(builder.Services);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

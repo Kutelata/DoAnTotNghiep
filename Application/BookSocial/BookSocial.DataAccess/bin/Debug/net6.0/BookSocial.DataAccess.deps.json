@@ -8,8 +8,10 @@
     ".NETCoreApp,Version=v6.0": {
       "BookSocial.DataAccess/1.0.0": {
         "dependencies": {
-          "BookSocial.Entity": "1.0.0",
+          "BookSocial.EntityClass": "1.0.0",
+          "BookSocial.Service": "1.0.0",
           "Dapper": "2.0.123",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "System.Data.SqlClient": "4.8.3"
         },
         "runtime": {
@@ -21,6 +23,14 @@
           "lib/net5.0/Dapper.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.0.123.33578"
+          }
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
           }
         }
       },
@@ -99,9 +109,18 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "BookSocial.Entity/1.0.0": {
+      "BookSocial.EntityClass/1.0.0": {
         "runtime": {
-          "BookSocial.Entity.dll": {}
+          "BookSocial.EntityClass.dll": {}
+        }
+      },
+      "BookSocial.Service/1.0.0": {
+        "dependencies": {
+          "BookSocial.EntityClass": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "BookSocial.Service.dll": {}
         }
       }
     }
@@ -118,6 +137,13 @@
       "sha512": "sha512-RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
       "path": "dapper/2.0.123",
       "hashPath": "dapper.2.0.123.nupkg.sha512"
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xlzi2IYREJH3/m6+lUrQlujzX8wDitm4QGnUu6kUXTQAWPuZY8i+ticFJbzfqaetLA6KR/rO6Ew/HuYD+bxifg==",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/6.0.0",
+      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",
@@ -182,7 +208,12 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "BookSocial.Entity/1.0.0": {
+    "BookSocial.EntityClass/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookSocial.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

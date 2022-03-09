@@ -35,7 +35,17 @@
       "ProjectGuid": "5618752e-2342-43fc-817f-032b14c189b5",
       "DisplayName": "BookSocial.Presentation.Admin",
       "ColorIndex": 6
+    },
+    "386e3e6c-0227-44d7-9191-993c34b58ae3": {
+      "ProjectGuid": "386e3e6c-0227-44d7-9191-993c34b58ae3",
+      "DisplayName": "BlazorApp1",
+      "ColorIndex": 7
+    },
+    "685ccc65-18b2-4660-b113-01871e21c946": {
+      "ProjectGuid": "685ccc65-18b2-4660-b113-01871e21c946",
+      "DisplayName": "BookSocial.Presentation.Admin",
+      "ColorIndex": 8
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 9
 }

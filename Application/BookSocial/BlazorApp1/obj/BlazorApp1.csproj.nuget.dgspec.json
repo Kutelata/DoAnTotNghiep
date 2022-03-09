@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj": {}
+    "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj": {}
   },
   "projects": {
-    "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj": {
+    "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj",
+        "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj",
         "projectName": "BlazorApp1",
-        "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\obj\\",
+        "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\BlazorApp1.csproj",
+        "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+        "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BlazorApp1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +67,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[6.0.2, 6.0.2]"
+              "version": "[6.0.3, 6.0.3]"
             }
           ],
           "frameworkReferences": {
@@ -72,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

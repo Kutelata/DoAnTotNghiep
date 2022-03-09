@@ -1,6 +1,6 @@
-﻿using BookSocial.Entity;
-using BookSocial.Entity.DTO;
-using BookSocial.Entity.ViewModel;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.ViewModel;
 
 namespace BookSocial.DataAccess.DataAccessInterface
 {

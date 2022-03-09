@@ -1,5 +1,5 @@
 ﻿.navbar-nav .open .my-dropdown-menu {
-    transform: translate3d(-88px, 42px, 0px) !important;
+    top: 21px !important;
 }
 
 .my_right_col_vh {

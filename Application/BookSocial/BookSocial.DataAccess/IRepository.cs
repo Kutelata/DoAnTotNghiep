@@ -1,4 +1,4 @@
-﻿using BookSocial.Entity;
+﻿using BookSocial.EntityClass;
 
 namespace BookSocial.DataAccess
 {

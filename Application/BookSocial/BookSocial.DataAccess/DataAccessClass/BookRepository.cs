@@ -1,11 +1,6 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
-using BookSocial.Entity;
+using BookSocial.EntityClass.Entity;
 using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -19,7 +14,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     @"INSERT INTO Book
                         (isbn, [name], [image], [description], [page_number], published, language, genre_id) 
                     VALUES 
-                        (@isbn, @name, @image, @desciption, @page_number, @published, @language, @genre_id)",
+                        (@isbn, @name, @image, @description, @pageNumber, @published, @language, @genreId)",
                     entity);
             }
         }
@@ -53,11 +48,11 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"UPDATE Books 
+                    @"UPDATE Book 
                     SET 
                         isbn = @isbn, [name] = @name, [image] = @image, 
-                        [description] = @description, [page_number] = @page_number, 
-                        published = @published, language = @language, genre_id = @genre_id)
+                        [description] = @description, [page_number] = @pageNumber, 
+                        published = @published, language = @language, genre_id = @genreId
                     WHERE id = @id", 
                     entity);
             }

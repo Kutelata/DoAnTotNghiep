@@ -1,7 +1,5 @@
-﻿using BookSocial.DataAccess.DataAccessClass;
-using BookSocial.DataAccess.DataAccessInterface;
-using BookSocial.Entity;
-using BookSocial.Entity.ViewModel;
+﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.API.Controllers
@@ -10,11 +8,11 @@ namespace BookSocial.API.Controllers
     [ApiController]
     public class RouteController : ControllerBase
     {
-        private readonly IUserRepository _iud;
+        private readonly IUserRepository _iur;
 
-        public RouteController(IUserRepository iud)
+        public RouteController(IUserRepository iur)
         {
-            _iud = iud;
+            _iur = iur;
         }
 
         [HttpPost]
@@ -22,8 +20,8 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                var Data = await _iud.GetUserSaveCookie(lvm);
-                return Ok(Data);
+                var data = await _iur.GetUserSaveCookie(lvm);
+                return Ok(data);
             }
             catch (Exception ex)
             {

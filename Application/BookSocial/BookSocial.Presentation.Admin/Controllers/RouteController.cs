@@ -1,5 +1,6 @@
-﻿using BookSocial.Entity.DTO;
-using BookSocial.Entity.ViewModel;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.ViewModel;
+using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,10 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public class RouteController : Controller
     {
-        private readonly HttpClient _client;
-
-        public RouteController(HttpClient client)
+        private readonly IUserService _ius;
+        public RouteController(IUserService ius)
         {
-            _client = client;
+            _ius = ius;
         }
 
         public IActionResult Login()
@@ -34,11 +34,10 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                var response = await _client.PostAsJsonAsync("Route/GetUserSaveCookie", lvm);
-                if (response.IsSuccessStatusCode)
-                {
-                    var data = await response.Content.ReadFromJsonAsync<UserSaveCookie>();
 
+                var data = await _ius.GetUserSaveCookie(lvm);
+                if (data != null)
+                {
                     //create claims
                     List<Claim> claims = new()
                     {
@@ -70,11 +69,9 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 else
                 {
-                    var error = await response.Content.ReadAsStringAsync();
-                    ModelState.AddModelError(String.Empty, error);
+                    ModelState.AddModelError(String.Empty, "Account or Password is not match!");
                 }
             }
-
             return View("~/Views/Login.cshtml");
         }
 

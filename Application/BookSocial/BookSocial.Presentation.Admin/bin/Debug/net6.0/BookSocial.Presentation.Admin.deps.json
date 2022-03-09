@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "BookSocial.Presentation.Admin/1.0.0": {
         "dependencies": {
-          "BookSocial.Entity": "1.0.0",
+          "BookSocial.Service": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.2"
         },
         "runtime": {
@@ -1929,9 +1929,18 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "BookSocial.Entity/1.0.0": {
+      "BookSocial.EntityClass/1.0.0": {
         "runtime": {
-          "BookSocial.Entity.dll": {}
+          "BookSocial.EntityClass.dll": {}
+        }
+      },
+      "BookSocial.Service/1.0.0": {
+        "dependencies": {
+          "BookSocial.EntityClass": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        },
+        "runtime": {
+          "BookSocial.Service.dll": {}
         }
       }
     }
@@ -2978,7 +2987,12 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "BookSocial.Entity/1.0.0": {
+    "BookSocial.EntityClass/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookSocial.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

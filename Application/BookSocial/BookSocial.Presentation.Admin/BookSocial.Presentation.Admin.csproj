@@ -3,7 +3,6 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<!--<Nullable>enable</Nullable>-->
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
@@ -35,6 +34,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\BookSocial.Entity\BookSocial.Entity.csproj" />
+	  <ProjectReference Include="..\BookSocial.Service\BookSocial.Service.csproj" />
 	</ItemGroup>
 </Project>

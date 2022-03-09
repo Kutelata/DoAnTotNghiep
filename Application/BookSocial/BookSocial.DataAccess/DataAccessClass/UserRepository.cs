@@ -1,7 +1,7 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
-using BookSocial.Entity;
-using BookSocial.Entity.DTO;
-using BookSocial.Entity.ViewModel;
+using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.ViewModel;
 using Dapper;
 using System;
 

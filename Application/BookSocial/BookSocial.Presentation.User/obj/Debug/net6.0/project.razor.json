@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\BookSocial.Presentation.User.csproj",
+  "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\BookSocial.Presentation.User.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16298,28 +16298,28 @@
   "RootNamespace": "BookSocial.Presentation.User",
   "Documents": [
     {
-      "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\_ViewStart.cshtml",
+      "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Shared\\Partials\\TopBar.cshtml",
-      "TargetPath": "Views\\Shared\\Partials\\TopBar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Home\\Index.cshtml",
+      "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\Views\\Shared\\Partials\\TopBar.cshtml",
+      "TargetPath": "Views\\Shared\\Partials\\TopBar.cshtml",
       "FileKind": "mvc"
     }
   ],

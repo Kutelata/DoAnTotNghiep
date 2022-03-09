@@ -1,0 +1,12 @@
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\bin\Debug\net6.0\BookSocial.EntityClass.deps.json
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\bin\Debug\net6.0\BookSocial.EntityClass.dll
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\bin\Debug\net6.0\BookSocial.EntityClass.pdb
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.csproj.AssemblyReference.cache
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.GeneratedMSBuildEditorConfig.editorconfig
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.AssemblyInfoInputs.cache
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.AssemblyInfo.cs
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.csproj.CoreCompileInputs.cache
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.dll
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\refint\BookSocial.EntityClass.dll
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\BookSocial.EntityClass.pdb
+D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.EntityClass\obj\Debug\net6.0\ref\BookSocial.EntityClass.dll
