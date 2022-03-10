@@ -13,11 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.Adm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Service", "BookSocial.Service\BookSocial.Service.csproj", "{F7BAF339-F612-475A-9C18-5E6DF229DE89}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{386E3E6C-0227-44D7-9191-993C34B58AE3}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp2", "BlazorApp2\BlazorApp2.csproj", "{213E6A14-465C-4C9A-AAA2-D5420C2ADCF8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSocial.EntityClass", "BookSocial.EntityClass\BookSocial.EntityClass.csproj", "{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.EntityClass", "BookSocial.EntityClass\BookSocial.EntityClass.csproj", "{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +41,6 @@ Global
 		{F7BAF339-F612-475A-9C18-5E6DF229DE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7BAF339-F612-475A-9C18-5E6DF229DE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7BAF339-F612-475A-9C18-5E6DF229DE89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{386E3E6C-0227-44D7-9191-993C34B58AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{386E3E6C-0227-44D7-9191-993C34B58AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{386E3E6C-0227-44D7-9191-993C34B58AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{386E3E6C-0227-44D7-9191-993C34B58AE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{213E6A14-465C-4C9A-AAA2-D5420C2ADCF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{213E6A14-465C-4C9A-AAA2-D5420C2ADCF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{213E6A14-465C-4C9A-AAA2-D5420C2ADCF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{213E6A14-465C-4C9A-AAA2-D5420C2ADCF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU

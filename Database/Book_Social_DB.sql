@@ -4,27 +4,6 @@ go
 use Book_Social_DB
 go
 
-create table [Role]
-(
-	id int identity primary key,
-	[name] nvarchar(50) unique not null,
-	is_admin bit default(0)
-)
-go
-
-create table Permission
-(
-	id int identity primary key,
-	[name] nvarchar(50) unique not null, -- Controller-Action
-)
-go
-
-create table Role_Permission
-(
-	role_id int foreign key references [Role](id),
-	permission_id int foreign key references Permission(id)
-)
-
 create table [User]
 (
 	id int identity primary key,
@@ -40,7 +19,7 @@ create table [User]
 	gender bit default(0),
 	friend varchar(max),
 	[status] bit default(0),
-	role_id int foreign key references [Role](id)
+	[role] nvarchar(max) not null
 )
 go
 
@@ -88,24 +67,49 @@ create table Progress_Read
 	[name] nvarchar(50) unique not null,
 )
 
-create table Article
+create table User_Review
+(
+	[text] nvarchar(max),
+	review int,
+	created_at datetime not null,
+	[book_id] int foreign key references Book(id),
+	[user_id] int foreign key references [User](id)
+)
+go
+
+create table User_Comment
+(
+	id int identity primary key,
+	[text] nvarchar(max) not null,
+	user_review_id int,
+	parent_id int,
+	created_at datetime not null,
+	[user_id] int foreign key references [User](id)
+)
+go
+
+create table User_Article
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
 	created_at datetime not null,
-	parent_id int,
-	level_id int,
-	[book_id] int,
-	[user_id] int,
-	progress_read_id int,
-	review int
+	[user_id] int foreign key references [User](id)
 )
 go
+
+create table User_Shelf
+(
+	[book_id] int foreign key references Book(id),
+	[page] int,
+	progress_read_id int foreign key references [Progress_Read](id),
+	[user_id] int foreign key references [User](id),
+)
 
 create table [Like]
 (
 	author_id int,
 	article_id int,
+	book_id int,
 	[user_id] int,
 )
 go

@@ -16,7 +16,7 @@ namespace BookSocial.Service.ServiceClass
 
         public async Task<UserSaveCookie> GetUserSaveCookie(LoginViewModel lvm)
         {
-            var response = await _client.PostAsJsonAsync("Route/GetUserSaveCookie", lvm);
+            var response = await _client.PostAsJsonAsync("User/GetUserSaveCookie", lvm);
             if (!response.IsSuccessStatusCode)
             {
                 return null;

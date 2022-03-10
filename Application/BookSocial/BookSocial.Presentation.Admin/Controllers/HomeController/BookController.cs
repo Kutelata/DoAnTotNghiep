@@ -4,8 +4,9 @@ namespace BookSocial.Presentation.Admin.Controllers.HomeController
 {
     public partial class HomeController
     {
-        public IActionResult BookList()
+        public IActionResult BookList(int size, int page)
         {
+
             return View("~/View/LibraryManager/Book/List");
         }
 

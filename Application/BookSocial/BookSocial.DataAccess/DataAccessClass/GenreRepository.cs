@@ -1,11 +1,6 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -19,19 +14,28 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public Task<int> Delete(int id)
+        public async Task<int> Delete(int id)
         {
-            throw new NotImplementedException();
+            using(var con = GetConnection())
+            {
+                return await con.ExecuteAsync(@"DELETE FROM Genre WHERE id = @id", id);
+            }
         }
 
-        public Task<IEnumerable<Genre>> GetAll()
+        public async Task<IEnumerable<Genre>> GetAll()
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Genre>(@"SELECT * FROM Genre");
+            }
         }
 
-        public Task<Genre> GetById(int id)
+        public async Task<Genre> GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<Genre>(@"SELECT * FROM Genre WHERE id = @id", id);
+            }
         }
 
         public async Task<int> Update(Genre entity)
