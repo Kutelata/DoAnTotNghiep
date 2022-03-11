@@ -1,16 +1,8 @@
 insert into [Role] values
-('User',0),
-('Admin',1),
-('Library Manager',0),
-('User Manager',0)
-go
-
-insert into Permission values
-('')
-go
-
-insert into Role_Permission values
-('')
+('User'),
+('Admin'),
+('Library Manager'),
+('User Manager')
 go
 
 insert into [User] values

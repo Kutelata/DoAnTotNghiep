@@ -4,6 +4,13 @@ go
 use Book_Social_DB
 go
 
+create table Role
+(
+	id int primary key identity,
+	name nvarchar(max) not null
+)
+go
+
 create table [User]
 (
 	id int identity primary key,
@@ -16,10 +23,10 @@ create table [User]
 	[address] nvarchar(max),
 	[description] nvarchar(max),
 	[birthday] datetime,
-	gender bit default(0),
+	gender tinyint,
 	friend varchar(max),
-	[status] bit default(0),
-	[role] nvarchar(max) not null
+	[status] tinyint,
+	[role_id] int foreign key references [Role](id)
 )
 go
 
@@ -61,14 +68,9 @@ create table Author_Book
 )
 go
 
-create table Progress_Read
-(
-	id int primary key identity,
-	[name] nvarchar(50) unique not null,
-)
-
 create table User_Review
 (
+	id int identity primary key,
 	[text] nvarchar(max),
 	review int,
 	created_at datetime not null,
@@ -82,13 +84,14 @@ create table User_Comment
 	id int identity primary key,
 	[text] nvarchar(max) not null,
 	user_review_id int,
+	user_blog_id int,
 	parent_id int,
 	created_at datetime not null,
 	[user_id] int foreign key references [User](id)
 )
 go
 
-create table User_Article
+create table User_Blog
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
@@ -101,15 +104,16 @@ create table User_Shelf
 (
 	[book_id] int foreign key references Book(id),
 	[page] int,
-	progress_read_id int foreign key references [Progress_Read](id),
+	progress_read_id tinyint,
 	[user_id] int foreign key references [User](id),
 )
 
 create table [Like]
 (
 	author_id int,
-	article_id int,
-	book_id int,
+	user_blog_id int,
+	user_review_id int,
+	user_comment int,
 	[user_id] int,
 )
 go
