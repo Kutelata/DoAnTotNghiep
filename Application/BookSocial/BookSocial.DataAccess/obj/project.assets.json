@@ -161,20 +161,6 @@
         "runtime": {
           "bin/placeholder/BookSocial.EntityClass.dll": {}
         }
-      },
-      "BookSocial.Service/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "BookSocial.EntityClass": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
-        },
-        "compile": {
-          "bin/placeholder/BookSocial.Service.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BookSocial.Service.dll": {}
-        }
       }
     }
   },
@@ -539,40 +525,30 @@
       "type": "project",
       "path": "../BookSocial.EntityClass/BookSocial.EntityClass.csproj",
       "msbuildProject": "../BookSocial.EntityClass/BookSocial.EntityClass.csproj"
-    },
-    "BookSocial.Service/1.0.0": {
-      "type": "project",
-      "path": "../BookSocial.Service/BookSocial.Service.csproj",
-      "msbuildProject": "../BookSocial.Service/BookSocial.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "BookSocial.EntityClass >= 1.0.0",
-      "BookSocial.Service >= 1.0.0",
       "Dapper >= 2.0.123",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 6.0.0",
       "System.Data.SqlClient >= 4.8.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hclon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
+      "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
       "projectName": "BookSocial.DataAccess",
-      "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
-      "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\obj\\",
+      "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -587,11 +563,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj": {
-              "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj"
-            },
-            "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Service\\BookSocial.Service.csproj": {
-              "projectPath": "D:\\Study\\DoAnTotNghiep\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Service\\BookSocial.Service.csproj"
+            "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj": {
+              "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj"
             }
           }
         }
@@ -634,7 +607,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookSocial.EntityClass\BookSocial.EntityClass.csproj" />
-    <ProjectReference Include="..\BookSocial.Service\BookSocial.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -10,8 +10,6 @@ D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\obj\Debug\ne
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\obj\Debug\net6.0\refint\BookSocial.DataAccess.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\obj\Debug\net6.0\BookSocial.DataAccess.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\obj\Debug\net6.0\ref\BookSocial.DataAccess.dll
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.Entity.dll
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.Entity.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\obj\Debug\net6.0\BookSocial.DataAccess.csproj.CopyComplete
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.DataAccess.deps.json
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.DataAccess.dll
@@ -30,3 +28,5 @@ D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAcces
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.EntityClass.pdb
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.Service.dll
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.Service.pdb
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.EntityClass.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.DataAccess\bin\Debug\net6.0\BookSocial.EntityClass.pdb

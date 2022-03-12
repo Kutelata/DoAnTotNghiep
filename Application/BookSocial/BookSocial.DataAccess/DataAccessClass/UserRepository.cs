@@ -1,15 +1,13 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
-using BookSocial.EntityClass.ViewModel;
 using Dapper;
-using System;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
     public class UserRepository : ConnectionStrings, IUserRepository
     {
-        public async Task<UserSaveCookie> GetUserSaveCookie(LoginViewModel lvm)
+        public async Task<UserSaveCookie> GetUserSaveCookie(string account, string password)
         {
             using (var con = GetConnection())
             {
@@ -21,7 +19,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] u
                     JOIN [ROLE] r ON u.role_id = r.id
                     WHERE u.account = @account and u.[password] = @password",
-                    new { account = lvm.Account, password = lvm.Password });
+                    new { account, password });
             }
         }
 

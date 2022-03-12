@@ -1,5 +1,4 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
-using BookSocial.EntityClass.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.API.Controllers
@@ -13,12 +12,12 @@ namespace BookSocial.API.Controllers
             _iur = iur;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetUserSaveCookie(LoginViewModel lvm)
+        [HttpGet]
+        public async Task<IActionResult> GetUserSaveCookie(string account, string password)
         {
             try
             {
-                var data = await _iur.GetUserSaveCookie(lvm);
+                var data = await _iur.GetUserSaveCookie(account, password);
                 return Ok(data);
             }
             catch (Exception ex)

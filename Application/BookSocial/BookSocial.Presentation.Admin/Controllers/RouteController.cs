@@ -11,6 +11,7 @@ namespace BookSocial.Presentation.Admin.Controllers
     public class RouteController : Controller
     {
         private readonly IUserService _ius;
+
         public RouteController(IUserService ius)
         {
             _ius = ius;
@@ -26,15 +27,14 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             if (lvm.Account == null)
             {
-                ModelState.AddModelError(String.Empty, "Account is required!");
+                ModelState.AddModelError(string.Empty, "Account is required!");
             }
             if (lvm.Password == null)
             {
-                ModelState.AddModelError(String.Empty, "Password is required!");
+                ModelState.AddModelError(string.Empty, "Password is required!");
             }
             if (ModelState.IsValid)
             {
-
                 var data = await _ius.GetUserSaveCookie(lvm);
                 if (data != null)
                 {
@@ -69,7 +69,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(String.Empty, "Account or Password is not match!");
+                    ModelState.AddModelError(string.Empty, "Account or Password is not match!");
                 }
             }
             return View("~/Views/Login.cshtml");

@@ -9,7 +9,6 @@
       "BookSocial.DataAccess/1.0.0": {
         "dependencies": {
           "BookSocial.EntityClass": "1.0.0",
-          "BookSocial.Service": "1.0.0",
           "Dapper": "2.0.123",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
           "System.Data.SqlClient": "4.8.3"
@@ -113,15 +112,6 @@
         "runtime": {
           "BookSocial.EntityClass.dll": {}
         }
-      },
-      "BookSocial.Service/1.0.0": {
-        "dependencies": {
-          "BookSocial.EntityClass": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
-        },
-        "runtime": {
-          "BookSocial.Service.dll": {}
-        }
       }
     }
   },
@@ -209,11 +199,6 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "BookSocial.EntityClass/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "BookSocial.Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

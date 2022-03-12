@@ -7,9 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // AddScoped HttpClient
-builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("https://localhost:7045/api/") });
+//builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("https://localhost:7045/api/") });
+builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
 
-// AddScoped Service
+// AddScoped Repository
 RegisterService.Register(builder.Services);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

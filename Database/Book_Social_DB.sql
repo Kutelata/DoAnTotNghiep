@@ -56,7 +56,6 @@ create table Book
 	[description] nvarchar(max),
 	[page_number] int,
 	published datetime,
-	[language] nvarchar(max),
 	genre_id int foreign key references Genre(id)
 )
 go
@@ -102,18 +101,18 @@ go
 
 create table User_Shelf
 (
-	[book_id] int foreign key references Book(id),
 	[page] int,
 	progress_read_id tinyint,
+	[book_id] int foreign key references Book(id),
 	[user_id] int foreign key references [User](id),
 )
 
-create table [Like]
+create table User_Like
 (
 	author_id int,
 	user_blog_id int,
 	user_review_id int,
-	user_comment int,
+	user_comment_id int,
 	[user_id] int,
 )
 go

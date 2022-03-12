@@ -2,7 +2,7 @@
 using BookSocial.DataAccess.DataAccessInterface;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BookSocial.Service
+namespace BookSocial.DataAccess
 {
     public class RegisterRepository
     {

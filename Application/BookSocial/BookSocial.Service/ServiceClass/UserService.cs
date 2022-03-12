@@ -5,23 +5,14 @@ using System.Net.Http.Json;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class UserService : IUserService
+    public class UserService : ConnectAPI, IUserService
     {
-        private readonly HttpClient _client;
-
-        public UserService(HttpClient client)
-        {
-            _client = client;
-        }
-
         public async Task<UserSaveCookie> GetUserSaveCookie(LoginViewModel lvm)
         {
-            var response = await _client.PostAsJsonAsync("User/GetUserSaveCookie", lvm);
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
-            var data = await response.Content.ReadFromJsonAsync<UserSaveCookie>();
+            var response = await GetClient()
+                .GetAsync($"User/GetUserSaveCookie?account={lvm.Account}&password={lvm.Password}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<UserSaveCookie>() : null;
             return data;
         }
     }

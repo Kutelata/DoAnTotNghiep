@@ -1,4 +1,5 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
 
@@ -35,6 +36,14 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QuerySingleAsync<Genre>(@"SELECT * FROM Genre WHERE id = @id", id);
+            }
+        }
+
+        public async Task<GenreStatistic> GetGenreStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<GenreStatistic>(@"SELECT * FROM Genre WHERE id = @id", id);
             }
         }
 
