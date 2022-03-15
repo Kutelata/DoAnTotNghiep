@@ -19,12 +19,27 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public Task<int> CreateAuthorBook(AuthorBook authorBook)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<int> Delete(int id)
         {
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", id);
             }
+        }
+
+        public Task<int> DeleteAuthorBook(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditAuthorBook(AuthorBook authorBook)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Book>> GetAll()

@@ -17,7 +17,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
-            using(var con = GetConnection())
+            using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(@"DELETE FROM Genre WHERE id = @id", id);
             }
@@ -39,11 +39,18 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<GenreStatistic> GetGenreStatistic()
+        public async Task<IEnumerable<GenreStatistic>> GetGenreStatistic()
         {
             using (var con = GetConnection())
             {
-                return await con.QuerySingleAsync<GenreStatistic>(@"SELECT * FROM Genre WHERE id = @id", id);
+                return await con.QueryAsync<GenreStatistic>(
+                    @"SELECT 
+	                    g.id,
+	                    g.name,
+	                    COUNT(b.id) as 'numberOfBooks'
+                    FROM Genre g
+                    FULL OUTER JOIN Book b ON b.genre_id = g.id
+                    GROUP BY g.id,g.name");
             }
         }
 

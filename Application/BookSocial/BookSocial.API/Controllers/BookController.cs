@@ -8,11 +8,11 @@ namespace BookSocial.API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IBookRepository _ibr;
+        private readonly IBookRepository _bookRepository;
 
-        public BookController(IBookRepository ibr)
+        public BookController(IBookRepository bookRepository)
         {
-            _ibr = ibr;
+            _bookRepository = bookRepository;
         }
 
         [HttpGet]
@@ -20,7 +20,7 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                var data = await _ibr.GetAll();
+                var data = await _bookRepository.GetAll();
                 return Ok(data);
             }
             catch (Exception ex)
@@ -34,7 +34,7 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                var data = await _ibr.GetById(id);
+                var data = await _bookRepository.GetById(id);
                 return Ok(data);
             }
             catch (Exception ex)
@@ -44,11 +44,11 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Book b)
+        public async Task<IActionResult> Create(Book book)
         {
             try
             {
-                int result = await _ibr.Create(b);
+                int result = await _bookRepository.Create(book);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -58,11 +58,11 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Book b)
+        public async Task<IActionResult> Update(Book book)
         {
             try
             {
-                int result = await _ibr.Update(b);
+                int result = await _bookRepository.Update(book);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -76,7 +76,7 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                int result = await _ibr.Delete(id);
+                int result = await _bookRepository.Delete(id);
                 return Ok(result);
             }
             catch (Exception ex)

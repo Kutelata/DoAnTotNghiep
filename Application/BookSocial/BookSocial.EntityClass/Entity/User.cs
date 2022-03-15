@@ -1,4 +1,6 @@
-﻿namespace BookSocial.EntityClass.Entity
+﻿using BookSocial.EntityClass.Enum;
+
+namespace BookSocial.EntityClass.Entity
 {
     public class User : BaseEntity
     {
@@ -12,9 +14,9 @@
         public string Address { get; set; }
         public string Description { get; set; }
         public DateTime Birthday { get; set; }
-        public bool Gender { get; set; }
+        public Gender Gender { get; set; }
         public string Friend { get; set; }
-        public bool Status { get; set; }
+        public Status Status { get; set; }
         public int RoleId { get; set; }
     }
 }

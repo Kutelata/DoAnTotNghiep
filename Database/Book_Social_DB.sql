@@ -71,7 +71,7 @@ create table User_Review
 (
 	id int identity primary key,
 	[text] nvarchar(max),
-	review int,
+	review tinyint,
 	created_at datetime not null,
 	[book_id] int foreign key references Book(id),
 	[user_id] int foreign key references [User](id)
@@ -102,7 +102,7 @@ go
 create table User_Shelf
 (
 	[page] int,
-	progress_read_id tinyint,
+	progress_read tinyint,
 	[book_id] int foreign key references Book(id),
 	[user_id] int foreign key references [User](id),
 )

@@ -18,7 +18,8 @@ namespace BookSocial.DataAccess.DataAccessClass
                         u.birthday, u.gender, u.friend, u.status, r.[name] as 'role'
                     FROM [User] u
                     JOIN [ROLE] r ON u.role_id = r.id
-                    WHERE u.account = @account and u.[password] = @password",
+                    WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
+                        AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS",
                     new { account, password });
             }
         }
@@ -44,6 +45,81 @@ namespace BookSocial.DataAccess.DataAccessClass
         }
 
         public Task<int> Update(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> CreateReview(UserReview userReview)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditReview(UserReview userReview)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteReview(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> CreateShelft(UserShelf userShelf)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditShelft(UserShelf userShelf)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteShelft(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> CreateBlog(UserBlog userBlog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditBlog(UserBlog userBlog)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteBlog(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> CreateComment(UserComment userComment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditComment(UserComment userComment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteComment(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> CreateLike(UserLike userLike)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> EditLike(UserLike userLike)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> DeleteLike(int id)
         {
             throw new NotImplementedException();
         }

@@ -9,9 +9,9 @@ namespace BookSocial.DataAccess
         public static void Register(IServiceCollection service)
         {
             service.AddScoped<IUserRepository, UserRepository>();
-            service.AddScoped<IBookRepository, BookRepository>();
             service.AddScoped<IGenreRepository, GenreRepository>();
             service.AddScoped<IAuthorRepository, AuthorRepository>();
+            service.AddScoped<IBookRepository, BookRepository>();
         }
     }
 }

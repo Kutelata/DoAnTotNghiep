@@ -10,11 +10,11 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public class RouteController : Controller
     {
-        private readonly IUserService _ius;
+        private readonly IUserService _userService;
 
-        public RouteController(IUserService ius)
+        public RouteController(IUserService userService)
         {
-            _ius = ius;
+            _userService = userService;
         }
 
         public IActionResult Login()
@@ -35,7 +35,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                var data = await _ius.GetUserSaveCookie(lvm);
+                var data = await _userService.GetUserSaveCookie(lvm);
                 if (data != null)
                 {
                     //create claims

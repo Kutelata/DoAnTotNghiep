@@ -10,6 +10,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
 {
     public interface IGenreRepository : IRepository<Genre>
     {
-        public Task<GenreStatistic> GetGenreStatistic();
+        public Task<IEnumerable<GenreStatistic>> GetGenreStatistic();
     }
 }

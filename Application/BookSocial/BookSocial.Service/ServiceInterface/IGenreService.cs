@@ -4,6 +4,6 @@ namespace BookSocial.Service.ServiceInterface
 {
     public interface IGenreService
     {
-        public Task<GenreStatistic> GetGenreStatistic();
+        public Task<IEnumerable<GenreStatistic>> GetGenreStatistic();
     }
 }

@@ -9,6 +9,9 @@ namespace BookSocial.Service
         public static void Register(IServiceCollection service)
         {
             service.AddScoped<IUserService, UserService>();
+            service.AddScoped<IGenreService, GenreService>();
+            service.AddScoped<IAuthorService, AuthorService>();
+            service.AddScoped<IBookService, BookService>();
         }
     }
 }
