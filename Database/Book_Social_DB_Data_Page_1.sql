@@ -16,65 +16,6 @@ insert into [User] values
 ('Xuan Truong','0832536199','xuantruong@gmail.com','manager','manager123','','Da Nang','','2000-04-23',1,'',1,4)
 go
 
-insert into Author values
--- ('name','image','description','birthday')
-
-('Jason Reynolds','image','description','birthday'),
-('Erica Katz','image','description','birthday'),
-('Italo Calvino','image','description','birthday'),
-('Michel Lauricella','image','description','birthday'),
-('Calla Henkel','image','description','birthday'),
-('Abrams Books','image','description','birthday'),
-('Boo Walker','image','description','birthday'),
-('Verna Aardema','image','description','birthday'),
-('Pam Grossman','image','description','birthday'),
-('Jessica Hundley','image','description','birthday'),
-('Barbara O''Neal','image','description','birthday'),
-
-('Jeanine W. Turner','image','description','birthday'),
-('David Goggins','image','description','birthday'),
-('Donald Miller','image','description','birthday'),
-('Chip Heath','image','description','birthday'),
-('Karla Starr','image','description','birthday'),
-('Lindsey Vonn','image','description','birthday'),
-('Whitney Johnson','image','description','birthday'),
-('Amy B. Zegart','image','description','birthday'),
-('Jimmy Soni','image','description','birthday'),
-('Daniel H. Pink','image','description','birthday'),
-('John A. List','image','description','birthday'),
-
-('Sabaa Tahir','image','description','birthday'),
-('Blue Delliquanti','image','description','birthday'),
-('Andrea Sorrentino','image','description','birthday'),
-('Tee Franklin','image','description','birthday'),
-('Laura Gao','image','description','birthday'),
-('Yuko Ota','image','description','birthday'),
-('Kendra Wells','image','description','birthday'),
-('Ram V','image','description','birthday'),
-('Si Spurrier','image','description','birthday'),
-('Ariel Slamet Ries','image','description','birthday')
-
-('Brené Brown','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday'),
-('','image','description','birthday')
-go
-
 insert into Genre values
 -- ('name')
 
@@ -122,25 +63,26 @@ insert into Book values
 ('1302928074','Way of X by Si Spurrier','Way_of_X_by_Simon_Spurrier.jpg','Only one mutant senses the looming shadows. On Krakoa, mutantkind has built a new Eden — but there are serpents in this garden. Some mutants struggle to fit in. Some mutants turn to violence and death. And the children whisper of the Patchwork Man, singing in their hearts. Snared by questions of death, law and love, only Nightcrawler can fight for the soul of Krakoa. Only he — and the curious crew he assembles — can help mutants defeat their inner darkness and find a new way to live! But the malevolent force hiding within Krakoa has begun to show its true form, and answers are hidden…within the Mindscape! As the X-Men’s greatest foe — mutantkind’s primal evil — slithers in the minds of its most senior leaders, can Nightcrawler light the spark that will drive out the shadows, or will Krakoa slip into the abyss?',192,'2022-02-22',3),
 ('1637150180','Witchy','Witchy.jpg','',184,'2022-02-12',3),
 
-('1592408419','Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead','Daring_Greatly.jpg','',,'',4),
-('','','How_to_Win_Friends_and_Influence_People.jpg','',,'',4),
-('','','The_7_Habits_of_Highly_Effective_People.jpg','',,'',4),
-('','','The_Four_Agreements.jpg','',,'',4),
-('','','The_Gifts_of_Imperfection.jpg','',,'',4),
-('','','The_Life_Changing_Magic_of_Tidying_Up.jpg','',,'',4),
-('','','The_Power_of_Habit.jpg','',,'',4),
-('','','The_Power_of_Introverts.jpg','',,'',4),
-('','','The_Power_of_Now.jpg','',,'',4),
-('','','You_Are_a_Badass.jpg','',,'',4),
+('1592408419','Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead','Daring_Greatly.jpg','Every day we experience the uncertainty, risks, and emotional exposure that define what it means to be vulnerable or to dare greatly. Based on twelve years of pioneering research, Brené Brown PhD, MSW, dispels the cultural myth that vulnerability is weakness and argues that it is, in truth, our most accurate measure of courage.',320,'2015-04-07',4),
+('0671027034','How to Win Friends & Influence People','How_to_Win_Friends_and_Influence_People.jpg','Dale Carnegie’s rock-solid, time-tested advice has carried countless people up the ladder of success in their business and personal lives.',320,'1998-10-01',4),
+('B07WF972WK','The 7 Habits of Highly Effective People: 30th Anniversary Edition','The_7_Habits_of_Highly_Effective_People.jpg','This beloved classic presents a principle-centered approach for solving both personal and professional problems. With penetrating insights and practical anecdotes, Stephen R. Covey reveals a step-by-step pathway for living with fairness, integrity, honesty, and human dignity—principles that give us the security to adapt to change and the wisdom and power to take advantage of the opportunities that change creates.',447,'2020-10-20',4),
+('9781878424310','The Four Agreements: A Practical Guide to Personal Freedom (A Toltec Wisdom Book)','The_Four_Agreements.jpg','“In the tradition of Castaneda, Ruiz distills essential Toltec wisdom, expressing with clarity and impeccability what it means for men and women to live as peaceful warriors in the modern world.” — Dan Millman, Author, Way of the Peaceful Warrior',160,'2018-07-10',4),
+('B085LLCPT5','The Gifts of Imperfection, 10th Anniversary Edition: Features a New Foreword','The_Gifts_of_Imperfection.jpg','What transforms this book from words to effective daily practices are the 10 guideposts to wholehearted living. The guideposts not only help us understand the practices that will allow us to change our lives and families, they also walk us through the unattainable and sabotaging expectations that get in the way.',89,'2019-07-10',4),
+('1607747308','The Life-Changing Magic of Tidying Up: The Japanese Art of Decluttering and Organizing','The_Life_Changing_Magic_of_Tidying_Up.jpg','Japanese cleaning consultant Marie Kondo takes tidying to a whole new level, promising that if you properly simplify and organize your home once, you’ll never have to do it again. Most methods advocate a room-by-room or little-by-little approach, which doom you to pick away at your piles of stuff forever. The KonMari Method, with its revolutionary category-by-category system, leads to lasting results. In fact, none of Kondo’s clients have lapsed (and she still has a three-month waiting list).',224,'2014-10-14',4),
+('1955423393','Power of Habit: Rewire Your Brain to Build Better Habits and Unlock Your Full Potential','The_Power_of_Habit.jpg','Success is something that every person is streaming towards – it''s in our blood (literally). The feeling that we have when we accomplish something is a product of the release of neuroactive compounds in our brains',146,'2021-07-15',4),
+('0307352153','Quiet: The Power of Introverts in a World That Can''t Stop Talking','The_Power_of_Introverts.jpg','At least one-third of the people we know are introverts. They are the ones who prefer listening to speaking; who innovate and create but dislike self-promotion; who favor working on their own over working in teams. It is to introverts—Rosa Parks, Chopin, Dr. Seuss, Steve Wozniak—that we owe many of the great contributions to society.',368,'2013-01-29',4),
+('1577314808','The Power of Now: A Guide to Spiritual Enlightenment','The_Power_of_Now.jpg','In the first chapter, Tolle introduces readers to enlightenment and its natural enemy, the mind. He awakens readers to their role as a creator of pain and shows them how to have a pain-free identity by living fully in the present. The journey is thrilling, and along the way, the author shows how to connect to the indestructible essence of our Being, "the eternal, ever-present One Life beyond the myriad forms of life that are subject to birth and death."',236,'2004-08-01',4),
+('9780762447695','You Are a Badass: How to Stop Doubting Your Greatness and Start Living an Awesome Life','You_Are_a_Badass.jpg','In this refreshingly entertaining how-to guide, bestselling author and world-traveling success coach, Jen Sincero, serves up 27 bitesized chapters full of hilariously inspiring stories, sage advice, easy exercises, and the occasional swear word, helping you to: Identify and change the self-sabotaging beliefs and behaviors that stop you from getting what you want, Create a life you totally love. And create it NOW, Make some damn money already. The kind you''ve never made before.',256,'2013-04-23',4),
 
-('','','Always_Only_You.jpg','',,'',5),
-('','','Fearless_Heart.jpg','',,'',5),
-('','','Getting_His_Game_Back.jpg','',,'',5),
-('','','Hands_Down.jpg','',,'',5),
-('','','Heart_of_Hope.jpg','',,'',5),
-('','','Icebreaker.jpg','',,'',5),
-('','','Sooley.jpg','',,'',5),
-('','','The_Cheat_Sheet.jpg','',,'',5),
-('','','The_Fastest_Way_to_Fall.jpg','',,'',5),
-('','','The_Horsewoman.jpg','',,'',5)
+('B08BZNQN7X','Always Only You','Always_Only_You.jpg','The moment I met her, I knew Frankie Zeferino was someone worth waiting for. Deadpan delivery, secret heart of gold, and a rare one-dimpled smile that makes my knees weak, Frankie has been forbidden since the day she and I became coworkers, meaning waiting has been the name of my game—besides, hockey, that is.',370,'2020-08-04',5),
+('1629379344','Fearless Heart: An Illustrated Biography of Surya Bonaly','Fearless_Heart.jpg','Her colorful costumes, exuberant routines, powerful jumps, and daring combinations were all expressions of her love for skating and her ambition to push the boundaries of what a figure skating champion could look like.',32,'2022-01-25',5),
+('B093G8LW2W','Getting His Game Back: A Novel','Getting_His_Game_Back.jpg','Khalil Sarda went through a rough patch last year, but now he’s nearly back to his old self. All he has to do is keep his “stuff” in the past. Real men don’t have depression and go to therapy—or, at least they don’t admit it. He’s ready to focus on his growing chain of barbershops, take care of his beloved Detroit community, and get back to being the ladies’ man his family and friends tease him for being. It’ll be easy . . . until Vanessa throws him completely off his game. ',317,'2022-01-25',5),
+('B08C9X5R1G','Hands Down','Hands_Down.jpg','She thinks she’s ready when a call has her walking back into her old friend’s life. Or at least as prepared as possible to see the starting quarterback in the National Football Organization. Before the lights, the fans, and the millions, he’d been a skinny kid with a heart of gold.',550,'2020-07-02',5),
+('B07FTWJR4C','Heart of Hope: A Small Town Romance','Heart_of_Hope.jpg','To be fair, I practically threw myself at his crotch. And okay, fine. Getting naked with him was the first time I’d felt anything worth feeling since losing my little sister. It’s almost kinda nice to be fueled by the fires of rage instead of the numbness of grief. But I’m certainly not going to thank him for lying and then sneaking out of my bed like a thief in the midafternoon.',222,'2018-07-23',5),
+('1250777119','Icebreaker','Icebreaker.jpg','The only person standing in his way is Jaysen Caulfield, a contender for the #1 spot and Mickey''s infuriating (and infuriatingly attractive) teammate. When rivalry turns to something more, Mickey will have to decide what he really wants, and what he''s willing to risk for it.',320,'2022-01-18',5),
+('B08TVFZ44W','Sooley: A Novel','Sooley.jpg','In the summer of his seventeenth year, Sam­uel Sooleymon gets the chance of a lifetime: a trip to the United States with his South Sudanese teammates to play in a showcase basket­ball tournament. He has never been away from home, nor has he ever been on an airplane. The opportunity to be scouted by dozens of college coaches is a dream come true.',354,'2021-04-27',5),
+('B09CGFPGHQ','The Cheat Sheet: A Novel','The_Cheat_Sheet.jpg','Nothing but good old-fashioned, no-touching-the-sexiest-man-alive, platonic friendship for us! Everything is exactly how I like it! Yes. Good. (I’m not crying, I’m just peeling an onion.)',304,'2021-08-17',5),
+('B08VRXJZ5H','The Fastest Way to Fall','The_Fastest_Way_to_Fall.jpg','As CEO of the FitMi Fitness app, Wes Lawson finally has the financial security he grew up without, but despite his success, his floundering love life and complicated family situation leaves him feeling isolated and unfulfilled. He decides to get back to what he loves—coaching. Britta’s his first new client and they click immediately.',380,'2021-11-02',5),
+('B0942XMXF7','The Horsewoman','The_Horsewoman.jpg','Coronado is Maggie’s horse. An absolutely top-tier Belgian warmblood. 
+Sky is Becky’s horse. A small, speedy Dutch warmblood.',450,'2022-01-10',5)
 go

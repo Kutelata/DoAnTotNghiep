@@ -2,6 +2,7 @@
 using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
+using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -11,15 +12,18 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"INSERT INTO Genre([name])VALUES(@name)", entity);
+                return await con.ExecuteAsync(@"INSERT INTO Genre VALUES(@name)", entity);
             }
         }
 
         public async Task<int> Delete(int id)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Genre WHERE id = @id", id);
+                return await con.ExecuteAsync(@"DELETE FROM Genre WHERE id = @id", parameters);
             }
         }
 
@@ -27,15 +31,18 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.QueryAsync<Genre>(@"SELECT * FROM Genre");
+                return await con.QueryAsync<Genre>(@"SELECT id, [name] FROM Genre");
             }
         }
 
         public async Task<Genre> GetById(int id)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
             using (var con = GetConnection())
             {
-                return await con.QuerySingleAsync<Genre>(@"SELECT * FROM Genre WHERE id = @id", id);
+                return await con.QuerySingleAsync<Genre>(@"SELECT id, [name] FROM Genre WHERE id = @id", parameters);
             }
         }
 

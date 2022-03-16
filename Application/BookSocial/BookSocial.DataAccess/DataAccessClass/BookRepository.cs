@@ -1,6 +1,7 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
 using Dapper;
+using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -11,11 +12,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"INSERT INTO Book
-                        (isbn, [name], [image], [description], [page_number], published, language, genre_id) 
-                    VALUES 
-                        (@isbn, @name, @image, @description, @pageNumber, @published, @language, @genreId)",
-                    entity);
+                    @"INSERT INTO Book VALUES (@isbn, @name, @image, @description, @pageNumber, @published, @genreId)", entity);
             }
         }
 
@@ -26,9 +23,12 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", id);
+                return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", parameters);
             }
         }
 
@@ -46,15 +46,28 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.QueryAsync<Book>(@"SELECT * FROM Book");
+                return await con.QueryAsync<Book>(
+                    @"SELECT 
+                        id, isbn, [name], [image], [description], 
+                        page_number as 'pageNumber', published, 
+                        genre_id as 'genreId'
+                    FROM Book");
             }
         }
 
         public async Task<Book> GetById(int id)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
             using (var con = GetConnection())
             {
-                return await con.QuerySingleAsync<Book>(@"SELECT * FROM Book WHERE id = @id", id);
+                return await con.QuerySingleAsync<Book>(
+                    @"SELECT  
+                        id, isbn, [name], [image], [description], 
+                        page_number as 'pageNumber', published, 
+                        genre_id as 'genreId'
+                    FROM Book WHERE id = @id", parameters);
             }
         }
 
@@ -67,8 +80,8 @@ namespace BookSocial.DataAccess.DataAccessClass
                     SET 
                         isbn = @isbn, [name] = @name, [image] = @image, 
                         [description] = @description, [page_number] = @pageNumber, 
-                        published = @published, language = @language, genre_id = @genreId
-                    WHERE id = @id", 
+                        published = @published, genre_id = @genreId
+                    WHERE id = @id",
                     entity);
             }
         }

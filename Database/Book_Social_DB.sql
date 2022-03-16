@@ -4,10 +4,10 @@ go
 use Book_Social_DB
 go
 
-create table Role
+create table [Role]
 (
 	id int primary key identity,
-	name nvarchar(max) not null
+	[name] nvarchar(max) not null
 )
 go
 
@@ -22,11 +22,11 @@ create table [User]
 	[image] varchar(max),
 	[address] nvarchar(max),
 	[description] nvarchar(max),
-	[birthday] datetime,
+	birthday datetime,
 	gender tinyint,
 	friend varchar(max),
 	[status] tinyint,
-	[role_id] int foreign key references [Role](id)
+	role_id int foreign key references [Role](id)
 )
 go
 
@@ -54,7 +54,7 @@ create table Book
 	[name] nvarchar(max) not null,
 	[image] varchar(max),
 	[description] nvarchar(max),
-	[page_number] int,
+	page_number int,
 	published datetime,
 	genre_id int foreign key references Genre(id)
 )
@@ -73,7 +73,7 @@ create table User_Review
 	[text] nvarchar(max),
 	review tinyint,
 	created_at datetime not null,
-	[book_id] int foreign key references Book(id),
+	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id)
 )
 go
@@ -103,7 +103,7 @@ create table User_Shelf
 (
 	[page] int,
 	progress_read tinyint,
-	[book_id] int foreign key references Book(id),
+	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id),
 )
 

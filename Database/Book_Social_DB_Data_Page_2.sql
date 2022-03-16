@@ -1,3 +1,66 @@
+insert into Author values
+-- ('name','image','description','birthday')
+
+('Jason Reynolds','image','description','birthday'),
+('Erica Katz','image','description','birthday'),
+('Italo Calvino','image','description','birthday'),
+('Michel Lauricella','image','description','birthday'),
+('Calla Henkel','image','description','birthday'),
+('Abrams Books','image','description','birthday'),
+('Boo Walker','image','description','birthday'),
+('Verna Aardema','image','description','birthday'),
+('Pam Grossman','image','description','birthday'),
+('Jessica Hundley','image','description','birthday'),
+('Barbara O''Neal','image','description','birthday'),
+
+('Jeanine W. Turner','image','description','birthday'),
+('David Goggins','image','description','birthday'),
+('Donald Miller','image','description','birthday'),
+('Chip Heath','image','description','birthday'),
+('Karla Starr','image','description','birthday'),
+('Lindsey Vonn','image','description','birthday'),
+('Whitney Johnson','image','description','birthday'),
+('Amy B. Zegart','image','description','birthday'),
+('Jimmy Soni','image','description','birthday'),
+('Daniel H. Pink','image','description','birthday'),
+('John A. List','image','description','birthday'),
+
+('Sabaa Tahir','image','description','birthday'),
+('Blue Delliquanti','image','description','birthday'),
+('Andrea Sorrentino','image','description','birthday'),
+('Tee Franklin','image','description','birthday'),
+('Laura Gao','image','description','birthday'),
+('Yuko Ota','image','description','birthday'),
+('Kendra Wells','image','description','birthday'),
+('Ram V','image','description','birthday'),
+('Si Spurrier','image','description','birthday'),
+('Ariel Slamet Ries','image','description','birthday')
+
+('Brené Brown','image','description','birthday'),
+('Dale Carnegie','image','description','birthday'),
+('Stephen R. Covey','image','description','birthday'),
+('Don Miguel Ruiz','image','description','birthday'),
+('Janet Mills','image','description','birthday'),
+('Marie Kondo','image','description','birthday'),
+('Discover Press','image','description','birthday'),
+('Susan Cain','image','description','birthday'),
+('Eckhart Tolle','image','description','birthday'),
+('Jen Sincero','image','description','birthday'),
+
+('Chloe Liese','image','description','birthday'),
+('Frank Murphy','image','description','birthday'),
+('Surya Bonaly','image','description','birthday'),
+('Gia De Cadenet','image','description','birthday'),
+('Mariana Zapata','image','description','birthday'),
+('Lucy Score','image','description','birthday'),
+('A. L. Graziadei','image','description','birthday'),
+('John Grisham','image','description','birthday'),
+('Sarah Adams','image','description','birthday'),
+('Denise Williams','image','description','birthday'),
+('James Patterson','image','description','birthday'),
+('Mike Lupica','image','description','birthday'),
+go
+
 insert into Author_Book values
 -- ('book_id','author_id')
 
@@ -40,7 +103,8 @@ insert into Author_Book values
 (32,34),
 (33,35),
 (34,36),
-(35,37),
+(34,37,
+(35,33),
 (36,38),
 (37,39),
 (38,40),
@@ -49,14 +113,16 @@ insert into Author_Book values
 
 (41,43),
 (42,44),
-(43,45),
-(44,46),
-(45,47),
-(46,48),
-(47,49),
-(48,50),
-(49,51),
-(50,52)
+(42,45),
+(43,46),
+(44,47),
+(45,48),
+(46,49),
+(47,50),
+(48,51),
+(49,52),
+(50,53),
+(50,54)
 go
 
 insert into User_Review values

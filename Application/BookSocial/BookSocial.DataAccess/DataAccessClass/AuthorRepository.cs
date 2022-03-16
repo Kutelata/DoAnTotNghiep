@@ -1,11 +1,7 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -16,19 +12,18 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"INSERT INTO Author
-                        ([name], [image], [description], birthday) 
-                    VALUES 
-                        (@name, @image, @description, @birthday)",
-                    entity);
+                    @"INSERT INTO Author VALUES (@name, @image, @description, @birthday)", entity);
             }
         }
 
         public async Task<int> Delete(int id)
         {
-            using(var con = GetConnection())
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
+            using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Author WHERE id = @id", id);
+                return await con.ExecuteAsync(@"DELETE FROM Author WHERE id = @id", parameters);
             }
         }
 
@@ -36,15 +31,21 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.QueryAsync<Author>(@"SELECT * FROM Author");
+                return await con.QueryAsync<Author>(@"SELECT id, [name], [image], [description], birthday FROM Author");
             }
         }
 
         public async Task<Author> GetById(int id)
         {
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
             using (var con = GetConnection())
             {
-                return await con.QuerySingleAsync<Author>(@"SELECT * FROM Author WHERE id = @id", id);
+                return await con.QuerySingleAsync<Author>(
+                    @"SELECT 
+                        id, [name], [image], [description], birthday FROM Author WHERE id = @id", 
+                    parameters);
             }
         }
 

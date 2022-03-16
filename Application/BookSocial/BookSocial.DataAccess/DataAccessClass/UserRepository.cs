@@ -2,6 +2,7 @@
 using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
+using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -24,29 +25,71 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public Task<int> Create(User entity)
+        public async Task<int> Create(User entity)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"INSERT INTO User 
+                    VALUES (
+                        @name, @phone, @email, @account, 
+                        @password, @image, @address, @description, @birthday, 
+                        @gender, @friend, @status, @roleId)",
+                    entity);
+            }
         }
 
-        public Task<int> Delete(int id)
+        public async Task<int> Delete(int id)
         {
-            throw new NotImplementedException();
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(@"DELETE FROM User WHERE id = @id", parameters);
+            }
         }
 
-        public Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<User>(
+                    @"SELECT 
+                        id, [name], phone, email, account, [password], [image], 
+                        [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
+                    FROM User");
+            }
         }
 
-        public Task<User> GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            throw new NotImplementedException();
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<User>(
+                    @"SELECT 
+                        id, [name], phone, email, account, [password], [image], 
+                        [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
+                    FROM User WHERE id = @id", parameters);
+            }
         }
 
-        public Task<int> Update(User entity)
+        public async Task<int> Update(User entity)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"UPDATE User 
+                    SET 
+                        [name] = @name, phone = @phone, email = @email, account = @account,
+                        [password] = @password, [image] = @image, [address] = @address, 
+                        [description] = @description, birthday = @birthday, gender = @gender,
+                        friend = @friend, [status] = @status, role_id = @roleId
+                    WHERE id = @id", entity);
+            }
         }
 
         public Task<int> CreateReview(UserReview userReview)
