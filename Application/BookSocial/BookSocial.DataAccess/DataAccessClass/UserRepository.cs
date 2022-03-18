@@ -30,7 +30,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"INSERT INTO User 
+                    @"INSERT INTO [User] 
                     VALUES (
                         @name, @phone, @email, @account, 
                         @password, @image, @address, @description, @birthday, 
@@ -46,7 +46,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM User WHERE id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM [User] WHERE id = @id", parameters);
             }
         }
 
@@ -58,7 +58,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     @"SELECT 
                         id, [name], phone, email, account, [password], [image], 
                         [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
-                    FROM User");
+                    FROM [User]");
             }
         }
 
@@ -73,7 +73,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     @"SELECT 
                         id, [name], phone, email, account, [password], [image], 
                         [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
-                    FROM User WHERE id = @id", parameters);
+                    FROM [User] WHERE id = @id", parameters);
             }
         }
 
@@ -82,7 +82,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"UPDATE User 
+                    @"UPDATE [User]
                     SET 
                         [name] = @name, phone = @phone, email = @email, account = @account,
                         [password] = @password, [image] = @image, [address] = @address, 
@@ -92,27 +92,13 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public Task<int> CreateReview(UserReview userReview)
+
+        public Task<int> CreateShelft(Shelf userShelf)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> EditReview(UserReview userReview)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteReview(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> CreateShelft(UserShelf userShelf)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> EditShelft(UserShelf userShelf)
+        public Task<int> UpdateShelft(Shelf userShelf)
         {
             throw new NotImplementedException();
         }
@@ -122,12 +108,12 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public Task<int> CreateBlog(UserBlog userBlog)
+        public Task<int> CreateBlog(Blog userBlog)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> EditBlog(UserBlog userBlog)
+        public Task<int> UpdateBlog(Blog userBlog)
         {
             throw new NotImplementedException();
         }
@@ -137,12 +123,12 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public Task<int> CreateComment(UserComment userComment)
+        public Task<int> CreateComment(Comment userComment)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> EditComment(UserComment userComment)
+        public Task<int> UpdateComment(Comment userComment)
         {
             throw new NotImplementedException();
         }
@@ -152,12 +138,12 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public Task<int> CreateLike(UserLike userLike)
+        public Task<int> CreateLike(Like userLike)
         {
             throw new NotImplementedException();
         }
 
-        public Task<int> EditLike(UserLike userLike)
+        public Task<int> UpdateLike(Like userLike)
         {
             throw new NotImplementedException();
         }

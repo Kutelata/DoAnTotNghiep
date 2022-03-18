@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Shared/Components/CRUDD.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ1JVREQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Shared/Components/SearchList.razor]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2VhcmNoTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

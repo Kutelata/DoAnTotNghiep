@@ -10,16 +10,22 @@
 
         <div class="x_content">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <a href="@Url.Action("CreateGenre","Home")" class="btn btn-dark"><i class="fa fa-plus"></i> Create New</a>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    @(await Html.RenderComponentAsync<CRUDD>(RenderMode.ServerPrerendered, new { _activity="Create" }))
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            @(await Html.RenderComponentAsync<SearchList>(RenderMode.ServerPrerendered, new { _action = "GenreList" }))
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
+                            @{
+                                Dictionary<string, string> listDropDown = new Dictionary<string, string>();
+                                listDropDown.Add("Name", "Genre Name");
+                                listDropDown.Add("NumberOfBooks", "Number Of Books");
+                            }
+                            @(await Html.RenderComponentAsync<SortList>(RenderMode.ServerPrerendered,
+                            new { _listDropDown = listDropDown }))
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                            @(await Html.RenderComponentAsync<SortList>(RenderMode.ServerPrerendered, new {  }))
+                            @(await Html.RenderComponentAsync<SearchList>(RenderMode.ServerPrerendered, new { }))
                         </div>
                     </div>
                 </div>
@@ -49,9 +55,9 @@
                                 <td class=" ">@item.Name</td>
                                 <td class=" ">@item.NumberOfBooks</td>
                                 <td class=" last">
-                                    <a href="#" class="btn btn-outline-info"><i class="fa fa-folder"></i> View</a>
-                                    <a href="#" class="btn btn-outline-primary"><i class="fa fa-pencil"></i> Edit</a>
-                                    <a href="#" class="btn btn-outline-danger"><i class="fa fa-trash-o"></i> Delete</a>
+                                    @(await Html.RenderComponentAsync<CRUDD>(RenderMode.ServerPrerendered, new { _activity="View" }))
+                                    @(await Html.RenderComponentAsync<CRUDD>(RenderMode.ServerPrerendered, new { _activity="Edit" }))
+                                    @(await Html.RenderComponentAsync<CRUDD>(RenderMode.ServerPrerendered, new { _activity="Delete" }))
                                 </td>
                             </tr>
                         }

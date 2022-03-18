@@ -1,9 +1,30 @@
-﻿<select class="custom-select" id="inputGroupSelect01">
-    <option selected>Sort By...</option>
-    <option value="">Genre Name</option>
-    <option value="2">Number Of Books</option>
+﻿@using Microsoft.AspNetCore.WebUtilities
+
+<select @onchange="SortAll" class="custom-select" id="inputGroupSelect01">
+    @foreach (KeyValuePair<string, string> entry in _listDropDown)
+    {
+        if (selectedString.Equals(entry.Key))
+        {
+            <option selected value=@entry.Key>@entry.Value</option>
+        }
+        else
+        {
+            <option value=@entry.Key>@entry.Value</option>
+        }
+    }
+
 </select>
 
-@code{
+@code {
+    static string selectedString { get; set; } = "Name";
 
+    [Parameter]
+    public Dictionary<string, string> _listDropDown { get; set; }
+
+    void SortAll(ChangeEventArgs e)
+    {
+        selectedString = e.Value.ToString();
+        var newUri = navigationManager.GetUriWithQueryParameter("sort", selectedString);
+        navigationManager.NavigateTo(newUri, true);
+    }
 }

@@ -4,7 +4,7 @@ namespace BookSocial.Presentation.Admin.Controllers.HomeController
 {
     public partial class HomeController
     {
-        public async Task<IActionResult> GenreList(int page = 1, string search = null)
+        public async Task<IActionResult> GenreList(int page = 1, string search = null, string sort = "Name")
         {
             var allData = await _genreService.GetGenreStatistic();
             var dataInPage = allData;
@@ -12,6 +12,20 @@ namespace BookSocial.Presentation.Admin.Controllers.HomeController
 
             if (allData != null)
             {
+                if (Request.Query.ContainsKey("sort"))
+                {
+                    var newSort = Request.Query["sort"].ToString();
+                    sort = newSort;
+                }
+                if (sort != null)
+                {
+                    switch (sort)
+                    {
+                        case "Name": dataInPage = dataInPage.OrderBy(x => x.Name); break;
+                        case "NumberOfBooks": dataInPage = dataInPage.OrderBy(x => x.NumberOfBooks); break;
+                    }
+                }
+
                 if (Request.Query.ContainsKey("search"))
                 {
                     var newSearch = Request.Query["search"].ToString();

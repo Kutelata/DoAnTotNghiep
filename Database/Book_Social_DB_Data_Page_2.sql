@@ -34,7 +34,7 @@ insert into Author values
 ('Kendra Wells','image','description','birthday'),
 ('Ram V','image','description','birthday'),
 ('Si Spurrier','image','description','birthday'),
-('Ariel Slamet Ries','image','description','birthday')
+('Ariel Slamet Ries','image','description','birthday'),
 
 ('Brené Brown','image','description','birthday'),
 ('Dale Carnegie','image','description','birthday'),
@@ -58,7 +58,7 @@ insert into Author values
 ('Sarah Adams','image','description','birthday'),
 ('Denise Williams','image','description','birthday'),
 ('James Patterson','image','description','birthday'),
-('Mike Lupica','image','description','birthday'),
+('Mike Lupica','image','description','birthday')
 go
 
 insert into Author_Book values
@@ -103,7 +103,7 @@ insert into Author_Book values
 (32,34),
 (33,35),
 (34,36),
-(34,37,
+(34,37),
 (35,33),
 (36,38),
 (37,39),
@@ -125,22 +125,22 @@ insert into Author_Book values
 (50,54)
 go
 
-insert into User_Review values
--- ('text','review','created_at','book_id','user_id')
+insert into Review values
+-- ('text','star','created_at','book_id','user_id')
 go
 
-insert into User_Comment values
--- ('text','user_review_id','user_blog_id','parent_id','created_at','user_id')
+insert into Comment values
+-- ('text','review_id','blog_id','parent_id','created_at','user_id')
 go
 
-insert into User_Blog values
+insert into Blog values
 -- ('text','created_at','user_id')
 go
 
-insert into User_Shelf values
--- ('page','progress_read_id','book_id','user_id')
+insert into Shelf values
+-- ('page','progress_read','book_id','user_id')
 go
 
-insert into User_Like values
--- ('author_id','user_blog_id','user_review_id','user_comment_id','user_id')
+insert into [Like] values
+-- ('author_id','blog_id','review_id','comment_id','user_id')
 go

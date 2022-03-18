@@ -67,30 +67,30 @@ create table Author_Book
 )
 go
 
-create table User_Review
+create table Review
 (
 	id int identity primary key,
 	[text] nvarchar(max),
-	review tinyint,
+	star tinyint,
 	created_at datetime not null,
 	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id)
 )
 go
 
-create table User_Comment
+create table Comment
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
-	user_review_id int,
-	user_blog_id int,
+	review_id int,
+	blog_id int,
 	parent_id int,
 	created_at datetime not null,
 	[user_id] int foreign key references [User](id)
 )
 go
 
-create table User_Blog
+create table Blog
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
@@ -99,7 +99,7 @@ create table User_Blog
 )
 go
 
-create table User_Shelf
+create table Shelf
 (
 	[page] int,
 	progress_read tinyint,
@@ -107,12 +107,12 @@ create table User_Shelf
 	[user_id] int foreign key references [User](id),
 )
 
-create table User_Like
+create table [Like]
 (
 	author_id int,
-	user_blog_id int,
-	user_review_id int,
-	user_comment_id int,
+	blog_id int,
+	review_id int,
+	comment_id int,
 	[user_id] int,
 )
 go

@@ -6,7 +6,7 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         // Action: Assign Author
         public Task<int> CreateAuthorBook(AuthorBook authorBook);
-        public Task<int> EditAuthorBook(AuthorBook authorBook);
+        public Task<int> UpdateAuthorBook(AuthorBook authorBook);
         public Task<int> DeleteAuthorBook(int id);
     }
 }

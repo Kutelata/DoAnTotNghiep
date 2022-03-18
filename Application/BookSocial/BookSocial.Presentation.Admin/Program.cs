@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddServerSideBlazor(); 
+builder.Services.AddServerSideBlazor();
 
 // AddScoped HttpClient
 //builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("https://localhost:7045/api/") });

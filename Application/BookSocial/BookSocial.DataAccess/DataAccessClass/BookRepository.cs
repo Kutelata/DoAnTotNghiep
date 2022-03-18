@@ -16,9 +16,13 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public Task<int> CreateAuthorBook(AuthorBook authorBook)
+        public async Task<int> CreateAuthorBook(AuthorBook authorBook)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"INSERT INTO AuthorBook VALUES (@bookId, @authorId)", authorBook);
+            }
         }
 
         public async Task<int> Delete(int id)
@@ -32,14 +36,24 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public Task<int> DeleteAuthorBook(int id)
+        public async Task<int> DeleteAuthorBook(int id)
         {
-            throw new NotImplementedException();
+            var parameters = new DynamicParameters();
+            parameters.Add("id", id, DbType.Int32);
+
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(@"DELETE FROM Author_Book WHERE book_id = @id", parameters);
+            }
         }
 
-        public Task<int> EditAuthorBook(AuthorBook authorBook)
+        public async Task<int> UpdateAuthorBook(AuthorBook authorBook)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"UPDATE Author_Book SET book_id = @bookId, author_id = @authorId)", authorBook);
+            }
         }
 
         public async Task<IEnumerable<Book>> GetAll()
