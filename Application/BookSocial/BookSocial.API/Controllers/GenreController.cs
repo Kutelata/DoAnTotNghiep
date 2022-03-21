@@ -55,6 +55,20 @@ namespace BookSocial.API.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByName(string genreName)
+        {
+            try
+            {
+                var data = await _genreRepository.GetByName(genreName);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(Genre genre)
         {

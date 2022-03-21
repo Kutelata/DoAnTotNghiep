@@ -21,7 +21,7 @@ namespace BookSocial.Presentation.Admin.Controllers.HomeController
 
         public IActionResult EditAuthor()
         {
-            return View("~/View/LibraryManager/Author/Edit");
+            return View("~/Views/LibraryManager/Author/Edit.cshtml");
         }
     }
 }

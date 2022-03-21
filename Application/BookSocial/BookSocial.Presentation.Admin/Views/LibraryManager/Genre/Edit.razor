@@ -1,0 +1,83 @@
+﻿<button type="button" @onclick="Transfer" class="btn btn-outline-primary" data-toggle="modal" data-target=".edit-@genreId">
+    <i class='fa fa-pencil'></i> Edit
+</button>
+<div class="modal fade bs-example-modal-lg edit-@genreId" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Genre</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <EditForm EditContext="_editContext" OnValidSubmit="EditGenre">
+                <DataAnnotationsValidator />
+                <div class="modal-body">
+                    <div class="item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
+                            Genre Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 ">
+                            <InputText type="text" id="first-name" @bind-Value="@genre.Name" class="form-control" />
+                            <ValidationMessage For="()=>genre.Name" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Inject]
+    private IGenreService _genreService { get; set; }
+
+    [Parameter]
+    public int genreId { get; set; }
+
+    private Genre genre = new Genre();
+    private ValidationMessageStore _msgStore;
+    private EditContext _editContext;
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(genre);
+        _msgStore = new ValidationMessageStore(_editContext);
+
+        //_editContext.OnValidationRequested += (s, e) => _msgStore.Clear();
+        _editContext.OnFieldChanged += (s, e) => _msgStore.Clear(e.FieldIdentifier);
+    }
+
+    private async Task Transfer()
+    {
+        genre = await _genreService.GetById(genreId);
+    }
+
+    private async void EditGenre()
+    {
+        //var checkNameUnique = await _genreService.GetByName(genre.Name);
+
+        //if (checkNameUnique != null)
+        //{
+        //    _msgStore.Add(_editContext.Field("Name"), "Genre Name must be unique");
+        //}
+        if (_editContext.Validate())
+        {
+            int result = await _genreService.Update(genre);
+            if (result != 0)
+            {
+                MessageAfterAction.Success = "Update genre success!";
+            }
+            else
+            {
+                MessageAfterAction.Fail = "Update genre failed!";
+            }
+            navigationManager.NavigateTo(linkGenerator.GetPathByAction("GenreList", "Home"), true);
+        }
+    }
+}

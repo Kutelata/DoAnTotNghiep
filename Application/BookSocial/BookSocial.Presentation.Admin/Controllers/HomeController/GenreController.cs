@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookSocial.EntityClass.Entity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers.HomeController
 {
@@ -60,11 +61,6 @@ namespace BookSocial.Presentation.Admin.Controllers.HomeController
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
             return View("~/Views/LibraryManager/Genre/Index.cshtml", dataInPage);
-        }
-
-        public async Task<IActionResult> CreateGenre()
-        {
-            return View();
         }
     }
 }

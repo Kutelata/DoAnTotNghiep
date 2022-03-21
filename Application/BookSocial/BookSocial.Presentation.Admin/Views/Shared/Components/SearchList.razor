@@ -1,4 +1,6 @@
-﻿<div class="input-group my-input-group">
+﻿@using Microsoft.AspNetCore.WebUtilities
+
+<div class="input-group my-input-group">
     <input type="text"
            class="form-control my-form-control"
            @bind="@currentValue"
@@ -10,9 +12,22 @@
 </div>
 
 @code {
-    static string currentValue { get; set; }
+    private string currentValue { get; set; }
 
-    void SearchAll()
+    protected override void OnInitialized()
+    {
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("search", out var searchUrl))
+        {
+            currentValue = searchUrl;
+        }
+        else
+        {
+            currentValue = "";
+        }
+    }
+
+    private void SearchAll()
     {
         var dictionaryQueryString = new Dictionary<string, object>()
         {

@@ -16,15 +16,27 @@
 </select>
 
 @code {
-    static string selectedString { get; set; } = "Name";
+    private string selectedString { get; set; }
 
     [Parameter]
     public Dictionary<string, string> _listDropDown { get; set; }
 
-    void SortAll(ChangeEventArgs e)
+    protected override void OnInitialized()
     {
-        selectedString = e.Value.ToString();
-        var newUri = navigationManager.GetUriWithQueryParameter("sort", selectedString);
+        var uri = navigationManager.ToAbsoluteUri(navigationManager.Uri);
+        if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("sort", out var sortUrl))
+        {
+            selectedString = sortUrl;
+        }
+        else
+        {
+            selectedString = "Name";
+        }
+    }
+
+    private void SortAll(ChangeEventArgs e)
+    {
+        var newUri = navigationManager.GetUriWithQueryParameter("sort", e.Value.ToString());
         navigationManager.NavigateTo(newUri, true);
     }
 }

@@ -45,3 +45,11 @@
 .my-btn-edit {
     color: white !important;
 }
+
+.validation-message {
+    color: red;
+}
+
+.invalid {
+    outline: 1px solid red;
+}

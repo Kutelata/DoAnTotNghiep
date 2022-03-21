@@ -1,3 +1,4 @@
+using BookSocial.Presentation.Admin.Models;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -8,8 +9,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddServerSideBlazor();
 
 // AddScoped HttpClient
-//builder.Services.AddScoped(client => new HttpClient { BaseAddress = new Uri("https://localhost:7045/api/") });
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
+builder.Services.AddScoped<MessageAfterAction>();
 
 // AddScoped Repository
 RegisterService.Register(builder.Services);
