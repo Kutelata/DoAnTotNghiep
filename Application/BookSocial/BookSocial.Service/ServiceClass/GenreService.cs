@@ -14,6 +14,13 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<int> Delete(int genreId)
+        {
+            var response = await GetClient().DeleteAsync($"Genre/Delete?id={genreId}");
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
         public async Task<Genre> GetById(int genreId)
         {
             var response = await GetClient().GetAsync($"Genre/GetById?id={genreId}");
@@ -40,7 +47,7 @@ namespace BookSocial.Service.ServiceClass
 
         public async Task<int> Update(Genre genre)
         {
-            var response = await GetClient().PostAsJsonAsync($"Genre/Update", genre);
+            var response = await GetClient().PutAsJsonAsync($"Genre/Update", genre);
             var data = response.IsSuccessStatusCode ? 1 : 0;
             return data;
         }

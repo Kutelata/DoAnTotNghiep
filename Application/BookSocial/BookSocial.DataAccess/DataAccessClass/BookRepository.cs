@@ -27,23 +27,17 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", new { id });
             }
         }
 
         public async Task<int> DeleteAuthorBook(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Author_Book WHERE book_id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM Author_Book WHERE book_id = @id", new { id });
             }
         }
 
@@ -71,9 +65,6 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<Book> GetById(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
                 return await con.QuerySingleAsync<Book>(
@@ -81,7 +72,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                         id, isbn, [name], [image], [description], 
                         page_number as 'pageNumber', published, 
                         genre_id as 'genreId'
-                    FROM Book WHERE id = @id", parameters);
+                    FROM Book WHERE id = @id", new { id });
             }
         }
 
@@ -97,6 +88,19 @@ namespace BookSocial.DataAccess.DataAccessClass
                         published = @published, genre_id = @genreId
                     WHERE id = @id",
                     entity);
+            }
+        }
+
+        public async Task<IEnumerable<Book>> GetByGenreId(int genreId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Book>(
+                    @"SELECT  
+                        id, isbn, [name], [image], [description], 
+                        page_number as 'pageNumber', published, 
+                        genre_id as 'genreId'
+                    FROM Book WHERE genre_id = @genreId", new { genreId });
             }
         }
     }

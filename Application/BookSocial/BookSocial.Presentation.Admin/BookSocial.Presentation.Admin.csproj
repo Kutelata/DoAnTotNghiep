@@ -8,9 +8,17 @@
 
 	<ItemGroup>
 		<Compile Remove="Views\AdminAuthorize\**" />
+		<Compile Remove="Views\AuthorizeManager\**" />
+		<Compile Remove="Views\UserManager\**" />
 		<Content Remove="Views\AdminAuthorize\**" />
+		<Content Remove="Views\AuthorizeManager\**" />
+		<Content Remove="Views\UserManager\**" />
 		<EmbeddedResource Remove="Views\AdminAuthorize\**" />
+		<EmbeddedResource Remove="Views\AuthorizeManager\**" />
+		<EmbeddedResource Remove="Views\UserManager\**" />
 		<None Remove="Views\AdminAuthorize\**" />
+		<None Remove="Views\AuthorizeManager\**" />
+		<None Remove="Views\UserManager\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -24,12 +32,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Views\AuthorizeManager\" />
-		<Folder Include="Views\LibraryManager\Book\" />
-		<Folder Include="Views\UserManager\" />
+	  <ProjectReference Include="..\BookSocial.Service\BookSocial.Service.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BookSocial.Service\BookSocial.Service.csproj" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
 	</ItemGroup>
 </Project>

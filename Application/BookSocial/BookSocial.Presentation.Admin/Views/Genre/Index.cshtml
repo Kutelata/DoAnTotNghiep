@@ -1,0 +1,157 @@
+﻿@model IEnumerable<BookSocial.EntityClass.DTO.GenreStatistic>
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Genre List</h2>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    <a class="btn btn-dark" href="@Url.Action("CreateGenre")"><i class='fa fa-plus'></i> Create New</a>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
+                            @{
+                                Dictionary<string, string> listDropDown = new Dictionary<string, string>();
+                                listDropDown.Add("Name", "Genre Name");
+                                listDropDown.Add("NumberOfBooks", "Number Of Books");
+                            }
+                            @(await Html.RenderComponentAsync<SortList>(RenderMode.ServerPrerendered,
+                            new { _listDropDown = listDropDown }))
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            @(await Html.RenderComponentAsync<SearchList>(RenderMode.ServerPrerendered, new { }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Fail"] != null)
+            {
+                <div class="alert alert-error" role="alert">
+                    @TempData["Fail"]
+                </div>
+            }
+            <div class="table-responsive mt-2">
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id</th>
+                            <th class="column-title">Genre Name</th>
+                            <th class="column-title">Number Of Books</th>
+                            <th class="column-title no-link last">
+                                <span class="nobr">Action</span>
+                            </th>
+                            <th class="bulk-actions" colspan="7">
+                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="even pointer">
+                                <td class=" ">@item.Id</td>
+                                <td class=" ">@item.Name</td>
+                                <td class=" ">@item.NumberOfBooks</td>
+                                <td class=" last">
+                                    <a class="btn btn-outline-info" href="@Url.Action("DetailGenre", "", new { id = @item.Id })" )">
+                                        <i class='fa fa-folder'></i> View
+                                    </a>
+                                    <a class="btn btn-outline-primary" href="@Url.Action("EditGenre", "", new { id = @item.Id })">
+                                        <i class='fa fa-pencil'></i> Edit
+                                    </a>
+                                    <a data-id="@item.Id" id="btn-delete" class="btn btn-outline-danger" href="@Url.Action("DeleteGenre", "", new { id = @item.Id })" )">
+                                        <i class='fa fa-trash-o'></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <ul class="pagination my_pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("GenreList","Home",
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch})">Previous</a>
+                        </li>
+                    }
+
+                    @for (var i = 0; i < ViewBag.Pages; i++)
+                    {
+                        if ((i + 1) == ViewBag.CurrentPage)
+                        {
+                            <li>
+                                <a class="active" href="@Url.Action("GenreList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("GenreList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                            </li>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.Pages)
+                    {
+                        <li>
+                            <a href="@Url.Action("GenreList","Home",
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch})">Next</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+<script>
+    var baseUrl = window.location.origin
+    var action = {
+        //sort: function(id){
+        //    $.ajax({
+        //        type:"POST",
+        //        url:`${baseUrl}/Home/DeleteGenre`,
+        //        data:{id:id},
+        //    })
+        //}
+        //search: function(id){
+        //    $.ajax({
+        //        type:"POST",
+        //        url:`${baseUrl}/Home/DeleteGenre`,
+        //        data:{id:id},
+        //    })
+        //}
+        delete: function(id){
+            $.ajax({
+                type:"POST",
+                url:`${baseUrl}/Home/DeleteGenre`,
+                data:{id:id},
+            })
+        }
+    }
+    $(document).on("click", "#btn-delete", async function () {
+        var id = $(this).data("id")
+        if (confirm('Are you sure want delete genre with id = ' + id + '?')) {
+            await action.delete(parseInt(id))
+        } else {
+            return false
+        }
+    })
+</script>
+}

@@ -10,5 +10,6 @@ namespace BookSocial.Service.ServiceInterface
         public Task<Genre> GetByName(string genreName);
         public Task<int> Create(Genre genre);
         public Task<int> Update(Genre genre);
+        public Task<int> Delete(int genreId);
     }
 }

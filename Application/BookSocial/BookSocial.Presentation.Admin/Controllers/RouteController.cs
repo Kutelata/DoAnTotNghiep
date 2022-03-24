@@ -1,5 +1,4 @@
-﻿using BookSocial.EntityClass.DTO;
-using BookSocial.EntityClass.ViewModel;
+﻿using BookSocial.EntityClass.ViewModel;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;

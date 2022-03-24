@@ -1,4 +1,3 @@
-using BookSocial.Presentation.Admin.Models;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -10,7 +9,6 @@ builder.Services.AddServerSideBlazor();
 
 // AddScoped HttpClient
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
-builder.Services.AddScoped<MessageAfterAction>();
 
 // AddScoped Repository
 RegisterService.Register(builder.Services);
@@ -25,9 +23,7 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
