@@ -3,24 +3,8 @@
         <div class="navbar nav_title" style="border: 0;">
             <a href="@Url.Action("Index","Home")" class="site_title"><i class="fa fa-paw"></i> <span>Admin</span></a>
         </div>
-
         <div class="clearfix"></div>
-
-        <!-- menu profile quick info -->
-        <div class="profile clearfix">
-            <div class="profile_pic">
-                <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>@Context.User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault()</h2>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <!-- /menu profile quick info -->
-
         <br />
-
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
@@ -39,16 +23,18 @@
                     <li>
                         <a><i class="fa fa-user"></i> User Manager <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="@Url.Action("UserList","Home")">User List</a></li>
-                            <li><a href="@Url.Action("BlogList","Home")">Blog List</a></li>
-                            <li><a href="@Url.Action("CommentList","Home")">Comment List</a></li>
+                            <li><a href="@Url.Action("UserList","Home")">User Statistic</a></li>
+                            <li><a href="@Url.Action("ArticleList","Home")">Article Statistic</a></li>
+                            <li><a href="@Url.Action("CommentList","Home")">Comment Statistic</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="@Url.Action("InboxList","Home")"><i class="fa fa-envelope"></i> Inbox </a>
+                        <a href="@Url.Action("InboxList","Home")">
+                            <i class="fa fa-envelope"></i> Inbox <span class="label label-success pull-right">Coming Soon</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("AuthorizeList","Home")"><i class="fa fa-users"></i> Authorize Manager </a>
+                        <a href="@Url.Action("AuthorizeList","Home")"><i class="fa fa-users"></i> Employee Manager </a>
                     </li>
                 </ul>
             </div>

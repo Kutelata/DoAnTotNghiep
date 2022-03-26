@@ -56,11 +56,11 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QueryAsync<GenreStatistic>(
                     @"SELECT 
 	                    g.id,
-	                    g.name,
+	                    g.[name],
 	                    COUNT(b.id) as 'numberOfBooks'
                     FROM Genre g
                     FULL OUTER JOIN Book b ON b.genre_id = g.id
-                    GROUP BY g.id,g.name");
+                    GROUP BY g.id,g.[name]");
             }
         }
 

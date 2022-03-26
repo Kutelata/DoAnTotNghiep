@@ -1,4 +1,4 @@
-﻿using BookSocial.EntityClass.ViewModel;
+﻿using BookSocial.EntityClass.DTO;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -22,19 +22,19 @@ namespace BookSocial.Presentation.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel lvm)
+        public async Task<IActionResult> Login(UserLogin userLogin)
         {
-            if (lvm.Account == null)
+            if (userLogin.Account == null)
             {
                 ModelState.AddModelError(string.Empty, "Account is required!");
             }
-            if (lvm.Password == null)
+            if (userLogin.Password == null)
             {
                 ModelState.AddModelError(string.Empty, "Password is required!");
             }
             if (ModelState.IsValid)
             {
-                var data = await _userService.GetUserSaveCookie(lvm);
+                var data = await _userService.GetUserSaveCookie(userLogin);
                 if (data != null)
                 {
                     //create claims
@@ -77,7 +77,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "Route");
         }
 
         public IActionResult NotFound404()

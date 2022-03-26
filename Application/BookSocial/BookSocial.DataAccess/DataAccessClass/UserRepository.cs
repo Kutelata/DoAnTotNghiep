@@ -2,7 +2,6 @@
 using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -41,12 +40,9 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM [User] WHERE id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM [User] WHERE id = @id", new { id });
             }
         }
 
@@ -64,16 +60,13 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<User> GetById(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
                 return await con.QuerySingleAsync<User>(
                     @"SELECT 
                         id, [name], phone, email, account, [password], [image], 
                         [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
-                    FROM [User] WHERE id = @id", parameters);
+                    FROM [User] WHERE id = @id", new { id });
             }
         }
 
@@ -90,67 +83,6 @@ namespace BookSocial.DataAccess.DataAccessClass
                         friend = @friend, [status] = @status, role_id = @roleId
                     WHERE id = @id", entity);
             }
-        }
-
-
-        public Task<int> CreateShelft(Shelf userShelf)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateShelft(Shelf userShelf)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteShelft(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> CreateBlog(Blog userBlog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateBlog(Blog userBlog)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteBlog(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> CreateComment(Comment userComment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateComment(Comment userComment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteComment(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> CreateLike(Like userLike)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> UpdateLike(Like userLike)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<int> DeleteLike(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

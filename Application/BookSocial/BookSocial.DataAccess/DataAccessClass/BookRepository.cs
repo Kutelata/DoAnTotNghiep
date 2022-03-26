@@ -1,7 +1,7 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -16,37 +16,11 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
-        public async Task<int> CreateAuthorBook(AuthorBook authorBook)
-        {
-            using (var con = GetConnection())
-            {
-                return await con.ExecuteAsync(
-                    @"INSERT INTO AuthorBook VALUES (@bookId, @authorId)", authorBook);
-            }
-        }
-
         public async Task<int> Delete(int id)
         {
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(@"DELETE FROM Book WHERE id = @id", new { id });
-            }
-        }
-
-        public async Task<int> DeleteAuthorBook(int id)
-        {
-            using (var con = GetConnection())
-            {
-                return await con.ExecuteAsync(@"DELETE FROM Author_Book WHERE book_id = @id", new { id });
-            }
-        }
-
-        public async Task<int> UpdateAuthorBook(AuthorBook authorBook)
-        {
-            using (var con = GetConnection())
-            {
-                return await con.ExecuteAsync(
-                    @"UPDATE Author_Book SET book_id = @bookId, author_id = @authorId)", authorBook);
             }
         }
 
@@ -101,6 +75,30 @@ namespace BookSocial.DataAccess.DataAccessClass
                         page_number as 'pageNumber', published, 
                         genre_id as 'genreId'
                     FROM Book WHERE genre_id = @genreId", new { genreId });
+            }
+        }
+
+        public async Task<IEnumerable<BookStatistic>> GetBookStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<BookStatistic>(
+                    @"SELECT 
+	                    b.id,
+						b.isbn,
+	                    b.[name] as 'bookName',
+						b.[image],
+						b.published,
+						g.[name] as 'genreName',
+						COUNT(ab.author_id) as 'numberOfAuthors',
+	                    COUNT(a.id) as 'numberOfArticle',
+						COUNT(s.[user_id]) as 'numberOfShelfs'
+                    FROM Book b
+					JOIN Genre g ON g.id = b.genre_id
+                    FULL OUTER JOIN Article a ON a.book_id = b.id
+					FULL OUTER JOIN Author_Book ab ON ab.book_id = b.id
+					FULL OUTER JOIN Shelf s ON s.book_id = b.id
+                    GROUP BY b.id, b.isbn, b.[name], b.[image], b.published, g.[name]");
             }
         }
     }

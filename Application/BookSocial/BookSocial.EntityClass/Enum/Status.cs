@@ -2,8 +2,8 @@
 {
     public enum Status
     {
-        IsActive,
-        IsNotActive,
-        Locked
+        IsActive = 1,
+        IsNotActive = 0,
+        Locked = -1
     }
 }

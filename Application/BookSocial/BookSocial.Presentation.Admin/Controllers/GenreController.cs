@@ -87,7 +87,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     TempData["Fail"] = "Create genre failed!";
                 }
-                return RedirectToActionPermanent("GenreList");
+                return RedirectToAction("GenreList", "Home");
             }
             return View("~/Views/Genre/Create.cshtml", genre);
 
@@ -100,7 +100,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             {
                 return View("~/Views/Genre/Edit.cshtml", data);
             }
-            return RedirectToActionPermanent("NotFound404");
+            return RedirectToAction("NotFound404", "Route");
         }
 
         [HttpPost]
@@ -123,7 +123,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     TempData["Fail"] = "Update genre failed!";
                 }
-                return RedirectToActionPermanent("GenreList");
+                return RedirectToAction("GenreList", "Home");
             }
             return View("~/Views/Genre/Edit.cshtml", genre);
         }
@@ -134,7 +134,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             if (data != null)
             {
                 var checkBookExist = await _bookService.GetByGenreId(id);
-                if (checkBookExist != null)
+                if (checkBookExist == null)
                 {
                     int result = await _genreService.Delete(id);
                     if (result != 0)
@@ -150,7 +150,10 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     TempData["Fail"] = "Delete genre failed, still books left!";
                 }
-                return RedirectToActionPermanent("GenreList");
+                //Response.Headers.CacheControl = "no-cache";
+                //Response.Headers.Pragma = "no-cache";
+                //Response.Headers.Expires = "-1";
+                return RedirectToAction("GenreList", "Home");
             }
             return View("~/Views/Error/NotFound404.cshtml");
         }

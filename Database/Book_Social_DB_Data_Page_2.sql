@@ -4,7 +4,7 @@
 ('Jason Reynolds','Jason_Reynolds.jpg','Jason Reynolds is an American author of novels and poetry for young adult and middle-grade audience. Born in Washington, D.C. and raised in neighboring Oxon Hill, Maryland, Reynolds found inspiration in rap and had an early focus on poetry, publishing several poetry collections before his first novel in 2014, When I Was The Greatest, which won the Coretta Scott King/John Steptoe Award for New Talent.','1983-12-06'),
 ('Erica Katz','Erica_Katz.jpg','Erica Katz is the pseudonym for a graduate of Columbia Law School who began her career at a major Manhattan law firm. A native of New Jersey, she now lives in New York City, where she’s employed at another large law firm. The Boys’ Club is her first novel.',''),
 ('Italo Calvino','Italo_Calvino.jpg','Italo Calvino was born in Santiago de las Vegas, a suburb of Havana, Cuba, in 1923. His father, Mario, was a tropical agronomist and botanist who also taught agriculture and floriculture.Born 47 years earlier in Sanremo, Italy, Mario Calvino had emigrated to Mexico in 1909 where he took up an important position with the Ministry of Agriculture. In an autobiographical essay, Italo Calvino explained that his father "had been in his youth an anarchist, a follower of Kropotkin and then a Socialist Reformist".In 1917, Mario left for Cuba to conduct scientific experiments, after living through the Mexican Revolution.','1923-10-15'),
-('Michel Lauricella','Michel_Lauricella.jpg','',''),
+('Michel Lauricella','Michel_Lauricella.jpg','Michel Lauricella is the author of the best-selling series of books on human anatomy, Morpho! We are very proud to release this first in a video series of his anatomy teachings.',''),
 ('Calla Henkel','Calla_Henkel.jpg','CALLA HENKEL is a writer, playwright, director, and artist who lives and works in Berlin. Her work with Max Pitegoff has been exhibited in museums and galleries worldwide, including the Whitney Museum of Art, and she currently operates a bar, performance space and film studio called TV in Berlin. Other People’s Clothes is her debut novel.',''),
 ('Abrams Books','Abrams_Books.jpg','Abrams, formerly Harry N. Abrams, Inc. (HNA), is an American publisher of art and illustrated books, children''s books, and stationery.The enterprise is a subsidiary of the French publisher La Martinière Groupe. Run by President and CEO Michael Jacobs, Abrams publishes and distributes approximately 250 titles annually and has more than 3,000 titles in print.','1949-03-11'),
 ('Boo Walker','Boo_Walker.jpg','BookWalker (ブックウォーカー), stylized as Book☆Walker, is a Japanese e-book store that sells manga, light novels, and magazines from various publishers, as well as a few published by themselves. It is based in Chiyoda, Tokyo and was created by Kadokawa Corporation. The company was founded in 2005 before launching their store in Japan in 2010 and internationally in 2014.','2005-12-01'),
@@ -39,26 +39,26 @@
 ('Brené Brown','Brene_Brown.jpg','Casandra Brené Brown (born 1965) is an American research professor, lecturer, author, and podcast host. Brown is known in particular for her research on shame, vulnerability, and leadership. A long-time researcher and academic, Brown became famous following a widely viewed TED talk in 2010. Since then she has written six number-one New York Times bestselling books, hosts two podcasts and has filmed a lecture for Netflix.','1965-11-18'),
 ('Dale Carnegie','Dale_Carnegie.jpg','Dale Breckenridge Carnegie (formerly Carnagey until 1922 and possibly later) ( November 24, 1888 – November 1, 1955 ) was an American writer and public speaker and developer of classes . self-education , salesmanship , corporate coaching , public speaking and interpersonal skills. Born into poverty on a farm in Missouri , he is the author of Dac Nhan Tam , first published in 1936 ., a best-selling book and best known to this day, the content is about how to behave and behave in life. He also wrote a biography of Abraham Lincoln , titled Lincoln the Unknown Man , and many other books.','1888-11-24'),
 ('Stephen R. Covey','Stephen_R_Covey.jpg','Covey was born on October 24, 1932 in Salt Lake City, Utha State, United States. His father was Stephen Glenn Covey and his mother was Louise Richards Covey. Louise is the daughter of Stephen L Richards, a member and consultant to the first board of The Church of Jesus Christ of Latter-day Saints under David O.McKay. Covey is the grandson of Stephen Mack Covey, who founded the Little America Wyoming hotel chain near Granger, Wyoming.','1932-10-24'),
-('Don Miguel Ruiz','Don_Miguel_Ruiz.jpg','',''),
-('Janet Mills','Janet_Mills.jpg','',''),
-('Marie Kondo','Marie_Kondo.jpg','',''),
-('Discover Press','Discover_Press.jpg','',''),
-('Susan Cain','Susan_Cain.jpg','',''),
-('Eckhart Tolle','Eckhart_Tolle.jpg','',''),
-('Jen Sincero','Jen_Sincero.jpg','',''),
+('Don Miguel Ruiz','Don_Miguel_Ruiz.jpg','Miguel Ángel Ruiz Macías (born August 27, 1952), better known as Don Miguel Ruiz, is a Mexican author of Toltec spiritualist and neoshamanistic texts. His work is best-received among members of the New Thought movement that focuses on ancient teachings as a means to achieve spiritual enlightenment. Ruiz is listed as one of the Watkins 100 Most Spiritually Influential Living People in 2018. Some have associated Ruiz''s work with Carlos Castaneda, author of The Teachings of Don Juan.','1952-08-27'),
+('Janet Mills','Janet_Mills.jpg','Janet Trafton Mills (or Janet T. Mills , born December 30, 1947) is an American jurist and politician. She is currently the 75th Governor of Maine since January 2019. She served as Attorney General of Maine for two terms from 2009 to 2011, 2013 to 201, the first Maine woman to hold the position. Prior to that, she served in the Maine House of Representatives , representing the towns of Farmington and Industry ','1947-12-30'),
+('Marie Kondo','Marie_Kondo.jpg','Marie Kondo (近藤 麻理恵 ) Kondō Marie ? , born October 9, 1984 ) is a Japanese author and interior designer. Kondo has written four books on furniture arrangement, which have sold millions of copies and are available in languages ​​such as Korean, Chinese, Spanish, French, German, and English. Among them, The Life-Changing Magic of Tidying Up (2011) has been published in more than 30 countries. In 2015, she was on Time ''s 100 most influential people list .','1984-10-09'),
+('Discover Press','Discover_Press.jpg','Elle, Paris Match, Auto Moto, Marie Claire, Parents, Auto Moto, Campagne Décoration, Le Journal de la Maison, Télé 7 Jours, Maison & Travaux, Santé Magazine, All Natura, Déco Mag, French Touch, Gourmand, Héritage & Co, Journal du Golf, L’Officiel, La Revue des Montres, Machin Chose, Magazine Brune, New Art Time, …',''),
+('Susan Cain','Susan_Cain.jpg','Susan Horowitz Cain[7] (born 1968) is an American writer and lecturer, and author of the 2012 non-fiction book Quiet: The Power of Introverts in a World That Can''t Stop Talking, which argues that modern Western culture misunderstands and undervalues the traits and capabilities of introverted people. In 2015, Cain co-founded Quiet Revolution, a mission-based company with initiatives in the areas of children (parenting and education), lifestyle, and the workplace. Cain''s 2016 follow-on book, Quiet Power: The Secret Strengths of Introverts, focused on introverted children and teens, the book also being directed to their educators and parents.','1968-03-20'),
+('Eckhart Tolle','Eckhart_Tolle.jpg','Eckhart Tolle ( / ɛ k ɑːr t ˈ t ɒ l ə / EK -art TO -lə , born 1948 in Germany) is a German spiritualist, best known as the author of The Power of Now and A. New Earth . In 2011, he was named the world''s most influential spiritual person by Watkins Books . [1] In 2008, an article in The New York Times called Tolle "America''s most famous spiritual author".','1948-02-16'),
+('Jen Sincero','Jen_Sincero.jpg','Jen Sincero was born and raised in Westchester, New York. The daughter of Italian-born Domenico Sincero, a doctor, and Susan Sincero, she attended Briarcliff High School and later Colorado College, where she graduated in 1987[2] with a BA in English. Sincero worked in the marketing department at CBS/Epic Records in the 1990s during which time she co-founded her first band, Crotch,[3] Sincero moved to Albuquerque, New Mexico, in 1996, where she started the Jenny Clinkscales Band and later 60 Foot Queenie, a solo project.','1965-08-07'),
 
-('Chloe Liese','Chloe_Liese.jpg','',''),
-('Frank Murphy','Frank_Murphy.jpg','',''),
-('Surya Bonaly','Surya_Bonaly.jpg','',''),
-('Gia De Cadenet','Gia_De_Cadenet.jpg','',''),
-('Mariana Zapata','Mariana_Zapata.jpg','',''),
-('Lucy Score','Lucy_Score.jpg','',''),
-('A. L. Graziadei','A_L_Graziadei.jpg','',''),
-('John Grisham','John_Grisham.jpg','',''),
-('Sarah Adams','Sarah_Adams.jpg','',''),
-('Denise Williams','Denise_Williams.jpg','',''),
-('James Patterson','James_Patterson.jpg','',''),
-('Mike Lupica','Mike_Lupica.jpg','','')
+('Chloe Liese','Chloe_Liese.jpg','Chloe writes romances reflecting her belief that everyone deserves a love story. Her stories pack a punch of heat, heart, and humor, and often feature characters who are neurodivergent like herself. When not dreaming up her next book, Chloe spends her time wandering in nature, playing soccer, and most happily at home with her family and mischievous cats.',''),
+('Frank Murphy','Frank_Murphy.jpg','William Francis Murphy (April 13, 1890 – July 19, 1949) was an American Democratic politician and jurist from Michigan. He was named to the Supreme Court of the United States in 1940 after a political career that included serving as United States Attorney General, Governor of Michigan and Mayor of Detroit. He also served as the last Governor General of the Philippine Islands and the first High Commissioner of the Philippines.','1890-04-13'),
+('Surya Bonaly','Surya_Bonaly.jpg','Surya Varuna Claudine Bonaly (born 15 December 1973) is a French retired competitive figure skater. She is a three-time World silver medalist (1993–1995), a five-time European champion (1991–1995), the 1991 World Junior Champion, and a nine-time French national champion (1989–1997).','1973-12-15'),
+('Gia De Cadenet','Gia_De_Cadenet.jpg','A decade later, she got serious about her second big dream: becoming a published author. Her first manuscript, Not The Plan, was showcased in the 2017 PitchWars mentorship program. It went on to become a finalist in both the Maggie Award for Excellence Contest of the Georgia Romance Writers Association, and the Elevation of Love Contest of the Cultural, Interracial, Multicultural chapter of the Romance Writers of America Association.',''),
+('Mariana Zapata','Mariana_Zapata.jpg','Mariana Zapata began writing love stories soon after she learned how to spell. She probably shouldn’t admit that she started sneaking romance novels from her aunt’s bookshelves way before she was old enough to even understand what it meant when a man flipped up a woman’s skirt… don’t tell her mom. Luckily, she stuck to stories about princesses and princes for a while. In her teens, she wrote boy band fanfiction (there’s still a website up somewhere on the internet with those masterpieces), and in her early twenties, she picked it back up again with Sookie Stackhouse and Twilight. Eventually, her significant other finally told her to do what she wanted to do and she began working on her original work. Her novels tend to include potty humor, bodily functions, and bad words. Mariana lives in a small town called Pagosa Springs, Colorado with her husband/best friend, Chris Letchford, and their two well-beloved (and emotionally manipulative) Great Dane children, Dorian and Kaiser. When she’s not pretending to write, she’s reading sci-fi, fantasy, steampunk or historical romance novels. You can usually find her harassing her dogs, being a hermit at home or cracking jokes at the expense of her family members.',''),
+('Lucy Score','Lucy_Score.jpg','Her books have been translated into several languages, making readers around the world snort laugh, swoon, and sob. Lucy lives in Pennsylvania with the devastatingly handsome Mr. Lucy and their horrible cat.',''),
+('A. L. Graziadei','A_L_Graziadei.jpg','A.L. Graziadei was born in Buffalo, New York and raised on Sabres hockey and video games, using their free time to write books inspired by both. Now living in Wisconsin, A.L. still plays plenty of video games and is a proud member of the Displaced Buffalo Sabres Fans group. Icebreaker is their first book.',''),
+('John Grisham','John_Grisham.jpg','John Ray Grisham, Jr. ( / ɡ r ɪ ʃ æ m / ; born February 8, 1955) [2] [3] is an American writer, lawyer, politician, and activist best known for his works in the Legal thriller genre. His books have been translated into 42 languages ​​and published worldwide.','1955-02-08'),
+('Sarah Adams','Sarah_Adams.jpg','Born and raised in Nashville TN, Sarah Adams loves her family, warm days, and making people smile. Sarah has dreamed of being a writer since she was a girl, but finally wrote her first novel when her daughters were napping and she no longer had any excuses to put it off.',''),
+('Denise Williams','Denise_Williams.jpg','Jerry Michael Williams (October 16, 1969 – December 16, 2000) was an American murder victim. Initially, it was said he left his home in Tallahassee, Florida, United States, to go duck hunting. After subsequent investigations, he was presumed to have drowned in Lake Seminole, a large reservoir located in the southwest corner of Georgia along its border with Florida; investigators later came to suspect he had been the victim of foul play, possibly at another location. His body was found in October 2017 near Tallahassee, and Florida Department of Law Enforcement (FDLE) officials confirmed Williams was a victim of homicide.','2000-12-16'),
+('James Patterson','James_Patterson.jpg','In 1971, Patterson joined the James Walter Thompson Advertising Company and it was during this time that he began his literary career. In 1976, his first novel, The Thomas Berryman Number , was published and was awarded the award for outstanding first work. In 1993, with the release of the novel Along Came a Spider , Patterson was officially named in the list of the most famous detective writers in America. In 1996 Patterson left the advertising industry to devote full time to the arts.','1947-03-22'),
+('Mike Lupica','Mike_Lupica.jpg','Lupica was born in Oneida, New York, where he spent his pre-adolescent years, having attended St. Patrick''s Elementary School through the sixth grade. In 1964, he moved with his family to Nashua, New Hampshire, where he attended middle school and subsequently Bishop Guertin High School, graduating in 1970. In 1974 he graduated from Boston College. He first came to prominence as a sportswriter in Pottstown, Pennsylvania. Lupica wrote "The Sporting Life" column at Esquire magazine for ten years beginning in the late 1980s, and currently writes a regular column for Travel + Leisure Golf. He has also written for Golf Digest, Parade, ESPN The Magazine, and Men’s Journal, and has received numerous awards including, in 2003, the Jim Murray Award from the National Football Foundation.','1952-05-11')
 go
 
 insert into Author_Book values
@@ -124,17 +124,13 @@ insert into Author_Book values
 (50,53),
 (50,54)
 go
-
-insert into Review values
+/*
+insert into Article values
 -- ('text','star','created_at','book_id','user_id')
 go
 
 insert into Comment values
--- ('text','review_id','blog_id','parent_id','created_at','user_id')
-go
-
-insert into Blog values
--- ('text','created_at','user_id')
+-- ('text','article_id','parent_id','created_at','user_id')
 go
 
 insert into Shelf values
@@ -142,5 +138,6 @@ insert into Shelf values
 go
 
 insert into [Like] values
--- ('author_id','blog_id','review_id','comment_id','user_id')
+-- ('author_id','article_id','comment_id','user_id')
 go
+*/

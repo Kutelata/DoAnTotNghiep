@@ -1,0 +1,145 @@
+﻿@model IEnumerable<BookSocial.EntityClass.DTO.BookStatistic>
+
+<div class="col-md-12 col-sm-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Book List</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    <a class="btn btn-dark" href="@Url.Action("CreateBook")"><i class='fa fa-plus'></i> Create New</a>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
+                            <select class="custom-select" id="btn-sort">
+                                <option selected value="Isbn">Isbn</option>
+                                <option value="BookName">Book Name</option>
+                                <option value="Image">Image</option>
+                                <option value="Published">Published</option>
+                                <option value="GenreName">Genre Name</option>
+                                <option value="NumberOfAuthors">Number Of Authors</option>
+                                <option value="NumberOfArticles">Number Of Articles</option>
+                                <option value="NumberOfShelfs">Number Of Shelfs</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="input-group my-input-group">
+                                <input id="search" type="text" class="form-control my-form-control" placeholder="Search ..." />
+                                <div class="input-group-append">
+                                    <button id="btn-search" class="btn mr-0 btn-outline-secondary" type="button"><i class="fa fa-search"></i> Search</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Fail"] != null)
+            {
+                <div class="alert alert-error" role="alert">
+                    @TempData["Fail"]
+                </div>
+            }
+            <div class="table-responsive mt-2">
+                <table class="table table-striped jambo_table bulk_action">
+                    <thead>
+                        <tr class="headings">
+                            <th class="column-title">Id</th>
+                            <th class="column-title">Isbn</th>
+                            <th class="column-title">Book Name</th>
+                            <th class="column-title">Image</th>
+                            <th class="column-title">Published</th>
+                            <th class="column-title">Genre Name</th>
+                            <th class="column-title">Number Of Authors</th>
+                            <th class="column-title">Number Of Articles</th>
+                            <th class="column-title">Number Of Shelfs</th>
+                            <th class="column-title no-link last">
+                                <span class="nobr">Action</span>
+                            </th>
+                            <th class="bulk-actions" colspan="7">
+                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="even pointer">
+                                <td class=" ">@item.Id</td>
+                                <td class=" ">@item.Isbn</td>
+                                <td class=" ">@item.BookName</td>
+                                <td class=" ">@item.Image</td>
+                                <td class=" ">@item.Published</td>
+                                <td class=" ">@item.GenreName</td>
+                                <td class=" ">@item.NumberOfAuthors</td>
+                                <td class=" ">@item.NumberOfArticles</td>
+                                <td class=" ">@item.NumberOfShelfs</td>
+                                <td class=" last">
+                                    <a class="btn btn-outline-info" href="@Url.Action("DetailBook", "", new { id = @item.Id })" )">
+                                        <i class='fa fa-folder'></i> View
+                                    </a>
+                                    <a class="btn btn-outline-primary" href="@Url.Action("EditBook", "", new { id = @item.Id })">
+                                        <i class='fa fa-pencil'></i> Edit
+                                    </a>
+                                    <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
+                                        <i class='fa fa-trash-o'></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <ul class="pagination my_pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("BookList","Home",
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch})">Previous</a>
+                        </li>
+                    }
+
+                    @for (var i = 0; i < ViewBag.Pages; i++)
+                    {
+                        if ((i + 1) == ViewBag.CurrentPage)
+                        {
+                            <li>
+                                <a class="active" href="@Url.Action("BookList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@Url.Action("BookList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                            </li>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.Pages)
+                    {
+                        <li>
+                            <a href="@Url.Action("BookList","Home",
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch})">Next</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+<script src="~/my_script/get_param_url.js"></script>
+<script src="~/my_script/action_in_list.js"></script>
+<script src="~/my_script/book/action_delete.js"></script>
+}

@@ -14,7 +14,7 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateReview(Review review)
+        public async Task<IActionResult> Create(Article review)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateReview(Review review)
+        public async Task<IActionResult> Update(Article review)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteReview(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {

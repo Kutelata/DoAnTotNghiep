@@ -1,11 +1,10 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
-    public class AuthorRepository : ConnectionStrings,IAuthorRepository
+    public class AuthorRepository : ConnectionStrings, IAuthorRepository
     {
         public async Task<int> Create(Author entity)
         {
@@ -18,12 +17,9 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Author WHERE id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM Author WHERE id = @id", new { id });
             }
         }
 
@@ -37,15 +33,12 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<Author> GetById(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
                 return await con.QuerySingleAsync<Author>(
                     @"SELECT 
-                        id, [name], [image], [description], birthday FROM Author WHERE id = @id", 
-                    parameters);
+                        id, [name], [image], [description], birthday FROM Author WHERE id = @id",
+                    new { id });
             }
         }
 

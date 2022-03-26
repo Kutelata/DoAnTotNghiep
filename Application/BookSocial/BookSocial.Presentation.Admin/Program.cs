@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddServerSideBlazor();
 
 // AddScoped HttpClient
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
@@ -39,9 +38,6 @@ app.UseEndpoints(endpoints =>
         name: "not found",
         pattern: "{*url}",
         defaults: new { controller = "Route", action = "NotFound404" });
-
-    // Add hub
-    endpoints.MapBlazorHub();
 });
 
 app.Run();

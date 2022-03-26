@@ -67,13 +67,13 @@ create table Author_Book
 )
 go
 
-create table Review
+create table Article
 (
 	id int identity primary key,
 	[text] nvarchar(max),
 	star tinyint,
 	created_at datetime not null,
-	book_id int foreign key references Book(id),
+	book_id int,
 	[user_id] int foreign key references [User](id)
 )
 go
@@ -82,19 +82,9 @@ create table Comment
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
-	review_id int,
-	blog_id int,
 	parent_id int,
 	created_at datetime not null,
-	[user_id] int foreign key references [User](id)
-)
-go
-
-create table Blog
-(
-	id int identity primary key,
-	[text] nvarchar(max) not null,
-	created_at datetime not null,
+	article_id int foreign key references Article(id),
 	[user_id] int foreign key references [User](id)
 )
 go
@@ -110,8 +100,7 @@ create table Shelf
 create table [Like]
 (
 	author_id int,
-	blog_id int,
-	review_id int,
+	article_id int,
 	comment_id int,
 	[user_id] int,
 )

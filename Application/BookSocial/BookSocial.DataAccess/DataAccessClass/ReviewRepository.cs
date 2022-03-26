@@ -1,13 +1,12 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
 using Dapper;
-using System.Data;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
     public class ReviewRepository : ConnectionStrings, IReviewRepository
     {
-        public async Task<int> Create(Review entity)
+        public async Task<int> Create(Article entity)
         {
             using (var con = GetConnection())
             {
@@ -21,26 +20,23 @@ namespace BookSocial.DataAccess.DataAccessClass
 
         public async Task<int> Delete(int id)
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("id", id, DbType.Int32);
-
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Review WHERE id = @id", parameters);
+                return await con.ExecuteAsync(@"DELETE FROM Review WHERE id = @id", new { id });
             }
         }
 
-        public Task<IEnumerable<Review>> GetAll()
+        public Task<IEnumerable<Article>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Review> GetById(int id)
+        public Task<Article> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<int> Update(Review entity)
+        public async Task<int> Update(Article entity)
         {
             using (var con = GetConnection())
             {

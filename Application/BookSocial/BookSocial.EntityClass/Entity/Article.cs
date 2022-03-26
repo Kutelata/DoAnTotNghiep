@@ -2,7 +2,7 @@
 
 namespace BookSocial.EntityClass.Entity
 {
-    public class Review :BaseEntity
+    public class Article :BaseEntity
     {
         public int Id { get; set; }
         public string Text { get; set; }
