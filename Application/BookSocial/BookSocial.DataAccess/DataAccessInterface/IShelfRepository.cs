@@ -2,7 +2,7 @@
 
 namespace BookSocial.DataAccess.DataAccessInterface
 {
-    public interface IAuthorRepository : IRepository<Author>
+    public interface IShelfRepository : IRepository<Shelf>
     {
     }
 }

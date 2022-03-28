@@ -6,6 +6,7 @@ namespace BookSocial.Service.ServiceInterface
     public interface IGenreService
     {
         public Task<IEnumerable<GenreStatistic>> GetGenreStatistic();
+        public Task<IEnumerable<Genre>> GetAll();
         public Task<Genre> GetById(int genreId);
         public Task<Genre> GetByName(string genreName);
         public Task<int> Create(Genre genre);

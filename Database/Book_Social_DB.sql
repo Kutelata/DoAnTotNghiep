@@ -4,13 +4,6 @@ go
 use Book_Social_DB
 go
 
-create table [Role]
-(
-	id int primary key identity,
-	[name] nvarchar(max) not null
-)
-go
-
 create table [User]
 (
 	id int identity primary key,
@@ -19,25 +12,31 @@ create table [User]
 	email varchar(max),
 	account nvarchar(50) unique not null,
 	[password] nvarchar(max) not null,
-	[image] varchar(max),
+	[image] varchar(450),
 	[address] nvarchar(max),
 	[description] nvarchar(max),
 	birthday datetime,
 	gender tinyint,
 	friend varchar(max),
-	[status] tinyint,
-	role_id int foreign key references [Role](id)
+	[status] tinyint default(0),
+	[role] tinyint default(0)
 )
+go
+
+create unique nonclustered index UQ_User_Image on [User]([image]) where [image] is not null
 go
 
 create table Author
 (
 	id int primary key identity,
 	[name] nvarchar(max) not null,
-	[image] varchar(max),
+	[image] varchar(450),
 	[description] nvarchar(max),
 	birthday datetime,
 )
+go
+
+create unique nonclustered index UQ_Author_Image on Author([image]) where [image] is not null
 go
 
 create table Genre
@@ -50,14 +49,17 @@ go
 create table Book
 (
 	id int primary key identity,
-	isbn varchar(50) unique,
+	isbn varchar(50) unique not null,
 	[name] nvarchar(max) not null,
-	[image] varchar(max),
+	[image] varchar(450),
 	[description] nvarchar(max),
 	page_number int,
 	published datetime,
 	genre_id int foreign key references Genre(id)
 )
+go
+
+create unique nonclustered index UQ_Book_Image on Book([image]) where [image] is not null
 go
 
 create table Author_Book
@@ -96,12 +98,3 @@ create table Shelf
 	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id),
 )
-
-create table [Like]
-(
-	author_id int,
-	article_id int,
-	comment_id int,
-	[user_id] int,
-)
-go

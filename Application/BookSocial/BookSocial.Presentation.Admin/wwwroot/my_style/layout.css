@@ -53,3 +53,23 @@
 .invalid {
     outline: 1px solid red;
 }
+
+.my-col-sm-6 {
+    float: right !important
+}
+
+.btn-outline-dark {
+    color: #4B5F71;
+    border-color: #364B5F;
+}
+
+    .btn-outline-dark:hover {
+        color: #fff;
+        background-color: #4B5F71;
+    }
+
+.my-input-file {
+    border: none;
+    cursor: pointer;
+    padding: .375rem 0 .75rem;
+}

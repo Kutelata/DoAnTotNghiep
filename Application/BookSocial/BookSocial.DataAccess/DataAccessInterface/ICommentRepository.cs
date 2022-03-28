@@ -2,8 +2,7 @@
 
 namespace BookSocial.DataAccess.DataAccessInterface
 {
-    public interface IReviewRepository: IRepository<Article>
+    public interface ICommentRepository : IRepository<Comment>
     {
-
     }
 }

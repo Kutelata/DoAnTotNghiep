@@ -7,5 +7,10 @@ namespace BookSocial.Service.ServiceInterface
     {
         public Task<IEnumerable<BookStatistic>> GetBookStatistic();
         public Task<IEnumerable<Book>> GetByGenreId(int genreId);
+        public Task<Book> GetById(int id);
+        public Task<Book> GetByIsbn(string isbn);
+        public Task<int> Create(Book book);
+        public Task<int> Update(Book book);
+        public Task<int> Delete(int bookId);
     }
 }

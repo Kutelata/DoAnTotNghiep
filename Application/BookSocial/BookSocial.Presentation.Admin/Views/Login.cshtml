@@ -1,6 +1,8 @@
 ﻿@{
     Layout = null;
 }
+@model BookSocial.EntityClass.DTO.UserLogin
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +31,10 @@
                         <h1>Admin</h1>
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div>
-                            <input type="text" class="form-control" name="Account" placeholder="Username" />
+                            <input type="text" class="form-control" asp-for="Account" placeholder="Username" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" name="Password" placeholder="Password" />
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
                         </div>
                         <div>
                             <input type="submit" class="btn btn-default submit" value="Log in" />

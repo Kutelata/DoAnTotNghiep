@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookSocial.EntityClass.Entity;
 
 namespace BookSocial.Service.ServiceInterface
 {
-    internal interface IAuthorService
+    public interface IAuthorService
     {
+        public Task<IEnumerable<Author>> GetAll();
+        public Task<Author> GetById(int authorId);
+        public Task<int> Create(Author author);
+        public Task<int> Update(Author author);
+        public Task<int> Delete(int authorId);
     }
 }

@@ -101,5 +101,18 @@ namespace BookSocial.DataAccess.DataAccessClass
                     GROUP BY b.id, b.isbn, b.[name], b.[image], b.published, g.[name]");
             }
         }
+
+        public async Task<Book> GetByIsbn(string isbn)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<Book>(
+                    @"SELECT  
+                        id, isbn, [name], [image], [description], 
+                        page_number as 'pageNumber', published, 
+                        genre_id as 'genreId'
+                    FROM Book WHERE isbn = @isbn", new { isbn });
+            }
+        }
     }
 }

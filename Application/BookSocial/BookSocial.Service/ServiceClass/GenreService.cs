@@ -45,6 +45,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<Genre>> GetAll()
+        {
+            var response = await GetClient().GetAsync($"Genre/GetAll");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<Genre>>() : null;
+            return data;
+        }
+
         public async Task<int> Update(Genre genre)
         {
             var response = await GetClient().PutAsJsonAsync($"Genre/Update", genre);

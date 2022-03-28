@@ -14,10 +14,9 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QuerySingleAsync<UserSaveCookie>(
                     @"SELECT 
                         u.id, u.[name] as 'userName', u.phone, u.email, 
-                        u.account, u.password, u.image, u.address, u.description, 
-                        u.birthday, u.gender, u.friend, u.status, r.[name] as 'role'
+                        u.account, u.password, u.[image], u.address, u.description, 
+                        u.birthday, u.gender, u.friend, u.status, u.[role]
                     FROM [User] u
-                    JOIN [ROLE] r ON u.role_id = r.id
                     WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
                         AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS",
                     new { account, password });
@@ -33,7 +32,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     VALUES (
                         @name, @phone, @email, @account, 
                         @password, @image, @address, @description, @birthday, 
-                        @gender, @friend, @status, @roleId)",
+                        @gender, @friend, @status, @role)",
                     entity);
             }
         }
@@ -53,7 +52,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QueryAsync<User>(
                     @"SELECT 
                         id, [name], phone, email, account, [password], [image], 
-                        [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
+                        [address], [description], birthday, gender, friend, [status], [role]
                     FROM [User]");
             }
         }
@@ -65,7 +64,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QuerySingleAsync<User>(
                     @"SELECT 
                         id, [name], phone, email, account, [password], [image], 
-                        [address], [description], birthday, gender, friend, [status], role_id as 'roleId'
+                        [address], [description], birthday, gender, friend, [status], [role]
                     FROM [User] WHERE id = @id", new { id });
             }
         }
@@ -80,7 +79,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                         [name] = @name, phone = @phone, email = @email, account = @account,
                         [password] = @password, [image] = @image, [address] = @address, 
                         [description] = @description, birthday = @birthday, gender = @gender,
-                        friend = @friend, [status] = @status, role_id = @roleId
+                        friend = @friend, [status] = @status, [role] = @role
                     WHERE id = @id", entity);
             }
         }

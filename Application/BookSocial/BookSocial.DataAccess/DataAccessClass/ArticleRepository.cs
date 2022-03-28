@@ -4,14 +4,14 @@ using Dapper;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
-    public class ReviewRepository : ConnectionStrings, IReviewRepository
+    public class ArticleRepository : ConnectionStrings, IArticleRepository
     {
         public async Task<int> Create(Article entity)
         {
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"INSERT INTO Review
+                    @"INSERT INTO Article
                     VALUES (
                         @text, @star, @createdAt, @bookId, @userId)",
                     entity);
@@ -22,18 +22,27 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"DELETE FROM Review WHERE id = @id", new { id });
+                return await con.ExecuteAsync(@"DELETE FROM Article WHERE id = @id", new { id });
             }
         }
 
-        public Task<IEnumerable<Article>> GetAll()
+        public async Task<IEnumerable<Article>> GetAll()
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Article>(@"SELECT id, [text], star, created_at, book_id, [user_id] FROM Article");
+            }
         }
 
-        public Task<Article> GetById(int id)
+        public async Task<Article> GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<Article>(
+                    @"SELECT 
+                        id, [text], star, created_at, book_id, [user_id] FROM Article WHERE id = @id",
+                    new { id });
+            }
         }
 
         public async Task<int> Update(Article entity)
@@ -41,7 +50,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"UPDATE Review
+                    @"UPDATE Article
                     SET 
                         [text] = @text, star = @star, created_at = @createdAt, 
                         book_id = @bookId, [user_id] = @userId

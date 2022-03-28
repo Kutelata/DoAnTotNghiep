@@ -13,10 +13,10 @@ namespace BookSocial.EntityClass.Entity
         public string Image { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         public Gender Gender { get; set; }
         public string Friend { get; set; }
         public Status Status { get; set; }
-        public int RoleId { get; set; }
+        public Role Role { get; set; }
     }
 }

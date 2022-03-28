@@ -13,7 +13,9 @@ namespace BookSocial.DataAccess
             service.AddScoped<IAuthorRepository, AuthorRepository>();
             service.AddScoped<IAuthorBookRepository, AuthorBookRepository>();
             service.AddScoped<IBookRepository, BookRepository>();
-            service.AddScoped<IReviewRepository, ReviewRepository>();
+            service.AddScoped<IArticleRepository, ArticleRepository>();
+            service.AddScoped<ICommentRepository, CommentRepository>();
+            service.AddScoped<IShelfRepository, ShelfRepository>();
         }
     }
 }

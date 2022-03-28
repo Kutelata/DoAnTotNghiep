@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookSocial.EntityClass.Entity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
@@ -74,45 +76,67 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Index.cshtml", dataInPage);
         }
 
-        //public IActionResult CreateBook()
-        //{
-        //    return View("~/Views/Book/Create.cshtml");
-        //}
+        public async Task<IActionResult> CreateBook()
+        {
+            var genres = await _genreService.GetAll();
+            ViewBag.Genres = new SelectList(genres, "Id", "Name");
+            return View("~/Views/Book/Create.cshtml");
+        }
 
-        //[HttpPost]
-        //public async Task<ActionResult> CreateBook(Book Book)
-        //{
-        //    var checkNameUnique = await _bookService.GetByName(Book.Name);
-        //    if (checkNameUnique != null)
-        //    {
-        //        ModelState.AddModelError("Name", "Book Name must be unique");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        int result = await _BookService.Create(Book);
-        //        if (result != 0)
-        //        {
-        //            TempData["Success"] = "Create Book success!";
-        //        }
-        //        else
-        //        {
-        //            TempData["Fail"] = "Create Book failed!";
-        //        }
-        //        return RedirectToAction("BookList", "Home");
-        //    }
-        //    return View("~/Views/Book/Create.cshtml", Book);
+        [HttpPost]
+        public async Task<ActionResult> CreateBook(Book book, IFormFile Image)
+        {
+            var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
+            if (checkIsbnUnique != null)
+            {
+                ModelState.AddModelError("Isbn", "Isbn book must be unique");
+            }
+            if (ModelState.IsValid)
+            {
+                if (Image != null)
+                {
+                    book.Image = $"{book.Isbn}.jpg";
+                }
+                int result = await _bookService.Create(book);
+                if (result != 0)
+                {
+                    if (Image != null && Image.Length > 0)
+                    {
+                        var pathBook = Path
+                            .Combine(Directory
+                            .GetParent(Directory
+                            .GetCurrentDirectory())
+                            .FullName, "BookSocial.Asset\\images\\book");
+                        var imagePath = Path.Combine(pathBook, book.Image);
+                        using (var stream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            await Image.CopyToAsync(stream);
+                        }
+                    }
+                    TempData["Success"] = "Create Book success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Create Book failed!";
+                }
+                return RedirectToAction("BookList", "Home");
+            }
+            var genres = await _genreService.GetAll();
+            ViewBag.Genres = new SelectList(genres, "Id", "Name", book.GenreId);
+            return View("~/Views/Book/Create.cshtml", book);
+        }
 
-        //}
-
-        //public async Task<IActionResult> EditBook(int id)
-        //{
-        //    var data = await _BookService.GetById(id);
-        //    if (data != null)
-        //    {
-        //        return View("~/Views/Book/Edit.cshtml", data);
-        //    }
-        //    return RedirectToAction("NotFound404", "Route");
-        //}
+        public async Task<IActionResult> EditBook(int id)
+        {
+            var data = await _bookService.GetById(id);
+            if (data != null)
+            {
+                var genres = await _genreService.GetAll();
+                ViewBag.Genres = new SelectList(genres, "Id", "Name", data.GenreId);
+                return View("~/Views/Book/Edit.cshtml", data);
+            }
+            return RedirectToAction("NotFound404", "Route");
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> EditBook(Book Book)
@@ -139,34 +163,23 @@ namespace BookSocial.Presentation.Admin.Controllers
         //    return View("~/Views/Book/Edit.cshtml", Book);
         //}
 
-        //public async Task<IActionResult> DeleteBook(int id)
-        //{
-        //    var data = await _BookService.GetById(id);
-        //    if (data != null)
-        //    {
-        //        var checkBookExist = await _bookService.GetByBookId(id);
-        //        if (checkBookExist == null)
-        //        {
-        //            int result = await _BookService.Delete(id);
-        //            if (result != 0)
-        //            {
-        //                TempData["Success"] = "Delete Book success!";
-        //            }
-        //            else
-        //            {
-        //                TempData["Fail"] = "Delete Book failed!";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            TempData["Fail"] = "Delete Book failed, still books left!";
-        //        }
-        //        //Response.Headers.CacheControl = "no-cache";
-        //        //Response.Headers.Pragma = "no-cache";
-        //        //Response.Headers.Expires = "-1";
-        //        return RedirectToAction("BookList", "Home");
-        //    }
-        //    return View("~/Views/Error/NotFound404.cshtml");
-        //}
+        public async Task<IActionResult> DeleteBook(int id)
+        {
+            var data = await _bookService.GetById(id);
+            if (data != null)
+            {
+                    int result = await _bookService.Delete(id);
+                    if (result != 0)
+                    {
+                        TempData["Success"] = "Delete Book success!";
+                    }
+                    else
+                    {
+                        TempData["Fail"] = "Delete Book failed!";
+                    }
+                return RedirectToAction("BookList", "Home");
+            }
+            return View("~/Views/Error/NotFound404.cshtml");
+        }
     }
 }

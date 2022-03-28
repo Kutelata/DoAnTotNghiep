@@ -6,9 +6,9 @@ namespace BookSocial.API.Controllers
 {
     public class ReviewController : BaseController
     {
-        private readonly IReviewRepository _reviewRepository;
+        private readonly IArticleRepository _reviewRepository;
 
-        public ReviewController(IReviewRepository reviewRepository)
+        public ReviewController(IArticleRepository reviewRepository)
         {
             _reviewRepository = reviewRepository;
         }

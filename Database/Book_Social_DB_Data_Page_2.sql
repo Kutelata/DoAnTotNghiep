@@ -124,6 +124,7 @@ insert into Author_Book values
 (50,53),
 (50,54)
 go
+
 /*
 insert into Article values
 -- ('text','star','created_at','book_id','user_id')
@@ -135,9 +136,5 @@ go
 
 insert into Shelf values
 -- ('page','progress_read','book_id','user_id')
-go
-
-insert into [Like] values
--- ('author_id','article_id','comment_id','user_id')
 go
 */

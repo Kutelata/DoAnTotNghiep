@@ -58,6 +58,20 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetByIsbn(string isbn)
+        {
+            try
+            {
+                var data = await _bookRepository.GetByIsbn(isbn);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetByGenreId(int genreId)
         {
             try

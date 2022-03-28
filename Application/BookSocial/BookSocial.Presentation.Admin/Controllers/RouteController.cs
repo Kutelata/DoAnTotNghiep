@@ -26,11 +26,11 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             if (userLogin.Account == null)
             {
-                ModelState.AddModelError(string.Empty, "Account is required!");
+                ModelState.AddModelError("Account", "Account is required!");
             }
             if (userLogin.Password == null)
             {
-                ModelState.AddModelError(string.Empty, "Password is required!");
+                ModelState.AddModelError("Password", "Password is required!");
             }
             if (ModelState.IsValid)
             {
