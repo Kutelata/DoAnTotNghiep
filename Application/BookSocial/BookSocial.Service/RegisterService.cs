@@ -12,6 +12,10 @@ namespace BookSocial.Service
             service.AddScoped<IGenreService, GenreService>();
             service.AddScoped<IAuthorService, AuthorService>();
             service.AddScoped<IBookService, BookService>();
+            service.AddScoped<IAuthorBookService, AuthorBookService>();
+            service.AddScoped<ICommentService, CommentService>();
+            service.AddScoped<IShelfService, ShelfService>();
+            service.AddScoped<IArticleService, ArticleService>();
         }
     }
 }

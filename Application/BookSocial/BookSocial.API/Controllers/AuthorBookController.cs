@@ -13,6 +13,34 @@ namespace BookSocial.API.Controllers
             _authorBookRepository = authorBookRepository;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var data = await _authorBookRepository.GetAll();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByBookId(int bookId)
+        {
+            try
+            {
+                var data = await _authorBookRepository.GetByBookId(bookId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(AuthorBook authorBook)
         {

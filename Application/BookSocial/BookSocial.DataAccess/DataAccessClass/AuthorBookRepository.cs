@@ -29,9 +29,23 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<AuthorBook>> GetAll()
+        public async Task<IEnumerable<AuthorBook>> GetAll()
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<AuthorBook>(
+                    @"SELECT book_id as 'bookId', author_id as 'authorId' FROM Author_Book");
+            }
+        }
+
+        public async Task<IEnumerable<AuthorBook>> GetByBookId(int bookId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<AuthorBook>(
+                    @"SELECT book_id as 'bookId', author_id as 'authorId' FROM Author_Book WHERE book_id = @bookId",
+                    new { bookId });
+            }
         }
 
         public Task<AuthorBook> GetById(int id)

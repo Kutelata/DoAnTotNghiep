@@ -165,8 +165,10 @@ namespace BookSocial.Presentation.Admin.Controllers
 
         public async Task<IActionResult> DeleteBook(int id)
         {
-            var data = await _bookService.GetById(id);
-            if (data != null)
+            var bookToDelete = await _bookService.GetById(id);
+            //var authorAssignToBook = await _authorBookService.GetById(id);
+            //var articleHaveBook = await _articleService.GetByBookId(id);
+            if (bookToDelete != null)
             {
                     int result = await _bookService.Delete(id);
                     if (result != 0)
