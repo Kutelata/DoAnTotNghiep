@@ -76,4 +76,3 @@ D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\D
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.Service.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.EntityClass.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.EntityClass.pdb
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.API\bin\Debug\net6.0\BookSocial.API.staticwebassets.runtime.json

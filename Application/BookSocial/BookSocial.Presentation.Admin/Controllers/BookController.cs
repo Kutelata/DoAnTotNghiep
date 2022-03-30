@@ -102,11 +102,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     if (Image != null && Image.Length > 0)
                     {
-                        var pathBook = Path
-                            .Combine(Directory
-                            .GetParent(Directory
-                            .GetCurrentDirectory())
-                            .FullName, "BookSocial.Asset\\images\\book");
+                        var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\book");
                         var imagePath = Path.Combine(pathBook, book.Image);
                         using (var stream = new FileStream(imagePath, FileMode.Create))
                         {
