@@ -8,15 +8,30 @@ namespace BookSocial.Presentation.Admin.Controllers
         private readonly IUserService _userService;
         private readonly IGenreService _genreService;
         private readonly IBookService _bookService;
+        private readonly ICommentService _commentService;
+        private readonly IAuthorService _authorService;
+        private readonly IAuthorBookService _authorBookService;
+        private readonly IShelfService _shelfService;
+        private readonly IArticleService _articleService;
 
         public HomeController(
             IUserService userService,
             IGenreService genreService,
-            IBookService bookService)
+            IBookService bookService,
+            ICommentService commentService,
+            IAuthorService authorService,
+            IAuthorBookService authorBookService,
+            IShelfService shelfService,
+            IArticleService articleService)
         {
             _userService = userService;
             _genreService = genreService;
             _bookService = bookService;
+            _commentService = commentService;
+            _authorService = authorService;
+            _authorBookService = authorBookService;
+            _shelfService = shelfService;
+            _articleService = articleService;
         }
 
         public IActionResult Index()

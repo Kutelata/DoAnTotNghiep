@@ -1,21 +1,82 @@
-﻿@model BookSocial.EntityClass.Entity.Genre
+﻿@model BookSocial.EntityClass.Entity.Book
 
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Edit Genre</h2>
+            <h2>Edit Book</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             <br />
-            <form action="@Url.Action("EditGenre")" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form action="@Url.Action("EditBook")" method="post" class="form-horizontal form-label-left"
+                  enctype="multipart/form-data">
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
-                        Genre Name <span class="required">*</span> :
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Isbn :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
-                        <input asp-for="Name" type="text" id="first-name" class="form-control">
+                        <input asp-for="Isbn" type="text" class="form-control" />
+                        <span asp-validation-for="Isbn" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Book name <span class="required">*</span> :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Name" type="text" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Image :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input id="img-file" asp-for="Image" type="file" class="my-input-file form-control" value="@Model.Image" />
+                        @{
+                            var pathIncludeImage = @Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+                            var replaceBinImage = pathIncludeImage.Replace(@"\","/");
+                        }
+                        <img class="" id="img-preview" style="width:200px"
+                             src="file:///@replaceBinImage/BookSocial.Asset/images/book/@Model.Image" />
+                        <span asp-validation-for=" Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Description :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Page number :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="PageNumber" type="number" class="form-control" />
+                        <span asp-validation-for="PageNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Published :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Published" type="date" class="form-control" />
+                        <span asp-validation-for="Published" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Genre name :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <select class="custom-select" asp-for="GenreId" asp-items="@ViewBag.Genres"></select>
+                        <span asp-validation-for="GenreId" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="item form-group justify-content-center">
@@ -28,3 +89,7 @@
         </div>
     </div>
 </div>
+
+@section script{
+<script src="~/my_script/book/action_display_image.js"></script>
+}

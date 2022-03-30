@@ -32,7 +32,7 @@ namespace BookSocial.API.Controllers
         {
             try
             {
-                var data = await _articleRepository.GetByBookId(int bookId);
+                var data = await _articleRepository.GetByBookId(bookId);
                 return Ok(data);
             }
             catch (Exception ex)

@@ -34,6 +34,16 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public async Task<IEnumerable<Article>> GetByBookId(int bookId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Article>(
+                    @"SELECT id, [text], star, created_at, book_id, [user_id] FROM Article WHERE book_id = @bookId", 
+                    new { bookId });
+            }
+        }
+
         public async Task<Article> GetById(int id)
         {
             using (var con = GetConnection())
