@@ -42,11 +42,11 @@ namespace BookSocial.Presentation.Admin.Controllers
                 if (search != null)
                 {
                     dataInPage = dataInPage.Where(data =>
-                        data.Isbn.ToLower().Contains(search) ||
-                        data.BookName.ToLower().Contains(search) ||
-                        data.Image.ToLower().Contains(search) ||
+                        data.Isbn.Contains(search) ||
+                        data.BookName.Contains(search) ||
+                        (data.Image != null && data.Image.Contains(search)) ||
                         data.Published.ToString().Contains(search) ||
-                        data.GenreName.ToLower().Contains(search) ||
+                        data.GenreName.Contains(search) ||
                         data.NumberOfAuthors.ToString() == search ||
                         data.NumberOfArticles.ToString() == search ||
                         data.NumberOfShelfs.ToString() == search);
@@ -149,16 +149,16 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     book.Image = $"{book.Isbn}.jpg";
                 }
+                else
+                {
+                    book.Image = currentBook.Image;
+                }
                 int result = await _bookService.Update(book);
                 if (result != 0)
                 {
                     if (Image != null && Image.Length > 0)
                     {
-                        var pathBook = Path
-                            .Combine(Directory
-                            .GetParent(Directory
-                            .GetCurrentDirectory())
-                            .FullName, "BookSocial.Asset\\images\\book");
+                        var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\book");
                         var imagePath = Path.Combine(pathBook, book.Image);
                         using (var stream = new FileStream(imagePath, FileMode.Create))
                         {
@@ -185,17 +185,17 @@ namespace BookSocial.Presentation.Admin.Controllers
             var articleHaveBook = await _articleService.GetByBookId(id);
             var shelfHaveBook = await _shelfService.GetByBookId(id);
 
-            if (authorAssignToBook != null)
+            if (authorAssignToBook.Any())
             {
                 TempData["Fail"] = "Delete Book failed, still assigned to author!";
                 return RedirectToAction("BookList", "Home");
             }
-            if (articleHaveBook != null)
+            if (articleHaveBook.Any())
             {
                 TempData["Fail"] = "Delete Book failed, still have article!";
                 return RedirectToAction("BookList", "Home");
             }
-            if (shelfHaveBook != null)
+            if (shelfHaveBook.Any())
             {
                 TempData["Fail"] = "Delete Book failed, still have shelf!";
                 return RedirectToAction("BookList", "Home");
@@ -205,6 +205,15 @@ namespace BookSocial.Presentation.Admin.Controllers
                 int result = await _bookService.Delete(id);
                 if (result != 0)
                 {
+                    if (!string.IsNullOrEmpty(bookToDelete.Image))
+                    {
+                        var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\book");
+                        var imagePath = Path.Combine(pathBook, bookToDelete.Image);
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
                     TempData["Success"] = "Delete Book success!";
                 }
                 else

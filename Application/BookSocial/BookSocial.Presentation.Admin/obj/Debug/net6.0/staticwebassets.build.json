@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BA3/UxCSxcPKz57W5uLIYoaPTXdk7p2auovNqNVLuxc=",
+  "Hash": "S9uFb2SDtbMyOlyOAjk5uXRjOHHf+ZCiMhb1wLLIoPs=",
   "Source": "BookSocial.Presentation.Admin",
   "BasePath": "_content/BookSocial.Presentation.Admin",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\assets\\images\\book\\0062889443.jpg",
+      "SourceId": "BookSocial.Presentation.Admin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.Admin",
+      "RelativePath": "assets/images/book/0062889443.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\book\\0062889443.jpg"
+    },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\build\\css\\custom.css",
       "SourceId": "BookSocial.Presentation.Admin",

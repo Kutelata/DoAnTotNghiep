@@ -85,7 +85,7 @@
                                 <td class=" ">@item.Isbn</td>
                                 <td class=" ">@item.BookName</td>
                                 <td class=" ">@item.Image</td>
-                                <td class=" ">@item.Published</td>
+                                <td class=" ">@(item.Published == new DateTime(0001,01,01,00,00,00) ? "" : item.Published.ToShortDateString())</td>
                                 <td class=" ">@item.GenreName</td>
                                 <td class=" ">@item.NumberOfAuthors</td>
                                 <td class=" ">@item.NumberOfArticles</td>

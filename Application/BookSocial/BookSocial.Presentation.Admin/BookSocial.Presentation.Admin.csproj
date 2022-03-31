@@ -40,6 +40,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\assets\images\" />
+	  <Folder Include="wwwroot\assets\images\book\" />
+	  <Folder Include="wwwroot\assets\images\author\" />
+	  <Folder Include="wwwroot\assets\images\user\" />
 	</ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
 using BookSocial.EntityClass.Entity;
+using Dapper;
 
 namespace BookSocial.DataAccess.DataAccessClass
 {
@@ -28,6 +29,16 @@ namespace BookSocial.DataAccess.DataAccessClass
         public Task<int> Update(Shelf entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Shelf>> GetByBookId(int bookId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Shelf>(
+                    @"SELECT [page], progress_read as 'progressRead', book_id as 'bookId', [user_id] as 'userId' FROM Shelf WHERE book_id = @bookId",
+                    new { bookId });
+            }
         }
     }
 }
