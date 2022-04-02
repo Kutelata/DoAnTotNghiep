@@ -751,8 +751,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hclon\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -760,14 +759,11 @@
       "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
       "projectName": "BookSocial.API",
       "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\BookSocial.API.csproj",
-      "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -821,7 +817,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
