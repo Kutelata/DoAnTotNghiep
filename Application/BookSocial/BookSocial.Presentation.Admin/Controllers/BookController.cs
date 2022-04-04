@@ -42,11 +42,11 @@ namespace BookSocial.Presentation.Admin.Controllers
                 if (search != null)
                 {
                     dataInPage = dataInPage.Where(data =>
-                        data.Isbn.Contains(search) ||
-                        data.BookName.Contains(search) ||
+                        (data.Isbn != null && data.Isbn.Contains(search)) ||
+                        (data.BookName != null && data.BookName.Contains(search)) ||
                         (data.Image != null && data.Image.Contains(search)) ||
                         data.Published.ToString().Contains(search) ||
-                        data.GenreName.Contains(search) ||
+                        (data.GenreName != null && data.GenreName.Contains(search)) ||
                         data.NumberOfAuthors.ToString() == search ||
                         data.NumberOfArticles.ToString() == search ||
                         data.NumberOfShelfs.ToString() == search);
@@ -74,6 +74,16 @@ namespace BookSocial.Presentation.Admin.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
             return View("~/Views/Book/Index.cshtml", dataInPage);
+        }
+
+        public async Task<IActionResult> DetailBook(int id)
+        {
+            var data = await _bookService.GetById(id);
+            if (data != null)
+            {
+                return View("~/Views/Book/Detail.cshtml", data);
+            }
+            return RedirectToAction("NotFound404", "Route");
         }
 
         public async Task<IActionResult> CreateBook()

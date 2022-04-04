@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "9vb7VSA80O/bzaW+zAkxvEOIyJslEUmxkNC+YXD3o/j6ZBpjOoWIOU3CgswanyTojWkD1QLtDen3P0kc1svvXA==",
+  "dgSpecHash": "Ja+hcs4k9CHbtyLAwZS7xSgt/6rKt2ecyNFZ/IMNwQhitgi7MKQTwKYalUIJv2xvh6TCxOMqdowFYNwayvgL/Q==",
   "success": true,
   "projectFilePath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\BookSocial.Presentation.User.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

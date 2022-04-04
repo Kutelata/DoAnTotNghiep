@@ -1,10 +1,10 @@
 insert into [User] values
 -- ('name','phone','email','account','password','image','address','description','birthday','gender','friend','status','role_id')
 
-('Cong Phuong','0832536199','congphuong@gmail.com','user','user123',null,'Ho Chi Minh','Today is the good day to die !','2000-02-23',1,'',1,0),
-('Long','0832536199','hclong2k@gmail.com','admin','admin123',null,'Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,'',1,1),
-('Quang Hai','0832536199','quanghai@gmail.com','library','library123',null,'Hai Phong','','2000-03-23',1,'',1,2),
-('Xuan Truong','0832536199','xuantruong@gmail.com','manager','manager123',null,'Da Nang','','2000-04-23',1,'',1,3)
+('Cong Phuong','0832536199','congphuong@gmail.com','user','user123','','Ho Chi Minh','Today is the good day to die !','2000-02-23',1,'',1,0),
+('Long','0832536199','hclong2k@gmail.com','admin','admin123','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,'',1,1),
+('Quang Hai','0832536199','quanghai@gmail.com','library','library123','','Hai Phong','','2000-03-23',1,'',1,2),
+('Xuan Truong','0832536199','xuantruong@gmail.com','manager','manager123','','Da Nang','','2000-04-23',1,'',1,3)
 go
 
 insert into Genre values

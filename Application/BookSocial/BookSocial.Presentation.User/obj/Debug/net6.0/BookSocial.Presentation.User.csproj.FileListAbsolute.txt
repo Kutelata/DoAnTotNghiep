@@ -46,3 +46,8 @@ D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentat
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.pdb
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.genruntimeconfig.cache
 D:\Study\DoAnTotNghiep\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\refint\BookSocial.Presentation.User.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.EntityClass.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.Service.dll
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.Service.pdb
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.EntityClass.pdb
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.csproj.CopyComplete

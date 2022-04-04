@@ -1,0 +1,78 @@
+﻿@model BookSocial.EntityClass.Entity.Book
+
+@section css{
+<link href="~/my_style/jquery-ui.css" rel="stylesheet" />
+}
+
+<div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="to">
+</div>
+
+@section script{
+<script src="~/my_script/jquery-ui.min.js"></script>
+<script>
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $("#tags").autocomplete({
+      source: availableTags
+    });
+    $("#to").autocomplete({
+    source: function (request, response) {
+
+        var friendsArray = [];
+        friendsArray = [{
+            "id": 1,
+            "name": "hulk",
+            "value": "hulk"
+        }, {
+            "id": 2,
+            "name": "ironman",
+            "value": "ironman"
+        }, {
+            "id": 3,
+            "name": "Foobar",
+            "value": "Foobar"
+        }];
+
+        response(friendsArray);
+        return;
+
+
+    },
+
+    select: function (e, ui) {
+
+        alert("selected!");
+    },
+
+    change: function (e, ui) {
+
+        alert("changed!");
+    }
+});
+</script>
+}
+
