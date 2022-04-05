@@ -9,6 +9,13 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Author/Index.cshtml");
         }
 
+        public async Task<IActionResult> AuthorData(string search)
+        {
+            var data = await _authorService.GetAll();
+            var handleData = data.Where(data => (data.Name != null && data.Name.Contains(search)));
+            return Json(handleData);
+        }
+
         public IActionResult DetailAuthor()
         {
             return View("~/View/Author/Detail");
