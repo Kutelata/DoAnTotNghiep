@@ -39,7 +39,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Article>(
-                    @"SELECT id, [text], star, created_at, book_id, [user_id] FROM Article WHERE book_id = @bookId", 
+                    @"SELECT id, [text], star, created_at, book_id, [user_id] FROM Article WHERE book_id = @bookId",
                     new { bookId });
             }
         }

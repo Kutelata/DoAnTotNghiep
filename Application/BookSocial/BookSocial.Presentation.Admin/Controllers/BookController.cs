@@ -78,10 +78,19 @@ namespace BookSocial.Presentation.Admin.Controllers
 
         public async Task<IActionResult> DetailBook(int id)
         {
-            var data = await _bookService.GetById(id);
-            if (data != null)
+            var dataBook = await _bookService.GetById(id);
+            if (dataBook != null)
             {
-                return View("~/Views/Book/Detail.cshtml", data);
+                List<Author> authors = new();
+                var authorAssignToBook = await _authorBookService.GetByBookId(id);
+                foreach (var authorId in authorAssignToBook)
+                {
+                    var author = await _authorService.GetById(authorId.AuthorId);
+                    authors.Add(author);
+                }
+                ViewData["AuthorByBookId"] = authors;
+                ViewData["GenreByBookId"] = await _genreService.GetById(dataBook.GenreId);
+                return View("~/Views/Book/Detail.cshtml", dataBook);
             }
             return RedirectToAction("NotFound404", "Route");
         }

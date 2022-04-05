@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "ws46rJVFw0+bJyf7es99ZRCkRwIk+gB+RPYQAhZMI4c=",
+  "Hash": "dmwVfW2skXinEBsDt7Njh7EyBH5KKNYdKR0z+XKNdJw=",
   "Source": "BookSocial.API",
   "BasePath": "_content/BookSocial.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookSocial.API\\wwwroot",
+      "Source": "BookSocial.API",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.API\\wwwroot\\",
+      "BasePath": "_content/BookSocial.API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
