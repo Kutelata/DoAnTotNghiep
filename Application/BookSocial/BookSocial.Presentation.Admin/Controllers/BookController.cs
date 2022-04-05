@@ -1,6 +1,7 @@
 ﻿using BookSocial.EntityClass.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
@@ -74,6 +75,22 @@ namespace BookSocial.Presentation.Admin.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
             return View("~/Views/Book/Index.cshtml", dataInPage);
+        }
+
+        public async Task<IActionResult> ExportToCsv()
+        {
+            var data = await _bookService.GetBookStatistic();
+            var builder = new StringBuilder();
+            builder.AppendLine("Id,Isbn,Book Name,Image,Published," +
+                "Genre Name,Number Of Authors,Number Of Articles,Number Of Shelfs");
+            foreach (var item in data)
+            {
+                builder.AppendLine(
+                    $"{item.Id},{item.Isbn},{item.BookName}," +
+                    $"{item.Image},{item.Published},{item.GenreName}," +
+                    $"{item.NumberOfAuthors},{item.NumberOfArticles},{item.NumberOfShelfs}");
+            }
+            return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", "Reports.csv");
         }
 
         public async Task<IActionResult> DetailBook(int id)
@@ -243,5 +260,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             return View("~/Views/Error/NotFound404.cshtml");
         }
+
+
     }
 }

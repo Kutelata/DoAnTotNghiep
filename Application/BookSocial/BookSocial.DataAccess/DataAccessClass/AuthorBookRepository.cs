@@ -10,7 +10,7 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(@"INSERT INTO AuthorBook VALUES (@bookId, @authorId)", entity);
+                return await con.ExecuteAsync(@"INSERT INTO Author_Book VALUES (@bookId, @authorId)", entity);
             }
         }
 
@@ -35,6 +35,17 @@ namespace BookSocial.DataAccess.DataAccessClass
             {
                 return await con.QueryAsync<AuthorBook>(
                     @"SELECT book_id as 'bookId', author_id as 'authorId' FROM Author_Book");
+            }
+        }
+
+        public async Task<AuthorBook> GetByAuthorBookId(int bookId, int authorId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<AuthorBook>(
+                    @"SELECT book_id as 'bookId', author_id as 'authorId' 
+                    FROM Author_Book WHERE book_id = @bookId and author_id = @authorId",
+                    new { bookId, authorId });
             }
         }
 

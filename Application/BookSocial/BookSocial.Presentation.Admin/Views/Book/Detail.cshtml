@@ -37,9 +37,10 @@
                         <li><b>Book Id:</b> @Model.Id</li>
                         <li><b>Isbn:</b> @Model.Isbn</li>
                         <li><b>Book Name:</b> @Model.Name</li>
+                        <li><b>Image:</b></li>
                         <li>
-                            <b>Image:</b>
-                            <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")" style="width:200px" src="~/assets/images/book/@Model.Image" />
+                            <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")"
+                                 style="width:200px" src="~/assets/images/book/@Model.Image" />
                         </li>
                         <li><b>Description:</b> @Model.Description</li>
                         <li><b>Page Number:</b> @Model.PageNumber</li>
@@ -51,19 +52,36 @@
                     <ul class="list-unstyled my-ul-assign-book user_data">
                         @foreach (var a in author)
                         {
-                            <li><b>Author Id:</b> @a.Id</li>
+                            <li>
+                                <b>Author Id:</b>
+                                @a.Id
+                                <a class="btn-delete" data-author-id="@a.Id" data-book-id="@Model.Id" style="color:red" href="#">
+                                    <i style="color:red" class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </li>
                             <li><b>Author Name:</b> @a.Name</li>
-                            <a class="my-btn btn btn-outline-danger"><i class="fa fa-trash-o"></i></a>
                             <br />
                         }
                     </ul>
-                    <form action="@Url.Action("CreateBook")" method="post" class="form-horizontal form-label-left"
-                          enctype="multipart/form-data">
+                    <form action="@Url.Action("AssignAuthorToBook")" method="post" class="form-horizontal form-label-left">
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @TempData["Success"]
+                            </div>
+                        }
+                        @if (TempData["Fail"] != null)
+                        {
+                            <div class="alert alert-error" role="alert">
+                                @TempData["Fail"]
+                            </div>
+                        }
+                        <input type="hidden" name="BookId" value="@Model.Id" />
                         <ul class="list-unstyled user_data">
                             <li>Author Id: </li>
                             <li>
                                 <div class="ui-widget">
-                                    <input id="assign-author-id" type="number" class="form-control" readonly="readonly" />
+                                    <input id="assign-author-id" name="AuthorId" type="number" class="form-control" readonly="readonly" />
                                 </div>
                             </li>
                             <li>Author Name: </li>
@@ -90,5 +108,6 @@
 <script src="~/my_script/jquery-ui.min.js"></script>
 <script src="~/my_script/get_param_url.js"></script>
 <script src="~/my_script/book/action_autocomplete.js"></script>
+<script src="~/my_script/author_book/action_delete.js"></script>
 }
 

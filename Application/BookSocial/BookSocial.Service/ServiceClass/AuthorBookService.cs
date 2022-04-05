@@ -20,5 +20,21 @@ namespace BookSocial.Service.ServiceClass
             var data = response.IsSuccessStatusCode ? 1 : 0;
             return data;
         }
+
+        public async Task<int> Create(AuthorBook authorBook)
+        {
+            var response = await GetClient().PostAsJsonAsync($"AuthorBook/Create", authorBook);
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
+        public async Task<AuthorBook> GetByAuthorBookId(int bookId, int authorId)
+        {
+            var response = await GetClient().
+                GetAsync($"AuthorBook/GetByAuthorBookId?bookId={bookId}&authorId={authorId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<AuthorBook>() : null;
+            return data;
+        }
     }
 }

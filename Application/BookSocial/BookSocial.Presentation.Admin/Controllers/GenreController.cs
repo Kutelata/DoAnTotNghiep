@@ -35,7 +35,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 if (search != null)
                 {
                     dataInPage = dataInPage.Where(data =>
-                        data.Name.ToLower().Contains(search) ||
+                        (data.Name != null && data.Name.ToLower().Contains(search)) ||
                         data.NumberOfBooks.ToString() == search);
                 }
 
