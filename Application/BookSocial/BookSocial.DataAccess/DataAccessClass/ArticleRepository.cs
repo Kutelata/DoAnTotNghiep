@@ -1,4 +1,5 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
 
@@ -31,6 +32,29 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Article>(@"SELECT id, [text], star, created_at, book_id, [user_id] FROM Article");
+            }
+        }
+
+        public async Task<IEnumerable<ArticleStatistic>> GetArticleStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<ArticleStatistic>(
+                    @"SELECT 
+	                    a.id as 'articleId',
+	                    a.[text],
+						a.star,
+						a.created_at as 'createdAt',
+						b.id as 'bookId',
+						b.[name],
+						u.id as 'userId',
+						u.[name],
+						COUNT(c.id) as 'numberOfComments'
+                    FROM Article a
+					LEFT JOIN [User] u ON u.id = a.[user_id]
+					LEFT JOIN Comment c ON c.article_id = a.id
+					LEFT JOIN Book b ON b.id = a.book_id
+                    GROUP BY a.id,a.[text],a.star,a.created_at,b.id,b.[name],u.id,u.[name]");
             }
         }
 

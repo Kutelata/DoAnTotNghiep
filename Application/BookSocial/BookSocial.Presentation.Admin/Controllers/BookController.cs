@@ -1,13 +1,14 @@
 ﻿using BookSocial.EntityClass.Entity;
+using CsvHelper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Text;
+using System.Globalization;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        public async Task<IActionResult> BookList(int page = 1, string search = null, string sort = "Isbn")
+        public async Task<IActionResult> BookList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _bookService.GetBookStatistic();
             var dataInPage = allData;
@@ -24,6 +25,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     switch (sort)
                     {
+                        case "Id": dataInPage = dataInPage.OrderBy(x => x.Id); break;
                         case "Isbn": dataInPage = dataInPage.OrderBy(x => x.Isbn); break;
                         case "BookName": dataInPage = dataInPage.OrderBy(x => x.BookName); break;
                         case "Image": dataInPage = dataInPage.OrderBy(x => x.Image); break;
@@ -43,6 +45,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 if (search != null)
                 {
                     dataInPage = dataInPage.Where(data =>
+                        (data.Id.ToString() == search) ||
                         (data.Isbn != null && data.Isbn.Contains(search)) ||
                         (data.BookName != null && data.BookName.Contains(search)) ||
                         (data.Image != null && data.Image.Contains(search)) ||
@@ -77,20 +80,19 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Index.cshtml", dataInPage);
         }
 
-        public async Task<IActionResult> ExportToCsv()
+        public async Task<IActionResult> ExportBookToCsv()
         {
             var data = await _bookService.GetBookStatistic();
-            var builder = new StringBuilder();
-            builder.AppendLine("Id,Isbn,Book Name,Image,Published," +
-                "Genre Name,Number Of Authors,Number Of Articles,Number Of Shelfs");
-            foreach (var item in data)
+
+            using (var memoryStream = new MemoryStream())
             {
-                builder.AppendLine(
-                    $"{item.Id},{item.Isbn},{item.BookName}," +
-                    $"{item.Image},{item.Published},{item.GenreName}," +
-                    $"{item.NumberOfAuthors},{item.NumberOfArticles},{item.NumberOfShelfs}");
+                using (var streamWriter = new StreamWriter(memoryStream))
+                using (var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                {
+                    csvWriter.WriteRecords(data);
+                }
+                return File(memoryStream.ToArray(), "text/csv", "Reports.csv");
             }
-            return File(Encoding.UTF8.GetBytes(builder.ToString()), "text/csv", "Reports.csv");
         }
 
         public async Task<IActionResult> DetailBook(int id)
@@ -202,12 +204,13 @@ namespace BookSocial.Presentation.Admin.Controllers
                         }
                     }
                     TempData["Success"] = "Edit Book success!";
+                    return RedirectToAction("BookList", "Home", new { search = book.Id });
                 }
                 else
                 {
                     TempData["Fail"] = "Edit Book failed!";
+                    return RedirectToAction("BookList", "Home");
                 }
-                return RedirectToAction("BookList", "Home");
             }
             var genres = await _genreService.GetAll();
             ViewBag.Genres = new SelectList(genres, "Id", "Name", book.GenreId);
@@ -260,7 +263,5 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             return View("~/Views/Error/NotFound404.cshtml");
         }
-
-
     }
 }

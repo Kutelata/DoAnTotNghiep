@@ -5,7 +5,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        public async Task<IActionResult> GenreList(int page = 1, string search = null, string sort = "Name")
+        public async Task<IActionResult> GenreList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _genreService.GetGenreStatistic();
             var dataInPage = allData;
@@ -22,6 +22,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     switch (sort)
                     {
+                        case "Id": dataInPage = dataInPage.OrderBy(x => x.Id); break;
                         case "Name": dataInPage = dataInPage.OrderBy(x => x.Name); break;
                         case "NumberOfBooks": dataInPage = dataInPage.OrderBy(x => x.NumberOfBooks); break;
                     }
@@ -35,6 +36,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 if (search != null)
                 {
                     dataInPage = dataInPage.Where(data =>
+                        (data.Id.ToString() == search) ||
                         (data.Name != null && data.Name.ToLower().Contains(search)) ||
                         data.NumberOfBooks.ToString() == search);
                 }
@@ -134,7 +136,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             if (data != null)
             {
                 var checkBookExist = await _bookService.GetByGenreId(id);
-                if (checkBookExist == null)
+                if (!checkBookExist.Any())
                 {
                     int result = await _genreService.Delete(id);
                     if (result != 0)
@@ -150,9 +152,6 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     TempData["Fail"] = "Delete genre failed, still books left!";
                 }
-                //Response.Headers.CacheControl = "no-cache";
-                //Response.Headers.Pragma = "no-cache";
-                //Response.Headers.Expires = "-1";
                 return RedirectToAction("GenreList", "Home");
             }
             return View("~/Views/Error/NotFound404.cshtml");

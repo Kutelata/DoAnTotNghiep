@@ -8,7 +8,7 @@
                     <h2>Book List</h2>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportToCsv")"><i class="fa fa-download"></i> Export</a>
+                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportBookToCsv")"><i class="fa fa-download"></i> Export</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -22,7 +22,8 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Isbn">Isbn</option>
+                                <option selected value="Id">Id</option>
+                                <option value="Isbn">Isbn</option>
                                 <option value="BookName">Book Name</option>
                                 <option value="Image">Image</option>
                                 <option value="Published">Published</option>
@@ -123,7 +124,7 @@
                                 new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
                             </li>
                         }
-                        else
+                        else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
                         {
                             <li>
                                 <a href="@Url.Action("BookList","Home",

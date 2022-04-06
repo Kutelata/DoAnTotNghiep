@@ -25,6 +25,20 @@ namespace BookSocial.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+        } 
+        
+        [HttpGet]
+        public async Task<IActionResult> GetArticleStatistic()
+        {
+            try
+            {
+                var data = await _articleRepository.GetArticleStatistic();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet]

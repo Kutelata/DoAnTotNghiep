@@ -1,4 +1,5 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Dapper;
 
@@ -28,6 +29,24 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Author>(@"SELECT id, [name], [image], [description], birthday FROM Author");
+            }
+        }
+
+        public async Task<IEnumerable<AuthorStatistic>> GetAuthorStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<AuthorStatistic>(
+                    @"SELECT 
+	                    a.id,
+	                    a.[name] as 'authorName',
+						a.[image],
+						a.[description],
+						a.birthday,
+						COUNT(ab.book_id) as 'numberOfBooks'
+                    FROM Author a
+					LEFT JOIN Author_Book ab ON ab.author_id = a.id
+                    GROUP BY a.id, a.[name], a.[image], a.[description], a.birthday");
             }
         }
 

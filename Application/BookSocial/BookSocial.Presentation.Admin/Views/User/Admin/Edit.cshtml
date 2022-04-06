@@ -1,0 +1,90 @@
+﻿@model BookSocial.EntityClass.Entity.Book
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Edit Book</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <form action="@Url.Action("EditBook")" method="post" class="form-horizontal form-label-left"
+                  enctype="multipart/form-data">
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Isbn :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Isbn" type="text" class="form-control" />
+                        <span asp-validation-for="Isbn" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Book name <span class="required">*</span> :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Name" type="text" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Image :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input id="img-file" asp-for="Image" type="file" class="my-input-file form-control" value="@Model.Image" />
+                        <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")" id="img-preview" style="width:200px" src="~/assets/images/book/@Model.Image" />
+                        <span asp-validation-for=" Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Description :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Page number :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="PageNumber" type="number" class="form-control" />
+                        <span asp-validation-for="PageNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Published :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Published" type="date" class="form-control" />
+                        <span asp-validation-for="Published" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group">
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Genre name :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <select class="custom-select" asp-for="GenreId" asp-items="@ViewBag.Genres"></select>
+                        <span asp-validation-for="GenreId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="item form-group justify-content-center">
+                    <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
+                        <button type="submit" class="mt-2 btn btn-success">Submit</button>
+                        <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section script{
+<script src="~/my_script/book/action_display_image.js"></script>
+}

@@ -1,6 +1,12 @@
-﻿namespace BookSocial.Service.ServiceInterface
+﻿using BookSocial.EntityClass.Entity;
+
+namespace BookSocial.Service.ServiceInterface
 {
     public interface ICommentService
     {
+        Task<IEnumerable<Comment>> GetByArticleId(int articleId);
+        Task<IEnumerable<Comment>> GetByParentId(int parentId);
+        Task<Comment> GetById(int commentId);
+        Task<int> Delete(int commentId);
     }
 }

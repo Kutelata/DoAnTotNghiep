@@ -15,7 +15,8 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Name">Genre Name</option>
+                                <option selected value="Id">Id</option>
+                                <option value="Name">Genre Name</option>
                                 <option value="NumberOfBooks">Number Of Books</option>
                             </select>
                         </div>
@@ -95,7 +96,7 @@
                                 new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
                             </li>
                         }
-                        else
+                        else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
                         {
                             <li>
                                 <a href="@Url.Action("GenreList","Home",

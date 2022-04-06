@@ -26,12 +26,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="CsvHelper" Version="27.2.1" />
 	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="wwwroot\assets\images\book\" />
-	  <Folder Include="wwwroot\assets\images\author\" />
-	  <Folder Include="wwwroot\assets\images\user\" />
 	</ItemGroup>
 </Project>

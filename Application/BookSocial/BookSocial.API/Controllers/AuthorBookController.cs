@@ -39,6 +39,20 @@ namespace BookSocial.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+        } 
+        
+        [HttpGet]
+        public async Task<IActionResult> GetByAuthorId(int authorId)
+        {
+            try
+            {
+                var data = await _authorBookRepository.GetByAuthorId(authorId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
         
         [HttpGet]

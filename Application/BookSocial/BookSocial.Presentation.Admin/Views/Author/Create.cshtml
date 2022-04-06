@@ -1,61 +1,63 @@
-﻿<div class="col-md-12 col-sm-12 ">
+﻿@model BookSocial.EntityClass.Entity.Author
+
+<div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Form Design</h2>
+            <h2>Create Author</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form action="@Url.Action("CreateAuthor")" method="post" class="form-horizontal form-label-left"
+                  enctype="multipart/form-data">
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">
-                        First Name <span class="required">*</span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Author name <span class="required">*</span> :
                     </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input type="text" id="first-name" required="required" class="form-control">
-                    </div>
-                </div>
-                <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="male" class="join-btn"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                <input type="radio" name="gender" value="female" class="join-btn"> Female
-                            </label>
-                        </div>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Name" type="text" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Date Of Birth <span class="required">*</span>
+                        Image :
                     </label>
-                    <div class="col-md-6 col-sm-6 ">
-                        <input id="birthday" class="date-picker form-control" placeholder="dd-mm-yyyy" type="text" required="required" onfocus="this.type='date'" onmouseover="this.type='date'" onclick="this.type='date'" onblur="this.type='text'" onmouseout="timeFunctionLong(this)">
-                        <script>
-                            function timeFunctionLong(input) {
-                                setTimeout(function() {
-                                    input.type = 'text';
-                                }, 60000);
-                            }
-                        </script>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input id="img-file" asp-for="Image" type="file" class="my-input-file form-control" />
+                        <img class="d-none" id="img-preview" style="width:200px" src="~/images/img.jpg" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="item form-group">
-                    <div class="col-md-6 col-sm-6 offset-md-3">
-                        <input type="file" />
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Description :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <textarea asp-for="Description" type="text" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="item form-group">
-                    <div class="col-md-6 col-sm-6 offset-md-3">
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <button class="btn btn-primary" type="reset">Reset</button>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                        Birthday :
+                    </label>
+                    <div class="col-md-9 col-sm-9 ">
+                        <input asp-for="Birthday" type="date" class="form-control" />
+                        <span asp-validation-for="Birthday" class="text-danger"></span>
                     </div>
                 </div>
-
+                <div class="item form-group justify-content-center">
+                    <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
+                        <button type="submit" class="mt-2 btn btn-success">Submit</button>
+                        <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+@section script{
+<script src="~/my_script/author/action_display_image.js"></script>
+}
