@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 // AddScoped HttpClient
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
 
-// AddScoped Repository
+// AddScoped Service
 RegisterService.Register(builder.Services);
 
 var app = builder.Build();

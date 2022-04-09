@@ -14,7 +14,6 @@ jQuery(document).ready(function($) {
 //------- remove class active on body
 $("body *").not('.top-area > .setting-area > li > a').on("click", function() {
 	$(".top-area > .setting-area > li > div").not('.searched').removeClass('active');
-	
  });
 	
 

@@ -3,7 +3,7 @@
     public class CommentStatistic
     {
         public int Id { get; set; }
-        public int Text { get; set; }
+        public string Text { get; set; }
         public int ParentId { get; set; }
         public DateTime CreatedAt { get; set; }
         public int ArticleId { get; set; }

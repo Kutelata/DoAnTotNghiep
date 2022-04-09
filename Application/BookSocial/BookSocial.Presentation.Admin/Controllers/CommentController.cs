@@ -6,7 +6,7 @@ namespace BookSocial.Presentation.Admin.Controllers
     {
         public async Task<IActionResult> CommentList(int page = 1, string search = null, string sort = "Id")
         {
-            var allData = await _articleService.GetArticleStatistic();
+            var allData = await _commentService.GetCommentStatistic();
             var dataInPage = allData;
             int size = 2;
 
@@ -23,13 +23,12 @@ namespace BookSocial.Presentation.Admin.Controllers
                     {
                         case "Id": dataInPage = dataInPage.OrderBy(x => x.Id); break;
                         case "Text": dataInPage = dataInPage.OrderBy(x => x.Text); break;
-                        case "Star": dataInPage = dataInPage.OrderBy(x => x.Star); break;
+                        case "ParentId": dataInPage = dataInPage.OrderBy(x => x.ParentId); break;
                         case "CreatedAt": dataInPage = dataInPage.OrderBy(x => x.CreatedAt); break;
-                        case "BookId": dataInPage = dataInPage.OrderBy(x => x.BookId); break;
-                        case "BookName": dataInPage = dataInPage.OrderBy(x => x.BookName); break;
+                        case "ArticleId": dataInPage = dataInPage.OrderBy(x => x.ArticleId); break;
                         case "UserId": dataInPage = dataInPage.OrderBy(x => x.UserId); break;
                         case "UserName": dataInPage = dataInPage.OrderBy(x => x.UserName); break;
-                        case "NumberOfComments": dataInPage = dataInPage.OrderBy(x => x.NumberOfComments); break;
+                        case "NumberCommentReplies": dataInPage = dataInPage.OrderBy(x => x.NumberCommentReplies); break;
                     }
                 }
 
@@ -43,13 +42,12 @@ namespace BookSocial.Presentation.Admin.Controllers
                     dataInPage = dataInPage.Where(data =>
                         (data.Id.ToString() == search) ||
                         (data.Text != null && data.Text.Contains(search)) ||
-                        (data.Star.ToString() == search) ||
+                        (data.ParentId.ToString() == search) ||
                         data.CreatedAt.ToString().Contains(search) ||
-                        (data.BookId.ToString() == search) ||
-                        (data.BookName != null && data.BookName.Contains(search)) ||
+                        (data.ArticleId.ToString() == search) ||
                         (data.UserId.ToString() == search) ||
                         (data.UserName != null && data.UserName.Contains(search)) ||
-                        data.NumberOfComments.ToString() == search);
+                        data.NumberCommentReplies.ToString() == search);
                 }
 
                 int pages = (int)Math.Ceiling((double)dataInPage.Count() / size);
@@ -73,7 +71,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
-            return View("~/Views/Article/Index.cshtml", dataInPage);
+            return View("~/Views/Comment/Index.cshtml", dataInPage);
         }
 
         public async Task<IActionResult> DeleteComment(int id)
@@ -83,7 +81,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 
             if (numberCommentReplies.Any())
             {
-                TempData["Fail"] = "Delete Article failed, still have comments!";
+                TempData["Fail"] = "Delete Comment failed, still have parent id!";
                 return RedirectToAction("CommentList", "Home");
             }
             if (commentToDelete != null)

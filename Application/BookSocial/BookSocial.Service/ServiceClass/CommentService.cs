@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Entity;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.Service.ServiceInterface;
 using System.Net.Http.Json;
 
@@ -34,6 +35,14 @@ namespace BookSocial.Service.ServiceClass
             var response = await GetClient().GetAsync($"Comment/GetByParentId?parentId={parentId}");
             var data = response.IsSuccessStatusCode
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Comment>>() : null;
+            return data;
+        }
+
+        public async Task<IEnumerable<CommentStatistic>> GetCommentStatistic()
+        {
+            var response = await GetClient().GetAsync($"Comment/GetCommentStatistic");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<CommentStatistic>>() : null;
             return data;
         }
     }
