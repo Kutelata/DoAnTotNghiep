@@ -38,6 +38,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<Comment>> GetByUserId(int userId)
+        {
+            var response = await GetClient().GetAsync($"Comment/GetByUserId?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<Comment>>() : null;
+            return data;
+        }
+
         public async Task<IEnumerable<CommentStatistic>> GetCommentStatistic()
         {
             var response = await GetClient().GetAsync($"Comment/GetCommentStatistic");

@@ -7,5 +7,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         Task<IEnumerable<ArticleStatistic>> GetArticleStatistic();
         Task<IEnumerable<Article>> GetByBookId(int bookId);
+        Task<IEnumerable<Article>> GetByUserId(int userId);
     }
 }

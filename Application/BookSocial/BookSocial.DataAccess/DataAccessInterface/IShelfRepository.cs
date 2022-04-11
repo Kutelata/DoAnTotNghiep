@@ -5,5 +5,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
     public interface IShelfRepository : IRepository<Shelf>
     {
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
+        Task<IEnumerable<Shelf>> GetByUserId(int userId);
     }
 }

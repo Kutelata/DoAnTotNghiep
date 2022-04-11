@@ -7,6 +7,7 @@ namespace BookSocial.Service.ServiceInterface
     {
         Task<IEnumerable<CommentStatistic>> GetCommentStatistic();
         Task<IEnumerable<Comment>> GetByArticleId(int articleId);
+        Task<IEnumerable<Comment>> GetByUserId(int userId);
         Task<IEnumerable<Comment>> GetByParentId(int parentId);
         Task<Comment> GetById(int commentId);
         Task<int> Delete(int commentId);

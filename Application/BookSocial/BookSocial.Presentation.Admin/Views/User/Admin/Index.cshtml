@@ -16,7 +16,9 @@
         </div>
         <div class="x_content">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3"></div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                    <a class="btn btn-outline-dark" href="@Url.Action("CreateUser")"><i class='fa fa-plus'></i> Create New</a>
+                </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
@@ -99,6 +101,9 @@
                                 <td class=" last">
                                     <a class="btn btn-outline-info" href="@Url.Action("DetailUser", "", new { id = @item.Id })">
                                         <i class='fa fa-folder'></i> View
+                                    </a>
+                                    <a class="btn btn-outline-primary" href="@Url.Action("EditUser", "", new { id = @item.Id })">
+                                        <i class='fa fa-pencil'></i> Edit
                                     </a>
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
                                         <i class='fa fa-trash-o'></i> Delete

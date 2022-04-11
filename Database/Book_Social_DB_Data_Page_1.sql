@@ -1,5 +1,5 @@
 insert into [User] values
--- ('name','phone','email','account','password','image','address','description','birthday','gender','friend','status','role_id')
+-- ('name','phone','email','account','password','image','address','description','birthday','gender','friend','status','role')
 
 ('Long0','0832536199','long0@gmail.com','long0','long0','user0.png','Ha Noi','Form is temporary but class is permanent !','2000-02-23',0,'',1,0),
 ('Long1','0832536200','long1@gmail.com','long1','long1','user1.png','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,'',1,1),

@@ -83,5 +83,35 @@ namespace BookSocial.DataAccess.DataAccessClass
                     WHERE id = @id", entity);
             }
         }
+
+        public async Task<IEnumerable<UserStatistic>> GetUserStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<UserStatistic>(
+                    @"SELECT 
+	                    u.id,
+						u.[name] as 'userName',
+	                    u.email,
+                        u.account,
+						u.[image],
+						u.gender,
+                        u.[status],
+						COUNT(getUserFriend.userId) as 'numberOfFriends',
+                        COUNT(s.book_id) as 'numberBooksOnShelf',
+						COUNT(a.id) as 'numberOfArticles',
+						COUNT(c.id) as 'numberOfComments'
+                    FROM [User] u
+					FULL OUTER JOIN 
+                        (SELECT u.id as 'userId', splitUserFriend.value as 'userFriend'
+					    FROM [User] u CROSS APPLY STRING_SPLIT(u.friend, ',') splitUserFriend
+					    WHERE splitUserFriend.VALUE <> ''
+					    GROUP BY splitUserFriend.VALUE, u.id) getUserFriend ON getUserFriend.userId = u.id
+					FULL OUTER JOIN Shelf s ON s.[user_id] = u.id
+					FULL OUTER JOIN Article a ON a.[user_id] = u.id
+					FULL OUTER JOIN Comment c ON c.[user_id] = u.id
+                    GROUP BY u.id, u.[name], u.email, u.account, u.[image], u.gender, u.friend, u.[status]");
+            }
+        }
     }
 }

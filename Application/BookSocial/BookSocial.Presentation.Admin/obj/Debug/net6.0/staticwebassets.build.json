@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2u8H9+Z16v1eyBOY8kAz8zLNLLCzdF920QzJlGPP2f0=",
+  "Hash": "k/85YZE/b4+VOSEGVXDRW5ypJEQvM/KUtEH4IQpwvNw=",
   "Source": "BookSocial.Presentation.Admin",
   "BasePath": "_content/BookSocial.Presentation.Admin",
   "Mode": "Default",
@@ -423,6 +423,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_script\\jquery-ui.min.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\my_script\\user\\action_delete.js",
+      "SourceId": "BookSocial.Presentation.Admin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.Admin",
+      "RelativePath": "my_script/user/action_delete.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_script\\user\\action_delete.js"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\my_style\\jquery-ui.css",

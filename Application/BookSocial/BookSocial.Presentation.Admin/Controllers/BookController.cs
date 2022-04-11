@@ -91,7 +91,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 {
                     csvWriter.WriteRecords(data);
                 }
-                return File(memoryStream.ToArray(), "text/csv", "Reports.csv");
+                return File(memoryStream.ToArray(), "text/csv", "BookReports.csv");
             }
         }
 

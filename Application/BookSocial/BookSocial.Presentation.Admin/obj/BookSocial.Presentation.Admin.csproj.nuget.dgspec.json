@@ -10,14 +10,11 @@
         "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj",
         "projectName": "BookSocial.EntityClass",
         "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj",
-        "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -68,14 +65,11 @@
         "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\BookSocial.Presentation.Admin.csproj",
         "projectName": "BookSocial.Presentation.Admin",
         "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\BookSocial.Presentation.Admin.csproj",
-        "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -133,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -143,14 +137,11 @@
         "projectUniqueName": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Service\\BookSocial.Service.csproj",
         "projectName": "BookSocial.Service",
         "projectPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Service\\BookSocial.Service.csproj",
-        "packagesPath": "C:\\Users\\hclon\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
         "outputPath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Service\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\hclon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -201,7 +192,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

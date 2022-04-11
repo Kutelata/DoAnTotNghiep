@@ -5,6 +5,7 @@ namespace BookSocial.DataAccess.DataAccessInterface
 {
     public interface IUserRepository : IRepository<User>
     {
+        public Task<IEnumerable<UserStatistic>> GetUserStatistic();
         public Task<UserSaveCookie> GetUserSaveCookie(string account, string password);
     }
 }

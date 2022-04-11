@@ -69,6 +69,19 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public async Task<IEnumerable<Comment>> GetByUserId(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Comment>(
+                    @"SELECT  
+                        id, [text], parent_id, 
+                        created_at as 'createdAt', [article_id] as 'articleId', 
+                        [user_id] as 'userId'
+                    FROM Comment WHERE [user_id] = @userId", new { userId });
+            }
+        }
+
         public async Task<IEnumerable<CommentStatistic>> GetCommentStatistic()
         {
             using (var con = GetConnection())

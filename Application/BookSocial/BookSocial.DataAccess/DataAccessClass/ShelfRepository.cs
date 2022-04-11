@@ -36,8 +36,20 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Shelf>(
-                    @"SELECT [page], progress_read as 'progressRead', book_id as 'bookId', [user_id] as 'userId' FROM Shelf WHERE book_id = @bookId",
+                    @"SELECT [page], progress_read as 'progressRead', book_id as 'bookId', 
+                    [user_id] as 'userId' FROM Shelf WHERE book_id = @bookId",
                     new { bookId });
+            }
+        }
+
+        public async Task<IEnumerable<Shelf>> GetByUserId(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<Shelf>(
+                    @"SELECT [page], progress_read as 'progressRead', book_id as 'bookId', 
+                    [user_id] as 'userId' FROM Shelf WHERE [user_id] = @userId",
+                    new { userId });
             }
         }
     }

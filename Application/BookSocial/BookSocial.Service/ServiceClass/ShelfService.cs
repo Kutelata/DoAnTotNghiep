@@ -13,5 +13,13 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Shelf>>() : null;
             return data;
         }
+
+        public async Task<IEnumerable<Shelf>> GetByUserId(int userId)
+        {
+            var response = await GetClient().GetAsync($"Shelf/GetByUserId?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<Shelf>>() : null;
+            return data;
+        }
     }
 }

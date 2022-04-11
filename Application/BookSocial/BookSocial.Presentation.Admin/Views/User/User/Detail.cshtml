@@ -1,0 +1,113 @@
+﻿@using BookSocial.EntityClass.Entity
+@model BookSocial.EntityClass.Entity.Book
+
+@section css{
+<link href="~/my_style/jquery-ui.css" rel="stylesheet" />
+<style>
+    .my-ul-assign-book {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .ui-autocomplete {
+        max-height: 100px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+}
+
+@{
+    var author = ViewData["AuthorByBookId"] as IEnumerable<Author>;
+    var genre = ViewData["GenreByBookId"] as Genre;
+}
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Detail Book</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <br />
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <ul class="list-unstyled user_data">
+                        <li><b>Book Id:</b> @Model.Id</li>
+                        <li><b>Isbn:</b> @Model.Isbn</li>
+                        <li><b>Book Name:</b> @Model.Name</li>
+                        <li><b>Image:</b></li>
+                        <li>
+                            <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")"
+                                 style="width:200px" src="~/assets/images/book/@Model.Image" />
+                        </li>
+                        <li><b>Description:</b> @Model.Description</li>
+                        <li><b>Page Number:</b> @Model.PageNumber</li>
+                        <li><b>Published:</b> @Model.Published</li>
+                        <li><b>Genre Name:</b> @genre.Name</li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <ul class="list-unstyled my-ul-assign-book user_data">
+                        @foreach (var a in author)
+                        {
+                            <li>
+                                <b>Author Id:</b>
+                                @a.Id
+                                <a class="btn-delete" data-author-id="@a.Id" data-book-id="@Model.Id" style="color:red" href="#">
+                                    <i style="color:red" class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </li>
+                            <li><b>Author Name:</b> @a.Name</li>
+                            <br />
+                        }
+                    </ul>
+                    <form action="@Url.Action("AssignAuthorToBook")" method="post" class="form-horizontal form-label-left">
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="alert alert-success" role="alert">
+                                @TempData["Success"]
+                            </div>
+                        }
+                        @if (TempData["Fail"] != null)
+                        {
+                            <div class="alert alert-error" role="alert">
+                                @TempData["Fail"]
+                            </div>
+                        }
+                        <input type="hidden" name="BookId" value="@Model.Id" />
+                        <ul class="list-unstyled user_data">
+                            <li>Author Id: </li>
+                            <li>
+                                <div class="ui-widget">
+                                    <input id="assign-author-id" name="AuthorId" type="number" class="form-control" readonly="readonly" />
+                                </div>
+                            </li>
+                            <li>Author Name: </li>
+                            <li>
+                                <div class="ui-widget">
+                                    <input id="assign-author-value" type="text" class="form-control" />
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="item form-group justify-content-center">
+                            <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
+                                <button type="submit" class="mt-2 btn btn-success">Assign Author</button>
+                                <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script{
+<script src="~/my_script/jquery-ui.min.js"></script>
+<script src="~/my_script/get_param_url.js"></script>
+<script src="~/my_script/book/action_autocomplete.js"></script>
+<script src="~/my_script/author_book/action_delete.js"></script>
+}
+
