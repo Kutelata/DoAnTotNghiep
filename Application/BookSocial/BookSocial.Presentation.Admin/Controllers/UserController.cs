@@ -1,4 +1,5 @@
-﻿using CsvHelper;
+﻿using BookSocial.EntityClass.Enum;
+using CsvHelper;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -102,6 +103,26 @@ namespace BookSocial.Presentation.Admin.Controllers
             var dataUser = await _userService.GetById(id);
             if (dataUser != null)
             {
+                return View("~/Views/User/User/Detail.cshtml", dataUser);
+            }
+            return RedirectToAction("NotFound404", "Route");
+        }
+
+        public async Task<IActionResult> ChangeStatus(int userId, Status userStatus)
+        {
+            var dataUser = await _userService.GetById(userId);
+            if (dataUser != null)
+            {
+                dataUser.Status = userStatus;
+                int result = await _userService.Update(dataUser);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Change status success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Change status failed!";
+                }
                 return View("~/Views/User/User/Detail.cshtml", dataUser);
             }
             return RedirectToAction("NotFound404", "Route");

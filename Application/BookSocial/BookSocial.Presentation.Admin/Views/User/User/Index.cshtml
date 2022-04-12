@@ -1,6 +1,8 @@
 ﻿@using BookSocial.EntityClass.Enum
 @model IEnumerable<BookSocial.EntityClass.DTO.UserStatistic>
 
+
+
 <div class="col-md-12 col-sm-12">
     <div class="x_panel">
         <div class="x_title">
@@ -91,7 +93,26 @@
                                 <td class=" ">@item.Account</td>
                                 <td class=" ">@item.Image</td>
                                 <td class=" ">@item.Gender</td>
-                                <td class=" ">@item.Status</td>
+                                @{
+                                    var statusText = "";
+                                    var statusColor = "";
+                                    switch (item.Status)
+                                    {
+                                        case Status.Locked:
+                                            statusText = "Locked";
+                                            statusColor = "danger";
+                                            break;
+                                        case Status.IsNotActive:
+                                            statusText = "Is Not Active";
+                                            statusColor = "secondary";
+                                            break;
+                                        case Status.IsActive:
+                                            statusText = "Is Active";
+                                            statusColor = "success";
+                                            break;
+                                    }
+                                }
+                                <td class=" "><span class="badge badge-@statusColor">@statusText</span></td>
                                 <td class=" ">@item.NumberOfFriends</td>
                                 <td class=" ">@item.NumberBooksOnShelf</td>
                                 <td class=" ">@item.NumberOfArticles</td>

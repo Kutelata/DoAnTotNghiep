@@ -25,8 +25,8 @@ namespace BookSocial.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-        } 
-        
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetArticleStatistic()
         {
@@ -47,6 +47,20 @@ namespace BookSocial.API.Controllers
             try
             {
                 var data = await _articleRepository.GetByBookId(bookId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            try
+            {
+                var data = await _articleRepository.GetByUserId(userId);
                 return Ok(data);
             }
             catch (Exception ex)

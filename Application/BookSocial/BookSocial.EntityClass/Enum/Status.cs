@@ -1,9 +1,14 @@
-﻿namespace BookSocial.EntityClass.Enum
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BookSocial.EntityClass.Enum
 {
     public enum Status
     {
-        IsActive = 1,
-        IsNotActive = 0,
-        Locked = -1
+        [Display(Name="Locked")]
+        Locked = 0,
+        [Display(Name = "Is Not Active")]
+        IsNotActive = 1,
+        [Display(Name = "Is Active")]
+        IsActive = 2
     }
 }

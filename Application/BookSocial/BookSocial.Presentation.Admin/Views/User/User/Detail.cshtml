@@ -1,5 +1,6 @@
 ﻿@using BookSocial.EntityClass.Entity
-@model BookSocial.EntityClass.Entity.Book
+@using BookSocial.EntityClass.Enum
+@model BookSocial.EntityClass.Entity.User
 
 @section css{
 <link href="~/my_style/jquery-ui.css" rel="stylesheet" />
@@ -19,8 +20,29 @@
 }
 
 @{
-    var author = ViewData["AuthorByBookId"] as IEnumerable<Author>;
-    var genre = ViewData["GenreByBookId"] as Genre;
+    int countUserFriends = 0;
+    if (Model.Friend != "" && Model.Friend != null)
+    {
+        var userFriends = Model.Friend.Split(',');
+        countUserFriends = userFriends.Length;
+    }
+
+    var role = "";
+    switch (Model.Role)
+    {
+        case Role.User:
+            role = "User";
+            break;
+        case Role.Admin:
+            role = "Admin";
+            break;
+        case Role.LibraryManager:
+            role = "Library Manager";
+            break;
+        case Role.UserManager:
+            role = "User Manager";
+            break;
+    }
 }
 
 <div class="col-md-12 col-sm-12 ">
@@ -31,73 +53,44 @@
         </div>
         <div class="x_content">
             <br />
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            @if (TempData["Fail"] != null)
+            {
+                <div class="alert alert-error" role="alert">
+                    @TempData["Fail"]
+                </div>
+            }
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <ul class="list-unstyled user_data">
-                        <li><b>Book Id:</b> @Model.Id</li>
-                        <li><b>Isbn:</b> @Model.Isbn</li>
-                        <li><b>Book Name:</b> @Model.Name</li>
+                        <li><b>User Id:</b> @Model.Id</li>
+                        <li><b>User Name:</b> @Model.Name</li>
+                        <li><b>Phone:</b> @Model.Phone</li>
+                        <li><b>Email:</b> @Model.Email</li>
+                        <li><b>Account:</b> @Model.Account</li>
+                        <li><b>Password:</b> @Model.Password</li>
                         <li><b>Image:</b></li>
                         <li>
                             <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")"
-                                 style="width:200px" src="~/assets/images/book/@Model.Image" />
+                                 style="width:200px" src="~/assets/images/user/@Model.Image" />
                         </li>
-                        <li><b>Description:</b> @Model.Description</li>
-                        <li><b>Page Number:</b> @Model.PageNumber</li>
-                        <li><b>Published:</b> @Model.Published</li>
-                        <li><b>Genre Name:</b> @genre.Name</li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <ul class="list-unstyled my-ul-assign-book user_data">
-                        @foreach (var a in author)
-                        {
-                            <li>
-                                <b>Author Id:</b>
-                                @a.Id
-                                <a class="btn-delete" data-author-id="@a.Id" data-book-id="@Model.Id" style="color:red" href="#">
-                                    <i style="color:red" class="fa fa-trash-o"></i> Delete
-                                </a>
-                            </li>
-                            <li><b>Author Name:</b> @a.Name</li>
-                            <br />
-                        }
+                    <ul class="list-unstyled user_data">
+                        <li><b>Address:</b> @Model.Address</li>
+                        <li><b>Description:</b> @Model.Description</li>
+                        <li><b>Birthday:</b> @(Model.Birthday == new DateTime(0001,01,01,00,00,00) ? "" : Model.Birthday.Value.ToShortDateString())</li>
+                        <li><b>Gender:</b> @Model.Gender</li>
+                        <li><b>Friend:</b> @countUserFriends</li>
+                        <li><b>Status:</b> <select class="custom-select" data-id="@Model.Id" id="btn-change-status" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select></li>
+                        <li><b>Role:</b> @role</li>
                     </ul>
-                    <form action="@Url.Action("AssignAuthorToBook")" method="post" class="form-horizontal form-label-left">
-                        @if (TempData["Success"] != null)
-                        {
-                            <div class="alert alert-success" role="alert">
-                                @TempData["Success"]
-                            </div>
-                        }
-                        @if (TempData["Fail"] != null)
-                        {
-                            <div class="alert alert-error" role="alert">
-                                @TempData["Fail"]
-                            </div>
-                        }
-                        <input type="hidden" name="BookId" value="@Model.Id" />
-                        <ul class="list-unstyled user_data">
-                            <li>Author Id: </li>
-                            <li>
-                                <div class="ui-widget">
-                                    <input id="assign-author-id" name="AuthorId" type="number" class="form-control" readonly="readonly" />
-                                </div>
-                            </li>
-                            <li>Author Name: </li>
-                            <li>
-                                <div class="ui-widget">
-                                    <input id="assign-author-value" type="text" class="form-control" />
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="item form-group justify-content-center">
-                            <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
-                                <button type="submit" class="mt-2 btn btn-success">Assign Author</button>
-                                <button class="mt-2 btn btn-primary" type="reset">Reset</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -105,9 +98,6 @@
 </div>
 
 @section script{
-<script src="~/my_script/jquery-ui.min.js"></script>
 <script src="~/my_script/get_param_url.js"></script>
-<script src="~/my_script/book/action_autocomplete.js"></script>
-<script src="~/my_script/author_book/action_delete.js"></script>
+<script src="~/my_script/user/action_change_status.js"></script>
 }
-

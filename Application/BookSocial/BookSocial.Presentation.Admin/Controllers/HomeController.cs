@@ -43,5 +43,20 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             return View("~/Views/Home/Profile.cshtml");
         }
+
+        public IActionResult TestIndex()
+        {
+            return View("~/Views/test/Index.cshtml");
+        }
+        
+        //public IActionResult Test()
+        //{
+        //    return View("~/Views/test/Index.cshtml");
+        //}
+        
+        //public IActionResult Test()
+        //{
+        //    return View("~/Views/test/Index.cshtml");
+        //}
     }
 }
