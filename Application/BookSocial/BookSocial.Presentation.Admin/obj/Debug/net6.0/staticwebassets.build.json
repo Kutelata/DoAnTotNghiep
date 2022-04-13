@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oAxfIJc8eGSugET8kk31rOUZIcHxlniy/OOIZ3Meh7o=",
+  "Hash": "VYDFm5wfN0VBv2s71/wIS9tJ05W7OjnzLnET1O+BRmo=",
   "Source": "BookSocial.Presentation.Admin",
   "BasePath": "_content/BookSocial.Presentation.Admin",
   "Mode": "Default",
@@ -66,6 +66,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\user\\0062889443.jpg"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\assets\\images\\user\\img.jpg",
+      "SourceId": "BookSocial.Presentation.Admin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.Admin",
+      "RelativePath": "assets/images/user/img.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\user\\img.jpg"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\assets\\images\\user\\user.png",
+      "SourceId": "BookSocial.Presentation.Admin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.Admin",
+      "RelativePath": "assets/images/user/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\user\\user.png"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\build\\css\\custom.css",
@@ -372,6 +406,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_script\\comment\\action_delete.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\my_script\\employee\\action_delete.js",
+      "SourceId": "BookSocial.Presentation.Admin",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.Admin",
+      "RelativePath": "my_script/employee/action_delete.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_script\\employee\\action_delete.js"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.Admin\\wwwroot\\my_script\\genre\\action_delete.js",

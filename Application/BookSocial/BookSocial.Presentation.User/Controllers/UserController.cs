@@ -2,9 +2,9 @@
 
 namespace BookSocial.Presentation.User.Controllers
 {
-    public class UserController : Controller
+    public partial class HomeController
     {
-        public IActionResult Friend()
+        public IActionResult FriendList()
         {
             return View("~/Views/Friend/Index.cshtml");
         }

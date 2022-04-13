@@ -101,7 +101,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                         COUNT(s.book_id) as 'numberBooksOnShelf',
 						COUNT(a.id) as 'numberOfArticles',
 						COUNT(c.id) as 'numberOfComments'
-                    FROM [User] u
+                    FROM [User] u 
 					FULL OUTER JOIN 
                         (SELECT u.id as 'userId', splitUserFriend.value as 'userFriend'
 					    FROM [User] u CROSS APPLY STRING_SPLIT(u.friend, ',') splitUserFriend
@@ -110,7 +110,25 @@ namespace BookSocial.DataAccess.DataAccessClass
 					FULL OUTER JOIN Shelf s ON s.[user_id] = u.id
 					FULL OUTER JOIN Article a ON a.[user_id] = u.id
 					FULL OUTER JOIN Comment c ON c.[user_id] = u.id
+					WHERE u.[role] = 0
                     GROUP BY u.id, u.[name], u.email, u.account, u.[image], u.gender, u.friend, u.[status]");
+            }
+        }
+
+        public async Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<UserEmployeeStatistic>(
+                    @"SELECT 
+	                    u.id,
+						u.[name] as 'userName',
+                        u.account,
+                        u.[password],
+						u.[image],
+                        u.[status],
+                        u.[role]
+                    FROM [User] u WHERE u.[role] != 0");
             }
         }
     }

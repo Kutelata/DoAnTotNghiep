@@ -39,24 +39,9 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
-        public IActionResult Profile()
+        public IActionResult ChangePassword()
         {
-            return View("~/Views/Home/Profile.cshtml");
+            return View("~/Views/Home/ChangePassword.cshtml");
         }
-
-        public IActionResult TestIndex()
-        {
-            return View("~/Views/test/Index.cshtml");
-        }
-        
-        //public IActionResult Test()
-        //{
-        //    return View("~/Views/test/Index.cshtml");
-        //}
-        
-        //public IActionResult Test()
-        //{
-        //    return View("~/Views/test/Index.cshtml");
-        //}
     }
 }

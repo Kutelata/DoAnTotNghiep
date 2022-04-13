@@ -40,4 +40,15 @@ namespace BookSocial.EntityClass.DTO
         public int NumberOfArticles { get; set; }
         public int NumberOfComments { get; set; }
     }
+
+    public class UserEmployeeStatistic
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public string Account { get; set; }
+        public string Password { get; set; }
+        public string Image { get; set; }
+        public Status Status { get; set; }
+        public Role Role { get; set; }
+    }
 }

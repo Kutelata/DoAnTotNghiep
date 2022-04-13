@@ -29,6 +29,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic()
+        {
+            var response = await GetClient().GetAsync($"User/GetUserEmployeeStatistic");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<UserEmployeeStatistic>>() : null;
+            return data;
+        }
+
         public async Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin)
         {
             var response = await GetClient()

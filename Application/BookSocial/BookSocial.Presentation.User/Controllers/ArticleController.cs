@@ -2,11 +2,8 @@
 
 namespace BookSocial.Presentation.User.Controllers
 {
-    public class ArticleController : Controller
+    public partial class HomeController
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
     }
 }

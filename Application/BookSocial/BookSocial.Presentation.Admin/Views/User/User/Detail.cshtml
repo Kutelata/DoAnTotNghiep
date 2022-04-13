@@ -73,7 +73,14 @@
                         <li><b>Phone:</b> @Model.Phone</li>
                         <li><b>Email:</b> @Model.Email</li>
                         <li><b>Account:</b> @Model.Account</li>
-                        <li><b>Password:</b> @Model.Password</li>
+                        <li>
+                            <b>Password:</b> 
+                            @for (var i = 0; i < Model.Password.Length; i++)
+                            {
+                                <span>*</span>
+                            }
+
+                        </li>
                         <li><b>Image:</b></li>
                         <li>
                             <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")"
@@ -85,10 +92,18 @@
                     <ul class="list-unstyled user_data">
                         <li><b>Address:</b> @Model.Address</li>
                         <li><b>Description:</b> @Model.Description</li>
-                        <li><b>Birthday:</b> @(Model.Birthday == new DateTime(0001,01,01,00,00,00) ? "" : Model.Birthday.Value.ToShortDateString())</li>
+                        <li>
+                            <b>Birthday:</b>
+                            @(Model.Birthday == new DateTime(0001,01,01,00,00,00) ? "" : Model.Birthday.Value.ToShortDateString())
+                        </li>
                         <li><b>Gender:</b> @Model.Gender</li>
                         <li><b>Friend:</b> @countUserFriends</li>
-                        <li><b>Status:</b> <select class="custom-select" data-id="@Model.Id" id="btn-change-status" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select></li>
+                        <li>
+                            <b>Status:</b>
+                            <select class="my-custom-select custom-select"
+                                    data-id="@Model.Id" id="btn-change-status"
+                                    asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select>
+                        </li>
                         <li><b>Role:</b> @role</li>
                     </ul>
                 </div>

@@ -1,15 +1,15 @@
 ﻿@using BookSocial.EntityClass.Enum
-@model IEnumerable<BookSocial.EntityClass.DTO.UserStatistic>
+@model IEnumerable<BookSocial.EntityClass.DTO.UserEmployeeStatistic>
 
 <div class="col-md-12 col-sm-12">
     <div class="x_panel">
         <div class="x_title">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <h2>User List</h2>
+                    <h2>Employee List</h2>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportUserToCsv")"><i class="fa fa-download"></i> Export</a>
+                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportEmployeeToCsv")"><i class="fa fa-download"></i> Export</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -17,7 +17,7 @@
         <div class="x_content">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                    <a class="btn btn-outline-dark" href="@Url.Action("CreateUser")"><i class='fa fa-plus'></i> Create New</a>
+                    <a class="btn btn-outline-dark" href="@Url.Action("CreateEmployee")"><i class='fa fa-plus'></i> Create New</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
@@ -25,15 +25,10 @@
                             <select class="custom-select" id="btn-sort">
                                 <option selected value="Id">Id</option>
                                 <option value="UserName">User Name</option>
-                                <option value="Email">Email</option>
                                 <option value="Account">Account</option>
                                 <option value="Image">Image</option>
-                                <option value="Gender">Gender</option>
                                 <option value="Status">Status</option>
-                                <option value="NumberOfFriends">Number Of Friends</option>
-                                <option value="NumberBooksOnShelf">Number Books On Shelf</option>
-                                <option value="NumberOfArticles">Number Of Articles</option>
-                                <option value="NumberOfComments">Number Of Comments</option>
+                                <option value="Role">Role</option>
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -65,15 +60,11 @@
                         <tr class="headings">
                             <th class="column-title">Id</th>
                             <th class="column-title">User Name</th>
-                            <th class="column-title">Email</th>
                             <th class="column-title">Account</th>
+                            <th class="column-title">Password</th>
                             <th class="column-title">Image</th>
-                            <th class="column-title">Gender</th>
                             <th class="column-title">Status</th>
-                            <th class="column-title">Number Of Friends</th>
-                            <th class="column-title">Number Books On Shelf</th>
-                            <th class="column-title">Number Of Articles</th>
-                            <th class="column-title">Number Of Comments</th>
+                            <th class="column-title">Role</th>
                             <th class="column-title no-link last">
                                 <span class="nobr">Action</span>
                             </th>
@@ -89,20 +80,55 @@
                             <tr class="even pointer">
                                 <td class=" ">@item.Id</td>
                                 <td class=" ">@item.UserName</td>
-                                <td class=" ">@item.Email</td>
                                 <td class=" ">@item.Account</td>
+                                <td class=" ">
+                                    @for (var i = 0; i < @item.Password.Length; i++)
+                                    {
+                                        <span>*</span>
+                                    }
+                                </td>
                                 <td class=" ">@item.Image</td>
-                                <td class=" ">@item.Gender</td>
-                                <td class=" ">@item.Status</td>
-                                <td class=" ">@item.NumberOfFriends</td>
-                                <td class=" ">@item.NumberBooksOnShelf</td>
-                                <td class=" ">@item.NumberOfArticles</td>
-                                <td class=" ">@item.NumberOfComments</td>
+                                @{
+                                    var statusText = "";
+                                    var statusColor = "";
+                                    switch (item.Status)
+                                    {
+                                        case Status.Locked:
+                                            statusText = "Locked";
+                                            statusColor = "danger";
+                                            break;
+                                        case Status.IsNotActive:
+                                            statusText = "Is Not Active";
+                                            statusColor = "secondary";
+                                            break;
+                                        case Status.IsActive:
+                                            statusText = "Is Active";
+                                            statusColor = "success";
+                                            break;
+                                    }
+                                }
+                                <td class=" "><span class="badge badge-@statusColor">@statusText</span></td>
+                                @{
+                                    var role = "";
+                                    switch (@item.Role)
+                                    {
+                                        case Role.User:
+                                            role = "User";
+                                            break;
+                                        case Role.Admin:
+                                            role = "Admin";
+                                            break;
+                                        case Role.LibraryManager:
+                                            role = "Library Manager";
+                                            break;
+                                        case Role.UserManager:
+                                            role = "User Manager";
+                                            break;
+                                    }
+                                }
+                                <td class=" ">@role</td>
                                 <td class=" last">
-                                    <a class="btn btn-outline-info" href="@Url.Action("DetailUser", "", new { id = @item.Id })">
-                                        <i class='fa fa-folder'></i> View
-                                    </a>
-                                    <a class="btn btn-outline-primary" href="@Url.Action("EditUser", "", new { id = @item.Id })">
+                                    <a class="btn btn-outline-primary" href="@Url.Action("EditEmployee", "", new { id = @item.Id })">
                                         <i class='fa fa-pencil'></i> Edit
                                     </a>
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
@@ -117,7 +143,7 @@
                     @if (ViewBag.CurrentPage > 1)
                     {
                         <li>
-                            <a href="@Url.Action("UserList","Home",
+                            <a href="@Url.Action("EmployeeList","Home",
                             new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch})">Previous</a>
                         </li>
                     }
@@ -127,14 +153,14 @@
                         if ((i + 1) == ViewBag.CurrentPage)
                         {
                             <li>
-                                <a class="active" href="@Url.Action("UserList","Home",
+                                <a class="active" href="@Url.Action("EmployeeList","Home",
                                 new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
                             </li>
                         }
                         else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
                         {
                             <li>
-                                <a href="@Url.Action("UserList","Home",
+                                <a href="@Url.Action("EmployeeList","Home",
                                 new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
                             </li>
                         }
@@ -143,7 +169,7 @@
                     @if (ViewBag.CurrentPage < ViewBag.Pages)
                     {
                         <li>
-                            <a href="@Url.Action("UserList","Home",
+                            <a href="@Url.Action("EmployeeList","Home",
                             new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch})">Next</a>
                         </li>
                     }
@@ -156,5 +182,5 @@
 @section script{
 <script src="~/my_script/get_param_url.js"></script>
 <script src="~/my_script/action_in_list.js"></script>
-<script src="~/my_script/user/action_delete.js"></script>
+<script src="~/my_script/employee/action_delete.js"></script>
 }

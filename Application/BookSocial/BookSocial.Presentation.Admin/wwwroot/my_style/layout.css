@@ -46,6 +46,11 @@
     color: white !important;
 }
 
+.my-btn-login {
+    float: inherit !important;
+    margin-left: auto !important;
+}
+
 .validation-message {
     color: red;
 }
@@ -72,4 +77,8 @@
     border: none;
     cursor: pointer;
     padding: .375rem 0 .75rem;
+}
+
+.my-custom-select{
+    width:auto;
 }

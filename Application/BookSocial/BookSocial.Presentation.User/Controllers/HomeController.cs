@@ -1,16 +1,36 @@
-﻿using BookSocial.Presentation.User.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using BookSocial.Service.ServiceInterface;
 
 namespace BookSocial.Presentation.User.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : BaseController
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        private readonly IUserService _userService;
+        private readonly IGenreService _genreService;
+        private readonly IBookService _bookService;
+        private readonly ICommentService _commentService;
+        private readonly IAuthorService _authorService;
+        private readonly IAuthorBookService _authorBookService;
+        private readonly IShelfService _shelfService;
+        private readonly IArticleService _articleService;
 
-        
+        public HomeController(
+            IUserService userService,
+            IGenreService genreService,
+            IBookService bookService,
+            ICommentService commentService,
+            IAuthorService authorService,
+            IAuthorBookService authorBookService,
+            IShelfService shelfService,
+            IArticleService articleService)
+        {
+            _userService = userService;
+            _genreService = genreService;
+            _bookService = bookService;
+            _commentService = commentService;
+            _authorService = authorService;
+            _authorBookService = authorBookService;
+            _shelfService = shelfService;
+            _articleService = articleService;
+        }
     }
 }
