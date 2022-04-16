@@ -31,7 +31,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="NewFolder\" />
 	  <Folder Include="wwwroot\assets\images\book\" />
 	</ItemGroup>
 </Project>

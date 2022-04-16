@@ -1,5 +1,5 @@
 ﻿@using BookSocial.EntityClass.Enum
-@model BookSocial.EntityClass.Entity.User
+@model BookSocial.EntityClass.DTO.CRUDEmployee
 
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
@@ -9,7 +9,7 @@
         </div>
         <div class="x_content">
             <br />
-            <form action="@Url.Action("CreateUser")" method="post" class="form-horizontal form-label-left"
+            <form action="@Url.Action("CreateEmployee")" method="post" class="form-horizontal form-label-left"
                   enctype="multipart/form-data">
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
@@ -30,12 +30,16 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Status :
-                    </label>
-                    <div class="col-md-9 col-sm-9 ">
-                        <select class="custom-select" asp-for="Status" asp-items="Html.GetEnumSelectList<Status>()"></select>
-                        <span asp-validation-for="Status" class="text-danger"></span>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Gender :</label>
+                    <div class="col-md-6 col-sm-6 ">
+                        <div id="gender" class="" data-toggle="buttons">
+                            @foreach (var item in System.Enum.GetValues(typeof(Gender)))
+                            {
+                                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" asp-for="Gender" value="@item" class="join-btn"> @item
+                                </label>
+                            }
+                        </div>
                     </div>
                 </div>
                 <div class="item form-group">
@@ -43,7 +47,7 @@
                         Role :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
-                        <select class="custom-select" asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()"></select>
+                        <select class="custom-select" asp-for="Role" asp-items="Html.GetEnumSelectList<RoleEmployee>()"></select>
                         <span asp-validation-for="Role" class="text-danger"></span>
                     </div>
                 </div>

@@ -83,6 +83,20 @@ namespace BookSocial.API.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByAccount(string userAccount)
+        {
+            try
+            {
+                var data = await _userRepository.GetByAccount(userAccount);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {

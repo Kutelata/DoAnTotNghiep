@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "LoocDQSufaLKU9fPg3TfAGjRqXGFcIq6chLieknXv/IzrUk72O2M4nw/0zoUhO7pGUkCpQMbKbCYnr0+5dAyzA==",
+  "dgSpecHash": "0B0fthn+BSA/n9DINexznLlo1ikwg+jn0UN2aB4N3W7wfiZei4l23KUakbAeGBS6HeKY0SnMoI0P3TlEjp6OXQ==",
   "success": true,
   "projectFilePath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.DataAccess\\BookSocial.DataAccess.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hclon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\hclon\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\hclon\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\hclon\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\hclon\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\hclon\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

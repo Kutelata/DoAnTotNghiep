@@ -5,12 +5,13 @@ namespace BookSocial.Service.ServiceInterface
 {
     public interface IUserService
     {
-        public Task<IEnumerable<UserStatistic>> GetUserStatistic();
-        public Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic();
-        public Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin);
-        public Task<User> GetById(int id);
-        public Task<int> Create(User user);
-        public Task<int> Update(User user);
-        public Task<int> Delete(int userId);
+        Task<IEnumerable<UserStatistic>> GetUserStatistic();
+        Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic();
+        Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin);
+        Task<User> GetById(int id);
+        Task<User> GetByAccount(string userAccount);
+        Task<int> Create(User user);
+        Task<int> Update(User user);
+        Task<int> Delete(int userId);
     }
 }

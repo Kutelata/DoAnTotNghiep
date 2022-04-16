@@ -1,10 +1,14 @@
-﻿using BookSocial.Service.ServiceInterface;
+﻿using AutoMapper;
+using BookSocial.EntityClass.DTO;
+using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController : BaseController
     {
+        private readonly IMapper _mapper;
+
         private readonly IUserService _userService;
         private readonly IGenreService _genreService;
         private readonly IBookService _bookService;
@@ -15,6 +19,8 @@ namespace BookSocial.Presentation.Admin.Controllers
         private readonly IArticleService _articleService;
 
         public HomeController(
+            IMapper mapper,
+
             IUserService userService,
             IGenreService genreService,
             IBookService bookService,
@@ -24,6 +30,8 @@ namespace BookSocial.Presentation.Admin.Controllers
             IShelfService shelfService,
             IArticleService articleService)
         {
+            _mapper = mapper;
+
             _userService = userService;
             _genreService = genreService;
             _bookService = bookService;
@@ -41,6 +49,32 @@ namespace BookSocial.Presentation.Admin.Controllers
 
         public IActionResult ChangePassword()
         {
+            return View("~/Views/Home/ChangePassword.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePassword changePassword)
+        {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var user = await _userService.GetById(Convert.ToInt32(userIdClaim));
+            if (user.Password != changePassword.OldPassword)
+            {
+                ModelState.AddModelError("OldPassword", "Old Password is wrong");
+            }
+            if (ModelState.IsValid)
+            {
+                user.Password = changePassword.NewPassword;
+                int result = await _userService.Update(user);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Update Password success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Update Password failed!";
+                }
+                return RedirectToAction("Index", "Home");
+            }
             return View("~/Views/Home/ChangePassword.cshtml");
         }
     }

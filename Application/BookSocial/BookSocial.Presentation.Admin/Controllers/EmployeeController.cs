@@ -1,4 +1,7 @@
-﻿using CsvHelper;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
+using CsvHelper;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -27,6 +30,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         case "UserName": dataInPage = dataInPage.OrderBy(x => x.UserName); break;
                         case "Account": dataInPage = dataInPage.OrderBy(x => x.Account); break;
                         case "Image": dataInPage = dataInPage.OrderBy(x => x.Image); break;
+                        case "Gender": dataInPage = dataInPage.OrderBy(x => x.Gender); break;
                         case "Status": dataInPage = dataInPage.OrderBy(x => x.Status); break;
                         case "Role": dataInPage = dataInPage.OrderBy(x => x.Role); break;
                     }
@@ -44,6 +48,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         (data.UserName != null && data.UserName.Contains(search)) ||
                         (data.Account != null && data.Account.Contains(search)) ||
                         (data.Image != null && data.Image.Contains(search)) ||
+                        data.Gender.ToString() == search ||
                         data.Status.ToString() == search ||
                         data.Role.ToString() == search);
                 }
@@ -87,111 +92,86 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
         }
 
-        public async Task<IActionResult> CreateEmployee()
+        public IActionResult CreateEmployee()
         {
             return View("~/Views/User/Admin/Create.cshtml");
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult> CreateBook(Book book, IFormFile Image)
-        //{
-        //    var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
-        //    if (checkIsbnUnique != null)
-        //    {
-        //        ModelState.AddModelError("Isbn", "Isbn book must be unique");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (Image != null)
-        //        {
-        //            book.Image = $"{book.Isbn}.jpg";
-        //        }
-        //        int result = await _bookService.Create(book);
-        //        if (result != 0)
-        //        {
-        //            if (Image != null && Image.Length > 0)
-        //            {
-        //                var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\book");
-        //                var imagePath = Path.Combine(pathBook, book.Image);
-        //                using (var stream = new FileStream(imagePath, FileMode.Create))
-        //                {
-        //                    await Image.CopyToAsync(stream);
-        //                }
-        //            }
-        //            TempData["Success"] = "Create Book success!";
-        //        }
-        //        else
-        //        {
-        //            TempData["Fail"] = "Create Book failed!";
-        //        }
-        //        return RedirectToAction("BookList", "Home");
-        //    }
-        //    var genres = await _genreService.GetAll();
-        //    ViewBag.Genres = new SelectList(genres, "Id", "Name", book.GenreId);
-        //    return View("~/Views/Book/Create.cshtml", book);
-        //}
+        [HttpPost]
+        public async Task<ActionResult> CreateEmployee(CRUDEmployee createEmployee)
+        {
+            var checkAccountUnique = await _userService.GetByAccount(createEmployee.Account);
+            if (checkAccountUnique != null)
+            {
+                ModelState.AddModelError("Account", "User account must be unique");
+            }
 
-        //public async Task<IActionResult> EditBook(int id)
-        //{
-        //    var data = await _bookService.GetById(id);
-        //    if (data != null)
-        //    {
-        //        var genres = await _genreService.GetAll();
-        //        ViewBag.Genres = new SelectList(genres, "Id", "Name", data.GenreId);
-        //        return View("~/Views/Book/Edit.cshtml", data);
-        //    }
-        //    return RedirectToAction("NotFound404", "Route");
-        //}
+            createEmployee.Image = "";
+            createEmployee.Status = Status.IsNotActive;
+            createEmployee.Password = "123456";
 
-        //[HttpPost]
-        //public async Task<IActionResult> EditBook(Book book, IFormFile Image)
-        //{
-        //    var currentBook = await _bookService.GetById(book.Id);
-        //    var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
-        //    if (checkIsbnUnique != null && currentBook.Isbn != book.Isbn)
-        //    {
-        //        ModelState.AddModelError("Isbn", "Isbn book must be unique");
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (Image != null)
-        //        {
-        //            book.Image = $"{book.Isbn}.jpg";
-        //        }
-        //        else
-        //        {
-        //            book.Image = currentBook.Image;
-        //        }
-        //        int result = await _bookService.Update(book);
-        //        if (result != 0)
-        //        {
-        //            if (Image != null && Image.Length > 0)
-        //            {
-        //                var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\book");
-        //                var imagePath = Path.Combine(pathBook, book.Image);
-        //                using (var stream = new FileStream(imagePath, FileMode.Create))
-        //                {
-        //                    await Image.CopyToAsync(stream);
-        //                }
-        //            }
-        //            TempData["Success"] = "Edit Book success!";
-        //            return RedirectToAction("BookList", "Home", new { search = book.Id });
-        //        }
-        //        else
-        //        {
-        //            TempData["Fail"] = "Edit Book failed!";
-        //            return RedirectToAction("BookList", "Home");
-        //        }
-        //    }
-        //    var genres = await _genreService.GetAll();
-        //    ViewBag.Genres = new SelectList(genres, "Id", "Name", book.GenreId);
-        //    return View("~/Views/Book/Edit.cshtml", book);
-        //}
+            if (ModelState.IsValid)
+            {
+                var user = _mapper.Map<User>(createEmployee);
+                int result = await _userService.Create(user);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Create User success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Create User failed!";
+                }
+                return RedirectToAction("EmployeeList", "Home");
+            }
+            return View("~/Views/User/Admin/Create.cshtml", createEmployee);
+        }
+
+        public async Task<IActionResult> EditEmployee(int id)
+        {
+            var data = await _userService.GetById(id);
+            if (data != null)
+            {
+                var user = _mapper.Map<CRUDEmployee>(data);
+                return View("~/Views/User/Admin/Edit.cshtml", user);
+            }
+            return RedirectToAction("NotFound404", "Route");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditEmployee(CRUDEmployee editEmployee)
+        {
+            var currentUser = await _userService.GetById(editEmployee.Id);
+            var checkAccountUnique = await _userService.GetByAccount(editEmployee.Account);
+            if (checkAccountUnique != null && currentUser.Account != editEmployee.Account)
+            {
+                ModelState.AddModelError("Account", "Employee account must be unique");
+            }
+
+            editEmployee.Image = "";
+            editEmployee.Password = "123456";
+
+            if (ModelState.IsValid)
+            {
+                var user = _mapper.Map<User>(editEmployee);
+                int result = await _userService.Update(user);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Edit Employee success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Edit Employee failed!";
+                }
+                return RedirectToAction("EmployeeList", "Home");
+            }
+            return View("~/Views/User/Admin/Edit.cshtml", editEmployee);
+        }
 
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var userToDelete = await _userService.GetById(id);
-           
+
             if (userToDelete != null)
             {
                 int result = await _userService.Delete(id);

@@ -5,8 +5,8 @@ namespace BookSocial.DataAccess.DataAccessInterface
 {
     public interface IBookRepository : IRepository<Book>
     {
-        public Task<IEnumerable<BookStatistic>> GetBookStatistic();
-        public Task<IEnumerable<Book>> GetByGenreId(int genreId);
-        public Task<Book> GetByIsbn(string isbn);
+        Task<IEnumerable<BookStatistic>> GetBookStatistic();
+        Task<IEnumerable<Book>> GetByGenreId(int genreId);
+        Task<Book> GetByIsbn(string isbn);
     }
 }

@@ -5,12 +5,12 @@ namespace BookSocial.Service.ServiceInterface
 {
     public interface IGenreService
     {
-        public Task<IEnumerable<GenreStatistic>> GetGenreStatistic();
-        public Task<IEnumerable<Genre>> GetAll();
-        public Task<Genre> GetById(int genreId);
-        public Task<Genre> GetByName(string genreName);
-        public Task<int> Create(Genre genre);
-        public Task<int> Update(Genre genre);
-        public Task<int> Delete(int genreId);
+        Task<IEnumerable<GenreStatistic>> GetGenreStatistic();
+        Task<IEnumerable<Genre>> GetAll();
+        Task<Genre> GetById(int genreId);
+        Task<Genre> GetByName(string genreName);
+        Task<int> Create(Genre genre);
+        Task<int> Update(Genre genre);
+        Task<int> Delete(int genreId);
     }
 }

@@ -128,7 +128,13 @@ go
 /*
 insert into Article values
 -- ('text','star','created_at','book_id','user_id')
+
+-- review
+
+-- blog
+(),
 go
+
 
 insert into Comment values
 -- ('text','article_id','parent_id','created_at','user_id')

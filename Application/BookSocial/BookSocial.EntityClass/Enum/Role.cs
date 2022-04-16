@@ -13,4 +13,14 @@ namespace BookSocial.EntityClass.Enum
         [Display(Name = "User Manager")]
         UserManager = 3
     }
+
+    public enum RoleEmployee
+    {
+        [Display(Name = "Admin")]
+        Admin = 1,
+        [Display(Name = "Library Manager")]
+        LibraryManager = 2,
+        [Display(Name = "User Manager")]
+        UserManager = 3
+    }
 }

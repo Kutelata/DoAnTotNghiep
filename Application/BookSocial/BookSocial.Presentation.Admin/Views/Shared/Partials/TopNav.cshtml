@@ -1,4 +1,15 @@
-﻿<div class="top_nav">
+﻿@{
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+    var userNameClaim = User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault();
+    var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
+
+    if (userImageClaim == null || userImageClaim == "")
+    {
+        userImageClaim = "user.png";
+    }
+}
+
+<div class="top_nav">
     <div class="nav_menu">
         <div class="nav toggle">
             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -7,14 +18,14 @@
             <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                        <img src="~/assets/images/user/@User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault()" alt=""> 
-                        @User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault()
+                        <img src="~/assets/images/user/@userImageClaim" alt="">
+                        @userNameClaim
                     </a>
                     <div class="dropdown-menu my-dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item"
-                           href="@Url.Action("ChangePassword", "Home", new{ userId = @User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault() })"> 
-                           Change Password
-                       </a>
+                           href="@Url.Action("ChangePassword", "Home", new{ userId = userIdClaim })">
+                            Change Password
+                        </a>
                         <a class="dropdown-item" href="@Url.Action("Logout", "Route")"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                 </li>

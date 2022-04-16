@@ -126,9 +126,22 @@ namespace BookSocial.DataAccess.DataAccessClass
                         u.account,
                         u.[password],
 						u.[image],
+                        u.gender,
                         u.[status],
                         u.[role]
                     FROM [User] u WHERE u.[role] != 0");
+            }
+        }
+
+        public async Task<User> GetByAccount(string userAccount)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<User>(
+                    @"SELECT 
+                        id, [name], phone, email, account, [password], [image], 
+                        [address], [description], birthday, gender, friend, [status], [role]
+                    FROM [User] WHERE account = @userAccount", new { userAccount });
             }
         }
     }

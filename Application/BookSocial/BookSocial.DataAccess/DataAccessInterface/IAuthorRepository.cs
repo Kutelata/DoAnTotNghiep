@@ -5,6 +5,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
 {
     public interface IAuthorRepository : IRepository<Author>
     {
-        public Task<IEnumerable<AuthorStatistic>> GetAuthorStatistic();
+        Task<IEnumerable<AuthorStatistic>> GetAuthorStatistic();
     }
 }

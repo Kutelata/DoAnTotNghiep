@@ -21,6 +21,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<User> GetByAccount(string userAccount)
+        {
+            var response = await GetClient().GetAsync($"User/GetByAccount?userAccount={userAccount}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<User>() : null;
+            return data;
+        }
+
         public async Task<User> GetById(int id)
         {
             var response = await GetClient().GetAsync($"User/GetById?id={id}");

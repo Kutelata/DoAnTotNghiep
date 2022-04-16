@@ -1,3 +1,5 @@
+using AutoMapper;
+using BookSocial.EntityClass;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -17,6 +19,14 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Route/Login";
     });
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+// Add IMappper
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 var app = builder.Build();
 
