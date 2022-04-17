@@ -51,3 +51,4 @@ D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\D
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.Service.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\BookSocial.EntityClass.pdb
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\obj\Debug\net6.0\BookSocial.Presentation.User.csproj.CopyComplete
+D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.User\bin\Debug\net6.0\AutoMapper.dll

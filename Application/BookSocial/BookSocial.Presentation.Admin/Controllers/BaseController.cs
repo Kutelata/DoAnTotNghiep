@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
-    [Authorize(Policy = )]
+    [Authorize(Policy = "Admin")]
     public class BaseController : Controller
     {
     }

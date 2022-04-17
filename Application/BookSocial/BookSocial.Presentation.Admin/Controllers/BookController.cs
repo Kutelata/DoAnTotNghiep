@@ -1,5 +1,6 @@
 ﻿using BookSocial.EntityClass.Entity;
 using CsvHelper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Globalization;
@@ -8,6 +9,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> BookList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _bookService.GetBookStatistic();
@@ -80,6 +82,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Index.cshtml", dataInPage);
         }
 
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> ExportBookToCsv()
         {
             var data = await _bookService.GetBookStatistic();
@@ -95,6 +98,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
         }
 
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> DetailBook(int id)
         {
             var dataBook = await _bookService.GetById(id);
@@ -114,6 +118,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> CreateBook()
         {
             var genres = await _genreService.GetAll();
@@ -121,6 +126,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Create.cshtml");
         }
 
+        [Authorize(Policy = "Library Manager")]
         [HttpPost]
         public async Task<ActionResult> CreateBook(Book book, IFormFile Image)
         {
@@ -160,6 +166,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Create.cshtml", book);
         }
 
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> EditBook(int id)
         {
             var data = await _bookService.GetById(id);
@@ -172,6 +179,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
+        [Authorize(Policy = "Library Manager")]
         [HttpPost]
         public async Task<IActionResult> EditBook(Book book, IFormFile Image)
         {
@@ -217,6 +225,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Book/Edit.cshtml", book);
         }
 
+        [Authorize(Policy = "Library Manager")]
         public async Task<IActionResult> DeleteBook(int id)
         {
             var bookToDelete = await _bookService.GetById(id);

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
+        [Authorize(Policy = "User Manager")]
         public async Task<IActionResult> ArticleList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _articleService.GetArticleStatistic();
@@ -76,6 +78,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Article/Index.cshtml", dataInPage);
         }
 
+        [Authorize(Policy = "User Manager")]
         public async Task<IActionResult> DeleteArticle(int id)
         {
             var articleToDelete = await _articleService.GetById(id);

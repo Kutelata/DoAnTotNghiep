@@ -7,21 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="Views\AdminAuthorize\**" />
-		<Compile Remove="Views\AuthorizeManager\**" />
-		<Compile Remove="Views\UserManager\**" />
-		<Content Remove="Views\AdminAuthorize\**" />
-		<Content Remove="Views\AuthorizeManager\**" />
-		<Content Remove="Views\UserManager\**" />
-		<EmbeddedResource Remove="Views\AdminAuthorize\**" />
-		<EmbeddedResource Remove="Views\AuthorizeManager\**" />
-		<EmbeddedResource Remove="Views\UserManager\**" />
-		<None Remove="Views\AdminAuthorize\**" />
-		<None Remove="Views\AuthorizeManager\**" />
-		<None Remove="Views\UserManager\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\BookSocial.Service\BookSocial.Service.csproj" />
 	</ItemGroup>
 

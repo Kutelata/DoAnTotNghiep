@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookSocial.EntityClass.DTO;
 using BookSocial.Service.ServiceInterface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers
@@ -42,16 +43,22 @@ namespace BookSocial.Presentation.Admin.Controllers
             _articleService = articleService;
         }
 
+        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "User Manager")]
         public IActionResult Index()
         {
             return View("~/Views/Home/Index.cshtml");
         }
 
+        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "User Manager")]
         public IActionResult ChangePassword()
         {
             return View("~/Views/Home/ChangePassword.cshtml");
         }
 
+        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "User Manager")]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePassword changePassword)
         {

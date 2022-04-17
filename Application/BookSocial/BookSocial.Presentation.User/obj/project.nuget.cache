@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "oZJYXjLGTeRK7EjN1xPD4ToJ1RSFgCLBvYosW0Ew8Zp3o23ut8c5UtYmHU0ABcrSHrow0DwhKvBxpfQGnlL3vw==",
+  "dgSpecHash": "befLXPGzA9lG1FzB3EO9efQNdPsBs9tM54KoRyrPUkX2f9y1aZZd0cl6Pvn1XSWNbo4/0CryeNsR0A4rH5XRZQ==",
   "success": true,
   "projectFilePath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\BookSocial.Presentation.User.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\hclon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
-    "C:\\Users\\hclon\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\hclon\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,7 +1,10 @@
 using AutoMapper;
 using BookSocial.EntityClass;
+using BookSocial.EntityClass.Enum;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +21,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/Route/Login";
+        options.AccessDeniedPath = "/Route/Unauthorize401";
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.Admin}"));
+    options.AddPolicy("Library Manager", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.LibraryManager}"));
+    options.AddPolicy("User Manager", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.UserManager}"));
+});
 
 var mapperConfig = new MapperConfiguration(mc =>
 {

@@ -18,7 +18,8 @@ namespace BookSocial.DataAccess.DataAccessClass
                         u.birthday, u.gender, u.friend, u.status, u.[role]
                     FROM [User] u
                     WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
-                        AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS",
+                        AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS 
+                        AND u.[role] != 0",
                     new { account, password });
             }
         }
