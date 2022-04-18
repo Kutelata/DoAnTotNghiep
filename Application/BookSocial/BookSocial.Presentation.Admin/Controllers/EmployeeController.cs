@@ -2,6 +2,7 @@
 using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using CsvHelper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -9,6 +10,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> EmployeeList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _userService.GetUserEmployeeStatistic();
@@ -77,6 +79,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/User/Admin/Index.cshtml", dataInPage);
         }
 
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> ExportEmployeeToCsv()
         {
             var data = await _userService.GetUserEmployeeStatistic();
@@ -92,11 +95,13 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
         }
 
+        [Authorize(Policy = "All")]
         public IActionResult CreateEmployee()
         {
             return View("~/Views/User/Admin/Create.cshtml");
         }
 
+        [Authorize(Policy = "All")]
         [HttpPost]
         public async Task<ActionResult> CreateEmployee(CRUDEmployee createEmployee)
         {
@@ -127,6 +132,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/User/Admin/Create.cshtml", createEmployee);
         }
 
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> EditEmployee(int id)
         {
             var data = await _userService.GetById(id);
@@ -138,6 +144,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
+        [Authorize(Policy = "All")]
         [HttpPost]
         public async Task<IActionResult> EditEmployee(CRUDEmployee editEmployee)
         {
@@ -168,6 +175,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/User/Admin/Edit.cshtml", editEmployee);
         }
 
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> DeleteEmployee(int id)
         {
             var userToDelete = await _userService.GetById(id);

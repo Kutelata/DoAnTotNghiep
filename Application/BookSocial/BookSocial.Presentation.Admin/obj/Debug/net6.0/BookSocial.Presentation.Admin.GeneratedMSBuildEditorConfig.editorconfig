@@ -11,7 +11,7 @@ build_property.RootNamespace = BookSocial.Presentation.Admin
 build_property.ProjectDir = D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin
 build_property._RazorSourceGeneratorDebug = 
 

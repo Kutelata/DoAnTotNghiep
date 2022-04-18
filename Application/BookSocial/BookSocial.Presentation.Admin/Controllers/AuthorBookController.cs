@@ -6,7 +6,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         [HttpPost]
         public async Task<IActionResult> AssignAuthorToBook(AuthorBook authorBook)
         {
@@ -36,7 +36,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return Redirect(Request.Headers["Referer"].ToString());
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> DeleteAuthorFromBook(int bookId, int authorId)
         {
             int result = await _authorBookService.Delete(bookId, authorId);

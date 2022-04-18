@@ -8,7 +8,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> UserList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _userService.GetUserStatistic();
@@ -85,7 +85,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/User/User/Index.cshtml", dataInPage);
         }
 
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> ExportUserToCsv()
         {
             var data = await _userService.GetUserStatistic();
@@ -101,7 +101,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
         }
 
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> DetailUser(int id)
         {
             var dataUser = await _userService.GetById(id);
@@ -112,7 +112,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> ChangeStatus(int userId, Status userStatus)
         {
             var dataUser = await _userService.GetById(userId);
@@ -133,7 +133,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var userToDelete = await _userService.GetById(id);

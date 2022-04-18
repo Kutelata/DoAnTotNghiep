@@ -5,7 +5,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> CommentList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _commentService.GetCommentStatistic();
@@ -76,7 +76,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Comment/Index.cshtml", dataInPage);
         }
 
-        [Authorize(Policy = "User Manager")]
+        [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> DeleteComment(int id)
         {
             var commentToDelete = await _commentService.GetById(id);

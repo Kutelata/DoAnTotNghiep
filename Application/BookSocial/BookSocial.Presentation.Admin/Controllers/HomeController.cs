@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Admin.Controllers
 {
+    [Authorize(Policy = "All")]
     public partial class HomeController : BaseController
     {
         private readonly IMapper _mapper;
@@ -43,22 +44,16 @@ namespace BookSocial.Presentation.Admin.Controllers
             _articleService = articleService;
         }
 
-        [Authorize(Policy = "Library Manager")]
-        [Authorize(Policy = "User Manager")]
         public IActionResult Index()
         {
             return View("~/Views/Home/Index.cshtml");
         }
 
-        [Authorize(Policy = "Library Manager")]
-        [Authorize(Policy = "User Manager")]
         public IActionResult ChangePassword()
         {
             return View("~/Views/Home/ChangePassword.cshtml");
         }
 
-        [Authorize(Policy = "Library Manager")]
-        [Authorize(Policy = "User Manager")]
         [HttpPost]
         public async Task<IActionResult> ChangePassword(ChangePassword changePassword)
         {

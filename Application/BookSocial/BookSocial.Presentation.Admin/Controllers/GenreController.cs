@@ -6,7 +6,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> GenreList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _genreService.GetGenreStatistic();
@@ -67,13 +67,13 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Genre/Index.cshtml", dataInPage);
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public IActionResult CreateGenre()
         {
             return View("~/Views/Genre/Create.cshtml");
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         [HttpPost]
         public async Task<ActionResult> CreateGenre(Genre genre)
         {
@@ -99,7 +99,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> EditGenre(int id)
         {
             var data = await _genreService.GetById(id);
@@ -110,7 +110,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         [HttpPost]
         public async Task<IActionResult> EditGenre(Genre genre)
         {
@@ -136,7 +136,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Genre/Edit.cshtml", genre);
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> DeleteGenre(int id)
         {
             var data = await _genreService.GetById(id);

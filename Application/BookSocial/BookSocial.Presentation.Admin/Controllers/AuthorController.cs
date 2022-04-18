@@ -6,7 +6,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 {
     public partial class HomeController
     {
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> AuthorList(int page = 1, string search = null, string sort = "Id")
         {
             var allData = await _authorService.GetAuthorStatistic();
@@ -73,6 +73,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Author/Index.cshtml", dataInPage);
         }
 
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> AuthorData(string search)
         {
             var data = await _authorService.GetAll();
@@ -80,13 +81,13 @@ namespace BookSocial.Presentation.Admin.Controllers
             return Json(handleData);
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public IActionResult CreateAuthor()
         {
             return View("~/Views/Author/Create.cshtml");
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         [HttpPost]
         public async Task<ActionResult> CreateAuthor(Author author, IFormFile Image)
         {
@@ -119,7 +120,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Author/Create.cshtml", author);
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> EditAuthor(int id)
         {
             var data = await _authorService.GetById(id);
@@ -130,7 +131,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return RedirectToAction("NotFound404", "Route");
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         [HttpPost]
         public async Task<IActionResult> EditAuthor(Author author, IFormFile Image)
         {
@@ -168,7 +169,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             return View("~/Views/Author/Edit.cshtml", author);
         }
 
-        [Authorize(Policy = "Library Manager")]
+        [Authorize(Policy = "Admin and Library Manager")]
         public async Task<IActionResult> DeleteAuthor(int id)
         {
             var authorToDelete = await _authorService.GetById(id);

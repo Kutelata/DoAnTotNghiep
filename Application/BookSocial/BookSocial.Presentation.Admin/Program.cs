@@ -3,13 +3,12 @@ using BookSocial.EntityClass;
 using BookSocial.EntityClass.Enum;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 // AddScoped HttpClient
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
@@ -26,9 +25,25 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("Admin", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.Admin}"));
-    options.AddPolicy("Library Manager", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.LibraryManager}"));
-    options.AddPolicy("User Manager", policy => policy.RequireClaim("Role", $"{(int)RoleEmployee.UserManager}"));
+    options.AddPolicy("All",
+        policy => policy.RequireClaim("Role",
+        $"{(int)RoleEmployee.Admin}",
+        $"{(int)RoleEmployee.LibraryManager}",
+        $"{(int)RoleEmployee.UserManager}"));
+
+    options.AddPolicy("Admin",
+        policy => policy.RequireClaim("Role",
+        $"{(int)RoleEmployee.Admin}"));
+
+    options.AddPolicy("Admin and Library Manager",
+        policy => policy.RequireClaim("Role",
+        $"{(int)RoleEmployee.Admin}",
+        $"{(int)RoleEmployee.LibraryManager}"));
+
+    options.AddPolicy("Admin and User Manager",
+        policy => policy.RequireClaim("Role",
+        $"{(int)RoleEmployee.Admin}",
+        $"{(int)RoleEmployee.UserManager}"));
 });
 
 var mapperConfig = new MapperConfiguration(mc =>
