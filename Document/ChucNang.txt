@@ -2,7 +2,14 @@ Trang User
     Login, Register
     Home: 
     - Top: Menu, Search, Icon Page, Icon Profile
-    - Center: New Feed
+    - Center: 
+        + Article (Have book): 
+            User Image, User Name, Rating, Text, Book Image, Book Name, 
+            Author Name, Progress, Description, Created At
+        + Article:
+            User Image, User Name, Text, Created At
+        + Comment:
+            User Image, User Name, Text, Created At
     - Left: Your Progress Book 
     - Right: Add Friend, List Friend, Recent Activity
     My Book:
@@ -11,8 +18,12 @@ Trang User
     Search:
     - Left: Filter By ...
     - Center: List, Change Progress
-    Friend
+    Friend:
     - Left: Filter By Friend, Suggest
     - Center: List
-    
-
+    BookInformation:
+    - Center: Full Information
+    - Left: Article (Have Book)
+    - Right: Book Related
+    AuthorInformation:
+    - Center: Full Information
