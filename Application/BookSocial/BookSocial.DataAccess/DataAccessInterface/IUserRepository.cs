@@ -7,6 +7,7 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         Task<IEnumerable<UserStatistic>> GetUserStatistic();
         Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic();
+        Task<AdminSaveCookie> GetAdminSaveCookie(string account, string password);
         Task<UserSaveCookie> GetUserSaveCookie(string account, string password);
         Task<User> GetByAccount(string userAccount);
     }

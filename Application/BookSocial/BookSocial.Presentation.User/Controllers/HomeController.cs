@@ -1,4 +1,5 @@
 ﻿using BookSocial.Service.ServiceInterface;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.User.Controllers
 {
@@ -31,6 +32,11 @@ namespace BookSocial.Presentation.User.Controllers
             _authorBookService = authorBookService;
             _shelfService = shelfService;
             _articleService = articleService;
+        }
+
+        public IActionResult Index()
+        {
+            return View("~/Views/Home/Index.cshtml");
         }
     }
 }

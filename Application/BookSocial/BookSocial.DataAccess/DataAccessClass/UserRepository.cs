@@ -7,6 +7,23 @@ namespace BookSocial.DataAccess.DataAccessClass
 {
     public class UserRepository : ConnectionStrings, IUserRepository
     {
+        public async Task<AdminSaveCookie> GetAdminSaveCookie(string account, string password)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<AdminSaveCookie>(
+                    @"SELECT 
+                        u.id, u.[name] as 'userName', u.phone, u.email, 
+                        u.account, u.password, u.[image], u.address, u.description, 
+                        u.birthday, u.gender, u.friend, u.status, u.[role]
+                    FROM [User] u
+                    WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
+                        AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS 
+                        AND u.[role] != 0",
+                    new { account, password });
+            }
+        }
+
         public async Task<UserSaveCookie> GetUserSaveCookie(string account, string password)
         {
             using (var con = GetConnection())
@@ -19,7 +36,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] u
                     WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
                         AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS 
-                        AND u.[role] != 0",
+                        AND u.[role] = 0",
                     new { account, password });
             }
         }

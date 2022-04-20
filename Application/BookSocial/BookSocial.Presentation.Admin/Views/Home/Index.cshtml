@@ -1,6 +1,5 @@
 ﻿@{
     var userName = User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault();
-    var userRole = User.Claims.Where(c => c.Type == "Role").Select(c => c.Value).SingleOrDefault();
 }
 
 <div class="x_content">
@@ -18,7 +17,7 @@
     }
     <div class="bs-example" data-example-id="simple-jumbotron">
         <div class="jumbotron">
-            <h1>Welcome, @userName @userRole</h1>
+            <h1>Welcome, @userName</h1>
             <p>This is book social network management software.</p>
         </div>
     </div>

@@ -14,16 +14,20 @@ Trang User
     - Right: Add Friend, List Friend, Recent Activity
     My Book:
     - Left: Filter By Book Shelf
-    - Center: List, Change Progress, Detail
+    - Center: List, Change Progress, Detail, Paging
     Search:
-    - Left: Filter By ...
-    - Center: List, Change Progress
+    - Left: Filter By User, Book, Author
+    - Center: List, Change Progress, Paging
     Friend:
     - Left: Filter By Friend, Suggest
-    - Center: List
+    - Center: List, Paging
     BookInformation:
     - Center: Full Information
     - Left: Article (Have Book)
     - Right: Book Related
     AuthorInformation:
     - Center: Full Information
+    UserProfile:
+    - Center: Full Information
+    - Left: Get book by currently reading
+    - Right: Get 5 Friend Recent Add

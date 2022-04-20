@@ -7,17 +7,19 @@
             <a href="newsfeed.html" title=""><img src="~/images/logo2.png" alt=""></a>
         </span>
     </div>
-    <div class="mh-head second">
-        <form class="mh-form">
-            <input placeholder="search" />
-            <a href="#/" class="fa fa-search"></a>
-        </form>
-    </div>
     <nav id="menu" class="res-menu">
         <ul>
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
             <li><a href="@Url.Action("BookShelf","Home")" title="">My Book</a></li>
             <li><a href="@Url.Action("FriendList","Home")" title="">My Friend</a></li>
+            <li><a href="@Url.Action("SearchList","Home")" title="">Discover</a></li>
+            <li>
+                <span>Account</span>
+                <ul>
+                    <li><a href="@Url.Action("Profile","Home")" title="">Profile</a></li>
+                    <li><a href="@Url.Action("Logout","Route")" title="">Log out</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </div><!-- responsive header -->
@@ -31,19 +33,14 @@
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
             <li><a href="@Url.Action("BookShelf","Home")" title="">My Book</a></li>
             <li><a href="@Url.Action("FriendList","Home")" title="">My Friend</a></li>
+            <li><a href="@Url.Action("SearchList","Home")" title="">Discover</a></li>
         </ul>
-        <div class="top-search">
-            <form method="post" class="">
-                <input type="text" placeholder="Search Friend">
-                <button data-ripple><i class="ti-search"></i></button>
-            </form>
-        </div>
         <div class="user-img">
             <img src="~/images/resources/admin.jpg" alt="">
             <span class="status f-online"></span>
             <div class="user-setting">
-                <a href="#" title=""><i class="ti-user"></i> view profile</a>
-                <a href="#" title=""><i class="ti-power-off"></i>log out</a>
+                <a href="@Url.Action("Profile","Home")" title=""><i class="ti-user"></i> view profile</a>
+                <a href="@Url.Action("Logout","Route")" title=""><i class="ti-power-off"></i>log out</a>
             </div>
         </div>
     </div>
