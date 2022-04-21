@@ -1,51 +1,60 @@
-﻿<div class="central-meta" style="padding:25px;min-height:100vh">
-    <div class="frnds">
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="active" href="#frends" data-toggle="tab">Friends</a> <span>55</span></li>
-            <li class="nav-item"><a class="" href="#frends-req" data-toggle="tab">Suggest</a><span>60</span></li>
-        </ul>
+﻿@section css{
+<style>
+    .paging_active {
+        color: #FFF!important;
+        background: #088DCD;
+    }
+</style>
+}
 
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <div class="tab-pane active fade show" id="frends">
-                <ul class="nearby-contct">
-                    <li>
-                        <div class="nearly-pepls">
-                            <figure>
-                                <a href="time-line.html" title=""><img src="~/images/resources/friend-avatar9.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                                <h4><a href="time-line.html" title="">jhon kates</a></h4>
-                                <span>ftv model</span>
-                                <a href="time-line.html" title="" class="add-butn" data-ripple="">view profile</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="pagination mt-2" style="border:none; float:right">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </div>
-            <div class="tab-pane fade" id="frends-req">
-                <ul class="nearby-contct">
-                    <li>
-                        <div class="nearly-pepls">
-                            <figure>
-                                <a href="time-line.html" title=""><img src="~/images/resources/nearly5.jpg" alt=""></a>
-                            </figure>
-                            <div class="pepl-info">
-                                <h4><a href="time-line.html" title="">Amy watson</a></h4>
-                                <span>ftv model</span>
-                                <a href="time-line.html" title="" class="add-butn" data-ripple="">view profile</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+<div class="blog-sec">
+    <div class="post-filter-sec">
+        <form method="post" class="filter-form">
+            <input type="text" placeholder="Search post">
+            <button><i class="ti-search"></i></button>
+        </form>
+        <div class="purify">
+            <span>filter by</span>
+            <select>
+                <option>All categories</option>
+                <option>By Favouirtes</option>
+                <option>By Likes</option>
+            </select>
+            <select>
+                <option>Assending A-Z</option>
+                <option>Desending Z-A</option>
+                <option>Desending (date)</option>
+                <option>Asending (date)</option>
+            </select>
+            <a href="#" style="font-size:14px" title="">purify</a>
         </div>
     </div>
+    <div class="l-post">
+        <figure>
+            <img src="~/images/resources/bloglist-1.jpg" alt="">
+        </figure>
+        <div class="l-post-meta">
+            <h4><a href="#" title="">how to create content that get traffic</a></h4>
+            <div class="l-post-ranking">
+                <a class="admin" href="#" title="">admin</a>
+                <a class="pdate" href="#" title="">04-23-19</a>
+                <a class="time-post" href="#" title=""> -12 hours ago</a>
+            </div>
+            <p>
+                by imporving the physical layout of hospitals and medical facilities we can inhence and increase safety macnisum..
+            </p>
+            <div class="g-post-ranking">
+                <a class="likes" href="#" title=""><i class="fa fa-heart-o"></i>10 likes</a>
+                <a class="coments" href="#" title=""><i class="fa fa-comment-o"></i>5 comments</a>
+            </div>
+            <a href="#" title="" class="read">Read More</a>
+        </div>
+    </div>
+    <ul class="pagination mt-2" style="border:none; float:right">
+        <li class="page-item"><a class="page-link paging_active" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link paging_active" style="color:#088DCD" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">Next</a></li>
+    </ul>
 </div>

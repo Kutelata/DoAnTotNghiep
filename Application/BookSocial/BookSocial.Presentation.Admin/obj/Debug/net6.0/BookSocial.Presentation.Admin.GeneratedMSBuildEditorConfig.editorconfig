@@ -15,10 +15,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Article/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Author/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -77,6 +73,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Review/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmV2aWV3XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Study/DoAnTotNghiep/Application/BookSocial/BookSocial.Presentation.Admin/Views/Shared/Partials/SideBarLeft.cshtml]

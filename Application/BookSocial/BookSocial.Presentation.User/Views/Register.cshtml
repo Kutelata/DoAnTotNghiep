@@ -1,35 +1,57 @@
 ﻿@{
     Layout = "_LayoutAuthorize";
 }
+@model BookSocial.EntityClass.Entity.User
 
 <h2 class="log-title">Register</h2>
-<form method="post">
-    <div class="form-group">
-        <input type="text" />
-        <label class="control-label" for="input">First & Last Name</label><i class="mtrl-select"></i>
+@*@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Success"]
     </div>
+}
+@if (TempData["Fail"] != null)
+{
+    <div class="alert alert-error" role="alert">
+        @TempData["Fail"]
+    </div>
+}*@
+<form method="post" action="@Url.Action("Register","Route")">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
-        <input type="text" />
+        <input type="text" asp-for="Name" />
         <label class="control-label" for="input">User Name</label><i class="mtrl-select"></i>
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="password" />
+        <input type="text" asp-for="Account" />
+        <label class="control-label" for="input">Account</label><i class="mtrl-select"></i>
+        <span asp-validation-for="Account" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="password" asp-for="Password" />
         <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
+        <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <div class="form-radio">
+    <div class="form-group">
+        <input type="text" asp-for="Email" />
+        <label class="control-label" for="input">Email</label><i class="mtrl-select"></i>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    @*<div class="form-radio">
         <div class="radio">
-            <label>
-                <input type="radio" name="radio" checked="checked" /><i class="check-box"></i>Male
-            </label>
+        <label>
+        <input type="radio" name="radio" checked="checked" /><i class="check-box"></i>Male
+        </label>
         </div>
         <div class="radio">
-            <label>
-                <input type="radio" name="radio" /><i class="check-box"></i>Female
-            </label>
+        <label>
+        <input type="radio" name="radio" /><i class="check-box"></i>Female
+        </label>
         </div>
-    </div>
+        </div>*@
     <a href="@Url.Action("Login","Route")" title="" class="forgot-pwd" style="width:100%">Already have an account</a>
     <div class="submit-btns">
-        <button class="mtr-btn signup" type="button"><span>Register</span></button>
+        <button class="mtr-btn signup" type="submit"><span>Register</span></button>
     </div>
 </form>

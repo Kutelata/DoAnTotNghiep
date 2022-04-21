@@ -32,16 +32,16 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Comment>> GetByArticleId(int articleId)
+        public async Task<IEnumerable<Comment>> GetByReviewId(int reviewId)
         {
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Comment>(
                     @"SELECT  
                         id, [text], parent_id, 
-                        created_at as 'createdAt', [article_id] as 'articleId', 
+                        created_at as 'createdAt', [review_id] as 'reviewId', 
                         [user_id] as 'userId'
-                    FROM Comment WHERE article_id = @articleId", new { articleId });
+                    FROM Comment WHERE review_id = @reviewId", new { reviewId });
             }
         }
 
@@ -63,7 +63,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QueryAsync<Comment>(
                     @"SELECT  
                         id, [text], parent_id, 
-                        created_at as 'createdAt', [article_id] as 'articleId', 
+                        created_at as 'createdAt', [review_id] as 'reviewId', 
                         [user_id] as 'userId'
                     FROM Comment WHERE parent_id = @parentId", new { parentId });
             }
@@ -76,7 +76,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QueryAsync<Comment>(
                     @"SELECT  
                         id, [text], parent_id, 
-                        created_at as 'createdAt', [article_id] as 'articleId', 
+                        created_at as 'createdAt', [review_id] as 'reviewId', 
                         [user_id] as 'userId'
                     FROM Comment WHERE [user_id] = @userId", new { userId });
             }
@@ -92,14 +92,14 @@ namespace BookSocial.DataAccess.DataAccessClass
 	                    c.[text],
 						c.parent_id as 'parentId',
 						c.created_at as 'createdAt',
-						a.id as 'articleId',
+						r.id as 'reviewId',
 						u.id as 'userId',
 						u.[name] as 'userName',
 						COUNT(c.parent_id) as 'numberCommentReplies'
                     FROM Comment c
 					LEFT JOIN [User] u ON u.id = c.[user_id]
-					LEFT JOIN Article a ON c.article_id = a.id
-                    GROUP BY c.id, c.[text], c.parent_id, c.created_at, a.id, u.id,u.[name]");
+					LEFT JOIN Review r ON c.review_id = r.id
+                    GROUP BY c.id, c.[text], c.parent_id, c.created_at, r.id, u.id,u.[name]");
             }
         }
 
@@ -111,7 +111,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                     @"UPDATE Comment
                     SET 
                         [text] = @text, parent_id = @parentId, created_at = @createdAt, 
-                        article_id = @articleId, [user_id] = @userId
+                        review_id = @reviewId, [user_id] = @userId
                     WHERE id = @id", entity);
             }
         }

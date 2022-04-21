@@ -1,4 +1,5 @@
 ﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -82,6 +83,24 @@ namespace BookSocial.Presentation.User.Controllers
 
         public IActionResult Register()
         {
+            return View("~/Views/Register.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(EntityClass.Entity.User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.Create(user);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Register Account success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Register Account failed!";
+                }
+            }
             return View("~/Views/Register.cshtml");
         }
 

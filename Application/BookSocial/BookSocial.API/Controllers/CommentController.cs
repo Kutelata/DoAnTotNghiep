@@ -28,11 +28,11 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByArticleId(int articleId)
+        public async Task<IActionResult> GetByReviewId(int reviewId)
         {
             try
             {
-                var data = await _commentRepository.GetByArticleId(articleId);
+                var data = await _commentRepository.GetByReviewId(reviewId);
                 return Ok(data);
             }
             catch (Exception ex)

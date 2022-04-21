@@ -230,7 +230,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             var bookToDelete = await _bookService.GetById(id);
             var authorAssignToBook = await _authorBookService.GetByBookId(id);
-            var articleHaveBook = await _articleService.GetByBookId(id);
+            var reviewHaveBook = await _reviewService.GetByBookId(id);
             var shelfHaveBook = await _shelfService.GetByBookId(id);
 
             if (authorAssignToBook.Any())
@@ -238,7 +238,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 TempData["Fail"] = "Delete Book failed, still assigned to author!";
                 return RedirectToAction("BookList", "Home");
             }
-            if (articleHaveBook.Any())
+            if (reviewHaveBook.Any())
             {
                 TempData["Fail"] = "Delete Book failed, still have article!";
                 return RedirectToAction("BookList", "Home");

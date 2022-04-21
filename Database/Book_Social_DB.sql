@@ -17,13 +17,19 @@ create table [User]
 	[description] nvarchar(max),
 	birthday datetime,
 	gender tinyint default(0),
-	friend varchar(max),
 	[status] tinyint default(0),
 	[role] tinyint default(0)
 )
 go
 
 create unique nonclustered index UQ_User_Image on [User]([image]) where [image] != '' and [image] is not null
+go
+
+create table Friend 
+(
+	[user_id] int foreign key references [User](id),
+	user_friend_id int foreign key references [User](id),
+)
 go
 
 create table Author
@@ -69,13 +75,13 @@ create table Author_Book
 )
 go
 
-create table Article
+create table Review
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
 	star tinyint default(0),
 	created_at datetime not null,
-	book_id int default(0),
+	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id)
 )
 go
@@ -86,14 +92,13 @@ create table Comment
 	[text] nvarchar(max) not null,
 	parent_id int default(0),
 	created_at datetime not null,
-	article_id int foreign key references Article(id),
+	review_id int foreign key references Review(id),
 	[user_id] int foreign key references [User](id)
 )
 go
 
 create table Shelf
 (
-	[page] int default(0),
 	progress_read tinyint default(0),
 	book_id int foreign key references Book(id),
 	[user_id] int foreign key references [User](id),

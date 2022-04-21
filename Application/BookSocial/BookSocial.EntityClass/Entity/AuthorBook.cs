@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BookSocial.EntityClass.Entity
+﻿namespace BookSocial.EntityClass.Entity
 {
     public class AuthorBook : BaseEntity
     {

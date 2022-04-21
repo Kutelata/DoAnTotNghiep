@@ -14,9 +14,9 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
-        public async Task<IEnumerable<Comment>> GetByArticleId(int articleId)
+        public async Task<IEnumerable<Comment>> GetByReviewId(int reviewId)
         {
-            var response = await GetClient().GetAsync($"Comment/GetByArticleId?articleId={articleId}");
+            var response = await GetClient().GetAsync($"Comment/GetByReviewId?reviewId={reviewId}");
             var data = response.IsSuccessStatusCode
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Comment>>() : null;
             return data;

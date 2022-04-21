@@ -18,7 +18,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         private readonly IAuthorService _authorService;
         private readonly IAuthorBookService _authorBookService;
         private readonly IShelfService _shelfService;
-        private readonly IArticleService _articleService;
+        private readonly IReviewService _reviewService;
 
         public HomeController(
             IMapper mapper,
@@ -30,7 +30,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             IAuthorService authorService,
             IAuthorBookService authorBookService,
             IShelfService shelfService,
-            IArticleService articleService)
+            IReviewService reviewService)
         {
             _mapper = mapper;
 
@@ -41,7 +41,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             _authorService = authorService;
             _authorBookService = authorBookService;
             _shelfService = shelfService;
-            _articleService = articleService;
+            _reviewService = reviewService;
         }
 
         public IActionResult Index()

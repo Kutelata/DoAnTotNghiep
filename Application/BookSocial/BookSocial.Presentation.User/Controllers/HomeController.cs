@@ -12,7 +12,8 @@ namespace BookSocial.Presentation.User.Controllers
         private readonly IAuthorService _authorService;
         private readonly IAuthorBookService _authorBookService;
         private readonly IShelfService _shelfService;
-        private readonly IArticleService _articleService;
+        private readonly IReviewService _reviewService;
+        private readonly IFriendService _friendService;
 
         public HomeController(
             IUserService userService,
@@ -22,7 +23,8 @@ namespace BookSocial.Presentation.User.Controllers
             IAuthorService authorService,
             IAuthorBookService authorBookService,
             IShelfService shelfService,
-            IArticleService articleService)
+            IReviewService reviewService,
+            IFriendService friendService)
         {
             _userService = userService;
             _genreService = genreService;
@@ -31,12 +33,18 @@ namespace BookSocial.Presentation.User.Controllers
             _authorService = authorService;
             _authorBookService = authorBookService;
             _shelfService = shelfService;
-            _articleService = articleService;
+            _reviewService = reviewService;
+            _friendService = friendService;
         }
 
         public IActionResult Index()
         {
             return View("~/Views/Home/Index.cshtml");
+        }
+
+        public IActionResult Profile()
+        {
+            return View("~/Views/Home/Profile.cshtml");
         }
     }
 }

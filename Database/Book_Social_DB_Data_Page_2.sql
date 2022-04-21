@@ -125,22 +125,46 @@ insert into Author_Book values
 (50,54)
 go
 
-/*
-insert into Article values
--- ('text','star','created_at','book_id','user_id')
+insert into Friend values
+-- ('user_id','user_friend_id')
 
--- review
-
--- blog
-(),
-go
-
-
-insert into Comment values
--- ('text','article_id','parent_id','created_at','user_id')
+(4,5),
+(4,6),
+(4,7),
+(4,8),
+(4,9),
+(4,10),
+(4,11),
+(4,12),
+(4,13),
+(4,14)
 go
 
 insert into Shelf values
--- ('page','progress_read','book_id','user_id')
+-- ('progress_read','book_id','user_id')
+
+(0,1,1),
+(1,2,1),
+(2,3,1),
+(0,4,1),
+(1,5,1),
+(2,6,1),
+(0,7,1),
+(1,8,1),
+(2,9,1),
+(0,10,1)
+go
+
+/*
+insert into Review values
+-- ('text','star','created_at','book_id','user_id')
+
+(),
+go
+
+insert into Comment values
+-- ('text','review_id','parent_id','created_at','user_id')
+
+(),
 go
 */

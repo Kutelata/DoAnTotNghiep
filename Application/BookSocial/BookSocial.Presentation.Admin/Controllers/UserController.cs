@@ -35,7 +35,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         case "Status": dataInPage = dataInPage.OrderBy(x => x.Status); break;
                         case "NumberOfFriends": dataInPage = dataInPage.OrderBy(x => x.NumberOfFriends); break;
                         case "NumberBooksOnShelf": dataInPage = dataInPage.OrderBy(x => x.NumberBooksOnShelf); break;
-                        case "NumberOfArticles": dataInPage = dataInPage.OrderBy(x => x.NumberOfArticles); break;
+                        case "NumberOfReviews": dataInPage = dataInPage.OrderBy(x => x.NumberOfReviews); break;
                         case "NumberOfComments": dataInPage = dataInPage.OrderBy(x => x.NumberOfComments); break;
                     }
                 }
@@ -57,7 +57,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         data.Status.ToString() == search ||
                         data.NumberOfFriends.ToString() == search ||
                         data.NumberBooksOnShelf.ToString() == search ||
-                        data.NumberOfArticles.ToString() == search ||
+                        data.NumberOfReviews.ToString() == search ||
                         data.NumberOfComments.ToString() == search);
                 }
 
@@ -138,7 +138,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             var userToDelete = await _userService.GetById(id);
             var shelfOfUser = await _shelfService.GetByUserId(id);
-            var articleOfUser = await _articleService.GetByUserId(id);
+            var reviewOfUser = await _reviewService.GetByUserId(id);
             var commentOfUser = await _commentService.GetByUserId(id);
 
             if (shelfOfUser.Any())
@@ -146,7 +146,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 TempData["Fail"] = "Delete User failed, still have shelf!";
                 return RedirectToAction("UserList", "Home");
             }
-            if (articleOfUser.Any())
+            if (reviewOfUser.Any())
             {
                 TempData["Fail"] = "Delete User failed, still have article!";
                 return RedirectToAction("UserList", "Home");

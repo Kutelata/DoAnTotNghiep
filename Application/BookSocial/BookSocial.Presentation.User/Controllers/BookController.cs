@@ -9,10 +9,10 @@ namespace BookSocial.Presentation.User.Controllers
             return View("~/Views/Shelf/Index.cshtml");
         }
 
-        //public IActionResult BookSearch()
-        //{
-        //    return View();
-        //}
+        public IActionResult BookDetail()
+        {
+            return View("~/Views/Book/Index.cshtml");
+        }
 
         //public IActionResult BookDetail()
         //{

@@ -30,7 +30,7 @@
                                 <option value="Status">Status</option>
                                 <option value="NumberOfFriends">Number Of Friends</option>
                                 <option value="NumberBooksOnShelf">Number Books On Shelf</option>
-                                <option value="NumberOfArticles">Number Of Articles</option>
+                                <option value="NumberOfReviews">Number Of Reviews</option>
                                 <option value="NumberOfComments">Number Of Comments</option>
                             </select>
                         </div>
@@ -70,7 +70,7 @@
                             <th class="column-title">Status</th>
                             <th class="column-title">Number Of Friends</th>
                             <th class="column-title">Number Books On Shelf</th>
-                            <th class="column-title">Number Of Articles</th>
+                            <th class="column-title">Number Of Reviews</th>
                             <th class="column-title">Number Of Comments</th>
                             <th class="column-title no-link last">
                                 <span class="nobr">Action</span>
@@ -113,7 +113,7 @@
                                 <td class=" "><span class="badge badge-@statusColor">@statusText</span></td>
                                 <td class=" ">@item.NumberOfFriends</td>
                                 <td class=" ">@item.NumberBooksOnShelf</td>
-                                <td class=" ">@item.NumberOfArticles</td>
+                                <td class=" ">@item.NumberOfReviews</td>
                                 <td class=" ">@item.NumberOfComments</td>
                                 <td class=" last">
                                     <a class="btn btn-outline-info" href="@Url.Action("DetailUser", "", new { id = @item.Id })">

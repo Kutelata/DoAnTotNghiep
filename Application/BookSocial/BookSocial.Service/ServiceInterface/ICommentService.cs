@@ -6,7 +6,7 @@ namespace BookSocial.Service.ServiceInterface
     public interface ICommentService
     {
         Task<IEnumerable<CommentStatistic>> GetCommentStatistic();
-        Task<IEnumerable<Comment>> GetByArticleId(int articleId);
+        Task<IEnumerable<Comment>> GetByReviewId(int articleId);
         Task<IEnumerable<Comment>> GetByUserId(int userId);
         Task<IEnumerable<Comment>> GetByParentId(int parentId);
         Task<Comment> GetById(int commentId);

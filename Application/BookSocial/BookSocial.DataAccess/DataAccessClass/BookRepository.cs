@@ -91,11 +91,11 @@ namespace BookSocial.DataAccess.DataAccessClass
 						b.published,
 						g.[name] as 'genreName',
 						COUNT(ab.author_id) as 'numberOfAuthors',
-	                    COUNT(a.id) as 'numberOfArticle',
+	                    COUNT(r.id) as 'numberOfArticle',
 						COUNT(s.[user_id]) as 'numberOfShelfs'
                     FROM Book b
 					JOIN Genre g ON g.id = b.genre_id
-                    FULL OUTER JOIN Article a ON a.book_id = b.id
+                    FULL OUTER JOIN Review r ON r.book_id = b.id
 					FULL OUTER JOIN Author_Book ab ON ab.book_id = b.id
 					FULL OUTER JOIN Shelf s ON s.book_id = b.id
                     GROUP BY b.id, b.isbn, b.[name], b.[image], b.published, g.[name]");
