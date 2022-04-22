@@ -1,4 +1,8 @@
-﻿<div class="responsive-header">
+﻿@{
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+}
+
+<div class="responsive-header">
     <div class="mh-head first Sticky">
         <span class="mh-btns-left">
             <a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
@@ -10,13 +14,13 @@
     <nav id="menu" class="res-menu">
         <ul>
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
-            <li><a href="@Url.Action("BookShelf","Home")" title="">My Book</a></li>
-            <li><a href="@Url.Action("FriendList","Home")" title="">My Friend</a></li>
-            <li><a href="@Url.Action("SearchList","Home")" title="">Discover</a></li>
+            <li><a href="@Url.Action("BookShelf","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
+            <li><a href="@Url.Action("FriendList","Home", new{ userId = userIdClaim })" title="">My Friend</a></li>
+            <li><a href="@Url.Action("SearchList","Home", new{ userId = userIdClaim })" title="">Discover</a></li>
             <li>
                 <span>Account</span>
                 <ul>
-                    <li><a href="@Url.Action("Profile","Home")" title="">Profile</a></li>
+                    <li><a href="@Url.Action("Profile","Home", new{ userId = userIdClaim })" title="">Profile</a></li>
                     <li><a href="@Url.Action("Logout","Route")" title="">Log out</a></li>
                 </ul>
             </li>
@@ -31,15 +35,15 @@
     <div class="top-area">
         <ul class="main-menu">
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
-            <li><a href="@Url.Action("BookShelf","Home")" title="">My Book</a></li>
-            <li><a href="@Url.Action("FriendList","Home")" title="">My Friend</a></li>
-            <li><a href="@Url.Action("SearchList","Home")" title="">Discover</a></li>
+            <li><a href="@Url.Action("BookShelf","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
+            <li><a href="@Url.Action("FriendList","Home", new{ userId = userIdClaim })" title="">My Friend</a></li>
+            <li><a href="@Url.Action("SearchList","Home", new{ userId = userIdClaim })" title="">Discover</a></li>
         </ul>
         <div class="user-img">
             <img src="~/images/resources/admin.jpg" alt="">
             <span class="status f-online"></span>
             <div class="user-setting">
-                <a href="@Url.Action("Profile","Home")" title=""><i class="ti-user"></i> view profile</a>
+                <a href="@Url.Action("Profile","Home", new{ userId = userIdClaim })" title=""><i class="ti-user"></i> view profile</a>
                 <a href="@Url.Action("Logout","Route")" title=""><i class="ti-power-off"></i>log out</a>
             </div>
         </div>

@@ -10,6 +10,9 @@ namespace BookSocial.EntityClass
         {
             CreateMap<CRUDEmployee, User>();
             CreateMap<User, CRUDEmployee>();
+
+            CreateMap<UserRegister, User>();
+            CreateMap<User, UserRegister>();
         }
     }
 }

@@ -96,6 +96,20 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetByEmail(string userEmail)
+        {
+            try
+            {
+                var data = await _userRepository.GetByEmail(userEmail);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(User user)

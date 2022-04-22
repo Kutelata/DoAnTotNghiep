@@ -1,3 +1,5 @@
+using AutoMapper;
+using BookSocial.EntityClass;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -12,6 +14,14 @@ builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get
 
 // AddScoped Service
 RegisterService.Register(builder.Services);
+
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+// Add IMappper
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -32,6 +42,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>

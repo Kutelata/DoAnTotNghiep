@@ -1,5 +1,4 @@
 ﻿using BookSocial.EntityClass.DTO;
-using BookSocial.EntityClass.Entity;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -50,9 +49,8 @@ namespace BookSocial.Presentation.User.Controllers
                         new Claim("Image", data.Image != null ? data.Image.ToString() : ""),
                         new Claim("Address", data.Address != null ? data.Address.ToString() : ""),
                         new Claim("Description", data.Description != null ? data.Description.ToString() : ""),
-                        new Claim("Birthday", data.Birthday.ToString()),
+                        new Claim("Birthday", data.Birthday != null ? data.Birthday.ToString() : ""),
                         new Claim("Gender", data.Gender.ToString()),
-                        new Claim("Friend", data.Friend != null ? data.Friend.ToString() : ""),
                         new Claim("Status", data.Status.ToString()),
                         new Claim("Role", data.Role.ToString()),
                     };
@@ -89,19 +87,30 @@ namespace BookSocial.Presentation.User.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(EntityClass.Entity.User user)
         {
+            var checkAccountUnique = await _userService.GetByAccount(user.Account);
+            var checkEmailUnique = await _userService.GetByEmail(user.Email);
+            if (checkAccountUnique != null)
+            {
+                ModelState.AddModelError("Account", "User Account must be unique");
+            }
+            if (checkEmailUnique != null)
+            {
+                ModelState.AddModelError("Email", "User Email must be unique");
+            }
             if (ModelState.IsValid)
             {
                 var result = await _userService.Create(user);
                 if (result != 0)
                 {
                     TempData["Success"] = "Register Account success!";
+                    return RedirectToAction("Login", "Route");
                 }
                 else
                 {
                     TempData["Fail"] = "Register Account failed!";
                 }
             }
-            return View("~/Views/Register.cshtml");
+            return View("~/Views/Register.cshtml", user);
         }
 
         public IActionResult Error()

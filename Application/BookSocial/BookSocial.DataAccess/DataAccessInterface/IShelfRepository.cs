@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Entity;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 
 namespace BookSocial.DataAccess.DataAccessInterface
 {
@@ -6,5 +7,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
         Task<IEnumerable<Shelf>> GetByUserId(int userId);
+        Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId);
     }
 }

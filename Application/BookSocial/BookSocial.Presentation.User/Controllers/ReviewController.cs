@@ -4,22 +4,22 @@ namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult ArticleList()
+        public IActionResult ReviewList()
         {
             return View("~/Views/Login.cshtml");
         }
 
-        public IActionResult CreateArticle()
+        public IActionResult CreateReview()
         {
             return View("~/Views/Login.cshtml");
         }
 
-        public IActionResult EditArticle()
+        public IActionResult EditReview()
         {
             return View("~/Views/Login.cshtml");
         }
 
-        public IActionResult DeleteArticle()
+        public IActionResult DeleteReview()
         {
             return View("~/Views/Login.cshtml");
         }

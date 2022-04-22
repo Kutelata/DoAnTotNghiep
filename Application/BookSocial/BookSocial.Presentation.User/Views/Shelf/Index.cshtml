@@ -1,7 +1,10 @@
-﻿@section css{
+﻿@using BookSocial.EntityClass.Enum
+@model BookSocial.EntityClass.DTO.ShelfDetail
+
+@section css{
 <style>
     .paging_active {
-        color: #FFF!important;
+        color: #FFF !important;
         background: #088DCD;
     }
 </style>
@@ -15,11 +18,7 @@
         </form>
         <div class="purify">
             <span>filter by</span>
-            <select>
-                <option>All categories</option>
-                <option>By Favouirtes</option>
-                <option>By Likes</option>
-            </select>
+            <select asp-for="ProgressRead" asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
             <select>
                 <option>Assending A-Z</option>
                 <option>Desending Z-A</option>

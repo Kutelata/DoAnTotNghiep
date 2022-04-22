@@ -4,8 +4,10 @@ namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult BookShelf()
+        public async Task<IActionResult> BookShelf(int userId)
         {
+            var userShelf = await _shelfService.GetByUserId(userId);
+
             return View("~/Views/Shelf/Index.cshtml");
         }
 

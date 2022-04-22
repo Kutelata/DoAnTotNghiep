@@ -10,6 +10,7 @@ namespace BookSocial.Service.ServiceInterface
         Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin);
         Task<User> GetById(int id);
         Task<User> GetByAccount(string userAccount);
+        Task<User> GetByEmail(string userEmail);
         Task<int> Create(User user);
         Task<int> Update(User user);
         Task<int> Delete(int userId);

@@ -51,7 +51,6 @@ namespace BookSocial.Presentation.Admin.Controllers
                         new Claim("Description", data.Description != null ? data.Description.ToString() : ""),
                         new Claim("Birthday", data.Birthday.ToString()),
                         new Claim("Gender", data.Gender.ToString()),
-                        new Claim("Friend", data.Friend != null ? data.Friend.ToString() : ""),
                         new Claim("Status", data.Status.ToString()),
                         new Claim("Role", data.Role.ToString()),
                     };
