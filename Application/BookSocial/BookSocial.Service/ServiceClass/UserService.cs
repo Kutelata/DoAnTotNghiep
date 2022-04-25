@@ -21,6 +21,15 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<AdminSaveCookie> GetAdminSaveCookie(UserLogin userLogin)
+        {
+            var response = await GetClient()
+                .GetAsync($"User/GetAdminSaveCookie?account={userLogin.Account}&password={userLogin.Password}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<AdminSaveCookie>() : null;
+            return data;
+        }
+
         public async Task<User> GetByAccount(string userAccount)
         {
             var response = await GetClient().GetAsync($"User/GetByAccount?userAccount={userAccount}");

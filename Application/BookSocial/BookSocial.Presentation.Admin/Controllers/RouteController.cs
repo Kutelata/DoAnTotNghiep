@@ -34,7 +34,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
-                var data = await _userService.GetUserSaveCookie(userLogin);
+                var data = await _userService.GetAdminSaveCookie(userLogin);
                 if (data != null)
                 {
                     //create claims
@@ -42,14 +42,9 @@ namespace BookSocial.Presentation.Admin.Controllers
                     {
                         new Claim("Id", data.Id.ToString()),
                         new Claim("UserName", data.UserName != null ? data.UserName.ToString() : ""),
-                        new Claim("Phone", data.Phone != null ? data.Phone.ToString() : ""),
-                        new Claim("Email", data.Email != null ? data.Email.ToString() : ""),
                         new Claim("Account", data.Account.ToString()),
                         new Claim("Password", data.Password.ToString()),
                         new Claim("Image", data.Image != null ? data.Image.ToString() : ""),
-                        new Claim("Address", data.Address != null ? data.Address.ToString() : ""),
-                        new Claim("Description", data.Description != null ? data.Description.ToString() : ""),
-                        new Claim("Birthday", data.Birthday.ToString()),
                         new Claim("Gender", data.Gender.ToString()),
                         new Claim("Status", data.Status.ToString()),
                         new Claim("Role", data.Role.ToString()),

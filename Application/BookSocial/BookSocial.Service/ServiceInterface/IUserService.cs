@@ -8,6 +8,7 @@ namespace BookSocial.Service.ServiceInterface
         Task<IEnumerable<UserStatistic>> GetUserStatistic();
         Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic();
         Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin);
+        Task<AdminSaveCookie> GetAdminSaveCookie(UserLogin userLogin);
         Task<User> GetById(int id);
         Task<User> GetByAccount(string userAccount);
         Task<User> GetByEmail(string userEmail);

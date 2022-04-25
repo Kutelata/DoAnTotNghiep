@@ -20,13 +20,6 @@
 }
 
 @{
-    int countUserFriends = 0;
-    if (Model.Friend != "" && Model.Friend != null)
-    {
-        var userFriends = Model.Friend.Split(',');
-        countUserFriends = userFriends.Length;
-    }
-
     var role = "";
     switch (Model.Role)
     {
@@ -97,7 +90,6 @@
                             @(Model.Birthday == new DateTime(0001,01,01,00,00,00) ? "" : Model.Birthday.Value.ToShortDateString())
                         </li>
                         <li><b>Gender:</b> @Model.Gender</li>
-                        <li><b>Friend:</b> @countUserFriends</li>
                         <li>
                             <b>Status:</b>
                             <select class="my-custom-select custom-select"

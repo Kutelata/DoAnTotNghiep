@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using BookSocial.Service.ServiceInterface;
 
@@ -11,6 +12,14 @@ namespace BookSocial.Service.ServiceClass
             var response = await GetClient().GetAsync($"Shelf/GetByBookId?bookId={bookId}");
             var data = response.IsSuccessStatusCode
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Shelf>>() : null;
+            return data;
+        }
+
+        public async Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId)
+        {
+            var response = await GetClient().GetAsync($"Shelf/GetByShelfDetail?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<ShelfDetail>>() : null;
             return data;
         }
 

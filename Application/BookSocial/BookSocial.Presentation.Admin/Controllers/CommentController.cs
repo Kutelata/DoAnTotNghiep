@@ -27,7 +27,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         case "Text": dataInPage = dataInPage.OrderBy(x => x.Text); break;
                         case "ParentId": dataInPage = dataInPage.OrderBy(x => x.ParentId); break;
                         case "CreatedAt": dataInPage = dataInPage.OrderBy(x => x.CreatedAt); break;
-                        case "ArticleId": dataInPage = dataInPage.OrderBy(x => x.ArticleId); break;
+                        case "ReviewId": dataInPage = dataInPage.OrderBy(x => x.ReviewId); break;
                         case "UserId": dataInPage = dataInPage.OrderBy(x => x.UserId); break;
                         case "UserName": dataInPage = dataInPage.OrderBy(x => x.UserName); break;
                         case "NumberCommentReplies": dataInPage = dataInPage.OrderBy(x => x.NumberCommentReplies); break;
@@ -46,7 +46,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         (data.Text != null && data.Text.Contains(search)) ||
                         (data.ParentId.ToString() == search) ||
                         data.CreatedAt.ToString().Contains(search) ||
-                        (data.ArticleId.ToString() == search) ||
+                        (data.ReviewId.ToString() == search) ||
                         (data.UserId.ToString() == search) ||
                         (data.UserName != null && data.UserName.Contains(search)) ||
                         data.NumberCommentReplies.ToString() == search);

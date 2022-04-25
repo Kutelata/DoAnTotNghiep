@@ -1,5 +1,6 @@
 ﻿@using BookSocial.EntityClass.Enum
-@model BookSocial.EntityClass.DTO.ShelfDetail
+@using BookSocial.Service
+@model IEnumerable<BookSocial.EntityClass.DTO.ShelfDetail>
 
 @section css{
 <style>
@@ -10,6 +11,10 @@
 </style>
 }
 
+@{
+    var host = ConnectAPI.BookSocialAPI;
+}
+
 <div class="blog-sec">
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
@@ -17,38 +22,35 @@
             <button><i class="ti-search"></i></button>
         </form>
         <div class="purify">
-            <span>filter by</span>
-            <select asp-for="ProgressRead" asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
-            <select>
-                <option>Assending A-Z</option>
-                <option>Desending Z-A</option>
-                <option>Desending (date)</option>
-                <option>Asending (date)</option>
-            </select>
-            <a href="#" style="font-size:14px" title="">purify</a>
+            <span>Sort by</span>
+            <select asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
         </div>
     </div>
-    <div class="l-post">
-        <figure>
-            <img src="~/images/resources/bloglist-1.jpg" alt="">
-        </figure>
-        <div class="l-post-meta">
-            <h4><a href="#" title="">how to create content that get traffic</a></h4>
-            <div class="l-post-ranking">
-                <a class="admin" href="#" title="">admin</a>
-                <a class="pdate" href="#" title="">04-23-19</a>
-                <a class="time-post" href="#" title=""> -12 hours ago</a>
+    @foreach (var item in Model)
+    {
+        <div class="l-post">
+            <figure>
+                <img src="@host/assets/images/book/@item.BookImage" alt="">
+            </figure>
+            <div class="l-post-meta">
+                <h4><a href="#" title="">how to create content that get traffic</a></h4>
+                <div class="l-post-ranking">
+                    <a class="admin" href="#" title="">admin</a>
+                    <a class="pdate" href="#" title="">04-23-19</a>
+                    <a class="time-post" href="#" title=""> -12 hours ago</a>
+                </div>
+                <p>
+                    by imporving the physical layout of hospitals and medical facilities we can inhence and increase safety macnisum..
+                </p>
+                <div class="g-post-ranking">
+                    <a class="likes" href="#" title=""><i class="fa fa-heart-o"></i>10 likes</a>
+                    <a class="coments" href="#" title=""><i class="fa fa-comment-o"></i>5 comments</a>
+                </div>
+                <a href="#" title="" class="read">Read More</a>
             </div>
-            <p>
-                by imporving the physical layout of hospitals and medical facilities we can inhence and increase safety macnisum..
-            </p>
-            <div class="g-post-ranking">
-                <a class="likes" href="#" title=""><i class="fa fa-heart-o"></i>10 likes</a>
-                <a class="coments" href="#" title=""><i class="fa fa-comment-o"></i>5 comments</a>
-            </div>
-            <a href="#" title="" class="read">Read More</a>
         </div>
-    </div>
+    }
+
     <ul class="pagination mt-2" style="border:none; float:right">
         <li class="page-item"><a class="page-link paging_active" href="#">Previous</a></li>
         <li class="page-item"><a class="page-link paging_active" style="color:#088DCD" href="#">1</a></li>

@@ -143,16 +143,16 @@ go
 insert into Shelf values
 -- ('progress_read','book_id','user_id')
 
-(0,1,1),
-(1,2,1),
-(2,3,1),
-(0,4,1),
-(1,5,1),
-(2,6,1),
-(0,7,1),
-(1,8,1),
-(2,9,1),
-(0,10,1)
+(0,1,4),
+(1,2,4),
+(2,3,4),
+(0,4,4),
+(1,5,4),
+(2,6,4),
+(0,7,4),
+(1,8,4),
+(2,9,4),
+(0,10,4)
 go
 
 
@@ -180,10 +180,18 @@ insert into Review values
 ('This book is great',4,'2022-11-23',17,6),
 ('This book is great',5,'2022-11-23',18,6)
 go
-/*
-insert into Comment values
--- ('text','review_id','parent_id','created_at','user_id')
 
-(),
+insert into Comment values
+-- ('text','parent_id','created_at','review_id','user_id')
+
+('I like your review',0,'2022-11-23',1,4),
+('I like your review',1,'2022-11-23',1,5),
+('I like your review',1,'2022-11-23',1,6),
+('I like your review',1,'2022-11-23',1,7),
+('I like your review',1,'2022-11-23',1,8),
+('I like your review',1,'2022-11-23',1,9),
+('I like your review',1,'2022-11-23',1,10),
+('I like your review',1,'2022-11-23',1,11),
+('I like your review',1,'2022-11-23',1,12),
+('I like your review',1,'2022-11-23',1,13)
 go
-*/

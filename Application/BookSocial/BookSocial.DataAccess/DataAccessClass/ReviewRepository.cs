@@ -41,19 +41,19 @@ namespace BookSocial.DataAccess.DataAccessClass
             {
                 return await con.QueryAsync<ReviewStatistic>(
                     @"SELECT 
-	                    r.id as 'reviewId',
+	                    r.id,
 	                    r.[text],
 						r.star,
 						r.created_at as 'createdAt',
 						b.id as 'bookId',
-						b.[name],
+						b.[name] as 'bookName',
 						u.id as 'userId',
 						u.[name] as 'userName',
 						COUNT(c.id) as 'numberOfComments'
                     FROM Review r
-					LEFT JOIN [User] u ON u.id = a.[user_id]
-					LEFT JOIN Comment c ON c.review_id = a.id
-					LEFT JOIN Book b ON b.id = a.book_id
+					LEFT JOIN [User] u ON u.id = r.[user_id]
+					LEFT JOIN Comment c ON c.review_id = r.id
+					LEFT JOIN Book b ON b.id = r.book_id
                     GROUP BY r.id, r.[text], r.star, r.created_at, b.id, b.[name], u.id, u.[name]");
             }
         }

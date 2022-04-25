@@ -14,7 +14,7 @@
     <nav id="menu" class="res-menu">
         <ul>
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
-            <li><a href="@Url.Action("BookShelf","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
+            <li><a href="@Url.Action("ShelfList","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
             <li><a href="@Url.Action("FriendList","Home", new{ userId = userIdClaim })" title="">My Friend</a></li>
             <li><a href="@Url.Action("SearchList","Home", new{ userId = userIdClaim })" title="">Discover</a></li>
             <li>
@@ -35,7 +35,7 @@
     <div class="top-area">
         <ul class="main-menu">
             <li><a href="@Url.Action("Index","Home")" title="">Home</a></li>
-            <li><a href="@Url.Action("BookShelf","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
+            <li><a href="@Url.Action("ShelfList","Home", new{ userId = userIdClaim })" title="">My Book</a></li>
             <li><a href="@Url.Action("FriendList","Home", new{ userId = userIdClaim })" title="">My Friend</a></li>
             <li><a href="@Url.Action("SearchList","Home", new{ userId = userIdClaim })" title="">Discover</a></li>
         </ul>

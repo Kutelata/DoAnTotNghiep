@@ -9,6 +9,7 @@ namespace BookSocial.EntityClass.DTO
         public string GenreName { get; set; }
         public int BookId { get; set; }
         public string BookName { get; set; }
+        public string BookImage { get; set; }
         public string BookDescription { get; set; }
         public ProgressRead ProgressRead { get; set; }
     }

@@ -65,6 +65,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 	                    g.[name] as 'genreName',
 	                    b.id as 'genreBook',
 	                    b.[name] as 'bookName',
+	                    b.[image] as 'bookImage',
 	                    b.[description],
 	                    s.progress_read as 'progressRead'
                     FROM [User] u
