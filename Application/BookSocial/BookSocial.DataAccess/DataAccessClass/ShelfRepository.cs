@@ -27,9 +27,17 @@ namespace BookSocial.DataAccess.DataAccessClass
             throw new NotImplementedException();
         }
 
-        public Task<int> Update(Shelf entity)
+        public async Task<int> Update(Shelf entity)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"UPDATE Shelf
+                    SET 
+                        progress_read = @progressRead,
+                        book_id = @bookId, [user_id] = @userId
+                    WHERE book_id = @bookId and user_id = @userId", entity);
+            }
         }
 
         public async Task<IEnumerable<Shelf>> GetByBookId(int bookId)
@@ -60,13 +68,13 @@ namespace BookSocial.DataAccess.DataAccessClass
             {
                 return await con.QueryAsync<ShelfDetail>(
                     @"SELECT 
-	                    s.[user_id],
+	                    s.[user_id] as 'userId',
 	                    g.id as 'genreId',
 	                    g.[name] as 'genreName',
-	                    b.id as 'genreBook',
+	                    b.id as 'bookId',
 	                    b.[name] as 'bookName',
 	                    b.[image] as 'bookImage',
-	                    b.[description],
+	                    b.[description] as 'bookDescription',
 	                    s.progress_read as 'progressRead'
                     FROM [User] u
                     JOIN Shelf s ON s.user_id = u.id

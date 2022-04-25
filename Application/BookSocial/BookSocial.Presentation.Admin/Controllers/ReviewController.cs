@@ -75,6 +75,7 @@ namespace BookSocial.Presentation.Admin.Controllers
 
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
+            ViewBag.CurrentSort = sort;
             return View("~/Views/Review/Index.cshtml", dataInPage);
         }
 

@@ -1,4 +1,5 @@
 ﻿using BookSocial.DataAccess.DataAccessInterface;
+using BookSocial.EntityClass.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.API.Controllers
@@ -47,6 +48,20 @@ namespace BookSocial.API.Controllers
             {
                 var data = await _shelfRepository.GetByShelfDetail(userId);
                 return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(Shelf shelf)
+        {
+            try
+            {
+                int result = await _shelfRepository.Update(shelf);
+                return Ok(result);
             }
             catch (Exception ex)
             {

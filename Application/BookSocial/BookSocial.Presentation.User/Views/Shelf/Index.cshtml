@@ -8,54 +8,117 @@
         color: #FFF !important;
         background: #088DCD;
     }
+
+        .paging_active:hover {
+            color: #088DCD !important;
+        }
+
+    .my-purify {
+        margin-top: 10px;
+        width: 100%;
+        text-align: left;
+    }
 </style>
 }
 
 @{
-    var host = ConnectAPI.BookSocialAPI;
+    var host = ConnectAdmin.BookSocialAdmin;
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
 }
 
 <div class="blog-sec">
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
-            <input type="text" placeholder="Search post">
-            <button><i class="ti-search"></i></button>
+            <input id="search" type="text" placeholder="Search ...">
+            <button id="btn-search"><i class="ti-search"></i></button>
         </form>
         <div class="purify">
-            <span>Sort by</span>
-            <select asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
+            <span>Filter by</span>
+            <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressRead>()">
+                <option value="-1">All</option>
+            </select>
         </div>
     </div>
     @foreach (var item in Model)
     {
         <div class="l-post">
             <figure>
-                <img src="@host/assets/images/book/@item.BookImage" alt="">
+                <img style="width:100%" src=@($"{host}assets/images/book/{item.BookImage}") />
             </figure>
             <div class="l-post-meta">
-                <h4><a href="#" title="">how to create content that get traffic</a></h4>
+                <h4><a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})" title="">@item.BookName (@item.GenreName)</a></h4>
                 <div class="l-post-ranking">
-                    <a class="admin" href="#" title="">admin</a>
-                    <a class="pdate" href="#" title="">04-23-19</a>
-                    <a class="time-post" href="#" title=""> -12 hours ago</a>
+                    <a class="admin" href="#" title="">Author Name</a>
                 </div>
                 <p>
-                    by imporving the physical layout of hospitals and medical facilities we can inhence and increase safety macnisum..
+                    @item.BookDescription
                 </p>
                 <div class="g-post-ranking">
-                    <a class="likes" href="#" title=""><i class="fa fa-heart-o"></i>10 likes</a>
-                    <a class="coments" href="#" title=""><i class="fa fa-comment-o"></i>5 comments</a>
+                    <a class="likes" href="#"><i class="fa fa-star"></i>Rating</a>
+                    <a class="coments" href="#"><i class="fa fa-comment-o"></i>Comment</a>
                 </div>
-                <a href="#" title="" class="read">Read More</a>
+                <div class="purify my-purify">
+                    <select data-book-id="@item.BookId" data-user-id="@item.UserId" class="btn-change-progress-read" asp-for="@item.ProgressRead" asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
+                </div>
             </div>
         </div>
     }
 
     <ul class="pagination mt-2" style="border:none; float:right">
-        <li class="page-item"><a class="page-link paging_active" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link paging_active" style="color:#088DCD" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" style="color:#088DCD" href="#">Next</a></li>
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("ShelfList","Home",
+                          new{page=ViewBag.CurrentPage-1,
+                              search=ViewBag.CurrentSearch,
+                              filter=ViewBag.CurrentFilter})">
+                    Previous
+                </a>
+            </li>
+
+        }
+        @for (var i = 0; i < ViewBag.Pages; i++)
+        {
+            if ((i + 1) == ViewBag.CurrentPage)
+            {
+                <li class="page-item">
+                    <a class="page-link paging_active" href="@Url.Action("ShelfList","Home",
+                                new{page=i+1,
+                                    search=ViewBag.CurrentSearch,
+                                    filter=ViewBag.CurrentFilter})">
+                        @(i+1)
+                    </a>
+                </li>
+            }
+            else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("ShelfList","Home",
+                                new{page=i+1,
+                                    search=ViewBag.CurrentSearch,
+                                    filter=ViewBag.CurrentFilter})">
+                        @(i+1)
+                    </a>
+                </li>
+            }
+        }
+        @if (ViewBag.CurrentPage < ViewBag.Pages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("ShelfList","Home",
+                            new{page=ViewBag.CurrentPage+1,
+                                search=ViewBag.CurrentSearch,
+                                filter=ViewBag.CurrentFilter})">
+                    Next
+                </a>
+            </li>
+        }
     </ul>
 </div>
+
+@section script{
+<script src="~/my_script/get_param_url.js"></script>
+<script src="~/my_script/action_in_list.js"></script>
+<script src="~/my_script/shelf/action_delete.js"></script>
+<script src="~/my_script/change_progress.js"></script>
+}

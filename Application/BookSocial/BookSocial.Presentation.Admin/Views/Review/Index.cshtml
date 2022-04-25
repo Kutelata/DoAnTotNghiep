@@ -96,8 +96,8 @@
                     @if (ViewBag.CurrentPage > 1)
                     {
                         <li>
-                            <a href="@Url.Action("ArticleList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch})">Previous</a>
+                            <a href="@Url.Action("ReviewList","Home",
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
                         </li>
                     }
 
@@ -106,15 +106,15 @@
                         if ((i + 1) == ViewBag.CurrentPage)
                         {
                             <li>
-                                <a class="active" href="@Url.Action("ArticleList","Home",
-                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                                <a class="active" href="@Url.Action("ReviewList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">@(i+1)</a>
                             </li>
                         }
                         else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
                         {
                             <li>
-                                <a href="@Url.Action("ArticleList","Home",
-                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                                <a href="@Url.Action("ReviewList","Home",
+                                new{page=i+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">@(i+1)</a>
                             </li>
                         }
                     }
@@ -122,8 +122,8 @@
                     @if (ViewBag.CurrentPage < ViewBag.Pages)
                     {
                         <li>
-                            <a href="@Url.Action("ArticleList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch})">Next</a>
+                            <a href="@Url.Action("ReviewList","Home",
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
                         </li>
                     }
                 </ul>

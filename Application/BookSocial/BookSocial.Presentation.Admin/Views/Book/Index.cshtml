@@ -111,7 +111,7 @@
                     {
                         <li>
                             <a href="@Url.Action("BookList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch})">Previous</a>
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
                         </li>
                     }
 
@@ -121,14 +121,14 @@
                         {
                             <li>
                                 <a class="active" href="@Url.Action("BookList","Home",
-                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                                new{page=i+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">@(i+1)</a>
                             </li>
                         }
                         else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
                         {
                             <li>
                                 <a href="@Url.Action("BookList","Home",
-                                new{page=i+1,search=ViewBag.CurrentSearch})">@(i+1)</a>
+                                new{page=i+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">@(i+1)</a>
                             </li>
                         }
                     }
@@ -137,7 +137,7 @@
                     {
                         <li>
                             <a href="@Url.Action("BookList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch})">Next</a>
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
                         </li>
                     }
                 </ul>

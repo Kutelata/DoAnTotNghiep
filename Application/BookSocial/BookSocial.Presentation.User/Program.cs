@@ -9,8 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
-// AddScoped HttpClient
+// AddScoped HttpClientAPI
 builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
+
+// AddScoped HttpClientAdmin
+builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAdmin").Get<ConnectAdmin>());
 
 // AddScoped Service
 RegisterService.Register(builder.Services);

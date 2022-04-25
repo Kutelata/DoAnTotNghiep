@@ -1,34 +1,45 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public async Task<IActionResult> ShelfList(int userId, int page = 1, string search = null, string sort = "UserId")
+        public async Task<IActionResult> ShelfList(int page = 1, string search = null, string filter = null)
         {
-            var allData = await _shelfService.GetByShelfDetail(userId);
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var allData = await _shelfService.GetByShelfDetail(Convert.ToInt32(userIdClaim));
             var dataInPage = allData;
             int size = 2;
 
             if (allData != null)
             {
-                if (Request.Query.ContainsKey("sort"))
+                if (Request.Query.ContainsKey("filter"))
                 {
-                    var newSort = Request.Query["sort"].ToString();
-                    sort = newSort;
-                }
-                if (sort != null)
-                {
-                    switch (sort)
+                    if (Request.Query["filter"].ToString() != null && Request.Query["filter"].ToString() != "")
                     {
-                        case "UserId": dataInPage = dataInPage.OrderBy(x => x.UserId); break;
-                        case "GenreId": dataInPage = dataInPage.OrderBy(x => x.GenreId); break;
-                        case "GenreName": dataInPage = dataInPage.OrderBy(x => x.GenreName); break;
-                        case "BookId": dataInPage = dataInPage.OrderBy(x => x.BookId); break;
-                        case "BookName": dataInPage = dataInPage.OrderBy(x => x.BookName); break;
-                        case "BookImage": dataInPage = dataInPage.OrderBy(x => x.BookImage); break;
-                        case "BookDescription": dataInPage = dataInPage.OrderBy(x => x.BookDescription); break;
-                        case "ProgressRead": dataInPage = dataInPage.OrderBy(x => x.ProgressRead); break;
+                        var isNumeric = int.TryParse(Request.Query["filter"].ToString(), out int number);
+                        if (isNumeric)
+                        {
+                            filter = Request.Query["filter"].ToString();
+                        }
+                        else
+                        {
+                            filter = "-1";
+                        }
+                    }
+                }
+                if (filter != null && filter != "")
+                {
+                    switch (Convert.ToInt32(filter))
+                    {
+                        case (int)ProgressRead.WantToRead:
+                            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
+                        case (int)ProgressRead.CurrentlyReading:
+                            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
+                        case (int)ProgressRead.Read:
+                            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
                     }
                 }
 
@@ -71,7 +82,23 @@ namespace BookSocial.Presentation.User.Controllers
 
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
+            ViewBag.CurrentFilter = filter;
             return View("~/Views/Shelf/Index.cshtml", dataInPage);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeProgressRead(Shelf shelf)
+        {
+            if (shelf != null)
+            {
+                var result = await _shelfService.Update(shelf);
+                if (result != 0)
+                {
+                    return StatusCode(200);
+                }
+                return StatusCode(500);
+            }
+            return StatusCode(400);
         }
     }
 }

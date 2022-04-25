@@ -8,5 +8,6 @@ namespace BookSocial.Service.ServiceInterface
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
         Task<IEnumerable<Shelf>> GetByUserId(int userId);
         Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId);
+        Task<int> Update(Shelf shelf);
     }
 }

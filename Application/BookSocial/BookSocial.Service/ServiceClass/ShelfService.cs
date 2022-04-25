@@ -30,5 +30,12 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Shelf>>() : null;
             return data;
         }
+
+        public async Task<int> Update(Shelf shelf)
+        {
+            var response = await GetClient().PutAsJsonAsync($"Shelf/Update", shelf);
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
     }
 }

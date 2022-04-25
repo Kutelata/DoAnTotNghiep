@@ -11,4 +11,16 @@ namespace BookSocial.EntityClass.Enum
         [Display(Name = "Read")]
         Read = 2
     }
+    
+    public enum ProgressReadSort
+    {
+        [Display(Name = "All")]
+        All = -1,
+        [Display(Name = "Want To Read")]
+        WantToRead = 0,
+        [Display(Name = "Currently Reading")]
+        CurrentlyReading = 1,
+        [Display(Name = "Read")]
+        Read = 2
+    }
 }
