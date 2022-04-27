@@ -32,6 +32,24 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public async Task<IEnumerable<AuthorListByBookId>> GetAuthorListByBookId(int bookId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<AuthorListByBookId>(
+                    @"SELECT 
+	                    ab.author_id AS 'authorId',
+	                    a.[name] AS 'authorName',
+	                    a.[image] AS 'authorImage',
+	                    a.[description] AS 'authorDescription',
+	                    a.birthday AS 'authorBirthday'
+                    FROM Author_Book ab 
+                    JOIN author a ON a.id = ab.author_id
+                    JOIN book b ON b.id = ab.book_id
+                    WHERE ab.book_id = @bookId", new { bookId });
+            }
+        }
+
         public async Task<IEnumerable<AuthorStatistic>> GetAuthorStatistic()
         {
             using (var con = GetConnection())

@@ -18,6 +18,42 @@
         width: 100%;
         text-align: left;
     }
+
+    .my-l-post {
+        padding: 20px;
+    }
+
+        .my-l-post > .my-figure {
+            width: 200px;
+        }
+
+            .my-l-post > .my-figure img {
+                width: auto;
+            }
+
+            .my-btn{
+                color:#FFF !important;
+                background:red !important;
+            }
+</style>
+
+<style type="text/css" media="screen and (max-width: 520px)">
+    .my-l-post > .my-figure {
+        text-align: center;
+        width: 100%;
+    }
+
+        .my-l-post > .my-figure img {
+            height: 300px !important;
+        }
+
+    .my-l-post-meta {
+        width: 100%;
+    }
+
+    .my-btn {
+        width: 100%;
+    }
 </style>
 }
 
@@ -41,24 +77,44 @@
     </div>
     @foreach (var item in Model)
     {
-        <div class="l-post">
-            <figure>
-                <img style="width:100%" src=@($"{host}assets/images/book/{item.BookImage}") />
+        <div class="l-post my-l-post">
+            <figure class="my-figure">
+                <img src=@($"{host}assets/images/book/{item.BookImage}") />
             </figure>
-            <div class="l-post-meta">
+            <div class="l-post-meta my-l-post-meta">
                 <h4><a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})" title="">@item.BookName (@item.GenreName)</a></h4>
                 <div class="l-post-ranking">
-                    <a class="admin" href="#" title="">Author Name</a>
+                    @{
+                        var count = 0;
+                    }
+                    @foreach (var author in item.AuthorListByBookId)
+                    {
+                        if (count == 0)
+                        {
+                            <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">@author.AuthorName</a>
+                        }
+                        else
+                        {
+                            <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">, @author.AuthorName</a>
+                        }
+                        count++;
+                    }
                 </div>
                 <p>
                     @item.BookDescription
                 </p>
                 <div class="g-post-ranking">
-                    <a class="likes" href="#"><i class="fa fa-star"></i>Rating</a>
-                    <a class="coments" href="#"><i class="fa fa-comment-o"></i>Comment</a>
+                    <a class="likes" href="#"><i class="fa fa-star"></i>@item.AverageOfRating</a>
+                    <a class="coments" href="#"><i class="fa fa-comment-o"></i>@item.NumberOfReviews</a>
                 </div>
                 <div class="purify my-purify">
-                    <select data-book-id="@item.BookId" data-user-id="@item.UserId" class="btn-change-progress-read" asp-for="@item.ProgressRead" asp-items="Html.GetEnumSelectList<ProgressRead>()"></select>
+                    <select data-book-id="@item.BookId"
+                        data-user-id="@item.UserId"
+                        class="btn-change-progress-read"
+                        asp-for="@item.ProgressRead"
+                        asp-items="Html.GetEnumSelectList<ProgressRead>()">
+                    </select>
+                    <a class="btn btn-danger my-btn btn-delete-shelft" data-id="@item.BookId">Delete</a>
                 </div>
             </div>
         </div>
@@ -75,7 +131,6 @@
                     Previous
                 </a>
             </li>
-
         }
         @for (var i = 0; i < ViewBag.Pages; i++)
         {

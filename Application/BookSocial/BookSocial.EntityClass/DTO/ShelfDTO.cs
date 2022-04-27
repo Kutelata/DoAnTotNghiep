@@ -12,5 +12,8 @@ namespace BookSocial.EntityClass.DTO
         public string BookImage { get; set; }
         public string BookDescription { get; set; }
         public ProgressRead ProgressRead { get; set; }
+        public int NumberOfReviews { get; set; }
+        public float AverageOfRating { get; set; }
+        public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
     }
 }

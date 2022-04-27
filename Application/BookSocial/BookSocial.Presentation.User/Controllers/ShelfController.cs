@@ -58,7 +58,9 @@ namespace BookSocial.Presentation.User.Controllers
                         (data.BookName != null && data.BookName.Contains(search)) ||
                         (data.BookImage != null && data.BookImage.Contains(search)) ||
                         (data.BookDescription != null && data.BookDescription.Contains(search)) ||
-                        data.ProgressRead.ToString() == search);
+                        data.ProgressRead.ToString() == search ||
+                        data.NumberOfReviews.ToString() == search ||
+                        data.AverageOfRating.ToString() == search);
                 }
 
                 int pages = (int)Math.Ceiling((double)dataInPage.Count() / size);
@@ -78,6 +80,10 @@ namespace BookSocial.Presentation.User.Controllers
                     page = 1;
                 }
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size);
+            }
+            foreach (var data in dataInPage)
+            {
+                data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
             }
 
             ViewBag.CurrentPage = page;

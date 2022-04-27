@@ -1,4 +1,4 @@
-﻿$(".btn-change-progress-read").change(function (e) {
+﻿$(".author-detail").click(function (e) {
     e.preventDefault()
     var progressRead = $(this).val()
     var userId = $(this).data('user-id')
@@ -14,4 +14,16 @@
             alert("Change progress read fail!!!")
         }
     })
+})
+
+$.ajax({
+    method: "post",
+    url: `${baseUrl}/Home/ChangeProgressRead`,
+    data: { ProgressRead: progressRead, UserId: userId, BookId: bookId },
+    success: function (data) {
+        alert("Change progress read success!!!")
+    },
+    error: function (data) {
+        alert("Change progress read fail!!!")
+    }
 })

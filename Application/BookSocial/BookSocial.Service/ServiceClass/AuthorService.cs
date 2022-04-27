@@ -29,6 +29,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<AuthorListByBookId>> GetAuthorListByBookId(int bookId)
+        {
+            var response = await GetClient().GetAsync($"Author/GetAuthorListByBookId?bookId={bookId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<AuthorListByBookId>>() : null;
+            return data;
+        }
+
         public async Task<IEnumerable<AuthorStatistic>> GetAuthorStatistic()
         {
             var response = await GetClient().GetAsync($"Author/GetAuthorStatistic");
