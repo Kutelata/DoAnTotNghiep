@@ -101,5 +101,30 @@ namespace BookSocial.DataAccess.DataAccessClass
                     WHERE id = @id", entity);
             }
         }
+
+        public async Task<IEnumerable<ReviewList>> GetReviewList()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<ReviewList>(
+                    @"SELECT 
+	                    r.id AS 'reviewId',
+	                    u.id AS 'userId',
+						u.[name] AS 'userName',
+						u.[image] AS 'userImage',
+						r.created_at AS 'createdAt',
+						s.progress_read AS 'userProgressRead',
+						r.[text],
+						r.star,
+						b.id AS 'bookId',
+						b.[image] AS 'bookImage',
+						b.[name] AS 'bookName'
+                    FROM Review r
+					LEFT JOIN [User] u ON u.id = r.[user_id]
+					LEFT JOIN Shelf s ON s.[user_id] = r.[user_id] AND s.book_id = r.book_id
+					LEFT JOIN Book b ON b.id = r.book_id
+					ORDER BY created_at DESC");
+            }
+        }
     }
 }

@@ -45,5 +45,13 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<Review>>() : null;
             return data;
         }
+
+        public async Task<IEnumerable<ReviewList>> GetReviewList()
+        {
+            var response = await GetClient().GetAsync($"Review/GetReviewList");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<ReviewList>>() : null;
+            return data;
+        }
     }
 }

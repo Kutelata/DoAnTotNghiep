@@ -31,10 +31,11 @@
                 width: auto;
             }
 
-            .my-btn{
-                color:#FFF !important;
-                background:red !important;
-            }
+    .my-btn {
+        color: #FFF !important;
+        background: red !important;
+        border-color: red !important;
+    }
 </style>
 
 <style type="text/css" media="screen and (max-width: 520px)">
@@ -63,6 +64,18 @@
 }
 
 <div class="blog-sec">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["Success"]
+        </div>
+    }
+    @if (TempData["Fail"] != null)
+    {
+        <div class="alert alert-error" role="alert">
+            @TempData["Fail"]
+        </div>
+    }
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
             <input id="search" type="text" placeholder="Search ...">
@@ -114,7 +127,7 @@
                         asp-for="@item.ProgressRead"
                         asp-items="Html.GetEnumSelectList<ProgressRead>()">
                     </select>
-                    <a class="btn btn-danger my-btn btn-delete-shelft" data-id="@item.BookId">Delete</a>
+                    <a class="btn btn-danger my-btn btn-delete-shelf" data-book-id="@item.BookId">Delete</a>
                 </div>
             </div>
         </div>

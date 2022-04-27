@@ -1,7 +1,7 @@
-﻿$(document).on("click", ".btn-delete", function () {
-    var id = $(this).data("id")
-    if (confirm('Are you sure want to delete article with id = ' + id + '?')) {
-        window.location.href = `${baseUrl}/Home/DeleteArticle?id=${id}`
+﻿$(document).on("click", ".btn-delete-shelf", function () {
+    var bookId = $(this).data("book-id")
+    if (confirm('Are you sure want to delete book with id = ' + bookId + '?')) {
+        window.location.href = `${baseUrl}/Home/DeleteShelf?bookId=${parseInt(bookId)}`
     } else {
         return false
     }

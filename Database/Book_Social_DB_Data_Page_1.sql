@@ -40,17 +40,29 @@ insert into [User] values
 ('Long30','0832536229','long30@gmail.com','long30','long30','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
 ('Long31','0832536230','long31@gmail.com','long31','long31','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
 
-('Long32','0832536231','long32@gmail.com','long32','long32','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
-('Long33','0832536232','long33@gmail.com','long33','long33','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
-('Long34','0832536233','long34@gmail.com','long34','long34','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
-('Long35','0832536234','long35@gmail.com','long35','long35','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
-('Long36','0832536235','long36@gmail.com','long36','long36','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
-('Long37','0832536236','long37@gmail.com','long37','long37','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
-('Long38','0832536237','long38@gmail.com','long38','long38','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
-('Long39','0832536238','long39@gmail.com','long39','long39','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
-('Long40','0832536239','long40@gmail.com','long40','long40','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
-('Long41','0832536240','long41@gmail.com','long41','long41','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
-('Long42','0832536241','long42@gmail.com','long42','long42','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0)
+('Long32','0832536231','long32@gmail.com','long32','long32','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long33','0832536232','long33@gmail.com','long33','long33','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long34','0832536233','long34@gmail.com','long34','long34','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long35','0832536234','long35@gmail.com','long35','long35','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long36','0832536235','long36@gmail.com','long36','long36','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long37','0832536236','long37@gmail.com','long37','long37','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long38','0832536237','long38@gmail.com','long38','long38','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long39','0832536238','long39@gmail.com','long39','long39','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long40','0832536239','long40@gmail.com','long40','long40','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long41','0832536240','long41@gmail.com','long41','long41','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long42','0832536241','long42@gmail.com','long42','long42','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+
+('Long43','0832536231','long43@gmail.com','long43','long43','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long44','0832536232','long44@gmail.com','long44','long44','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long45','0832536233','long45@gmail.com','long45','long45','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long46','0832536234','long46@gmail.com','long46','long46','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long47','0832536235','long47@gmail.com','long47','long47','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long48','0832536236','long48@gmail.com','long48','long48','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long49','0832536237','long49@gmail.com','long49','long49','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long50','0832536238','long50@gmail.com','long50','long50','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0),
+('Long51','0832536239','long51@gmail.com','long51','long51','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),
+('Long52','0832536240','long52@gmail.com','long52','long52','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,1,0),
+('Long53','0832536241','long53@gmail.com','long53','long53','','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,2,0)
 go
 
 insert into Genre values

@@ -26,7 +26,7 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetByUserId(int userId)
         {
@@ -40,7 +40,7 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetByShelfDetail(int userId)
         {
@@ -61,6 +61,20 @@ namespace BookSocial.API.Controllers
             try
             {
                 int result = await _shelfRepository.Update(shelf);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteByBookAndUserId(int bookId, int userId)
+        {
+            try
+            {
+                int result = await _shelfRepository.DeleteByBookAndUserId(bookId, userId);
                 return Ok(result);
             }
             catch (Exception ex)

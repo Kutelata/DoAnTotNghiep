@@ -88,5 +88,15 @@ namespace BookSocial.DataAccess.DataAccessClass
                         b.[image], b.[description], s.progress_read", new { userId });
             }
         }
+
+        public async Task<int> DeleteByBookAndUserId(int bookId, int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"DELETE FROM Shelf WHERE book_id = @bookId and user_id = @userId", 
+                    new { bookId, userId });
+            }
+        }
     }
 }

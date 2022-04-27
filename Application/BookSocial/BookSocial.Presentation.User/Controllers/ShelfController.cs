@@ -106,5 +106,20 @@ namespace BookSocial.Presentation.User.Controllers
             }
             return StatusCode(400);
         }
+
+        public async Task<IActionResult> DeleteShelf(int bookId)
+        {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            int result = await _shelfService.DeleteByBookAndUserId(bookId, Convert.ToInt32(userIdClaim));
+            if (result != 0)
+            {
+                TempData["Success"] = "Delete Book success!";
+            }
+            else
+            {
+                TempData["Fail"] = "Delete Book fail!";
+            }
+            return RedirectToAction("ShelfList", "Home");
+        }
     }
 }

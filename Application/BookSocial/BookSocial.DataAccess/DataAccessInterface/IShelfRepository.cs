@@ -8,5 +8,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
         Task<IEnumerable<Shelf>> GetByUserId(int userId);
         Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId);
+        Task<int> DeleteByBookAndUserId(int bookId, int userId);
     }
 }

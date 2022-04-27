@@ -7,6 +7,13 @@ namespace BookSocial.Service.ServiceClass
 {
     public class ShelfService : ConnectAPI, IShelfService
     {
+        public async Task<int> DeleteByBookAndUserId(int bookId, int userId)
+        {
+            var response = await GetClient().DeleteAsync($"Shelf/DeleteByBookAndUserId?bookId={bookId}&userId={userId}");
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
         public async Task<IEnumerable<Shelf>> GetByBookId(int bookId)
         {
             var response = await GetClient().GetAsync($"Shelf/GetByBookId?bookId={bookId}");
