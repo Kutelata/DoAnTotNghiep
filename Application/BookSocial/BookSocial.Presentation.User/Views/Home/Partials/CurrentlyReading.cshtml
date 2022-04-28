@@ -1,0 +1,17 @@
+﻿@using BookSocial.EntityClass.Enum
+
+<h4 class="widget-title">CURRENTLY READING</h4>
+<div class="your-page">
+    <figure>
+        <a href="#"><img style="border-radius:unset" src="images/resources/friend-avatar9.jpg" alt=""></a>
+    </figure>
+    <div class="page-meta">
+        <a href="#" class="underline">My page</a>
+        <span><a href="">by Author</a></span>
+        <div class="purify my-purify" style="width:100%">
+            <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressRead>()">
+                <option value="-1">All</option>
+            </select>
+        </div>
+    </div>
+</div>

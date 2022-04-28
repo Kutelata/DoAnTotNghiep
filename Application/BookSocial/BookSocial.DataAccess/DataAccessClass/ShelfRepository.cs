@@ -94,7 +94,18 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"DELETE FROM Shelf WHERE book_id = @bookId and user_id = @userId", 
+                    @"DELETE FROM Shelf WHERE book_id = @bookId and user_id = @userId",
+                    new { bookId, userId });
+            }
+        }
+
+        public async Task<Shelf> GetByBookAndUserId(int bookId, int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<Shelf>(
+                    @"SELECT progress_read as 'progressRead', book_id as 'bookId', 
+                    [user_id] as 'userId' FROM Shelf WHERE book_id = @bookId AND [user_id] = @userId",
                     new { bookId, userId });
             }
         }

@@ -7,6 +7,7 @@ namespace BookSocial.Service.ServiceInterface
     {
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
         Task<IEnumerable<Shelf>> GetByUserId(int userId);
+        Task<Shelf> GetByBookAndUserId(int bookId, int userId);
         Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId);
         Task<int> Update(Shelf shelf);
         Task<int> DeleteByBookAndUserId(int bookId, int userId);

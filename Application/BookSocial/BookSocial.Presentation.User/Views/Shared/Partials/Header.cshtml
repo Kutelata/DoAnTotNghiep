@@ -1,4 +1,15 @@
-﻿<div class="responsive-header">
+﻿@using BookSocial.Service
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+    var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
+
+    if (userImageClaim == null || userImageClaim == "")
+    {
+        userImageClaim = "user.png";
+    }
+}
+
+<div class="responsive-header">
     <div class="mh-head first Sticky">
         <span class="mh-btns-left">
             <a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
@@ -36,7 +47,7 @@
             <li><a href="@Url.Action("SearchList","Home")">Discover</a></li>
         </ul>
         <div class="user-img">
-            <img src="~/images/resources/admin.jpg" />
+            <img src=@($"{host}assets/images/user/{userImageClaim}") width="60" />
             <div class="user-setting">
                 <a href="@Url.Action("Profile","Home")"><i class="ti-user"></i> view profile</a>
                 <a href="@Url.Action("Logout","Route")"><i class="ti-power-off"></i>log out</a>

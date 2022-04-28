@@ -1,0 +1,35 @@
+﻿.my-purify {
+    text-align: left;
+    float: left;
+}
+
+    .my-purify li {
+        margin-bottom: auto !important;
+    }
+
+    .my-purify .chosen-container {
+        width: 100% !important;
+    }
+
+        .my-purify .chosen-container .chosen-single {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .my-purify .chosen-container .chosen-drop {
+            top: 70%;
+        }
+
+.my-description > p {
+    margin-bottom: 0px;
+}
+
+.my-detail > span {
+    font-size: 1rem !important;
+}
+
+.my-btn {
+    color: black;
+    font-size: 20px;
+    bottom: 8px !important;
+}

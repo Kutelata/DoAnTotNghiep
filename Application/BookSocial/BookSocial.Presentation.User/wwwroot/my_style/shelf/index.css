@@ -1,0 +1,50 @@
+﻿.my-purify {
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+}
+
+.my-l-post {
+    padding: 20px;
+}
+
+    .my-l-post .my-figure {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+        .my-l-post .my-figure img {
+            width: auto;
+        }
+
+.my-l-post-meta {
+    padding: 0px 20px;
+    width: 100%;
+}
+
+.my-btn {
+    color: #FFF !important;
+    background: red !important;
+    border-color: red !important;
+}
+
+@media screen and (max-width:768px) {
+    .my-l-post-meta {
+        padding: 20px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .my-purify .chosen-container {
+        text-align: center;
+    }
+
+    .my-l-post .my-figure {
+        text-align: center;
+    }
+
+    .my-btn {
+        width: 100%;
+    }
+}

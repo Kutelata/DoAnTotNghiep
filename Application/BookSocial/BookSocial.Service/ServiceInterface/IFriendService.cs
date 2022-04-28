@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookSocial.EntityClass.Entity;
 
 namespace BookSocial.Service.ServiceInterface
 {
     public interface IFriendService
     {
+        Task<Friend> GetByUserAndUserFriendId(int userId, int userFriendId);
     }
 }

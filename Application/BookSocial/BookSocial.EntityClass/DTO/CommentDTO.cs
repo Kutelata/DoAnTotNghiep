@@ -11,4 +11,15 @@
         public string UserName { get; set; }
         public int NumberCommentReplies { get; set; }
     }
+
+    public class RecentActivityComment
+    {
+        public int UserCommentId { get; set; }
+        public int UserName { get; set; }
+        public int UserReviewId { get; set; }
+        public string UserReviewName { get; set; }
+        public int BookId { get; set; }
+        public string BookName { get; set; }
+        public DateTime CommentCreatedAt { get; set; }
+    }
 }

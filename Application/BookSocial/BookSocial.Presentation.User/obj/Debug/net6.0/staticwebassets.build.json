@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S+1KlXQXAsC1Fs5MQE4xOG5jvoSUc2NljoG5UofHFRg=",
+  "Hash": "OA8LoABISbEC1mP0jUiLHpsSg6YdaYnfK8aQpZlot0Q=",
   "Source": "BookSocial.Presentation.User",
   "BasePath": "_content/BookSocial.Presentation.User",
   "Mode": "Default",
@@ -19057,6 +19057,23 @@
       "OriginalItemSpec": "wwwroot\\my_script\\shelf\\action_delete.js"
     },
     {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\home\\index.css",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_style/home/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_style\\home\\index.css"
+    },
+    {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\layout.css",
       "SourceId": "BookSocial.Presentation.User",
       "SourceType": "Discovered",
@@ -19072,6 +19089,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_style\\layout.css"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\shelf\\index.css",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_style/shelf/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_style\\shelf\\index.css"
     }
   ]
 }

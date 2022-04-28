@@ -28,6 +28,8 @@ namespace BookSocial.EntityClass.DTO
         public int BookId { get; set; }
         public string BookImage { get; set; }
         public string BookName { get; set; }
+        public string BookDescription { get; set; }
+        public ProgressReadOrigin UserClaimProgressRead { get; set; }
         public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
     }
 }

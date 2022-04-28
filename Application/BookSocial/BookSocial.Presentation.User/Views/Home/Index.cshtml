@@ -1,67 +1,23 @@
 ﻿@using BookSocial.EntityClass.Enum
+@using BookSocial.Service
 @model IEnumerable<BookSocial.EntityClass.DTO.ReviewList>
 
 @section css{
-<style>
-    .my-purify {
-        text-align: left;
-    }
+<link rel="stylesheet" href="~/my_style/home/index.css" />
+}
 
-        .my-purify .chosen-container {
-            width: 60% !important;
-        }
-
-            .my-purify .chosen-container .chosen-single {
-                height: 30px;
-                line-height: 30px;
-            }
-</style>
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
 }
 
 <div class="col-lg-3">
     <aside class="sidebar static left">
         <div class="widget">
-            <h4 class="widget-title">CURRENTLY READING</h4>
-            <div class="your-page">
-                <figure>
-                    <a href="#"><img style="border-radius:unset" src="images/resources/friend-avatar9.jpg" alt=""></a>
-                </figure>
-                <div class="page-meta">
-                    <a href="#" class="underline">My page</a>
-                    <span><a href="">by Author</a></span>
-                    <div class="purify my-purify" style="width:100%">
-                        <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressRead>()">
-                            <option value="-1">All</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+            @await Html.PartialAsync("Partials/CurrentlyReading.cshtml")
         </div><!-- page like widget -->
 
         <div class="widget">
-            <h4 class="widget-title">RECENT ACTIVITY</h4>
-            <ul class="activitiez">
-                <li>
-                    <div class="activity-meta">
-                        <i>10 hours Ago</i>
-                        <span><a href="#" title="">Commented on Video posted </a></span>
-                        <h6>by <a href="time-line.html">black demon.</a></h6>
-                    </div>
-                </li>
-                <li>
-                    <div class="activity-meta">
-                        <i>30 Days Ago</i>
-                        <span><a href="#" title="">Posted your status. “Hello guys, how are you?”</a></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="activity-meta">
-                        <i>2 Years Ago</i>
-                        <span><a href="#" title="">Share a video on her timeline.</a></span>
-                        <h6>"<a href="#">you are so funny mr.been.</a>"</h6>
-                    </div>
-                </li>
-            </ul>
+            @await Html.PartialAsync("Partials/RecentActivity.cshtml")
         </div><!-- recent activites -->
     </aside>
 </div><!-- sidebar -->
@@ -76,135 +32,143 @@
             </select>
         </div>
     </div>
-    <div class="central-meta item">
-        <div class="user-post">
-            <div class="friend-info">
-                <figure>
-                    <img src="images/resources/friend-avatar10.jpg" alt="">
-                </figure>
-                <div class="friend-name">
-                    <ins><a href="time-line.html" title="">Janice Griffith</a></ins>
-                    <span>published: june,2 2018 19:PM</span>
-                </div>
-                <div class="description">
-                    <p>
-                        World's most beautiful car in Curabitur <a href="#" title="">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website
-                    </p>
-                </div>
-                <div class="post-meta">
-                    <div class="linked-image align-left">
-                        <a href="#" title=""><img src="images/resources/page1.jpg" alt=""></a>
+    @foreach (var item in Model)
+    {
+        <div class="central-meta item">
+            <div class="user-post">
+                <div class="friend-info">
+                    <figure>
+                        @if (item.UserImage == null || item.UserImage == "")
+                        {
+                            <img src=@($"{host}assets/images/user/user.png") />
+                        }
+                        else
+                        {
+                            <img src=@($"{host}assets/images/user/{item.UserImage}") />
+                        }
+                    </figure>
+                    <div class="friend-name">
+                        <ins><a href="">@item.UserName</a></ins>
+                        <span>published: @item.CreatedAt</span>
                     </div>
-                    <div class="detail">
-                        <span>Love Maid - ChillGroves</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... </p>
-                        <a href="#" title="">www.sample.com</a>
+                    <div class="description my-description">
+                        <p>
+                            @{
+                                var progressRead = "";
+                                switch (item.UserProgressRead)
+                                {
+                                    case ProgressRead.WantToRead:
+                                        progressRead = "Want To Read";
+                                        break;
+                                    case ProgressRead.CurrentlyReading:
+                                        progressRead = "Currently Reading";
+                                        break;
+                                    case ProgressRead.Read:
+                                        progressRead = "Read";
+                                        break;
+                                }
+                            }
+                            Progress Read: @progressRead
+                        </p>
+                        <p>
+                            Star:
+                            @for (int i = 0; i < (int)item.Star; i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                        </p>
+                        <p>Review: @item.Text</p>
                     </div>
-                    <div class="we-video-info">
-                        <ul>
-                            <li>
-                                <span class="comment" data-toggle="tooltip" title="Comments">
-                                    <i class="fa fa-comments-o"></i>
-                                    <ins>52</ins>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="coment-area">
-                <ul class="we-comet">
-                    <li>
-                        <div class="comet-avatar">
-                            <img src="images/resources/comet-1.jpg" alt="">
+                    <div class="post-meta">
+                        <div class="linked-image align-left">
+                            <a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})">
+                                <img src=@($"{host}assets/images/book/{item.BookImage}")>
+                            </a>
                         </div>
-                        <div class="we-comment">
-                            <div class="coment-head">
-                                <h5><a href="time-line.html" title="">Jason borne</a></h5>
-                                <span>1 year ago</span>
-                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                        <div class="detail my-detail">
+                            <span>@item.BookName</span>
+                            <p>@item.BookDescription.Substring(0,200) ...</p>
+                            <div class="purify my-purify">
+                                <select id="btn-filter"
+                                    asp-for="@item.UserClaimProgressRead"
+                                    asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
+                                </select>
                             </div>
-                            <p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
                         </div>
-                        <ul>
-                            <li>
-                                <div class="comet-avatar">
-                                    <img src="images/resources/comet-2.jpg" alt="">
+                        <div class="we-video-info">
+                            <ul>
+                                <li>
+                                    <a href="">
+                                        <span class="comment" data-toggle="tooltip" title="Comments">
+                                            <i class="fa fa-comments-o"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="coment-area">
+                    <ul class="we-comet">
+                        <li>
+                            <div class="comet-avatar">
+                                <img src="images/resources/comet-1.jpg" alt="">
+                            </div>
+                            <div class="we-comment">
+                                <div class="coment-head">
+                                    <h5><a href="time-line.html" title="">Jason borne</a></h5>
+                                    <span>1 year ago</span>
+                                    <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
                                 </div>
-                                <div class="we-comment">
-                                    <div class="coment-head">
-                                        <h5><a href="time-line.html" title="">alexendra dadrio</a></h5>
-                                        <span>1 month ago</span>
-                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                <p>we are working for the dance and sing songs. this car is very awesome for the youngster. please vote this car and like our post</p>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="comet-avatar">
+                                        <img src="images/resources/comet-2.jpg" alt="">
                                     </div>
-                                    <p>yes, really very awesome car i see the features of this car in the official website of <a href="#" title="">#Mercedes-Benz</a> and really impressed :-)</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="comet-avatar">
-                                    <img src="images/resources/comet-3.jpg" alt="">
-                                </div>
-                                <div class="we-comment">
-                                    <div class="coment-head">
-                                        <h5><a href="time-line.html" title="">Olivia</a></h5>
-                                        <span>16 days ago</span>
-                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                    <div class="we-comment">
+                                        <div class="coment-head">
+                                            <h5><a href="time-line.html" title="">alexendra dadrio</a></h5>
+                                            <span>1 month ago</span>
+                                            <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                        </div>
+                                        <p>yes, really very awesome car i see the features of this car in the official website of <a href="#" title="">#Mercedes-Benz</a> and really impressed :-)</p>
                                     </div>
-                                    <p>i like lexus cars, lexus cars are most beautiful with the awesome features, but this car is really outstanding than lexus</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" title="" class="showmore underline">more comments</a>
-                    </li>
-                    <li class="post-comment">
-                        <div class="comet-avatar">
-                            <img src="images/resources/comet-1.jpg" alt="">
-                        </div>
-                        <div class="post-comt-box">
-                            <form method="post">
-                                <textarea placeholder="Post your comment ..."></textarea>
-                                <button type="submit"><i class="fa fa-chevron-circle-right"></i></button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="" class="showmore underline">more comments</a>
+                        </li>
+                        <li class="post-comment">
+                            <div class="comet-avatar">
+                                <img src="images/resources/comet-1.jpg" alt="">
+                            </div>
+                            <div class="post-comt-box">
+                                <form method="post">
+                                    <textarea placeholder="Post your comment ..."></textarea>
+                                    <button class="my-btn" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+    }
+
     <button class="btn-view btn-load-more">Load More</button>
 </div><!-- centerl meta -->
 
 <div class="col-lg-3">
     <aside class="sidebar static right">
         <div class="widget">
-            <h4 class="widget-title">SUGGEST</h4>
-            <ul class="followers">
-                <li>
-                    <figure><img src="images/resources/friend-avatar2.jpg" alt=""></figure>
-                    <div class="friend-meta">
-                        <h4><a href="time-line.html" title="">Kelly Bill</a></h4>
-                        <a href="#" title="" class="underline">Add Friend</a>
-                    </div>
-                </li>
-            </ul>
+            @await Html.PartialAsync("Partials/Suggest.cshtml")
         </div><!-- suggest -->
 
         <div class="widget">
-            <h4 class="widget-title">FRIENDS</h4>
-            <div id="searchDir"></div>
-            <ul id="people-list" class="friendz-list">
-                <li>
-                    <figure>
-                        <img src="images/resources/friend-avatar.jpg" alt="">
-                    </figure>
-                    <div class="friendz-meta">
-                        <a href="time-line.html">bucky barnes</a>
-                        <i><a href="http://www.wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="592e30372d3c2b2a36353d3c2b193e34383035773a3634">[email&#160;protected]</a></i>
-                    </div>
-                </li>
-            </ul>
+            @await Html.PartialAsync("Partials/Friends.cshtml")
         </div><!-- friends list sidebar -->
     </aside>
 </div><!-- sidebar -->

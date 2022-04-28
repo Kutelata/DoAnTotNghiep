@@ -1,1 +1,8 @@
-﻿
+﻿.paging_active {
+    color: #FFF !important;
+    background: #088DCD;
+}
+
+    .paging_active:hover {
+        color: #088DCD !important;
+    }

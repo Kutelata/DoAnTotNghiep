@@ -118,7 +118,8 @@ namespace BookSocial.DataAccess.DataAccessClass
 						r.star,
 						b.id AS 'bookId',
 						b.[image] AS 'bookImage',
-						b.[name] AS 'bookName'
+						b.[name] AS 'bookName',
+						b.[description] AS 'bookDescription'
                     FROM Review r
 					LEFT JOIN [User] u ON u.id = r.[user_id]
 					LEFT JOIN Shelf s ON s.[user_id] = r.[user_id] AND s.book_id = r.book_id

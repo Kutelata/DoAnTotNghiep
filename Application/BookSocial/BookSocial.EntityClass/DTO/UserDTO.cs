@@ -15,10 +15,9 @@ namespace BookSocial.EntityClass.DTO
         public string Address { get; set; }
         public string Description { get; set; }
         public string Birthday { get; set; }
-        public int Gender { get; set; }
-        public string Friend { get; set; }
-        public int Status { get; set; }
-        public int Role { get; set; }
+        public Gender Gender { get; set; }
+        public Status Status { get; set; }
+        public Role Role { get; set; }
     }
 
     public class AdminSaveCookie
@@ -28,9 +27,9 @@ namespace BookSocial.EntityClass.DTO
         public string Account { get; set; }
         public string Password { get; set; }
         public string Image { get; set; }
-        public int Gender { get; set; }
-        public int Status { get; set; }
-        public int Role { get; set; }
+        public Gender Gender { get; set; }
+        public Status Status { get; set; }
+        public Role Role { get; set; }
     }
 
     public class UserLogin
