@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OA8LoABISbEC1mP0jUiLHpsSg6YdaYnfK8aQpZlot0Q=",
+  "Hash": "GSmj+HWBzePjkQPL2kNAk+9MqOpUX9ftG3g81W/bi7Q=",
   "Source": "BookSocial.Presentation.User",
   "BasePath": "_content/BookSocial.Presentation.User",
   "Mode": "Default",
@@ -19055,6 +19055,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_script\\shelf\\action_delete.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\friend\\index.css",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_style/friend/index.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_style\\friend\\index.css"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\home\\index.css",

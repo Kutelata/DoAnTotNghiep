@@ -11,11 +11,19 @@ $("#btn-search").click(function (e) {
     window.location.href = window.location.href
 })
 
+var filterOptions = $("#btn-filter")
+var defaultSelected = filterOptions.data("default-selected")
+$.each(filterOptions.children(), function (i, option) {
+    if ($(option).val() == defaultSelected) {
+        $(option).prop("selected", true);
+    }
+})
 if (filter) {
-    var filterOptions = $("#btn-filter");
     $.each(filterOptions.children(), function (i, option) {
         if ($(option).val() == filter) {
             $(option).prop("selected", true);
+        } else {
+
         }
     })
 }

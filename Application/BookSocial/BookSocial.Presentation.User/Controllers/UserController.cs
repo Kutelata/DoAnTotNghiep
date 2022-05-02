@@ -8,7 +8,5 @@ namespace BookSocial.Presentation.User.Controllers
         {
             return View("~/Views/User/Index.cshtml");
         }
-
-
     }
 }

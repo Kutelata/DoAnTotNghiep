@@ -31,9 +31,7 @@
         </form>
         <div class="purify">
             <span>Filter by</span>
-            <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressRead>()">
-                <option value="-1">All</option>
-            </select>
+            <select id="btn-filter" data-default-selected="@((int)ProgressReadFilter.All)" asp-items="Html.GetEnumSelectList<ProgressReadFilter>()"></select>
         </div>
     </div>
     @foreach (var item in Model)

@@ -96,15 +96,15 @@
                                     var statusColor = "";
                                     switch (item.Status)
                                     {
-                                        case Status.Locked:
+                                        case AccountStatus.Locked:
                                             statusText = "Locked";
                                             statusColor = "danger";
                                             break;
-                                        case Status.IsNotActive:
+                                        case AccountStatus.IsNotActive:
                                             statusText = "Is Not Active";
                                             statusColor = "secondary";
                                             break;
-                                        case Status.IsActive:
+                                        case AccountStatus.IsActive:
                                             statusText = "Is Active";
                                             statusColor = "success";
                                             break;

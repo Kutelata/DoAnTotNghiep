@@ -19,7 +19,7 @@ namespace BookSocial.EntityClass.Entity
         public string Description { get; set; }
         public DateTime? Birthday { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public Role Role { get; set; }
     }
 }

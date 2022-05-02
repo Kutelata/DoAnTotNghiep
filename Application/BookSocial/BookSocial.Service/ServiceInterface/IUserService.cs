@@ -5,6 +5,8 @@ namespace BookSocial.Service.ServiceInterface
 {
     public interface IUserService
     {
+        Task<IEnumerable<User>> GetAll();
+        Task<IEnumerable<FriendList>> GetAllUser();
         Task<IEnumerable<UserStatistic>> GetUserStatistic();
         Task<IEnumerable<UserEmployeeStatistic>> GetUserEmployeeStatistic();
         Task<UserSaveCookie> GetUserSaveCookie(UserLogin userLogin);

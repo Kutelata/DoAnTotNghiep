@@ -2,7 +2,7 @@
 
 namespace BookSocial.EntityClass.Enum
 {
-    public enum Status
+    public enum AccountStatus
     {
         [Display(Name="Locked")]
         Locked = 0,

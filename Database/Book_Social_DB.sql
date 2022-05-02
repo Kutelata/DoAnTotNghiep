@@ -28,8 +28,7 @@ go
 create table Friend 
 (
 	[user_id] int foreign key references [User](id),
-	user_friend_id int foreign key references [User](id),
-	confirm_friend tinyint default(0)
+	user_friend_id int foreign key references [User](id)
 )
 go
 

@@ -759,4 +759,3 @@ D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\bin\
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-D:\Study\DoAnTotNghiep\Application\BookSocial\BookSocial.Presentation.Admin\obj\Debug\net6.0\BookSocial.Presentation.Admin.MvcApplicationPartsAssemblyInfo.cs

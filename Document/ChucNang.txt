@@ -1,7 +1,7 @@
 Trang User 
     Login, Register
     Home: 
-    - Top: Menu, Search, Icon Page, Icon Profile
+    - Top: Home, MyBook, MyFriend, Discover
     - Center: 
         + Article (Have book): 
             User Image, User Name, Rating, Text, Book Image, Book Name, 
@@ -23,8 +23,7 @@ Trang User
     - Center: List, Paging
     BookInformation:
     - Center: Full Information
-    - Left: Article (Have Book)
-    - Right: Book Related
+    - Bottom: Article
     AuthorInformation:
     - Center: Full Information
     UserProfile:

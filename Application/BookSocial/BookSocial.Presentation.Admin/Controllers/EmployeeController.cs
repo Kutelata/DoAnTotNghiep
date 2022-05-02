@@ -113,7 +113,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
 
             createEmployee.Image = "";
-            createEmployee.Status = Status.IsNotActive;
+            createEmployee.Status = AccountStatus.IsNotActive;
             createEmployee.Password = "123456";
 
             if (ModelState.IsValid)

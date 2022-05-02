@@ -26,7 +26,7 @@ namespace BookSocial.Presentation.User.Controllers
                         }
                         else
                         {
-                            filter = "-1";
+                            filter = ((int)ProgressReadFilter.All).ToString();
                         }
                     }
                 }
@@ -34,11 +34,11 @@ namespace BookSocial.Presentation.User.Controllers
                 {
                     switch (Convert.ToInt32(filter))
                     {
-                        case (int)ProgressRead.WantToRead:
+                        case (int)ProgressReadFilter.WantToRead:
                             dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
-                        case (int)ProgressRead.CurrentlyReading:
+                        case (int)ProgressReadFilter.CurrentlyReading:
                             dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
-                        case (int)ProgressRead.Read:
+                        case (int)ProgressReadFilter.Read:
                             dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
                     }
                 }

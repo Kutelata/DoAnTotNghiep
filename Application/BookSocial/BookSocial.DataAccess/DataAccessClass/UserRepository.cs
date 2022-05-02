@@ -169,5 +169,16 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] WHERE email = @userEmail", new { userEmail });
             }
         }
+
+        public async Task<IEnumerable<FriendList>> GetAllUser()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<FriendList>(
+                    @"SELECT 
+                        id, [name], [image], [description], gender, [status]
+                    FROM [User] Where [role] = 0");
+            }
+        }
     }
 }

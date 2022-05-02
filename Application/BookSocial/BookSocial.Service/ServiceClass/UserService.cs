@@ -30,6 +30,22 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            var response = await GetClient().GetAsync($"User/GetAll");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<User>>() : null;
+            return data;
+        }
+
+        public async Task<IEnumerable<FriendList>> GetAllUser()
+        {
+            var response = await GetClient().GetAsync($"User/GetAllUser");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<FriendList>>() : null;
+            return data;
+        }
+
         public async Task<User> GetByAccount(string userAccount)
         {
             var response = await GetClient().GetAsync($"User/GetByAccount?userAccount={userAccount}");

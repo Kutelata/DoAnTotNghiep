@@ -16,7 +16,7 @@ namespace BookSocial.EntityClass.DTO
         public string Description { get; set; }
         public string Birthday { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public Role Role { get; set; }
     }
 
@@ -28,7 +28,7 @@ namespace BookSocial.EntityClass.DTO
         public string Password { get; set; }
         public string Image { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public Role Role { get; set; }
     }
 
@@ -54,7 +54,7 @@ namespace BookSocial.EntityClass.DTO
         public string Description { get; set; }
         public DateTime? Birthday { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public Role Role { get; set; }
     }
 
@@ -66,7 +66,7 @@ namespace BookSocial.EntityClass.DTO
         public string Account { get; set; }
         public string Image { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public int NumberOfFriends { get; set; }
         public int NumberBooksOnShelf { get; set; }
         public int NumberOfReviews { get; set; }
@@ -81,7 +81,7 @@ namespace BookSocial.EntityClass.DTO
         public string Password { get; set; }
         public string Image { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public Role Role { get; set; }
     }
 
@@ -100,7 +100,7 @@ namespace BookSocial.EntityClass.DTO
         public string Description { get; set; }
         public DateTime? Birthday { get; set; }
         public Gender Gender { get; set; }
-        public Status Status { get; set; }
+        public AccountStatus Status { get; set; }
         public RoleEmployee Role { get; set; }
     }
 

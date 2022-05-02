@@ -12,7 +12,7 @@ namespace BookSocial.EntityClass.Enum
         Read = 2
     }
     
-    public enum ProgressReadSort
+    public enum ProgressReadFilter
     {
         [Display(Name = "All")]
         All = -1,

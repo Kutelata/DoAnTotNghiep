@@ -33,8 +33,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QuerySingleAsync<Friend>(
                     @"SELECT 
                         user_id as 'userId', 
-                        user_friend_id as 'userFriendId',
-                        confirm_friend as 'confirmFriend' 
+                        user_friend_id as 'userFriendId'
                     FROM Friend
                     WHERE user_id = @userId and user_friend_id = @userFriendId", new { userId, userFriendId });
             }

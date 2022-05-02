@@ -114,7 +114,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         }
 
         [Authorize(Policy = "Admin and User Manager")]
-        public async Task<IActionResult> ChangeStatus(int userId, Status userStatus)
+        public async Task<IActionResult> ChangeStatus(int userId, AccountStatus userStatus)
         {
             var dataUser = await _userService.GetById(userId);
             if (dataUser != null)
