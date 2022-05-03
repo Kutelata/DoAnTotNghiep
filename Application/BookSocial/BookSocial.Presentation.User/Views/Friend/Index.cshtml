@@ -31,7 +31,7 @@
         </form>
         <div class="purify">
             <span>Filter by</span>
-            <select id="btn-filter" asp-items="Html.GetEnumSelectList<FriendStatus>()"></select>
+            <select id="btn-filter" data-default-selected="@((int)FriendStatus.Friends)" asp-items="Html.GetEnumSelectList<FriendStatus>()"></select>
         </div>
     </div>
     @foreach (var item in Model)

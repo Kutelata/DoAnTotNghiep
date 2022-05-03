@@ -9,39 +9,55 @@ namespace BookSocial.Presentation.User.Controllers
         {
             var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
             var allData = await _userService.GetAllUser();
-            var dataInPage = allData;
-            List<EntityClass.Entity.User> reviewLists = new();
+            var dataInPage = allData.Where(u => u.Id != Convert.ToInt32(userIdClaim));
+            List<EntityClass.DTO.FriendList> userSuggests = new();
+            List<EntityClass.DTO.FriendList> userRequests = new();
+            List<EntityClass.DTO.FriendList> userFriends = new();
             int size = 2;
 
             if (allData != null)
             {
-                //if (Request.Query.ContainsKey("filter"))
-                //{
-                //    if (Request.Query["filter"].ToString() != null && Request.Query["filter"].ToString() != "")
-                //    {
-                //        var isNumeric = int.TryParse(Request.Query["filter"].ToString(), out int number);
-                //        if (isNumeric)
-                //        {
-                //            filter = Request.Query["filter"].ToString();
-                //        }
-                //        else
-                //        {
-                //            filter = ((int)FriendStatus.Friends).ToString();
-                //        }
-                //    }
-                //}
-                //if (filter != null && filter != "")
-                //{
-                //    switch (Convert.ToInt32(filter))
-                //    {
-                //        case (int)FriendStatus.Suggest:
-                //            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
-                //        case (int)FriendStatus.Request:
-                //            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
-                //        case (int)FriendStatus.Friends:
-                //            dataInPage = dataInPage.Where(x => (int)x.ProgressRead == Convert.ToInt32(filter)); break;
-                //    }
-                //}
+                foreach (var data in dataInPage)
+                {
+                    var compareUserAndUserFriend = await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), data.Id);
+                    var compareUserFriendAndUser = await _friendService.GetByUserAndUserFriendId(data.Id, Convert.ToInt32(userIdClaim));
+                    if (compareUserAndUserFriend == null && compareUserFriendAndUser == null)
+                    {
+                        userSuggests.Add(data);
+                    }
+                    if (compareUserAndUserFriend == null && compareUserFriendAndUser != null)
+                    {
+                        userRequests.Add(data);
+                    }
+                    if (compareUserAndUserFriend != null && compareUserFriendAndUser != null)
+                    {
+                        userFriends.Add(data);
+                    }
+                }
+                if (Request.Query.ContainsKey("filter"))
+                {
+                    if (Request.Query["filter"].ToString() != null && Request.Query["filter"].ToString() != "")
+                    {
+                        var isNumeric = int.TryParse(Request.Query["filter"].ToString(), out int number);
+                        if (isNumeric)
+                        {
+                            filter = Request.Query["filter"].ToString();
+                        }
+                        else
+                        {
+                            filter = ((int)FriendStatus.Friends).ToString();
+                        }
+                    }
+                }
+                if (filter != null && filter != "")
+                {
+                    switch (Convert.ToInt32(filter))
+                    {
+                        case (int)FriendStatus.Suggest: dataInPage = userSuggests; break;
+                        case (int)FriendStatus.Request: dataInPage = userRequests; break;
+                        case (int)FriendStatus.Friends: dataInPage = userFriends; break;
+                    }
+                }
 
                 if (Request.Query.ContainsKey("search"))
                 {
