@@ -15,7 +15,7 @@
     public class RecentActivityComment
     {
         public int UserCommentId { get; set; }
-        public int UserName { get; set; }
+        public string UserCommentName { get; set; }
         public int UserReviewId { get; set; }
         public string UserReviewName { get; set; }
         public int BookId { get; set; }

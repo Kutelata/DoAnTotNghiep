@@ -1,12 +1,22 @@
-﻿<h4 class="widget-title">FRIENDS</h4>
+﻿@using BookSocial.Service
+@model List<BookSocial.EntityClass.DTO.FriendListHome>
+
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+}
+
+<h4 class="widget-title">FRIENDS</h4>
 <div id="searchDir"></div>
 <ul id="people-list" class="friendz-list">
-    <li>
-        <figure>
-            <img src="images/resources/friend-avatar.jpg" alt="">
-        </figure>
-        <div class="friendz-meta">
-            <a href="time-line.html">bucky barnes</a>
-        </div>
-    </li>
+    @foreach (var item in Model)
+    {
+        <li>
+            <figure>
+                <img src="@host/assets/images/user/@item.Image" />
+            </figure>
+            <div class="friendz-meta">
+                <a href="@Url.Action("UserDetail","Home", new{userId=@item.UserFriendId})">@item.UserFriendName</a>
+            </div>
+        </li>
+    }
 </ul>

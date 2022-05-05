@@ -1,6 +1,6 @@
 ﻿@using BookSocial.EntityClass.Enum
 @using BookSocial.Service
-@model IEnumerable<BookSocial.EntityClass.DTO.ReviewList>
+@model BookSocial.EntityClass.DTO.HomeList
 
 @section css{
 <link rel="stylesheet" href="~/my_style/home/index.css" />
@@ -14,11 +14,11 @@
 <div class="col-lg-3">
     <aside class="sidebar static left">
         <div class="widget">
-            @await Html.PartialAsync("Partials/CurrentlyReading.cshtml")
+            @await Html.PartialAsync("Partials/CurrentlyReading.cshtml", Model.ShelfListHome)
         </div><!-- page like widget -->
 
         <div class="widget">
-            @await Html.PartialAsync("Partials/RecentActivity.cshtml")
+            @await Html.PartialAsync("Partials/RecentActivity.cshtml", Model.RecentActivityComment)
         </div><!-- recent activites -->
     </aside>
 </div><!-- sidebar -->
@@ -33,7 +33,7 @@
             </select>
         </div>
     </div>
-    @foreach (var item in Model)
+    @foreach (var item in Model.ReviewList)
     {
         <div class="central-meta item">
             <div class="user-post">
@@ -176,11 +176,11 @@
 <div class="col-lg-3">
     <aside class="sidebar static right">
         <div class="widget">
-            @await Html.PartialAsync("Partials/Suggest.cshtml")
+            @await Html.PartialAsync("Partials/Suggest.cshtml", Model.FriendListHomeSuggest)
         </div><!-- suggest -->
 
         <div class="widget">
-            @await Html.PartialAsync("Partials/Friends.cshtml")
+            @await Html.PartialAsync("Partials/Friends.cshtml", Model.FriendListHome)
         </div><!-- friends list sidebar -->
     </aside>
 </div><!-- sidebar -->

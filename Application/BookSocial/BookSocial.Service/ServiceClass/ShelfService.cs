@@ -53,6 +53,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<ShelfListHome>> GetShelfListHomes(int userId)
+        {
+            var response = await GetClient().GetAsync($"Shelf/GetShelfListHomes?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<ShelfListHome>>() : null;
+            return data;
+        }
+
         public async Task<int> Update(Shelf shelf)
         {
             var response = await GetClient().PutAsJsonAsync($"Shelf/Update", shelf);

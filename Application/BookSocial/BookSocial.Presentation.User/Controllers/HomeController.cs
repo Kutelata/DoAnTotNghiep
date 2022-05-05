@@ -49,13 +49,15 @@ namespace BookSocial.Presentation.User.Controllers
         public async Task<IActionResult> Index(string filter = "Global")
         {
             var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
-            var allData = await _reviewService.GetReviewList();
-            var dataInPage = allData;
-            List<ReviewList> reviewLists = new();
+            var reviewLists = await _reviewService.GetReviewList();
+            var shelfLists = await _shelfService.GetShelfListHomes(Convert.ToInt32(userIdClaim));
+            var commentLists = await _commentService.GetRecentActivityComment();
+            var userLists = await _userService.GetAllUser();
+            var dataInPage = new HomeList();
             int page = 1;
             int size = 2;
 
-            if (allData != null)
+            if (reviewLists != null)
             {
                 if (Request.Query.ContainsKey("filter"))
                 {
@@ -67,25 +69,25 @@ namespace BookSocial.Presentation.User.Controllers
                     switch (filter)
                     {
                         case "Global":
-                            dataInPage = allData; break;
+                            dataInPage.ReviewList = (List<ReviewList>)reviewLists; break;
                         case "Friend":
-                            foreach (var data in allData)
+                            foreach (var rl in reviewLists)
                             {
                                 var checkUserFriend =
-                                    await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), data.UserId);
+                                    await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), rl.UserId);
                                 var checkUserFriendReverse =
-                                    await _friendService.GetByUserAndUserFriendId(data.UserId, Convert.ToInt32(userIdClaim));
-                                if (checkUserFriend != null || checkUserFriendReverse != null)
+                                    await _friendService.GetByUserAndUserFriendId(rl.UserId, Convert.ToInt32(userIdClaim));
+                                if (checkUserFriend == null || checkUserFriendReverse == null)
                                 {
-                                    reviewLists.Add(data);
+                                    reviewLists.ToList().Remove(rl);
                                 }
                             };
-                            dataInPage = reviewLists;
+                            dataInPage.ReviewList = (List<ReviewList>)reviewLists;
                             break;
                     }
                 }
 
-                foreach (var data in dataInPage)
+                foreach (var data in dataInPage.ReviewList)
                 {
                     data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
                     var checkBookInShelf = await _shelfService.GetByBookAndUserId(data.BookId, Convert.ToInt32(userIdClaim));
@@ -96,14 +98,39 @@ namespace BookSocial.Presentation.User.Controllers
                     else { data.UserClaimProgressRead = ProgressReadOrigin.NotRead; }
                 }
 
-                int pages = (int)Math.Ceiling((double)dataInPage.Count() / size);
+                dataInPage.FriendListHomeSuggest = new List<FriendListHome>();
+                dataInPage.FriendListHome = new List<FriendListHome>();
+                foreach (var data in userLists)
+                {
+                    var compareUserAndUserFriend = await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), data.Id);
+                    var compareUserFriendAndUser = await _friendService.GetByUserAndUserFriendId(data.Id, Convert.ToInt32(userIdClaim));
+                    var formatData = _mapper.Map<FriendListHome>(data);
+                    if (compareUserAndUserFriend == null && compareUserFriendAndUser == null)
+                    {
+                        dataInPage.FriendListHomeSuggest.Add(formatData);
+                    }
+                    if (compareUserAndUserFriend != null && compareUserFriendAndUser != null)
+                    {
+                        dataInPage.FriendListHome.Add(formatData);
+                    }
+                }
+
+
+                dataInPage.ShelfListHome = shelfLists.ToList();
+                foreach(var data in dataInPage.ShelfListHome)
+                {
+                    data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
+                }
+                dataInPage.RecentActivityComment = commentLists.ToList();
+
+                int pages = (int)Math.Ceiling((double)dataInPage.ReviewList.Count() / size);
                 ViewBag.Pages = pages;
 
-                dataInPage = dataInPage.Skip((page - 1) * size).Take(size);
+                dataInPage.ReviewList = dataInPage.ReviewList.Skip((page - 1) * size).Take(size).ToList();
             }
 
-            ViewBag.CurrentPage = page;
-            ViewBag.CurrentFilter = filter;
+            //ViewBag.CurrentPage = page;
+            //ViewBag.CurrentFilter = filter;
             return View("~/Views/Home/Index.cshtml", dataInPage);
         }
 

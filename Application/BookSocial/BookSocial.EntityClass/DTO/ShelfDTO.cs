@@ -23,4 +23,13 @@ namespace BookSocial.EntityClass.DTO
         public int BookId { get; set; }
         public int UserId { get; set; }
     }
+
+    public class ShelfListHome
+    {
+        public int BookId { get; set; }
+        public string BookImage { get; set; }
+        public string BookName { get; set; }
+        public ProgressRead ProgressRead { get; set; }
+        public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
+    }
 }

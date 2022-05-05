@@ -114,5 +114,21 @@ namespace BookSocial.DataAccess.DataAccessClass
                     new { bookId, userId });
             }
         }
+
+        public async Task<IEnumerable<ShelfListHome>> GetShelfListHomes(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<ShelfListHome>(
+                    @"SELECT 
+	                    b.id as 'bookId',
+	                    b.[image] as 'bookImage',
+	                    b.[name] as 'bookName',
+	                    s.progress_read as 'progressRead'
+                    FROM Shelf s 
+                    JOIN Book b ON b.id = s.book_id
+                    WHERE s.user_id = @userId and progress_read = 1", new { userId });
+            }
+        }
     }
 }

@@ -26,6 +26,20 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetRecentActivityComment()
+        {
+            try
+            {
+                var data = await _commentRepository.GetRecentActivityComment();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetByReviewId(int reviewId)

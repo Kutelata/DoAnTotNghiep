@@ -1,17 +1,40 @@
 ﻿@using BookSocial.EntityClass.Enum
+@using BookSocial.Service
+@model List<BookSocial.EntityClass.DTO.ShelfListHome>
+
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+}
 
 <h4 class="widget-title">CURRENTLY READING</h4>
-<div class="your-page">
-    <figure>
-        <a href="#"><img style="border-radius:unset" src="images/resources/friend-avatar9.jpg" alt=""></a>
-    </figure>
-    <div class="page-meta">
-        <a href="#" class="underline">My page</a>
-        <span><a href="">by Author</a></span>
-        <div class="purify my-purify" style="width:100%">
-            <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressRead>()">
-                <option value="-1">All</option>
-            </select>
+@foreach (var item in Model)
+{
+    <div class="your-page">
+        <figure>
+            <a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})"><img style="border-radius:unset" src="@host/assets/images/book/@item.BookImage"></a>
+        </figure>
+        <div class="page-meta">
+            <a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})" style="font-size:14px" class="underline">@item.BookName</a>
+            <span>
+                <a href="">
+                    by
+                    @{
+                        var count = 0;
+                    }
+                    @foreach (var author in item.AuthorListByBookId)
+                    {
+                        count++;
+                        if (count > 1)
+                        {
+                            <span>, @author.AuthorName</span>
+                        }
+                        else
+                        {
+                            <span>@author.AuthorName</span>
+                        }
+                    }
+                </a>
+            </span>
         </div>
     </div>
-</div>
+}

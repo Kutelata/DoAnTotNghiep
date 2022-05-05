@@ -68,6 +68,20 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetShelfListHomes(int userId)
+        {
+            try
+            {
+                var data = await _shelfRepository.GetShelfListHomes(userId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(Shelf shelf)

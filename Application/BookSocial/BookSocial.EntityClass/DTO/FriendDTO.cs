@@ -4,9 +4,9 @@ namespace BookSocial.EntityClass.DTO
 {
     public class FriendListHome
     {
-        public int UserId { get; set; }
         public int UserFriendId { get; set; }
-        public int UserFriendName { get; set; }
+        public string UserFriendName { get; set; }
+        public string Image { get; set; }
     }
 
     public class FriendList

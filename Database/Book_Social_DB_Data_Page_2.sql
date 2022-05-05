@@ -194,7 +194,7 @@ go
 insert into Review values
 -- ('text','star','created_at','book_id','user_id')
 
-/*('This book is great',0,'2022-11-23',1,4),
+('This book is great',0,'2022-11-23',1,4),
 ('This book is great',1,'2022-11-23',2,4),
 ('This book is great',2,'2022-11-23',3,4),
 ('This book is great',3,'2022-11-23',4,4),
@@ -213,7 +213,7 @@ insert into Review values
 ('This book is great',2,'2022-11-23',15,6),
 ('This book is great',3,'2022-11-23',16,6),
 ('This book is great',4,'2022-11-23',17,6),
-('This book is great',5,'2022-11-23',18,6),*/
+('This book is great',5,'2022-11-23',18,6),
 
 ('This book is great',0,'2022-11-23',19,7),
 ('This book is great',1,'2022-11-23',20,7),
@@ -223,7 +223,7 @@ insert into Review values
 ('This book is great',5,'2022-11-23',24,7)
 go
 
-/*insert into Comment values
+insert into Comment values
 -- ('text','parent_id','created_at','review_id','user_id')
 
 ('I like your review',0,'2022-11-23',1,4),
@@ -236,4 +236,4 @@ go
 ('I like your review',1,'2022-11-23',1,11),
 ('I like your review',1,'2022-11-23',1,12),
 ('I like your review',1,'2022-11-23',1,13)
-go*/
+go

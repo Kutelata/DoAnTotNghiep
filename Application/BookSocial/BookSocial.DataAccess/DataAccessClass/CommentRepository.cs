@@ -116,5 +116,27 @@ namespace BookSocial.DataAccess.DataAccessClass
                     WHERE id = @id", entity);
             }
         }
+
+        public async Task<IEnumerable<RecentActivityComment>> GetRecentActivityComment()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<RecentActivityComment>(
+                    @"SELECT TOP 5
+	                    u_comment.id AS 'userCommentId',
+	                    u_comment.[name] AS 'userCommentName',
+	                    u_review.id AS 'userReviewId',
+	                    u_review.[name] AS 'userReviewName',
+	                    b.id AS 'bookId',
+	                    b.[name] AS 'bookName',
+	                    c.created_at AS 'commentCreatedAt'
+                    FROM Comment c
+                    JOIN [User] u_comment ON u_comment.id = c.[user_id]
+                    JOIN Review r ON r.id = c.review_id
+                    JOIN [User] u_review ON u_review.id = r.[user_id]
+                    JOIN Book b ON b.id = r.book_id
+                    ORDER BY c.created_at DESC");
+            }
+        }
     }
 }
