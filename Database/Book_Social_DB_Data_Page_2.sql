@@ -131,34 +131,37 @@ insert into Friend values
 (4,5),
 (5,4),
 (4,6),
-(4,7),
 (7,4),
+
 (4,8),
+(8,4),
 (4,9),
-(9,4),
-(4,10),
+(10,4),
+
 (4,11),
 (11,4),
 (4,12),
-(4,13),
 (13,4),
-(4,14),
 
+(4,14),
+(14,4),
 (4,15),
-(15,4),
-(4,16),
+(16,4),
+
 (4,17),
 (17,4),
 (4,18),
-(4,19),
 (19,4),
+
 (4,20),
+(20,4),
 (4,21),
-(21,4),
-(4,22),
+(22,4),
+
 (4,23),
 (23,4),
-(4,24)
+(4,24),
+(25,4)
 go
 
 insert into Shelf values
@@ -191,7 +194,7 @@ go
 insert into Review values
 -- ('text','star','created_at','book_id','user_id')
 
-('This book is great',0,'2022-11-23',1,4),
+/*('This book is great',0,'2022-11-23',1,4),
 ('This book is great',1,'2022-11-23',2,4),
 ('This book is great',2,'2022-11-23',3,4),
 ('This book is great',3,'2022-11-23',4,4),
@@ -210,10 +213,17 @@ insert into Review values
 ('This book is great',2,'2022-11-23',15,6),
 ('This book is great',3,'2022-11-23',16,6),
 ('This book is great',4,'2022-11-23',17,6),
-('This book is great',5,'2022-11-23',18,6)
+('This book is great',5,'2022-11-23',18,6),*/
+
+('This book is great',0,'2022-11-23',19,7),
+('This book is great',1,'2022-11-23',20,7),
+('This book is great',2,'2022-11-23',21,7),
+('This book is great',3,'2022-11-23',22,7),
+('This book is great',4,'2022-11-23',23,7),
+('This book is great',5,'2022-11-23',24,7)
 go
 
-insert into Comment values
+/*insert into Comment values
 -- ('text','parent_id','created_at','review_id','user_id')
 
 ('I like your review',0,'2022-11-23',1,4),
@@ -226,4 +236,4 @@ insert into Comment values
 ('I like your review',1,'2022-11-23',1,11),
 ('I like your review',1,'2022-11-23',1,12),
 ('I like your review',1,'2022-11-23',1,13)
-go
+go*/

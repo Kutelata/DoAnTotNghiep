@@ -8,6 +8,7 @@
 
 @{
     var host = ConnectAdmin.BookSocialAdmin;
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
 }
 
 <div class="col-lg-3">
@@ -49,7 +50,7 @@
                     </figure>
                     <div class="friend-name">
                         <ins><a href="">@item.UserName</a></ins>
-                        <span>published: @item.CreatedAt</span>
+                        <span>created at: @item.CreatedAt</span>
                     </div>
                     <div class="description my-description">
                         <p>
@@ -87,9 +88,20 @@
                         </div>
                         <div class="detail my-detail">
                             <span>@item.BookName</span>
-                            <p>@item.BookDescription.Substring(0,200) ...</p>
+                            <p>
+                                Author:
+                                @foreach (var author in item.AuthorListByBookId)
+                                {
+                                    <span>@author.AuthorName</span>
+                                }
+                                <br />
+                                @item.BookDescription.Substring(0,200) ...
+                            </p>
                             <div class="purify my-purify">
                                 <select id="btn-filter"
+                                    class="btn-change-progress-read-origin"
+                                    data-book-id="@item.BookId"
+                                    data-user-id="@userIdClaim"
                                     asp-for="@item.UserClaimProgressRead"
                                     asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
                                 </select>
@@ -172,3 +184,8 @@
         </div><!-- friends list sidebar -->
     </aside>
 </div><!-- sidebar -->
+
+@section script{
+    <script src="~/my_script/get_param_url.js"></script>
+    <script src="~/my_script/shelf/change_progress_origin.js"></script>
+}

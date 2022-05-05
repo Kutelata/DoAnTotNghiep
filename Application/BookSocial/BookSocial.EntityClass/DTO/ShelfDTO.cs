@@ -16,4 +16,11 @@ namespace BookSocial.EntityClass.DTO
         public float AverageOfRating { get; set; }
         public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
     }
+
+    public class ShelfWithProgressOrigin
+    {
+        public ProgressReadOrigin ProgressReadOrigin { get; set; }
+        public int BookId { get; set; }
+        public int UserId { get; set; }
+    }
 }

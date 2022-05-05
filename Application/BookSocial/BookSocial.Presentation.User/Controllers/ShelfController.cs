@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Entity;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -103,6 +104,48 @@ namespace BookSocial.Presentation.User.Controllers
                     return StatusCode(200);
                 }
                 return StatusCode(500);
+            }
+            return StatusCode(400);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeProgressReadOrigin(ShelfWithProgressOrigin shelfWithProgressOrigin)
+        {
+            var checkBookInShelf = await _shelfService.GetByBookAndUserId(shelfWithProgressOrigin.BookId, shelfWithProgressOrigin.UserId);
+            if (shelfWithProgressOrigin != null)
+            {
+                if (checkBookInShelf != null)
+                {
+                    if (shelfWithProgressOrigin.ProgressReadOrigin == ProgressReadOrigin.NotRead)
+                    {
+                        var result = await _shelfService.DeleteByBookAndUserId(shelfWithProgressOrigin.BookId, shelfWithProgressOrigin.UserId);
+                        if (result != 0)
+                        {
+                            return StatusCode(200);
+                        }
+                        return StatusCode(500);
+                    }
+                    else
+                    {
+                        var shelf = _mapper.Map<Shelf>(shelfWithProgressOrigin);
+                        var result = await _shelfService.Update(shelf);
+                        if (result != 0)
+                        {
+                            return StatusCode(200);
+                        }
+                        return StatusCode(500);
+                    }
+                }
+                else
+                {
+                    var shelf = _mapper.Map<Shelf>(shelfWithProgressOrigin);
+                    var result = await _shelfService.Create(shelf);
+                    if (result != 0)
+                    {
+                        return StatusCode(200);
+                    }
+                    return StatusCode(500);
+                }
             }
             return StatusCode(400);
         }

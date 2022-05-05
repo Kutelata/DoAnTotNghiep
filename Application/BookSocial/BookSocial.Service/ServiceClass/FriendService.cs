@@ -6,6 +6,22 @@ namespace BookSocial.Service.ServiceClass
 {
     public class FriendService : ConnectAPI, IFriendService
     {
+        public async Task<int> Create(Friend friend)
+        {
+            var response = await GetClient()
+                .PostAsJsonAsync($"Friend/Create", friend);
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
+        public async Task<int> DeleteByUserAndUserFriendId(int userId, int userFriendId)
+        {
+            var response = await GetClient()
+                .DeleteAsync($"Friend/DeleteByUserAndUserFriendId?userId={userId}&userFriendId={userFriendId}");
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
         public async Task<Friend> GetByUserAndUserFriendId(int userId, int userFriendId)
         {
             var response = await GetClient().GetAsync($"Friend/GetByUserAndUserFriendId?userId={userId}&userFriendId={userFriendId}");

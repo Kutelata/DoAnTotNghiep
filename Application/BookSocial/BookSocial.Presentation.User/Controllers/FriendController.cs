@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.User.Controllers
@@ -14,6 +15,7 @@ namespace BookSocial.Presentation.User.Controllers
             List<EntityClass.DTO.FriendList> userRequests = new();
             List<EntityClass.DTO.FriendList> userFriends = new();
             int size = 2;
+            filter = ((int)FriendStatus.Friends).ToString();
 
             if (allData != null)
             {
@@ -98,6 +100,79 @@ namespace BookSocial.Presentation.User.Controllers
             ViewBag.CurrentSearch = search;
             ViewBag.CurrentFilter = filter;
             return View("~/Views/Friend/Index.cshtml", dataInPage);
+        }
+
+        public async Task<IActionResult> DeleteFriend(int userFriendId)
+        {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            int resultFromUser = await _friendService.DeleteByUserAndUserFriendId(Convert.ToInt32(userIdClaim), userFriendId);
+            int resultFromUserFriend = await _friendService.DeleteByUserAndUserFriendId(userFriendId, Convert.ToInt32(userIdClaim));
+            if (resultFromUser != 0 && resultFromUserFriend != 0)
+            {
+                TempData["Success"] = "Delete Friend success!";
+            }
+            else
+            {
+                TempData["Fail"] = "Delete Friend fail!";
+            }
+            return RedirectToAction("FriendList", "Home");
+        }
+
+        public async Task<IActionResult> AddFriend(int userFriendId)
+        {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var compareUserAndUserFriend = await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), userFriendId);
+            var compareUserFriendAndUser = await _friendService.GetByUserAndUserFriendId(userFriendId, Convert.ToInt32(userIdClaim));
+            if (compareUserAndUserFriend == null && compareUserFriendAndUser == null)
+            {
+                var friend = new Friend
+                {
+                    UserId = Convert.ToInt32(userIdClaim),
+                    UserFriendId = userFriendId
+                };
+                int result = await _friendService.Create(friend);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Add friend success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Add friend fail!";
+                }
+            }
+            else
+            {
+                TempData["Fail"] = "Already add this friend!";
+            }
+            return RedirectToAction("FriendList", "Home", new { filter = ((int)FriendStatus.Suggest).ToString() });
+        }
+
+        public async Task<IActionResult> ConfirmFriend(int userFriendId)
+        {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var compareUserAndUserFriend = await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), userFriendId);
+            if (compareUserAndUserFriend == null)
+            {
+                var friend = new Friend
+                {
+                    UserId = Convert.ToInt32(userIdClaim),
+                    UserFriendId = userFriendId,
+                };
+                int result = await _friendService.Create(friend);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Confirm friend success!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Confirm friend fail!";
+                }
+            }
+            else
+            {
+                TempData["Fail"] = "Already confirm this friend!";
+            }
+            return RedirectToAction("FriendList", "Home", new { filter = ((int)FriendStatus.Request).ToString() });
         }
     }
 }

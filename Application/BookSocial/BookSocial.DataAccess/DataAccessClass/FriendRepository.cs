@@ -6,14 +6,29 @@ namespace BookSocial.DataAccess.DataAccessClass
 {
     public class FriendRepository : ConnectionStrings, IFriendRepository
     {
-        public Task<int> Create(Friend entity)
+        public async Task<int> Create(Friend entity)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"INSERT INTO Friend VALUES (@userId, @userFriendId)",
+                    entity);
+            }
         }
 
         public Task<int> Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<int> DeleteByUserAndUserFriendId(int userId, int userFriendId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"DELETE FROM Friend WHERE user_id = @userId and user_friend_id = @userFriendId", 
+                    new { userId, userFriendId });
+            }
         }
 
         public Task<IEnumerable<Friend>> GetAll()

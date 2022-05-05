@@ -46,41 +46,43 @@
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="l-post-meta my-l-post-meta">
                         <h4><a href="@Url.Action("UserDetail","Home",new{userId=item.Id})" title="">@item.Name</a></h4>
-                        @* <div class="l-post-ranking">
-                            @{
-                            var count = 0;
-                            }
-                            @foreach (var author in item.AuthorListByBookId)
-                            {
-                            if (count == 0)
-                            {
-                            <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">@author.AuthorName</a>
-                            }
-                            else
-                            {
-                            <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">, @author.AuthorName</a>
-                            }
-                            count++;
-                            }
-                            </div>*@
                         <p>
                             Status: @item.Status <br />
                             Gender: @item.Gender <br />
                             @item.Description
                         </p>
-                        @*  <div class="g-post-ranking">
-                            <a class="likes" href="#"><i class="fa fa-star"></i>@item.AverageOfRating</a>
-                            <a class="coments" href="#"><i class="fa fa-comment-o"></i>@item.NumberOfReviews</a>
-                            </div>*@
                         <div class="purify my-purify">
-                            <a class="btn btn-danger my-btn btn-delete-shelf" data-book-id="@item.Id">Delete</a>
+                            @{
+                                var background = "";
+                                var text = "";
+                                var action = "";
+                                switch (Convert.ToInt32(ViewBag.CurrentFilter))
+                                {
+                                    case (int)FriendStatus.Suggest:
+                                        background = "green";
+                                        text = "Add";
+                                        action = "AddFriend";
+                                        break;
+                                    case (int)FriendStatus.Request:
+                                        background = "blue";
+                                        text = "Confirm";
+                                        action = "ConfirmFriend";
+                                        break;
+                                    case (int)FriendStatus.Friends:
+                                        background = "red";
+                                        text = "Delete";
+                                        action = "DeleteFriend";
+                                        break;
+                                }
+                            }
+                            <a class="btn btn-action-friend" 
+                            data-user-friend-id="@item.Id" 
+                            data-action="@action" 
+                            style="background:@background;color:white">@text</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     }
 
@@ -138,5 +140,5 @@
 @section script{
 <script src="~/my_script/get_param_url.js"></script>
 <script src="~/my_script/action_in_list.js"></script>
-<script src="~/my_script/friend/action_delete.js"></script>
+<script src="~/my_script/friend/action.js"></script>
 }

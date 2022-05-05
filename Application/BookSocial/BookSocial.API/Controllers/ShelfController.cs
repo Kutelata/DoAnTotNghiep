@@ -69,6 +69,20 @@ namespace BookSocial.API.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(Shelf shelf)
+        {
+            try
+            {
+                int result = await _shelfRepository.Create(shelf);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        
         [HttpPut]
         public async Task<IActionResult> Update(Shelf shelf)
         {

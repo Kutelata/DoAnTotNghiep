@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GSmj+HWBzePjkQPL2kNAk+9MqOpUX9ftG3g81W/bi7Q=",
+  "Hash": "qerlIVwyFd0KPVOklr9Ir7u54KDvbdVlNjEE/A/Jsw4=",
   "Source": "BookSocial.Presentation.User",
   "BasePath": "_content/BookSocial.Presentation.User",
   "Mode": "Default",
@@ -18989,12 +18989,12 @@
       "OriginalItemSpec": "wwwroot\\my_script\\author\\author_by_book_id.js"
     },
     {
-      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\change_progress.js",
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\friend\\action.js",
       "SourceId": "BookSocial.Presentation.User",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
       "BasePath": "_content/BookSocial.Presentation.User",
-      "RelativePath": "my_script/change_progress.js",
+      "RelativePath": "my_script/friend/action.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -19003,7 +19003,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\my_script\\change_progress.js"
+      "OriginalItemSpec": "wwwroot\\my_script\\friend\\action.js"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\get_param_url.js",
@@ -19055,6 +19055,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_script\\shelf\\action_delete.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\shelf\\change_progress.js",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_script/shelf/change_progress.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_script\\shelf\\change_progress.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\shelf\\change_progress_origin.js",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_script/shelf/change_progress_origin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_script\\shelf\\change_progress_origin.js"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_style\\friend\\index.css",

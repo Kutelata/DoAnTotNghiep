@@ -6,3 +6,8 @@
     .paging_active:hover {
         color: #088DCD !important;
     }
+
+.alert-error {
+    background: red;
+    color: white;
+}

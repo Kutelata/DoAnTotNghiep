@@ -7,9 +7,14 @@ namespace BookSocial.DataAccess.DataAccessClass
 {
     public class ShelfRepository : ConnectionStrings, IShelfRepository
     {
-        public Task<int> Create(Shelf entity)
+        public async Task<int> Create(Shelf entity)
         {
-            throw new NotImplementedException();
+            using (var con = GetConnection())
+            {
+                return await con.ExecuteAsync(
+                    @"INSERT INTO Shelf VALUES (@progressRead, @bookId, @userId)",
+                    entity);
+            }
         }
 
         public Task<int> Delete(int id)
