@@ -17,7 +17,6 @@
                             <select class="custom-select" id="btn-sort">
                                 <option selected value="Id">Id</option>
                                 <option value="Text">Text</option>
-                                <option value="ParentId">Parent Id</option>
                                 <option value="CreatedAt">Created At</option>
                                 <option value="ReviewId">Review Id</option>
                                 <option value="UserId">User Id</option>
@@ -54,12 +53,10 @@
                         <tr class="headings">
                             <th class="column-title">Id</th>
                             <th class="column-title">Text</th>
-                            <th class="column-title">Parent Id</th>
                             <th class="column-title">Created At</th>
                             <th class="column-title">Review Id</th>
                             <th class="column-title">User Id</th>
                             <th class="column-title">User Name</th>
-                            <th class="column-title">Number Comment Replies</th>
                             <th class="column-title no-link last">
                                 <span class="nobr">Action</span>
                             </th>
@@ -75,12 +72,10 @@
                             <tr class="even pointer">
                                 <td class=" ">@item.Id</td>
                                 <td class=" ">@item.Text</td>
-                                <td class=" ">@item.ParentId</td>
                                 <td class=" ">@(item.CreatedAt == new DateTime(0001,01,01,00,00,00) ? "" : item.CreatedAt.ToShortDateString())</td>
                                 <td class=" ">@item.ReviewId</td>
                                 <td class=" ">@item.UserId</td>
                                 <td class=" ">@item.UserName</td>
-                                <td class=" ">@item.NumberCommentReplies</td>
                                 <td class=" last">
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
                                         <i class='fa fa-trash-o'></i> Delete

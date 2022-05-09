@@ -190,7 +190,6 @@ insert into Shelf values
 (1,20,4)
 go
 
-
 insert into Review values
 -- ('text','star','created_at','book_id','user_id')
 
@@ -224,16 +223,17 @@ insert into Review values
 go
 
 insert into Comment values
--- ('text','parent_id','created_at','review_id','user_id')
+-- ('text','created_at','review_id','user_id')
 
-('I like your review',0,'2022-11-23',1,4),
-('I like your review',1,'2022-11-23',1,5),
-('I like your review',1,'2022-11-23',1,6),
-('I like your review',1,'2022-11-23',1,7),
-('I like your review',1,'2022-11-23',1,8),
-('I like your review',1,'2022-11-23',1,9),
-('I like your review',1,'2022-11-23',1,10),
-('I like your review',1,'2022-11-23',1,11),
-('I like your review',1,'2022-11-23',1,12),
-('I like your review',1,'2022-11-23',1,13)
+('I like your review','2022-11-23',1,4),
+('I like your review','2022-11-23',1,5),
+('I like your review','2022-11-23',1,6),
+('I like your review','2022-11-23',1,7),
+('I like your review','2022-11-23',1,8),
+
+('I like your review','2022-11-23',2,9),
+('I like your review','2022-11-23',2,10),
+('I like your review','2022-11-23',2,11),
+('I like your review','2022-11-23',2,12),
+('I like your review','2022-11-23',2,13)
 go

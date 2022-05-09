@@ -162,7 +162,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 return RedirectToAction("GenreList", "Home");
             }
-            return View("~/Views/Error/NotFound404.cshtml");
+            return RedirectToAction("NotFound404", "Route");
         }
     }
 }

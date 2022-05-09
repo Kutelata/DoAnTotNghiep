@@ -34,7 +34,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         case "Published": dataInPage = dataInPage.OrderBy(x => x.Published); break;
                         case "GenreName": dataInPage = dataInPage.OrderBy(x => x.GenreName); break;
                         case "NumberOfAuthors": dataInPage = dataInPage.OrderBy(x => x.NumberOfAuthors); break;
-                        case "NumberOfArticles": dataInPage = dataInPage.OrderBy(x => x.NumberOfArticles); break;
+                        case "NumberOfReviews": dataInPage = dataInPage.OrderBy(x => x.NumberOfReviews); break;
                         case "NumberOfShelfs": dataInPage = dataInPage.OrderBy(x => x.NumberOfShelfs); break;
                     }
                 }
@@ -54,7 +54,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                         data.Published.ToString().Contains(search) ||
                         (data.GenreName != null && data.GenreName.Contains(search)) ||
                         data.NumberOfAuthors.ToString() == search ||
-                        data.NumberOfArticles.ToString() == search ||
+                        data.NumberOfReviews.ToString() == search ||
                         data.NumberOfShelfs.ToString() == search);
                 }
 
@@ -241,7 +241,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
             if (reviewHaveBook.Any())
             {
-                TempData["Fail"] = "Delete Book failed, still have article!";
+                TempData["Fail"] = "Delete Book failed, still have review!";
                 return RedirectToAction("BookList", "Home");
             }
             if (shelfHaveBook.Any())
@@ -271,7 +271,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 return RedirectToAction("BookList", "Home");
             }
-            return View("~/Views/Error/NotFound404.cshtml");
+            return RedirectToAction("NotFound404", "Route");
         }
     }
 }

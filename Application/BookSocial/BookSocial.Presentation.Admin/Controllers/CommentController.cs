@@ -25,12 +25,10 @@ namespace BookSocial.Presentation.Admin.Controllers
                     {
                         case "Id": dataInPage = dataInPage.OrderBy(x => x.Id); break;
                         case "Text": dataInPage = dataInPage.OrderBy(x => x.Text); break;
-                        case "ParentId": dataInPage = dataInPage.OrderBy(x => x.ParentId); break;
                         case "CreatedAt": dataInPage = dataInPage.OrderBy(x => x.CreatedAt); break;
                         case "ReviewId": dataInPage = dataInPage.OrderBy(x => x.ReviewId); break;
                         case "UserId": dataInPage = dataInPage.OrderBy(x => x.UserId); break;
                         case "UserName": dataInPage = dataInPage.OrderBy(x => x.UserName); break;
-                        case "NumberCommentReplies": dataInPage = dataInPage.OrderBy(x => x.NumberCommentReplies); break;
                     }
                 }
 
@@ -44,12 +42,10 @@ namespace BookSocial.Presentation.Admin.Controllers
                     dataInPage = dataInPage.Where(data =>
                         (data.Id.ToString() == search) ||
                         (data.Text != null && data.Text.Contains(search)) ||
-                        (data.ParentId.ToString() == search) ||
                         data.CreatedAt.ToString().Contains(search) ||
                         (data.ReviewId.ToString() == search) ||
                         (data.UserId.ToString() == search) ||
-                        (data.UserName != null && data.UserName.Contains(search)) ||
-                        data.NumberCommentReplies.ToString() == search);
+                        (data.UserName != null && data.UserName.Contains(search)));
                 }
 
                 int pages = (int)Math.Ceiling((double)dataInPage.Count() / size);
@@ -81,13 +77,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         public async Task<IActionResult> DeleteComment(int id)
         {
             var commentToDelete = await _commentService.GetById(id);
-            var numberCommentReplies = await _commentService.GetByParentId(commentToDelete.ParentId);
 
-            if (numberCommentReplies.Any())
-            {
-                TempData["Fail"] = "Delete Comment failed, still have parent id!";
-                return RedirectToAction("CommentList", "Home");
-            }
             if (commentToDelete != null)
             {
                 int result = await _commentService.Delete(id);
@@ -101,7 +91,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 return RedirectToAction("CommentList", "Home");
             }
-            return View("~/Views/Error/NotFound404.cshtml");
+            return RedirectToAction("NotFound404", "Route");
         }
     }
 }

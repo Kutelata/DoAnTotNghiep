@@ -1,6 +1,6 @@
 ﻿namespace BookSocial.EntityClass.Enum
 {
-    public enum ArticleArea
+    public enum ReviewArea
     {
         Global,
         Friends

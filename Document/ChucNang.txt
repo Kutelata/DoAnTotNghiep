@@ -30,3 +30,8 @@ Trang User
     - Center: Full Information
     - Left: Get book by currently reading
     - Right: Get 5 Friend Recent Add
+
+Đăng ký, Đăng nhập, Profile, Giá Sách, Review Sách, Comment, Kết bạn, Searching
+Đăng nhập, Profile, Đổi mật khẩu, Quản lý thư viện, Quản lý người dùng, Quản lý nhân viên
+
+Đăng 

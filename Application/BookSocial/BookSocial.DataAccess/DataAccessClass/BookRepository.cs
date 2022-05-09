@@ -91,7 +91,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 						b.published,
 						g.[name] as 'genreName',
 						COUNT(ab.author_id) as 'numberOfAuthors',
-	                    COUNT(r.id) as 'numberOfArticle',
+	                    COUNT(r.id) as 'numberOfReviews',
 						COUNT(s.[user_id]) as 'numberOfShelfs'
                     FROM Book b
 					JOIN Genre g ON g.id = b.genre_id

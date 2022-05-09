@@ -29,7 +29,7 @@
                                 <option value="Published">Published</option>
                                 <option value="GenreName">Genre Name</option>
                                 <option value="NumberOfAuthors">Number Of Authors</option>
-                                <option value="NumberOfArticles">Number Of Articles</option>
+                                <option value="NumberOfArticles">Number Of Reviews</option>
                                 <option value="NumberOfShelfs">Number Of Shelfs</option>
                             </select>
                         </div>
@@ -67,7 +67,7 @@
                             <th class="column-title">Published</th>
                             <th class="column-title">Genre Name</th>
                             <th class="column-title">Number Of Authors</th>
-                            <th class="column-title">Number Of Articles</th>
+                            <th class="column-title">Number Of Reviews</th>
                             <th class="column-title">Number Of Shelfs</th>
                             <th class="column-title no-link last">
                                 <span class="nobr">Action</span>
@@ -89,7 +89,7 @@
                                 <td class=" ">@(item.Published == new DateTime(0001,01,01,00,00,00) ? "" : item.Published.ToShortDateString())</td>
                                 <td class=" ">@item.GenreName</td>
                                 <td class=" ">@item.NumberOfAuthors</td>
-                                <td class=" ">@item.NumberOfArticles</td>
+                                <td class=" ">@item.NumberOfReviews</td>
                                 <td class=" ">@item.NumberOfShelfs</td>
                                 <td class=" last">
                                     <a class="btn btn-outline-info" href="@Url.Action("DetailBook", "", new { id = @item.Id })">

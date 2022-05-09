@@ -123,6 +123,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 int result = await _userService.Update(dataUser);
                 if (result != 0)
                 {
+                    HttpContext.Session.SetString($"StatusAccount-{dataUser.Id}", dataUser.Status.ToString());
                     TempData["Success"] = "Change status success!";
                 }
                 else
@@ -179,7 +180,7 @@ namespace BookSocial.Presentation.Admin.Controllers
                 }
                 return RedirectToAction("UserList", "Home");
             }
-            return View("~/Views/Error/NotFound404.cshtml");
+            return RedirectToAction("NotFound404", "Route");
         }
     }
 }

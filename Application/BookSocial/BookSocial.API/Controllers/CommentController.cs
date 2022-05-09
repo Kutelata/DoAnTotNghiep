@@ -70,20 +70,6 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetByParentId(int parentId)
-        {
-            try
-            {
-                var data = await _commentRepository.GetByParentId(parentId);
-                return Ok(data);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
-        }
-
-        [HttpGet]
         public async Task<IActionResult> GetById(int id)
         {
             try

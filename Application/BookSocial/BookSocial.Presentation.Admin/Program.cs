@@ -27,23 +27,23 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("All",
         policy => policy.RequireClaim("Role",
-        $"{(int)RoleEmployee.Admin}",
-        $"{(int)RoleEmployee.LibraryManager}",
-        $"{(int)RoleEmployee.UserManager}"));
+        $"{RoleEmployee.Admin}",
+        $"{RoleEmployee.LibraryManager}",
+        $"{RoleEmployee.UserManager}"));
 
     options.AddPolicy("Admin",
         policy => policy.RequireClaim("Role",
-        $"{(int)RoleEmployee.Admin}"));
+        $"{RoleEmployee.Admin}"));
 
     options.AddPolicy("Admin and Library Manager",
         policy => policy.RequireClaim("Role",
-        $"{(int)RoleEmployee.Admin}",
-        $"{(int)RoleEmployee.LibraryManager}"));
+        $"{RoleEmployee.Admin}",
+        $"{RoleEmployee.LibraryManager}"));
 
     options.AddPolicy("Admin and User Manager",
         policy => policy.RequireClaim("Role",
-        $"{(int)RoleEmployee.Admin}",
-        $"{(int)RoleEmployee.UserManager}"));
+        $"{RoleEmployee.Admin}",
+        $"{RoleEmployee.UserManager}"));
 });
 
 var mapperConfig = new MapperConfiguration(mc =>

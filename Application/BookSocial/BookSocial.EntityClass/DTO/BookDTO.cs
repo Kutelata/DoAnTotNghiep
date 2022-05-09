@@ -9,7 +9,7 @@
         public DateTime Published { get; set; }
         public string GenreName { get; set; }
         public int NumberOfAuthors { get; set; }
-        public int NumberOfArticles { get; set; }
+        public int NumberOfReviews { get; set; }
         public int NumberOfShelfs { get; set; }
     }
 }

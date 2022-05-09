@@ -90,7 +90,6 @@ create table Comment
 (
 	id int identity primary key,
 	[text] nvarchar(max) not null,
-	parent_id int default(0),
 	created_at datetime not null,
 	review_id int foreign key references Review(id),
 	[user_id] int foreign key references [User](id)
