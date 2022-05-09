@@ -18,7 +18,8 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] u
                     WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
                         AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS 
-                        AND u.[role] != 0",
+                        AND u.[role] != 0
+                        AND u.status != 0",
                     new { account, password });
             }
         }
@@ -35,7 +36,8 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM [User] u
                     WHERE u.account = @account COLLATE SQL_Latin1_General_CP1_CS_AS 
                         AND u.[password] = @password COLLATE SQL_Latin1_General_CP1_CS_AS 
-                        AND u.[role] = 0",
+                        AND u.[role] = 0
+                        AND u.status != 0",
                     new { account, password });
             }
         }

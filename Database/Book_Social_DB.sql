@@ -27,8 +27,8 @@ go
 
 create table Friend 
 (
-	[user_id] int foreign key references [User](id),
-	user_friend_id int foreign key references [User](id)
+	[user_id] int,
+	user_friend_id int
 )
 go
 
@@ -81,8 +81,8 @@ create table Review
 	[text] nvarchar(max) not null,
 	star tinyint default(0),
 	created_at datetime not null,
-	book_id int foreign key references Book(id),
-	[user_id] int foreign key references [User](id)
+	book_id int,
+	[user_id] int
 )
 go
 
@@ -91,8 +91,8 @@ create table Comment
 	id int identity primary key,
 	[text] nvarchar(max) not null,
 	created_at datetime not null,
-	review_id int foreign key references Review(id),
-	[user_id] int foreign key references [User](id)
+	review_id int,
+	[user_id] int
 )
 go
 

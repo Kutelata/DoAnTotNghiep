@@ -123,7 +123,6 @@ namespace BookSocial.Presentation.Admin.Controllers
                 int result = await _userService.Update(dataUser);
                 if (result != 0)
                 {
-                    HttpContext.Session.SetString($"StatusAccount-{dataUser.Id}", dataUser.Status.ToString());
                     TempData["Success"] = "Change status success!";
                 }
                 else
@@ -139,25 +138,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         public async Task<IActionResult> DeleteUser(int id)
         {
             var userToDelete = await _userService.GetById(id);
-            var shelfOfUser = await _shelfService.GetByUserId(id);
-            var reviewOfUser = await _reviewService.GetByUserId(id);
-            var commentOfUser = await _commentService.GetByUserId(id);
-
-            if (shelfOfUser.Any())
-            {
-                TempData["Fail"] = "Delete User failed, still have shelf!";
-                return RedirectToAction("UserList", "Home");
-            }
-            if (reviewOfUser.Any())
-            {
-                TempData["Fail"] = "Delete User failed, still have article!";
-                return RedirectToAction("UserList", "Home");
-            }
-            if (commentOfUser.Any())
-            {
-                TempData["Fail"] = "Delete User failed, still have comment!";
-                return RedirectToAction("UserList", "Home");
-            }
+            
             if (userToDelete != null)
             {
                 int result = await _userService.Delete(id);

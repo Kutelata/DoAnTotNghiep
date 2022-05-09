@@ -83,13 +83,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         public async Task<IActionResult> DeleteReview(int id)
         {
             var reviewToDelete = await _reviewService.GetById(id);
-            var numberOfComments = await _commentService.GetByReviewId(id);
-
-            if (numberOfComments.Any())
-            {
-                TempData["Fail"] = "Delete Review failed, still have comments!";
-                return RedirectToAction("ReviewList", "Home");
-            }
+            
             if (reviewToDelete != null)
             {
                 int result = await _reviewService.Delete(id);

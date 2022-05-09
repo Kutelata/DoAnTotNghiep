@@ -4,6 +4,6 @@
     {
         Suggest = 0,
         Request = 1,
-        Friends = 2,
+        Friends = 2
     }
 }
