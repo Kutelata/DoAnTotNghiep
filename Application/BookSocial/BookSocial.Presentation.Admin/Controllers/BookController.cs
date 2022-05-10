@@ -14,7 +14,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             var allData = await _bookService.GetBookStatistic();
             var dataInPage = allData;
-            int size = 2;
+            int size = 5;
 
             if (allData != null)
             {

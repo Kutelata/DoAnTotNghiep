@@ -2,6 +2,7 @@
 @{
     var host = ConnectAdmin.BookSocialAdmin;
     var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
+    var userNameClaim = User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault();
 
     if (userImageClaim == null || userImageClaim == "")
     {
@@ -24,13 +25,7 @@
             <li><a href="@Url.Action("ShelfList","Home")">My Book</a></li>
             <li><a href="@Url.Action("FriendList","Home")">My Friend</a></li>
             <li><a href="@Url.Action("SearchList","Home")">Discover</a></li>
-            <li>
-                <span>Account</span>
-                <ul>
-                    <li><a href="@Url.Action("Profile","Home")">Profile</a></li>
-                    <li><a href="@Url.Action("Logout","Route")">Log out</a></li>
-                </ul>
-            </li>
+            <li><a href="@Url.Action("Logout","Route")">Log out</a></li>
         </ul>
     </nav>
 </div><!-- responsive header -->
@@ -47,9 +42,9 @@
             <li><a href="@Url.Action("SearchList","Home")">Discover</a></li>
         </ul>
         <div class="user-img">
-            <img src=@($"{host}assets/images/user/{userImageClaim}") width="60" />
+            <img src=@($"{host}assets/images/user/{userImageClaim}") width="50" />
+            <span style="font-size:14px">@userNameClaim</span>
             <div class="user-setting">
-                <a href="@Url.Action("Profile","Home")"><i class="ti-user"></i> view profile</a>
                 <a href="@Url.Action("Logout","Route")"><i class="ti-power-off"></i>log out</a>
             </div>
         </div>

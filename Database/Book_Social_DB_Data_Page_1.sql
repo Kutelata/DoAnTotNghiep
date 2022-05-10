@@ -1,9 +1,13 @@
 insert into [User] values
 -- ('name','phone','email','account','password','image','address','description','birthday','gender','status','role')
 
-('Admin1','','','admin1','admin1','admin1.png','','','',0,0,1),
+('Admin1','','','admin1','admin1','admin1.png','','','',0,1,1),
 ('Admin2','','','admin2','admin2','admin2.png','','','',1,1,2),
-('Admin3','','','admin3','admin3','admin3.png','','','',2,0,3),
+('Admin3','','','admin3','admin3','admin3.png','','','',2,1,3),
+
+('Admin1-Lock','','','admin1lock','admin1lock','admin1lock.png','','','',0,0,1),
+('Admin2-Lock','','','admin2lock','admin2lock','admin2lock.png','','','',1,0,2),
+('Admin3-Lock','','','admin3lock','admin3lock','admin3lock.png','','','',2,0,3),
 
 ('Long0','0832536199','long0@gmail.com','long0','long0','long0.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,1,0),
 ('Long1','0832536200','long1@gmail.com','long1','long1','long1.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,0,0),

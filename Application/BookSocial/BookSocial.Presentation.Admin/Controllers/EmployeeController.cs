@@ -15,7 +15,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             var allData = await _userService.GetUserEmployeeStatistic();
             var dataInPage = allData;
-            int size = 2;
+            int size = 5;
 
             if (allData != null)
             {
@@ -113,7 +113,7 @@ namespace BookSocial.Presentation.Admin.Controllers
             }
 
             createEmployee.Image = "";
-            createEmployee.Status = AccountStatus.IsNotActive;
+            createEmployee.Status = AccountStatus.IsActive;
             createEmployee.Password = "123456";
 
             if (ModelState.IsValid)

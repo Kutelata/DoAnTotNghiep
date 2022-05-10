@@ -10,7 +10,7 @@ namespace BookSocial.Presentation.Admin.Controllers
         {
             var allData = await _reviewService.GetReviewStatistic();
             var dataInPage = allData;
-            int size = 2;
+            int size = 5;
 
             if (allData != null)
             {

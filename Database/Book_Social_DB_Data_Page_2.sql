@@ -128,112 +128,112 @@ go
 insert into Friend values
 -- ('user_id','user_friend_id')
 
-(4,5),
-(5,4),
-(4,6),
-(7,4),
+(7,8),
+(8,7),
+(7,9),
+(10,7),
 
-(4,8),
-(8,4),
-(4,9),
-(10,4),
+(7,11),
+(11,7),
+(7,12),
+(13,7),
 
-(4,11),
-(11,4),
-(4,12),
-(13,4),
+(7,14),
+(14,7),
+(7,15),
+(16,7),
 
-(4,14),
-(14,4),
-(4,15),
-(16,4),
+(7,17),
+(17,7),
+(7,18),
+(19,7),
 
-(4,17),
-(17,4),
-(4,18),
-(19,4),
+(7,20),
+(20,7),
+(7,21),
+(22,7),
 
-(4,20),
-(20,4),
-(4,21),
-(22,4),
+(7,23),
+(23,7),
+(7,24),
+(25,7),
 
-(4,23),
-(23,4),
-(4,24),
-(25,4)
+(7,26),
+(26,7),
+(7,27),
+(28,7)
 go
 
 insert into Shelf values
 -- ('progress_read','book_id','user_id')
 
-(0,1,4),
-(1,2,4),
-(2,3,4),
-(0,4,4),
-(1,5,4),
-(2,6,4),
-(0,7,4),
-(1,8,4),
-(2,9,4),
-(0,10,4),
+(0,1,7),
+(1,2,7),
+(2,3,7),
+(0,4,7),
+(1,5,7),
+(2,6,7),
+(0,7,7),
+(1,8,7),
+(2,9,7),
+(0,10,7),
 
-(1,11,4),
-(2,12,4),
-(0,13,4),
-(1,14,4),
-(2,15,4),
-(0,16,4),
-(1,17,4),
-(2,18,4),
-(0,19,4),
-(1,20,4)
+(1,11,7),
+(2,12,7),
+(0,13,7),
+(1,14,7),
+(2,15,7),
+(0,16,7),
+(1,17,7),
+(2,18,7),
+(0,19,7),
+(1,20,7)
 go
 
 insert into Review values
 -- ('text','star','created_at','book_id','user_id')
 
-('This book is great',0,'2022-11-23',1,4),
-('This book is great',1,'2022-11-23',2,4),
-('This book is great',2,'2022-11-23',3,4),
-('This book is great',3,'2022-11-23',4,4),
-('This book is great',4,'2022-11-23',5,4),
-('This book is great',5,'2022-11-23',6,4),
+('This book is great',0,'2022-11-23',1,7),
+('This book is great',1,'2022-11-23',2,7),
+('This book is great',2,'2022-11-23',3,7),
+('This book is great',3,'2022-11-23',4,7),
+('This book is great',4,'2022-11-23',5,7),
+('This book is great',5,'2022-11-23',6,7),
 
-('This book is great',0,'2022-11-23',7,5),
-('This book is great',1,'2022-11-23',8,5),
-('This book is great',2,'2022-11-23',9,5),
-('This book is great',3,'2022-11-23',10,5),
-('This book is great',4,'2022-11-23',11,5),
-('This book is great',5,'2022-11-23',12,5),
+('This book is great',0,'2022-11-23',7,8),
+('This book is great',1,'2022-11-23',8,8),
+('This book is great',2,'2022-11-23',9,8),
+('This book is great',3,'2022-11-23',10,8),
+('This book is great',4,'2022-11-23',11,8),
+('This book is great',5,'2022-11-23',12,8),
 
-('This book is great',0,'2022-11-23',13,6),
-('This book is great',1,'2022-11-23',14,6),
-('This book is great',2,'2022-11-23',15,6),
-('This book is great',3,'2022-11-23',16,6),
-('This book is great',4,'2022-11-23',17,6),
-('This book is great',5,'2022-11-23',18,6),
+('This book is great',0,'2022-11-23',13,9),
+('This book is great',1,'2022-11-23',14,9),
+('This book is great',2,'2022-11-23',15,9),
+('This book is great',3,'2022-11-23',16,9),
+('This book is great',4,'2022-11-23',17,9),
+('This book is great',5,'2022-11-23',18,9),
 
-('This book is great',0,'2022-11-23',19,7),
-('This book is great',1,'2022-11-23',20,7),
-('This book is great',2,'2022-11-23',21,7),
-('This book is great',3,'2022-11-23',22,7),
-('This book is great',4,'2022-11-23',23,7),
-('This book is great',5,'2022-11-23',24,7)
+('This book is great',0,'2022-11-23',19,10),
+('This book is great',1,'2022-11-23',20,10),
+('This book is great',2,'2022-11-23',21,10),
+('This book is great',3,'2022-11-23',22,10),
+('This book is great',4,'2022-11-23',23,10),
+('This book is great',5,'2022-11-23',24,10)
 go
 
 insert into Comment values
 -- ('text','created_at','review_id','user_id')
 
-('I like your review','2022-11-23',1,4),
-('I like your review','2022-11-23',1,5),
-('I like your review','2022-11-23',1,6),
 ('I like your review','2022-11-23',1,7),
 ('I like your review','2022-11-23',1,8),
+('I like your review','2022-11-23',1,9),
+('I like your review','2022-11-23',1,10),
+('I like your review','2022-11-23',1,11),
 
-('I like your review','2022-11-23',2,9),
-('I like your review','2022-11-23',2,10),
-('I like your review','2022-11-23',2,11),
 ('I like your review','2022-11-23',2,12),
-('I like your review','2022-11-23',2,13)
+('I like your review','2022-11-23',2,13),
+('I like your review','2022-11-23',2,14),
+('I like your review','2022-11-23',2,15),
+('I like your review','2022-11-23',2,16)
 go
