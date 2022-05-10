@@ -1,5 +1,5 @@
 # ren gitignore.txt .gitignore
 
 # Build results
-[Bb]in/
-[Oo]bj/
+bin
+obj
