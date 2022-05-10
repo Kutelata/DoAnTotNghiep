@@ -179,7 +179,7 @@ namespace BookSocial.DataAccess.DataAccessClass
                 return await con.QueryAsync<FriendList>(
                     @"SELECT 
                         id, [name], [image], [description], gender, [status]
-                    FROM [User] Where [role] = 0");
+                    FROM [User] Where [status] != 0 AND [role] = 0");
             }
         }
     }
