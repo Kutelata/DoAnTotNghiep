@@ -1,0 +1,103 @@
+﻿@using BookSocial.EntityClass.Enum
+@using BookSocial.Presentation.User.Helper
+@using BookSocial.Service
+@model List<BookSocial.EntityClass.DTO.ReviewList>
+
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+}
+
+@foreach (var item in Model)
+{
+    <div class="central-meta item">
+        <div class="user-post">
+            <div class="friend-info">
+                <figure>
+                    @if (item.UserImage == null || item.UserImage == "")
+                    {
+                        <img src=@($"{host}assets/images/user/user.png") />
+                    }
+                    else
+                    {
+                        <img src=@($"{host}assets/images/user/{item.UserImage}") />
+                    }
+                </figure>
+                <div class="friend-name">
+                    <ins><a href="">@item.UserName</a></ins>
+                    <span>@TimeHelper.GetPrettyDate(@item.CreatedAt)</span>
+                </div>
+                <div class="description my-description">
+                    <p>
+                        @{
+                            var progressRead = "";
+                            switch (item.UserProgressRead)
+                            {
+                                case ProgressRead.WantToRead:
+                                    progressRead = "Want To Read";
+                                    break;
+                                case ProgressRead.CurrentlyReading:
+                                    progressRead = "Currently Reading";
+                                    break;
+                                case ProgressRead.Read:
+                                    progressRead = "Read";
+                                    break;
+                            }
+                        }
+                        Progress Read: @progressRead
+                    </p>
+                    <p>
+                        Star:
+                        @for (int i = 0; i < (int)item.Star; i++)
+                        {
+                            <i class="fa fa-star"></i>
+                        }
+                    </p>
+                    <p>Review: @item.Text</p>
+                </div>
+                <div class="post-meta">
+                    <div class="linked-image align-left">
+                        <a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})">
+                            <img src=@($"{host}assets/images/book/{item.BookImage}")>
+                        </a>
+                    </div>
+                    <div class="detail my-detail">
+                        <span>@item.BookName</span>
+                        <p>
+                            Author:
+                            @foreach (var author in item.AuthorListByBookId)
+                            {
+                                <span>@author.AuthorName</span>
+                            }
+                            <br />
+                            @item.BookDescription.Substring(0,200) ...
+                        </p>
+                        <div class="purify my-purify">
+                            <select id="btn-filter"
+                                class="btn-change-progress-read-origin"
+                                data-book-id="@item.BookId"
+                                data-user-id="@userIdClaim"
+                                asp-for="@item.UserClaimProgressRead"
+                                asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="we-video-info">
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <span class="comment" data-toggle="tooltip" title="Comments">
+                                        <i class="fa fa-comments-o"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="coment-area">
+                @await Html.PartialAsync("~/Views/Review/Partials/CommentInReview.cshtml")
+            </div>
+        </div>
+    </div>
+}

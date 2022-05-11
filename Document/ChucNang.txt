@@ -1,0 +1,6 @@
+UserDetail
+Search
+Home
+BookDetail
+AuthorDetail
+Edit Review

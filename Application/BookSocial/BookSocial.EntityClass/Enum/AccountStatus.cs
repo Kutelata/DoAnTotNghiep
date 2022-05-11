@@ -7,6 +7,6 @@ namespace BookSocial.EntityClass.Enum
         [Display(Name="Locked")]
         Locked = 0,
         [Display(Name = "Is Active")]
-        IsActive = 2
+        IsActive = 1
     }
 }

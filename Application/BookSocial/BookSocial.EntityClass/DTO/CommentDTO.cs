@@ -1,4 +1,6 @@
-﻿namespace BookSocial.EntityClass.DTO
+﻿using BookSocial.EntityClass.Entity;
+
+namespace BookSocial.EntityClass.DTO
 {
     public class CommentStatistic
     {
@@ -19,5 +21,15 @@
         public int BookId { get; set; }
         public string BookName { get; set; }
         public DateTime CommentCreatedAt { get; set; }
+    }
+
+    public class CommentInReview
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public int ReviewId { get; set; }
+        public int UserId { get; set; }
+        public User Users { get; set; }
     }
 }

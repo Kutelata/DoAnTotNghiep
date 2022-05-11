@@ -46,47 +46,19 @@ namespace BookSocial.Presentation.User.Controllers
             _friendService = friendService;
         }
 
-        public async Task<IActionResult> Index(string filter = "Global")
+        public async Task<IActionResult> Index()
         {
             var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
             var reviewLists = await _reviewService.GetReviewList();
             var shelfLists = await _shelfService.GetShelfListHomes(Convert.ToInt32(userIdClaim));
             var commentLists = await _commentService.GetRecentActivityComment();
-            var userLists = await _userService.GetAllUser();
             var dataInPage = new HomeList();
             int page = 1;
             int size = 2;
 
+            dataInPage.ReviewList = reviewLists.ToList();
             if (reviewLists != null)
             {
-                if (Request.Query.ContainsKey("filter"))
-                {
-                    var newFilter = Request.Query["filter"].ToString();
-                    filter = newFilter;
-                }
-                if (filter != null)
-                {
-                    switch (filter)
-                    {
-                        case "Global":
-                            dataInPage.ReviewList = (List<ReviewList>)reviewLists; break;
-                        case "Friend":
-                            foreach (var rl in reviewLists)
-                            {
-                                var checkUserFriend =
-                                    await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), rl.UserId);
-                                var checkUserFriendReverse =
-                                    await _friendService.GetByUserAndUserFriendId(rl.UserId, Convert.ToInt32(userIdClaim));
-                                if (checkUserFriend == null || checkUserFriendReverse == null)
-                                {
-                                    reviewLists.ToList().Remove(rl);
-                                }
-                            };
-                            dataInPage.ReviewList = (List<ReviewList>)reviewLists;
-                            break;
-                    }
-                }
-
                 foreach (var data in dataInPage.ReviewList)
                 {
                     data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
@@ -98,39 +70,17 @@ namespace BookSocial.Presentation.User.Controllers
                     else { data.UserClaimProgressRead = ProgressReadOrigin.NotRead; }
                 }
 
-                dataInPage.FriendListHomeSuggest = new List<FriendListHome>();
-                dataInPage.FriendListHome = new List<FriendListHome>();
-                foreach (var data in userLists)
-                {
-                    var compareUserAndUserFriend = await _friendService.GetByUserAndUserFriendId(Convert.ToInt32(userIdClaim), data.Id);
-                    var compareUserFriendAndUser = await _friendService.GetByUserAndUserFriendId(data.Id, Convert.ToInt32(userIdClaim));
-                    var formatData = _mapper.Map<FriendListHome>(data);
-                    if (compareUserAndUserFriend == null && compareUserFriendAndUser == null)
-                    {
-                        dataInPage.FriendListHomeSuggest.Add(formatData);
-                    }
-                    if (compareUserAndUserFriend != null && compareUserFriendAndUser != null)
-                    {
-                        dataInPage.FriendListHome.Add(formatData);
-                    }
-                }
-
-
                 dataInPage.ShelfListHome = shelfLists.ToList();
-                foreach(var data in dataInPage.ShelfListHome)
+                foreach (var data in dataInPage.ShelfListHome)
                 {
                     data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
                 }
                 dataInPage.RecentActivityComment = commentLists.ToList();
 
-                int pages = (int)Math.Ceiling((double)dataInPage.ReviewList.Count() / size);
-                ViewBag.Pages = pages;
-
+                int pages = (int)Math.Ceiling((double)dataInPage.ReviewList.Count / size);
                 dataInPage.ReviewList = dataInPage.ReviewList.Skip((page - 1) * size).Take(size).ToList();
             }
 
-            //ViewBag.CurrentPage = page;
-            //ViewBag.CurrentFilter = filter;
             return View("~/Views/Home/Index.cshtml", dataInPage);
         }
 

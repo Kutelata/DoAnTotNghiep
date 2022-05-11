@@ -9,7 +9,8 @@ insert into [User] values
 ('Admin2-Lock','','','admin2lock','admin2lock','admin2lock.png','','','',1,0,2),
 ('Admin3-Lock','','','admin3lock','admin3lock','admin3lock.png','','','',2,0,3),
 
-('Long0','0832536199','long0@gmail.com','long0','long0','long0.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,1,0),
+('Long0','0832536199','long0@gmail.com','long0','long0','long0.png','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,1,0),
+
 ('Long1','0832536200','long1@gmail.com','long1','long1','long1.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',1,0,0),
 ('Long2','0832536201','long2@gmail.com','long2','long2','long2.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',2,1,0),
 ('Long3','0832536202','long3@gmail.com','long3','long3','long3.jpg','Ha Noi','Form is temporary but class is permanent !','2000-11-23',0,0,0),

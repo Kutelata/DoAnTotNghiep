@@ -9,6 +9,11 @@ namespace BookSocial.Presentation.User.Controllers
             return View("~/Views/Comment/Login.cshtml");
         }
 
+        public IActionResult CommentInReview()
+        {
+            return PartialView("~/Views/Comment/Login.cshtml");
+        }
+
         public IActionResult CreateComment()
         {
             return View("~/Views/Login.cshtml");

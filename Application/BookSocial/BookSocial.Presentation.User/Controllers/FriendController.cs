@@ -14,7 +14,7 @@ namespace BookSocial.Presentation.User.Controllers
             List<EntityClass.DTO.FriendList> userSuggests = new();
             List<EntityClass.DTO.FriendList> userRequests = new();
             List<EntityClass.DTO.FriendList> userFriends = new();
-            int size = 2;
+            int size = 5;
             filter = ((int)FriendStatus.Friends).ToString();
 
             if (allData != null)

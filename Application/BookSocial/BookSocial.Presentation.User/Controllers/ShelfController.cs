@@ -12,7 +12,7 @@ namespace BookSocial.Presentation.User.Controllers
             var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
             var allData = await _shelfService.GetByShelfDetail(Convert.ToInt32(userIdClaim));
             var dataInPage = allData;
-            int size = 2;
+            int size = 5;
 
             if (allData != null)
             {
