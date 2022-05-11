@@ -12,4 +12,9 @@
         public int NumberOfReviews { get; set; }
         public int NumberOfShelfs { get; set; }
     }
+
+    public class BookProfile
+    {
+        public int MyProperty { get; set; }
+    }
 }

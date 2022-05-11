@@ -4,7 +4,7 @@ namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult UserDetail()
+        public IActionResult UserProfile()
         {
             return View("~/Views/User/Index.cshtml");
         }

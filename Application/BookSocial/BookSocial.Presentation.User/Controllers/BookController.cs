@@ -5,8 +5,9 @@ namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult BookDetail(int bookId)
+        public async Task<IActionResult> BookProfile(int bookId)
         {
+
             return View("~/Views/Book/Index.cshtml");
         }
     }

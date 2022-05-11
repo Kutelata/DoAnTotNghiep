@@ -1,12 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookSocial.EntityClass.Enum;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public IActionResult ReviewList()
+        public async Task<IActionResult> ReviewList(int page)
         {
-            return View("~/Views/Login.cshtml");
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var reviewLists = await _reviewService.GetReviewList();
+            var shelfLists = await _shelfService.GetShelfListHomes(Convert.ToInt32(userIdClaim));
+            var dataInPage = reviewLists.ToList();
+            int size = 2;
+
+            if (reviewLists != null)
+            {
+                foreach (var data in dataInPage)
+                {
+                    data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
+                    var checkBookInShelf = await _shelfService.GetByBookAndUserId(data.BookId, Convert.ToInt32(userIdClaim));
+                    if (checkBookInShelf != null)
+                    {
+                        data.UserClaimProgressRead = (ProgressReadOrigin)checkBookInShelf.ProgressRead;
+                    }
+                    else { data.UserClaimProgressRead = ProgressReadOrigin.NotRead; }
+                }
+
+                int pages = (int)Math.Ceiling((double)dataInPage.Count / size);
+                dataInPage = dataInPage.Skip((page - 1) * size).Take(size).ToList();
+                ViewBag.CurrentPage = page;
+            }
+
+            return PartialView("~/Views/Review/Partials/ReviewList.cshtml", dataInPage);
         }
 
         public IActionResult CreateReview()

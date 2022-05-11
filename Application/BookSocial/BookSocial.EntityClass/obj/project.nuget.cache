@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "1ZUzSA2hf42JjnPgIShtfK+THAddKUv+Hjr/u/r5hjvFUVNMA5/RoKNjQW+53nM7ID8dD8lsUSE0k7+LKtPBQw==",
+  "dgSpecHash": "k9h0XY95fFDdCeftYDw59E3YrTDntMyfK0JnGVCCZYYECoVEx5OkEpsHgf3OtV+GLyaIqYw/C42/qwMeHzZMAA==",
   "success": true,
   "projectFilePath": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.EntityClass\\BookSocial.EntityClass.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\hclon\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
-    "C:\\Users\\hclon\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

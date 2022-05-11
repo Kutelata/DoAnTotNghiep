@@ -9,9 +9,9 @@ namespace BookSocial.Presentation.User.Controllers
             return View("~/Views/Comment/Login.cshtml");
         }
 
-        public IActionResult CommentInReview()
+        public IActionResult CommentInReview(int reviewId)
         {
-            return PartialView("~/Views/Comment/Login.cshtml");
+            return PartialView("~/Views/Review/Partials/CommentInReview.cshtml");
         }
 
         public IActionResult CreateComment()

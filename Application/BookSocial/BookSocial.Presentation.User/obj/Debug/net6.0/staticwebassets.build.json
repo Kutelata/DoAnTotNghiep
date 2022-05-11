@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qerlIVwyFd0KPVOklr9Ir7u54KDvbdVlNjEE/A/Jsw4=",
+  "Hash": "8iWaVQSoYtFpsRFp5NmsIELYIcYhHxktEBcZdY9quWs=",
   "Source": "BookSocial.Presentation.User",
   "BasePath": "_content/BookSocial.Presentation.User",
   "Mode": "Default",
@@ -18970,6 +18970,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\my_script\\action_in_list.js"
+    },
+    {
+      "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\action_load_more.js",
+      "SourceId": "BookSocial.Presentation.User",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\",
+      "BasePath": "_content/BookSocial.Presentation.User",
+      "RelativePath": "my_script/action_load_more.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\my_script\\action_load_more.js"
     },
     {
       "Identity": "D:\\Study\\DoAnTotNghiep\\Application\\BookSocial\\BookSocial.Presentation.User\\wwwroot\\my_script\\author\\author_by_book_id.js",

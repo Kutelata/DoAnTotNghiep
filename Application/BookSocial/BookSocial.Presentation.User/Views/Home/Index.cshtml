@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="~/my_style/home/index.css" />
 }
 
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+}
+
 <div class="col-lg-3">
     <aside class="sidebar static left">
         <div class="widget">
@@ -15,9 +20,11 @@
     </aside>
 </div><!-- sidebar -->
 
-<div class="col-lg-6">
-    @await Html.PartialAsync("~/Views/Review/Partials/ReviewList.cshtml", Model.ReviewList)
-    <button class="btn-view btn-load-more">Load More</button>
+<div class="col-lg-6 ">
+    <div class="review-list">
+        @await Html.PartialAsync("~/Views/Review/Partials/ReviewList.cshtml", Model.ReviewList)
+    </div>
+    <button id="btn-load-more" class="btn-view btn-load-more" data-current-page="@ViewBag.CurrentPage">Load More</button>
 </div><!-- centerl meta -->
 
 <div class="col-lg-3">
@@ -27,8 +34,8 @@
         </div><!-- recent activites -->
     </aside>
 </div><!-- sidebar -->
-
 @section script{
-    <script src="~/my_script/get_param_url.js"></script>
-    <script src="~/my_script/shelf/change_progress_origin.js"></script>
+<script src="~/my_script/get_param_url.js"></script>
+<script src="~/my_script/shelf/change_progress_origin.js"></script>
+<script src="~/my_script/action_load_more.js"></script>
 }
