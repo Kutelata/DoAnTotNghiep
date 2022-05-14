@@ -1,6 +1,7 @@
 ﻿@using BookSocial.EntityClass.Enum
 @using BookSocial.Service
-@model IEnumerable<BookSocial.EntityClass.DTO.FriendList>
+@using System.Globalization
+@model BookSocial.EntityClass.DTO.AuthorProfile
 
 @section css{
 <link rel="stylesheet" href="~/my_style/friend/index.css" />
@@ -12,133 +13,46 @@
 }
 
 <div class="blog-sec">
-    @if (TempData["Success"] != null)
-    {
-        <div class="alert alert-success" role="alert">
-            @TempData["Success"]
-        </div>
-    }
-    @if (TempData["Fail"] != null)
-    {
-        <div class="alert alert-error" role="alert">
-            @TempData["Fail"]
-        </div>
-    }
-    <div class="post-filter-sec">
-        <form method="post" class="filter-form">
-            <input id="search" type="text" placeholder="Search ...">
-            <button id="btn-search"><i class="ti-search"></i></button>
-        </form>
-        <div class="purify">
-            <span>Filter by</span>
-            <select id="btn-filter" data-default-selected="@((int)FriendStatus.Friends)" asp-items="Html.GetEnumSelectList<FriendStatus>()"></select>
-        </div>
+    <div class="l-post my-l-post">
+        <h1 class="text-center">Author Profile</h1>
     </div>
-    @foreach (var item in Model)
-    {
-        <div class="l-post my-l-post">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <figure class="my-figure">
-                        <img src=@($"{host}assets/images/user/{item.Image}") />
-                    </figure>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <div class="l-post-meta my-l-post-meta">
-                        <h4><a href="@Url.Action("UserDetail","Home",new{userId=item.Id})" title="">@item.Name</a></h4>
-                        <p>
-                            Status: @item.Status <br />
-                            Gender: @item.Gender <br />
-                            @item.Description
-                        </p>
-                        <div class="purify my-purify">
-                            @{
-                                var background = "";
-                                var text = "";
-                                var action = "";
-                                switch (Convert.ToInt32(ViewBag.CurrentFilter))
-                                {
-                                    case (int)FriendStatus.Suggest:
-                                        background = "green";
-                                        text = "Add";
-                                        action = "AddFriend";
-                                        break;
-                                    case (int)FriendStatus.Request:
-                                        background = "blue";
-                                        text = "Confirm";
-                                        action = "ConfirmFriend";
-                                        break;
-                                    case (int)FriendStatus.Friends:
-                                        background = "red";
-                                        text = "Delete";
-                                        action = "DeleteFriend";
-                                        break;
-                                }
-                            }
-                            <a class="btn btn-action-friend" 
-                            data-user-friend-id="@item.Id" 
-                            data-action="@action" 
-                            style="background:@background;color:white">@text</a>
-                        </div>
-                    </div>
+</div>
+
+<div class="blog-sec">
+    <div class="l-post my-l-post">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <figure class="my-figure">
+                    <img src=@($"{host}assets/images/author/{Model.Image}") />
+                </figure>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="l-post-meta my-l-post-meta">
+                    <h4><a href="">@Model.Name</a></h4>
+                    <p>
+                        <b>Birthday:</b> @Model.Birthday?.ToString("dd/MM/yyyy") <br />
+                        @Model.Description
+                    </p>
                 </div>
             </div>
         </div>
-    }
-
-    <ul class="pagination mt-2" style="border:none; float:right">
-        @if (ViewBag.CurrentPage > 1)
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("FriendList","Home",
-                          new{page=ViewBag.CurrentPage-1,
-                              search=ViewBag.CurrentSearch,
-                              filter=ViewBag.CurrentFilter})">
-                    Previous
-                </a>
-            </li>
-        }
-        @for (var i = 0; i < ViewBag.Pages; i++)
-        {
-            if ((i + 1) == ViewBag.CurrentPage)
-            {
-                <li class="page-item">
-                    <a class="page-link paging_active" href="@Url.Action("FriendList","Home",
-                                new{page=i+1,
-                                    search=ViewBag.CurrentSearch,
-                                    filter=ViewBag.CurrentFilter})">
-                        @(i+1)
-                    </a>
-                </li>
-            }
-            else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="@Url.Action("FriendList","Home",
-                                new{page=i+1,
-                                    search=ViewBag.CurrentSearch,
-                                    filter=ViewBag.CurrentFilter})">
-                        @(i+1)
-                    </a>
-                </li>
-            }
-        }
-        @if (ViewBag.CurrentPage < ViewBag.Pages)
-        {
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("FriendList","Home",
-                            new{page=ViewBag.CurrentPage+1,
-                                search=ViewBag.CurrentSearch,
-                                filter=ViewBag.CurrentFilter})">
-                    Next
-                </a>
-            </li>
-        }
-    </ul>
+    </div>
 </div>
 
-@section script{
-<script src="~/my_script/get_param_url.js"></script>
-<script src="~/my_script/action_in_list.js"></script>
-<script src="~/my_script/friend/action.js"></script>
-}
+<div class="blog-sec">
+    <div class="row">
+        @foreach (var item in Model.BookListByAuthorId)
+        {
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="l-post my-l-post" style="text-align:center">
+                    <figure class="my-figure mb-2">
+                        <img src=@($"{host}assets/images/book/{item.BookImage}") />
+                    </figure>
+                    <div class="l-post-meta my-l-post-meta">
+                        <h4><a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a></h4>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

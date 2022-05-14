@@ -10,6 +10,8 @@ namespace BookSocial.Service.ServiceInterface
         Task<IEnumerable<Comment>> GetByReviewId(int reviewId);
         Task<IEnumerable<Comment>> GetByUserId(int userId);
         Task<Comment> GetById(int commentId);
+        Task<int> Create(Comment comment);
+        Task<int> Update(Comment comment);
         Task<int> Delete(int commentId);
     }
 }

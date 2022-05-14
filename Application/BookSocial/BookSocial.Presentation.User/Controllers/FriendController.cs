@@ -35,6 +35,7 @@ namespace BookSocial.Presentation.User.Controllers
                     {
                         userFriends.Add(data);
                     }
+                    data.SingleBookCurrentlyReading = await _bookService.GetSingleBookCurrentlyReading(data.Id);
                 }
                 if (Request.Query.ContainsKey("filter"))
                 {

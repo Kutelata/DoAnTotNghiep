@@ -18,4 +18,24 @@
         public string AuthorDescription { get; set; }
         public DateTime? AuthorBirthday { get; set; }
     }
+
+    public class AuthorProfile
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public DateTime? Birthday { get; set; }
+        public List<BookListByAuthorId> BookListByAuthorId { get; set; }
+    }
+
+    public class SearchAuthor
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public string Description { get; set; }
+        public DateTime? Birthday { get; set; }
+        public int BookHaveBeenWrittens { get; set; }
+    }
 }

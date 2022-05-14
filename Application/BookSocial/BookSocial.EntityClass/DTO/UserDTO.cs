@@ -115,4 +115,5 @@ namespace BookSocial.EntityClass.DTO
         [Compare("NewPassword")]
         public string ConfirmPassword { get; set; }
     }
+
 }

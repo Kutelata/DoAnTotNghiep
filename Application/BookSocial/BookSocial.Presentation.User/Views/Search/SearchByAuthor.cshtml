@@ -1,0 +1,109 @@
+﻿@using BookSocial.EntityClass.Enum
+@using BookSocial.Service
+@model IEnumerable<BookSocial.EntityClass.DTO.SearchAuthor>
+
+@section css{
+<link rel="stylesheet" href="~/my_style/shelf/index.css" />
+}
+
+@{
+    var host = ConnectAdmin.BookSocialAdmin;
+    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+    var searchByDefault = SearchBy.Author;
+    var searchByBook = Convert.ToInt32(SearchBy.Book);
+    var searchByAuthor = Convert.ToInt32(SearchBy.Author);
+}
+
+<div class="blog-sec">
+    <div class="post-filter-sec">
+        <form method="post" class="filter-form">
+            <input id="search" type="text" placeholder="Search ...">
+            <button id="btn-search"><i class="ti-search"></i></button>
+        </form>
+        <div class="purify">
+            <span>Search by</span>
+            <select id="btn-search-by"
+                    data-search-by-book="@searchByBook"
+                    data-search-by-author="@searchByAuthor"
+                    asp-for="@searchByDefault"
+                    asp-items="Html.GetEnumSelectList<SearchBy>()">
+            </select>
+        </div>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        <div class="l-post my-l-post">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                    <figure class="my-figure">
+                        <img src=@($"{host}assets/images/author/{item.Image}") />
+                    </figure>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                    <div class="l-post-meta my-l-post-meta">
+                        <h4><a href="">@item.Name</a></h4>
+                        <p>
+                            <b>Birthday:</b> @item.Birthday?.ToString("dd/MM/yyyy") <br />
+                            @item.Description <br />
+                            <b>Have Written: </b> @item.BookHaveBeenWrittens
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <ul class="pagination mt-2" style="border:none; float:right">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("SearchAuthor","Home",
+                          new{page=ViewBag.CurrentPage-1,
+                              search=ViewBag.CurrentSearch})">
+                    Previous
+                </a>
+            </li>
+        }
+        @for (var i = 0; i < ViewBag.Pages; i++)
+        {
+            if ((i + 1) == ViewBag.CurrentPage)
+            {
+                <li class="page-item">
+                    <a class="page-link paging_active" href="@Url.Action("SearchAuthor","Home",
+                                new{page=i+1,
+                                    search=ViewBag.CurrentSearch})">
+                        @(i+1)
+                    </a>
+                </li>
+            }
+            else if (Math.Abs((i + 1) - ViewBag.CurrentPage) <= 5)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("SearchAuthor","Home",
+                                new{page=i+1,
+                                    search=ViewBag.CurrentSearch})">
+                        @(i+1)
+                    </a>
+                </li>
+            }
+        }
+        @if (ViewBag.CurrentPage < ViewBag.Pages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("SearchAuthor","Home",
+                            new{page=ViewBag.CurrentPage+1,
+                                search=ViewBag.CurrentSearch})">
+                    Next
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+@section script{
+<script src="~/my_script/get_param_url.js"></script>
+<script src="~/my_script/action_in_list.js"></script>
+<script src="~/my_script/search/search_by.js"></script>
+<script src="~/my_script//shelf/change_progress_origin.js"></script>
+}

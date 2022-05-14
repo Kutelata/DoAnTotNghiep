@@ -23,9 +23,13 @@
                         <img src=@($"{host}assets/images/user/{item.UserImage}") />
                     }
                 </figure>
-                <div class="friend-name">
-                    <ins><a href="">@item.UserName</a></ins>
+                <div class="friend-name my-friend-name">
+                    <ins><a href="#">@item.UserName</a></ins>
                     <span>@TimeHelper.GetPrettyDate(@item.CreatedAt)</span>
+                    @if (item.UserId == Convert.ToInt32(userIdClaim))
+                    {
+                        <a class="btn-delete-review" href=""><i class="fa fa-close"></i></a>
+                    }
                 </div>
                 <div class="description my-description">
                     <p>
@@ -57,7 +61,7 @@
                 </div>
                 <div class="post-meta">
                     <div class="linked-image align-left">
-                        <a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})">
+                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">
                             <img src=@($"{host}assets/images/book/{item.BookImage}")>
                         </a>
                     </div>
@@ -85,7 +89,7 @@
                     <div class="we-video-info">
                         <ul>
                             <li>
-                                <a href="">
+                                <a class="btn-open-comment" data-review-id="@item.ReviewId" href="#">
                                     <span class="comment" data-toggle="tooltip" title="Comments">
                                         <i class="fa fa-comments-o"></i>
                                     </span>
@@ -95,12 +99,24 @@
                     </div>
                 </div>
             </div>
-            <div class="coment-area">
-                @* @await Html.PartialAsync("~/Views/Review/Partials/CommentInReview.cshtml")*@
+            <div class="coment-area d-none comment-@item.ReviewId">
+                <ul class="we-comet">
+                    <li>
+                        <a href="#" class="showmore underline">more comments</a>
+                    </li>
+                    <li class="post-comment">
+                        <div class="comet-avatar">
+                            <img src="images/resources/comet-1.jpg" />
+                        </div>
+                        <div class="post-comt-box">
+                            <form method="post">
+                                <textarea placeholder="Post your comment ..."></textarea>
+                                <button class="my-btn" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-}
-
-@section script{
 }

@@ -7,7 +7,11 @@ $("#btn-load-more").click(function (e) {
         data: { page: nextPage },
         success: function (res) {
             $(".review-list").append(res)
-            nextPage ++
+            nextPage++
+
+            if ($.isFunction($.fn.chosen)) {
+                $("select").chosen();
+            }
         }
-    });
+    })
 })

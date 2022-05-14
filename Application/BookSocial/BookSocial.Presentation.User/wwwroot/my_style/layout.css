@@ -11,3 +11,14 @@
     background: red;
     color: white;
 }
+
+.my-friend-name {
+    position: relative;
+}
+
+    .my-friend-name .btn-delete-review {
+        position: absolute;
+        color: red;
+        right: 0px;
+        top: 0px;
+    }

@@ -44,43 +44,65 @@
                     </figure>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <div class="l-post-meta my-l-post-meta">
-                        <h4><a href="@Url.Action("UserDetail","Home",new{userId=item.Id})" title="">@item.Name</a></h4>
-                        <p>
-                            Status: @item.Status <br />
-                            Gender: @item.Gender <br />
-                            @item.Description
-                        </p>
-                        <div class="purify my-purify">
-                            @{
-                                var background = "";
-                                var text = "";
-                                var action = "";
-                                switch (Convert.ToInt32(ViewBag.CurrentFilter))
-                                {
-                                    case (int)FriendStatus.Suggest:
-                                        background = "green";
-                                        text = "Add";
-                                        action = "AddFriend";
-                                        break;
-                                    case (int)FriendStatus.Request:
-                                        background = "blue";
-                                        text = "Confirm";
-                                        action = "ConfirmFriend";
-                                        break;
-                                    case (int)FriendStatus.Friends:
-                                        background = "red";
-                                        text = "Delete";
-                                        action = "DeleteFriend";
-                                        break;
-                                }
-                            }
-                            <a class="btn btn-action-friend" 
-                            data-user-friend-id="@item.Id" 
-                            data-action="@action" 
-                            style="background:@background;color:white">@text</a>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <div class="l-post-meta my-l-post-meta">
+                                <h4><a href="@Url.Action("UserDetail","Home",new{userId=item.Id})" title="">@item.Name</a></h4>
+                                <p>
+                                    Status: @item.Status <br />
+                                    Gender: @item.Gender <br />
+                                    @item.Description <br />
+                                    @if (Convert.ToInt32(ViewBag.CurrentFilter) == (int)FriendStatus.Friends)
+                                    {
+                                        <b>Currently Reading: </b>
+
+                                        @item.SingleBookCurrentlyReading?.BookName
+                                    }
+                                </p>
+                                <div class="purify my-purify">
+                                    @{
+                                        var background = "";
+                                        var text = "";
+                                        var action = "";
+                                        switch (Convert.ToInt32(ViewBag.CurrentFilter))
+                                        {
+                                            case (int)FriendStatus.Suggest:
+                                                background = "green";
+                                                text = "Add";
+                                                action = "AddFriend";
+                                                break;
+                                            case (int)FriendStatus.Request:
+                                                background = "blue";
+                                                text = "Confirm";
+                                                action = "ConfirmFriend";
+                                                break;
+                                            case (int)FriendStatus.Friends:
+                                                background = "red";
+                                                text = "Delete";
+                                                action = "DeleteFriend";
+                                                break;
+                                        }
+                                    }
+                                    <a class="btn btn-action-friend"
+                                   data-user-friend-id="@item.Id"
+                                   data-action="@action"
+                                   style="background:@background;color:white">@text</a>
+                                </div>
+                            </div>
                         </div>
+                        @if (Convert.ToInt32(ViewBag.CurrentFilter) == (int)FriendStatus.Friends)
+                        {
+                            @if (item.SingleBookCurrentlyReading != null)
+                            {
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <figure class="my-figure">
+                                        <img src=@($"{host}assets/images/book/{item.SingleBookCurrentlyReading?.BookImage}") />
+                                    </figure>
+                                </div>
+                            }
+                        }
                     </div>
+
                 </div>
             </div>
         </div>

@@ -79,6 +79,24 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public async Task<IEnumerable<SearchAuthor>> GetSearchAuthor()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<SearchAuthor>(
+                    @"SELECT 
+	                    a.id,
+	                    a.[name],
+						a.[image],
+						a.[description],
+						a.birthday,
+						COUNT(ab.book_id) as 'bookHaveBeenWrittens'
+                    FROM Author a
+					LEFT JOIN Author_Book ab ON ab.author_id = a.id
+                    GROUP BY a.id, a.[name], a.[image], a.[description], a.birthday");
+            }
+        }
+
         public async Task<int> Update(Author entity)
         {
             using (var con = GetConnection())

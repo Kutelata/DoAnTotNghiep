@@ -42,6 +42,48 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetSearchBook()
+        {
+            try
+            {
+                var data = await _bookRepository.GetSearchBook();
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetBookListByAuthorId(int authorId)
+        {
+            try
+            {
+                var data = await _bookRepository.GetBookListByAuthorId(authorId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        } 
+        
+        [HttpGet]
+        public async Task<IActionResult> GetSingleBookCurrentlyReading(int userId)
+        {
+            try
+            {
+                var data = await _bookRepository.GetSingleBookCurrentlyReading(userId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetById(int id)

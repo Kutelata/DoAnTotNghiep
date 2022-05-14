@@ -17,5 +17,6 @@ namespace BookSocial.EntityClass.DTO
         public string Description { get; set; }
         public Gender Gender { get; set; }
         public AccountStatus Status { get; set; }
+        public SingleBookCurrentlyReading SingleBookCurrentlyReading { get; set; }
     }
 }

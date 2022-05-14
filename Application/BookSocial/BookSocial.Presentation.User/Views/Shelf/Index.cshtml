@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="l-post-meta my-l-post-meta">
-                        <h4><a href="@Url.Action("BookDetail","Home",new{bookId=item.BookId})" title="">@item.BookName (@item.GenreName)</a></h4>
+                        <h4><a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})" title="">@item.BookName (@item.GenreName)</a></h4>
                         <div class="l-post-ranking">
                             @{
                                 var count = 0;
@@ -54,11 +54,11 @@
                             {
                                 if (count == 0)
                                 {
-                                    <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">@author.AuthorName</a>
+                                    <a class="admin" href="@Url.Action("AuthorProfile","Home",new {authorId = author.AuthorId})">@author.AuthorName</a>
                                 }
                                 else
                                 {
-                                    <a class="admin" href="@Url.Action("AuthorDetail","Home",new {authorId = author.AuthorId})">, @author.AuthorName</a>
+                                    <a class="admin" href="@Url.Action("AuthorProfile","Home",new {authorId = author.AuthorId})">, @author.AuthorName</a>
                                 }
                                 count++;
                             }
@@ -82,9 +82,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     }
 

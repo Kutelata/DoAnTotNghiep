@@ -23,6 +23,22 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<SearchBook>> GetSearchBook()
+        {
+            var response = await GetClient().GetAsync($"Book/GetSearchBook");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<SearchBook>>() : null;
+            return data;
+        }
+
+        public async Task<IEnumerable<BookListByAuthorId>> GetBookListByAuthorId(int authorId)
+        {
+            var response = await GetClient().GetAsync($"Book/GetBookListByAuthorId?authorId={authorId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<BookListByAuthorId>>() : null;
+            return data;
+        }
+
         public async Task<int> Create(Book book)
         {
             var response = await GetClient().PostAsJsonAsync($"Book/Create", book);
@@ -57,6 +73,14 @@ namespace BookSocial.Service.ServiceClass
             var response = await GetClient().GetAsync($"Book/GetById?id={id}");
             var data = response.IsSuccessStatusCode
                 ? await response.Content.ReadFromJsonAsync<Book>() : null;
+            return data;
+        }
+
+        public async Task<SingleBookCurrentlyReading> GetSingleBookCurrentlyReading(int userId)
+        {
+            var response = await GetClient().GetAsync($"Book/GetSingleBookCurrentlyReading?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<SingleBookCurrentlyReading>() : null;
             return data;
         }
     }

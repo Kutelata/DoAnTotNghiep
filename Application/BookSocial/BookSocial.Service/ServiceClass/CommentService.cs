@@ -53,5 +53,19 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<RecentActivityComment>>() : null;
             return data;
         }
+
+        public async Task<int> Create(Comment comment)
+        {
+            var response = await GetClient().PostAsJsonAsync($"Comment/Create", comment);
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
+
+        public async Task<int> Update(Comment comment)
+        {
+            var response = await GetClient().PutAsJsonAsync($"Comment/Update", comment);
+            var data = response.IsSuccessStatusCode ? 1 : 0;
+            return data;
+        }
     }
 }

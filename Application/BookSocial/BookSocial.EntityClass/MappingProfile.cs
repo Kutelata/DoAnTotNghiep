@@ -25,6 +25,9 @@ namespace BookSocial.EntityClass
             CreateMap<FriendListHome, FriendList>()
                 .ForMember(des => des.Id, act => act.MapFrom(src => src.UserFriendId))
                 .ForMember(des => des.Name, act => act.MapFrom(src => src.UserFriendName));
+
+            CreateMap<Author, AuthorProfile>();
+            CreateMap<AuthorProfile, Author>();
         }
     }
 }

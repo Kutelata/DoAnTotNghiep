@@ -114,5 +114,59 @@ namespace BookSocial.DataAccess.DataAccessClass
                     FROM Book WHERE isbn = @isbn", new { isbn });
             }
         }
+
+        public async Task<IEnumerable<BookListByAuthorId>> GetBookListByAuthorId(int authorId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<BookListByAuthorId>(
+                    @"SELECT 
+	                    b.id AS 'BookId',
+                        b.[name] AS 'BookName',
+                        b.[image] AS 'BookImage'
+                    FROM Author_Book ab 
+                    JOIN author a ON a.id = ab.author_id
+                    JOIN book b ON b.id = ab.book_id
+                    WHERE ab.author_id = @authorId", new { authorId });
+            }
+        }
+
+        public async Task<SingleBookCurrentlyReading> GetSingleBookCurrentlyReading(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<SingleBookCurrentlyReading>(
+                    @"SELECT TOP 1
+	                    b.id AS 'BookId',
+                        b.[name] AS 'BookName',
+                        b.[image] AS 'BookImage'
+                    FROM Shelf s 
+                    JOIN [User] u ON u.id = s.[user_id]
+                    JOIN Book b ON b.id = s.book_id
+                    WHERE u.id = @userId and s.progress_read = 1", new { userId });
+            }
+        }
+
+        public async Task<IEnumerable<SearchBook>> GetSearchBook()
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QueryAsync<SearchBook>(
+                    @"SELECT 
+	                    g.id AS 'genreId',
+	                    g.[name] AS 'genreName',
+	                    b.id AS 'bookId',
+	                    b.[name] AS 'bookName',
+	                    b.[image] AS 'bookImage',
+	                    b.[description] AS 'bookDescription',
+						COUNT(r.id) AS 'NumberOfReviews',
+                        AVG(cast(NULLIF(r.star, 0) AS BIGINT)) AS 'AverageOfRating'
+                    FROM Book b 
+                    LEFT JOIN Genre g ON g.id = b.genre_id
+					LEFT JOIN Review r ON r.book_id = b.id
+					GROUP BY g.id, g.[name], b.id, b.[name], 
+                        b.[image], b.[description]");
+            }
+        }
     }
 }

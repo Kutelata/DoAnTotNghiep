@@ -45,6 +45,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<IEnumerable<SearchAuthor>> GetSearchAuthor()
+        {
+            var response = await GetClient().GetAsync($"Author/GetSearchAuthor");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<IEnumerable<SearchAuthor>>() : null;
+            return data;
+        }
+
         public async Task<Author> GetById(int authorId)
         {
             var response = await GetClient().GetAsync($"Author/GetById?id={authorId}");

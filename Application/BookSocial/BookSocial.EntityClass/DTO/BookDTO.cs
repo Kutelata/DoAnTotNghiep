@@ -1,4 +1,6 @@
-﻿namespace BookSocial.EntityClass.DTO
+﻿using BookSocial.EntityClass.Enum;
+
+namespace BookSocial.EntityClass.DTO
 {
     public class BookStatistic
     {
@@ -13,8 +15,32 @@
         public int NumberOfShelfs { get; set; }
     }
 
-    public class BookProfile
+    public class BookListByAuthorId
     {
-        public int MyProperty { get; set; }
+        public int BookId { get; set; }
+        public string BookName { get; set; }
+        public string BookImage { get; set; }
+    }
+
+    public class SingleBookCurrentlyReading
+    {
+        public int BookId { get; set; }
+        public string BookName { get; set; }
+        public string BookImage { get; set; }
+    }
+
+    public class SearchBook
+    {
+        public int UserId { get; set; }
+        public int GenreId { get; set; }
+        public string GenreName { get; set; }
+        public int BookId { get; set; }
+        public string BookName { get; set; }
+        public string BookImage { get; set; }
+        public string BookDescription { get; set; }
+        public ProgressReadOrigin UserClaimProgressRead { get; set; }
+        public int NumberOfReviews { get; set; }
+        public float AverageOfRating { get; set; }
+        public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
     }
 }
