@@ -22,3 +22,7 @@
         right: 0px;
         top: 0px;
     }
+
+.my-post-comment textarea{
+    height:100px !important;
+}

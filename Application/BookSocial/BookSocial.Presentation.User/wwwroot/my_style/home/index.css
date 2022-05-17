@@ -33,3 +33,10 @@
     font-size: 20px;
     bottom: 8px !important;
 }
+
+@media screen and (max-width: 980px) {
+    .sidebar .my-widget {
+        width: 100%;
+        margin: 0px;
+    }
+}

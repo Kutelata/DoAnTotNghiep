@@ -30,6 +30,6 @@ namespace BookSocial.EntityClass.DTO
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public int ReviewId { get; set; }
         public int UserId { get; set; }
-        public User Users { get; set; }
+        public User User { get; set; }
     }
 }

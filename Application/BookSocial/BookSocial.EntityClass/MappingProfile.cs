@@ -27,7 +27,10 @@ namespace BookSocial.EntityClass
                 .ForMember(des => des.Name, act => act.MapFrom(src => src.UserFriendName));
 
             CreateMap<Author, AuthorProfile>();
-            CreateMap<AuthorProfile, Author>();
+            CreateMap<AuthorProfile, Author>(); 
+            
+            CreateMap<Comment, CommentInReview>();
+            CreateMap<CommentInReview, Comment>();
         }
     }
 }

@@ -84,10 +84,5 @@ namespace BookSocial.Presentation.User.Controllers
 
             return View("~/Views/Home/Index.cshtml", dataInPage);
         }
-
-        public IActionResult Profile()
-        {
-            return View("~/Views/Home/Profile.cshtml");
-        }
     }
 }

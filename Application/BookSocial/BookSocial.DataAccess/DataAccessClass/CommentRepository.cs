@@ -11,10 +11,9 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(
-                    @"INSERT INTO Comment
-                    VALUES (
-                        @text, @createdAt, @reviewId, @userId)",
+                return await con.QuerySingleAsync<int>(
+                    @"INSERT INTO Comment OUTPUT INSERTED.ID
+                    VALUES (@text, @createdAt, @reviewId, @userId)",
                     entity);
             }
         }
@@ -51,7 +50,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             {
                 return await con.QuerySingleAsync<Comment>(
                     @"SELECT 
-                        id, [text], review_id, created_at, [user_id] FROM Comment WHERE id = @id",
+                        id, [text], review_id as 'reviewId', created_at as 'createdAt', [user_id] as 'userId' FROM Comment WHERE id = @id",
                     new { id });
             }
         }

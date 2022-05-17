@@ -178,16 +178,16 @@ insert into Shelf values
 (2,9,7),
 (0,10,7),
 
-(1,11,7),
-(2,12,7),
-(0,13,7),
-(1,14,7),
-(2,15,7),
-(0,16,7),
-(1,17,7),
-(2,18,7),
-(0,19,7),
-(1,20,7)
+(1,11,11),
+(2,12,11),
+(0,13,11),
+(1,14,11),
+(2,15,11),
+(0,16,11),
+(1,17,11),
+(2,18,11),
+(0,19,11),
+(1,20,11)
 go
 
 insert into Review values
@@ -235,5 +235,11 @@ insert into Comment values
 ('I like your review','2022-11-23',2,13),
 ('I like your review','2022-11-23',2,14),
 ('I like your review','2022-11-23',2,15),
-('I like your review','2022-11-23',2,16)
+('I like your review','2022-11-23',2,16),
+
+('I like your review','2022-11-23',3,17),
+('I like your review','2022-11-23',3,18),
+('I like your review','2022-11-23',3,19),
+('I like your review','2022-11-23',3,20),
+('I like your review','2022-11-23',3,21)
 go

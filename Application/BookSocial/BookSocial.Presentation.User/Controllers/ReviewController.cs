@@ -26,9 +26,7 @@ namespace BookSocial.Presentation.User.Controllers
                     else { data.UserClaimProgressRead = ProgressReadOrigin.NotRead; }
                 }
 
-                int pages = (int)Math.Ceiling((double)dataInPage.Count / size);
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size).ToList();
-                ViewBag.CurrentPage = page;
             }
 
             return PartialView("~/Views/Review/Partials/ReviewList.cshtml", dataInPage);

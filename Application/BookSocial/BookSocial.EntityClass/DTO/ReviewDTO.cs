@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
 
 namespace BookSocial.EntityClass.DTO
 {
@@ -31,5 +32,16 @@ namespace BookSocial.EntityClass.DTO
         public string BookDescription { get; set; }
         public ProgressReadOrigin UserClaimProgressRead { get; set; }
         public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
+    }
+
+    public class ReviewByUserId
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public Star Star { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public int BookId { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }
