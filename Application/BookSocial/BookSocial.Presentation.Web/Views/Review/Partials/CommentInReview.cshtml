@@ -9,7 +9,7 @@
 
 @foreach (var item in Model)
 {
-    <li class="comment-view-@item.ReviewId" data-comment-id="@item.Id">
+    <li class="comment-view-@item.ReviewId" data-action-by="@item.Action" data-comment-id="@item.Id">
         <div class="comet-avatar">
             @if (item.User == null || string.IsNullOrEmpty(item.User.Image))
             {
@@ -23,7 +23,7 @@
         <div class="we-comment">
             <div class="coment-head">
                 <h5><a href="#">@item.User?.Name</a></h5>
-                <span>@TimeHelper.GetPrettyDate(@item.CreatedAt)</span>
+                <span>@TimeHelper.GetPrettyDate(item.CreatedAt)</span>
             </div>
             <p>@item.Text</p>
         </div>

@@ -7,18 +7,30 @@ namespace BookSocial.Presentation.User.Controllers
 {
     public partial class HomeController
     {
-        public async Task<IActionResult> CommentInReview(int reviewId, int page)
+        public async Task<IActionResult> CommentInReview(int reviewId, int page, string stringCommentIdExclude)
         {
-            var comment = await _commentService.GetByReviewId(reviewId);
-            IEnumerable<CommentInReview> dataInPage = null;
+            var comments = await _commentService.GetByReviewId(reviewId);
+            string[] listCommentIdExclude = stringCommentIdExclude?.Split(',');
+            List<CommentInReview> dataInPage = null;
             int size = 2;
 
-            if (comment != null)
+            if (comments != null)
             {
-                dataInPage = _mapper.Map<IEnumerable<CommentInReview>>(comment);
+                dataInPage = _mapper.Map<List<CommentInReview>>(comments);
                 foreach (var data in dataInPage)
                 {
                     data.User = await _userService.GetById(data.UserId);
+                    if (listCommentIdExclude != null && listCommentIdExclude.Length != 0)
+                    {
+                        foreach (var commentId in listCommentIdExclude)
+                        {
+                            if (Convert.ToInt32(commentId) == data.Id)
+                            {
+                                dataInPage.Remove(data);
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size).ToList();
@@ -41,15 +53,15 @@ namespace BookSocial.Presentation.User.Controllers
                         {
                             _mapper.Map<CommentInReview>(commentAfterPost)
                         };
+
                         foreach (var data in convertCommentAfterPost)
                         {
+                            data.Id = result;
                             data.User = await _userService.GetById(data.UserId);
+                            data.Action = "Insert";
                         }
-                        return Json(new
-                        {
-                            currentPostComment = result,
-                            model = PartialView("~/Views/Review/Partials/CommentInReview.cshtml", convertCommentAfterPost)
-                        });
+
+                        return PartialView("~/Views/Review/Partials/CommentInReview.cshtml", convertCommentAfterPost);
                     }
                     return StatusCode((int)HttpStatusCode.InternalServerError, "Internal Server Error!");
                 }

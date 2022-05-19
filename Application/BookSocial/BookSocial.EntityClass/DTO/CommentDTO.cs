@@ -31,5 +31,6 @@ namespace BookSocial.EntityClass.DTO
         public int ReviewId { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+        public string Action { get; set; }
     }
 }

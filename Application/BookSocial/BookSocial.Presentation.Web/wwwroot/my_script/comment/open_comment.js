@@ -1,4 +1,6 @@
-﻿$(document).on("click", ".btn-open-comment", function (e) {
+﻿var nextPage = 2
+
+$(document).on("click", ".btn-open-comment", function (e) {
     e.preventDefault()
     var reviewId = $(this).data('review-id')
     if ($(`.comment-${reviewId}`).hasClass("d-none")) {
@@ -6,9 +8,8 @@
 
         if ($(`.comment-position-${reviewId}`).hasClass("d-none")) {
             $(`.comment-position-${reviewId}`).removeClass("d-none")
-            nextPage = 2
-            listCurrentPostComment = []
         }
+        nextPage = 2
 
         $.ajax({
             method: "get",
@@ -24,15 +25,22 @@
     }
 })
 
-var nextPage = 2
 $(document).on("click", ".btn-more-comment", function (e) {
     e.preventDefault()
     var reviewId = $(this).data('review-id')
+    var listCommentIdExclude = []
+
+    $(`.comment-view-1`).each((index, item) => {
+        if (item.dataset && item.dataset.actionBy == 'Insert') {
+            listCommentIdExclude.push(parseInt(item.dataset.commentId))
+        }
+    })
+    var stringCommentIdExclude = listCommentIdExclude.toString()
 
     $.ajax({
         method: "get",
         url: `${baseUrl}/Home/CommentInReview`,
-        data: { reviewId: reviewId, page: nextPage },
+        data: { reviewId: reviewId, page: nextPage, stringCommentIdExclude: stringCommentIdExclude },
         success: function (res) {
             if (res.trim().length != 0) {
                 $(`.comment-position-${reviewId}`).before(res)
@@ -44,7 +52,6 @@ $(document).on("click", ".btn-more-comment", function (e) {
     })
 })
 
-const listCurrentPostComment = []
 $(document).on("submit", ".my-post-comment", function (e) {
     e.preventDefault()
 
@@ -57,10 +64,9 @@ $(document).on("submit", ".my-post-comment", function (e) {
         url: actionUrl,
         data: form.serialize(),
         success: function (res) {
-            if (res.model.trim().length != 0) {
-                $(`.comment-position-${reviewId}`).after(res.model)
-                alert(res.currentPostComment)
-                //listCurrentPostComment.push()
+            if (res.trim().length != 0) {
+                $(`.comment-position-${reviewId}`).after(res)
+                form[0].reset()
             }
         },
         error: function (res) {
