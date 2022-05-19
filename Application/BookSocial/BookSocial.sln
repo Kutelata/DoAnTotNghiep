@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.DataAccess", "Bo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.API", "BookSocial.API\BookSocial.API.csproj", "{17B335EF-4DB3-44B6-9E1B-BFFC6CA41D62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.User", "BookSocial.Presentation.User\BookSocial.Presentation.User.csproj", "{21F99B3F-394A-4279-AA33-97A016867A4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.Web", "BookSocial.Presentation.Web\BookSocial.Presentation.Web.csproj", "{21F99B3F-394A-4279-AA33-97A016867A4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.Admin", "BookSocial.Presentation.Admin\BookSocial.Presentation.Admin.csproj", "{685CCC65-18B2-4660-B113-01871E21C946}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.Presentation.Cms", "BookSocial.Presentation.Cms\BookSocial.Presentation.Cms.csproj", "{685CCC65-18B2-4660-B113-01871E21C946}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSocial.EntityClass", "BookSocial.EntityClass\BookSocial.EntityClass.csproj", "{FE2DB74D-1DE2-4D4E-AF2B-BFCE83519DE6}"
 EndProject
