@@ -30,7 +30,13 @@ namespace BookSocial.EntityClass
             CreateMap<AuthorProfile, Author>(); 
             
             CreateMap<Comment, CommentInReview>();
-            CreateMap<CommentInReview, Comment>();
+            CreateMap<CommentInReview, Comment>(); 
+            
+            CreateMap<Book, BookProfile>();
+            CreateMap<BookProfile, Book>(); 
+            
+            CreateMap<Review, ReviewByBookId>();
+            CreateMap<ReviewByBookId, Review>();
         }
     }
 }

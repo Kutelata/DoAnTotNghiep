@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Entity;
+﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,20 @@ namespace BookSocial.Presentation.User.Controllers
     {
         public async Task<IActionResult> BookProfile(int bookId)
         {
-
-            return View("~/Views/Book/Index.cshtml");
+            var book = await _bookService.GetById(bookId);
+            if (book != null)
+            {
+                var convertBook = _mapper.Map<BookProfile>(book);
+                convertBook.Genre = await _genreService.GetById(convertBook.Id);
+                convertBook.AuthorListByBookId = (List<AuthorListByBookId>)await _authorService.GetAuthorListByBookId(convertBook.Id);
+                convertBook.ReviewByBookId = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
+                foreach (var review in convertBook.ReviewByBookId)
+                {
+                    review.User = await _userService.GetById(review.UserId);
+                }
+                return View("~/Views/Book/Index.cshtml", convertBook);
+            }
+            return View("~/Views/Error.cshtml");
         }
 
         public async Task<IActionResult> SearchBook(int page = 1, string search = null)

@@ -34,7 +34,7 @@ namespace BookSocial.EntityClass.DTO
         public IEnumerable<AuthorListByBookId> AuthorListByBookId { get; set; }
     }
 
-    public class ReviewByUserId
+    public class ReviewByBookId
     {
         public int Id { get; set; }
         public string Text { get; set; }

@@ -57,6 +57,6 @@ namespace BookSocial.EntityClass.DTO
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
         public List<AuthorListByBookId> AuthorListByBookId { get; set; }
-        public List<ReviewByUserId> ReviewByUserId { get; set; }
+        public List<ReviewByBookId> ReviewByBookId { get; set; }
     }
 }

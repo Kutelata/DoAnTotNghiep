@@ -23,6 +23,13 @@
         top: 0px;
     }
 
-.my-post-comment textarea{
-    height:100px !important;
+.my-post-comment textarea {
+    height: 100px !important;
+}
+
+.we-comment .btn-delete-comment {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    color: red;
 }

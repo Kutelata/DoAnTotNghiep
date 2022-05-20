@@ -1,4 +1,5 @@
 ﻿using BookSocial.EntityClass.Enum;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.User.Controllers
@@ -37,14 +38,17 @@ namespace BookSocial.Presentation.User.Controllers
             return View("~/Views/Login.cshtml");
         }
 
-        public IActionResult EditReview()
+        public async Task<IActionResult> DeleteReview(int reviewId)
         {
-            return View("~/Views/Login.cshtml");
-        }
-
-        public IActionResult DeleteReview()
-        {
-            return View("~/Views/Login.cshtml");
+            if (reviewId != 0)
+            {
+                int result = await _reviewService.Delete(reviewId);
+                if (result != 0)
+                {
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
+            }
+            return View("~/Views/Error.cshtml");
         }
     }
 }

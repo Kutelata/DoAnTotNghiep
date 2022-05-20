@@ -17,7 +17,7 @@ namespace BookSocial.Presentation.User.Controllers
             if (comments != null)
             {
                 dataInPage = _mapper.Map<List<CommentInReview>>(comments);
-                foreach (var data in dataInPage)
+                foreach (var data in dataInPage.ToList())
                 {
                     data.User = await _userService.GetById(data.UserId);
                     if (listCommentIdExclude != null && listCommentIdExclude.Length != 0)
@@ -27,7 +27,6 @@ namespace BookSocial.Presentation.User.Controllers
                             if (Convert.ToInt32(commentId) == data.Id)
                             {
                                 dataInPage.Remove(data);
-                                break;
                             }
                         }
                     }
@@ -35,7 +34,6 @@ namespace BookSocial.Presentation.User.Controllers
 
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size).ToList();
             }
-
             return PartialView("~/Views/Review/Partials/CommentInReview.cshtml", dataInPage);
         }
 
@@ -70,14 +68,17 @@ namespace BookSocial.Presentation.User.Controllers
             return StatusCode((int)HttpStatusCode.BadRequest, "Bad request!");
         }
 
-        public IActionResult EditComment()
+        public async Task<IActionResult> DeleteComment(int commentId)
         {
-            return View("~/Views/Login.cshtml");
-        }
-
-        public IActionResult DeleteComment()
-        {
-            return View("~/Views/Login.cshtml");
+            if (commentId != 0)
+            {
+                int result = await _commentService.Delete(commentId);
+                if (result != 0)
+                {
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
+            }
+            return View("~/Views/Error.cshtml");
         }
     }
 }

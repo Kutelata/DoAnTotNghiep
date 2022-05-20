@@ -33,7 +33,7 @@
                         <b>Isbn:</b> @Model.Isbn <br />
                         <b>Name:</b> @Model.Name <br />
                         <b>PageNumber:</b> @Model.PageNumber <br />
-                        <b>Published:</b> @Model.Published <br />
+                        <b>Published:</b> @(Model.Published == new DateTime(0001,01,01,00,00,00) ? "" : Model.Published?.ToShortDateString()) <br />
                         <b>GenreId:</b> @Model.Genre.Name <br />
                         @Model.Description
                     </p>
@@ -43,4 +43,8 @@
     </div>
 </div>
 
-@await Html.PartialAsync("~/Views/Review/Partials/ReviewList.cshtml")
+<div class="blog-sec">
+    <div class="review-list">
+        @await Html.PartialAsync("~/Views/Review/Partials/ReviewByBookId.cshtml", Model.ReviewByBookId)
+    </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿@using BookSocial.EntityClass.Enum
 @using BookSocial.Presentation.User.Helper
 @using BookSocial.Service
-@model List<BookSocial.EntityClass.DTO.ReviewList>
+@model List<BookSocial.EntityClass.DTO.ReviewByBookId>
 
 @{
     var host = ConnectAdmin.BookSocialAdmin;
@@ -15,41 +15,41 @@
         <div class="user-post">
             <div class="friend-info">
                 <figure>
-                    @if (item.UserImage == null || item.UserImage == "")
+                    @if (string.IsNullOrEmpty(item.User?.Image))
                     {
                         <img src=@($"{host}assets/images/user/user.png") />
                     }
                     else
                     {
-                        <img src=@($"{host}assets/images/user/{item.UserImage}") />
+                        <img src=@($"{host}assets/images/user/{item.User.Image}") />
                     }
                 </figure>
                 <div class="friend-name my-friend-name">
-                    <ins><a href="#">@item.UserName</a></ins>
+                    <ins><a href="#">@item.User?.Name</a></ins>
                     <span>@TimeHelper.GetPrettyDate(item.CreatedAt)</span>
                     @if (item.UserId == Convert.ToInt32(userIdClaim))
                     {
-                        <a class="btn-delete-review" data-review-id="@item.ReviewId" href="#"><i class="fa fa-close"></i></a>
+                        <a class="btn-delete-review" href="#"><i class="fa fa-close"></i></a>
                     }
                 </div>
                 <div class="description my-description">
                     <p>
-                        @{
+                        @*@{
                             var progressRead = "";
                             switch (item.UserProgressRead)
                             {
-                                case ProgressRead.WantToRead:
-                                    progressRead = "Want To Read";
-                                    break;
-                                case ProgressRead.CurrentlyReading:
-                                    progressRead = "Currently Reading";
-                                    break;
-                                case ProgressRead.Read:
-                                    progressRead = "Read";
-                                    break;
+                            case ProgressRead.WantToRead:
+                            progressRead = "Want To Read";
+                            break;
+                            case ProgressRead.CurrentlyReading:
+                            progressRead = "Currently Reading";
+                            break;
+                            case ProgressRead.Read:
+                            progressRead = "Read";
+                            break;
                             }
-                        }
-                        Progress Read: @progressRead
+                            }
+                            Progress Read: @progressRead*@
                     </p>
                     <p>
                         Star:
@@ -61,38 +61,34 @@
                     <p>Review: @item.Text</p>
                 </div>
                 <div class="post-meta">
-                    <div class="linked-image align-left">
-                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">
-                            <img src=@($"{host}assets/images/book/{item.BookImage}")>
-                        </a>
-                    </div>
-                    <div class="detail my-detail">
+
+                    @*  <div class="detail my-detail">
                         <span>
-                            <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a>
+                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a>
                         </span>
                         <p>
-                            Author:
-                            @foreach (var author in item.AuthorListByBookId)
-                            {
-                                <span>@author.AuthorName</span>
-                            }
-                            <br />
-                            @item.BookDescription.Substring(0,200) ...
+                        Author:
+                        @foreach (var author in item.AuthorListByBookId)
+                        {
+                        <span>@author.AuthorName</span>
+                        }
+                        <br />
+                        @item.BookDescription.Substring(0,200) ...
                         </p>
                         <div class="purify my-purify">
-                            <select id="btn-filter"
-                                class="btn-change-progress-read-origin"
-                                data-book-id="@item.BookId"
-                                data-user-id="@userIdClaim"
-                                asp-for="@item.UserClaimProgressRead"
-                                asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
-                            </select>
+                        <select id="btn-filter"
+                        class="btn-change-progress-read-origin"
+                        data-book-id="@item.BookId"
+                        data-user-id="@userIdClaim"
+                        asp-for="@item.UserClaimProgressRead"
+                        asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
+                        </select>
                         </div>
-                    </div>
+                        </div>*@
                     <div class="we-video-info">
                         <ul>
                             <li>
-                                <a class="btn-open-comment" data-review-id="@item.ReviewId" href="#">
+                                <a class="btn-open-comment" data-review-id="@item.Id" href="#">
                                     <span class="comment" data-toggle="tooltip" title="Comments">
                                         <i class="fa fa-comments-o"></i>
                                     </span>
@@ -102,19 +98,19 @@
                     </div>
                 </div>
             </div>
-            <div class="coment-area d-none comment-@item.ReviewId">
+            <div class="coment-area d-none comment-@item.Id">
                 <ul class="we-comet">
-                    <li class="comment-position-@item.ReviewId">
-                        <a href="#" data-review-id="@item.ReviewId" class="btn-more-comment showmore underline">more comments</a>
+                    <li class="comment-position-@item.Id">
+                        <a href="#" data-review-id="@item.Id" class="btn-more-comment showmore underline">more comments</a>
                     </li>
-                    <li class="post-comment post-comment-@item.ReviewId">
+                    <li class="post-comment post-comment-@item.Id">
                         <div class="comet-avatar">
                             <img src=@($"{host}assets/images/user/{userImageClaim}") />
                         </div>
                         <div class="post-comt-box">
-                            <form data-review-id="@item.ReviewId" action="@Url.Action("CreateComment", "Home")" method="post" class="my-post-comment">
+                            <form data-review-id="@item.Id" action="@Url.Action("CreateComment", "Home")" method="post" class="my-post-comment">
                                 <textarea name="Text" placeholder="Post your comment ..."></textarea>
-                                <input hidden value="@item.ReviewId" type="number" name="ReviewId" />
+                                <input hidden value="@item.Id" type="number" name="ReviewId" />
                                 <input hidden value="@userIdClaim" type="number" name="UserId" />
                                 <button class="my-btn" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
                             </form>

@@ -30,13 +30,13 @@ $(document).on("click", ".btn-more-comment", function (e) {
     var reviewId = $(this).data('review-id')
     var listCommentIdExclude = []
 
-    $(`.comment-view-1`).each((index, item) => {
+    $(`.comment-view-${reviewId}`).each((index, item) => {
         if (item.dataset && item.dataset.actionBy == 'Insert') {
             listCommentIdExclude.push(parseInt(item.dataset.commentId))
         }
     })
     var stringCommentIdExclude = listCommentIdExclude.toString()
-
+    console.log(stringCommentIdExclude)
     $.ajax({
         method: "get",
         url: `${baseUrl}/Home/CommentInReview`,
