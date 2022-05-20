@@ -75,10 +75,10 @@ namespace BookSocial.Presentation.User.Controllers
                 int result = await _commentService.Delete(commentId);
                 if (result != 0)
                 {
-                    return Redirect(Request.Headers["Referer"].ToString());
+                    return Ok();
                 }
             }
-            return View("~/Views/Error.cshtml");
+            return StatusCode((int)HttpStatusCode.BadRequest, "Bad request!");
         }
     }
 }

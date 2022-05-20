@@ -36,7 +36,7 @@ $(document).on("click", ".btn-more-comment", function (e) {
         }
     })
     var stringCommentIdExclude = listCommentIdExclude.toString()
-    console.log(stringCommentIdExclude)
+
     $.ajax({
         method: "get",
         url: `${baseUrl}/Home/CommentInReview`,
