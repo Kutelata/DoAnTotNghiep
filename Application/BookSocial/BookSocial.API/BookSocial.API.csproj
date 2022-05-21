@@ -11,4 +11,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\BookSocial.DataAccess\BookSocial.DataAccess.csproj" />
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://ide-integration.batect.dev/v1/configSchema.json" /></VisualStudio></ProjectExtensions>
 </Project>

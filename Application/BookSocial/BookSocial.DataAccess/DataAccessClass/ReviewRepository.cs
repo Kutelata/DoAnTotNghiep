@@ -44,12 +44,12 @@ namespace BookSocial.DataAccess.DataAccessClass
 	                    r.id,
 	                    r.[text],
 						r.star,
-						r.created_at as 'createdAt',
-						b.id as 'bookId',
-						b.[name] as 'bookName',
-						u.id as 'userId',
-						u.[name] as 'userName',
-						COUNT(c.id) as 'numberOfComments'
+						r.created_at AS 'createdAt',
+						b.id AS 'bookId',
+						b.[name] AS 'bookName',
+						u.id AS 'userId',
+						u.[name] AS 'userName',
+						COUNT(c.id) AS 'numberOfComments'
                     FROM Review r
 					LEFT JOIN [User] u ON u.id = r.[user_id]
 					LEFT JOIN Comment c ON c.review_id = r.id
@@ -63,7 +63,12 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.QueryAsync<Review>(
-                    @"SELECT id, [text], star, created_at, book_id, [user_id] FROM Review WHERE book_id = @bookId",
+                    @"SELECT 
+                        id, [text], star, 
+                        created_at AS 'createdAt', 
+                        book_id AS 'bookId', 
+                        [user_id] AS 'userId' 
+                    FROM Review WHERE book_id = @bookId",
                     new { bookId });
             }
         }

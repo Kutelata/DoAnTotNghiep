@@ -8,7 +8,7 @@
 
 @foreach (var item in Model)
 {
-    <div class="central-meta item">
+    <div class="l-post my-l-post">
         <div class="user-post">
             <div class="friend-info">
                 <figure>
@@ -31,22 +31,22 @@
                 </div>
                 <div class="description my-description">
                     <p>
-                        @*@{
+                        @{
                             var progressRead = "";
-                            switch (item.UserProgressRead)
+                            switch (item.Shelf.ProgressRead)
                             {
-                            case ProgressRead.WantToRead:
-                            progressRead = "Want To Read";
-                            break;
-                            case ProgressRead.CurrentlyReading:
-                            progressRead = "Currently Reading";
-                            break;
-                            case ProgressRead.Read:
-                            progressRead = "Read";
-                            break;
+                                case ProgressRead.WantToRead:
+                                    progressRead = "Want To Read";
+                                    break;
+                                case ProgressRead.CurrentlyReading:
+                                    progressRead = "Currently Reading";
+                                    break;
+                                case ProgressRead.Read:
+                                    progressRead = "Read";
+                                    break;
                             }
-                            }
-                            Progress Read: @progressRead*@
+                        }
+                        Progress Read: @progressRead
                     </p>
                     <p>
                         Star:
@@ -58,30 +58,6 @@
                     <p>Review: @item.Text</p>
                 </div>
                 <div class="post-meta">
-
-                    @*  <div class="detail my-detail">
-                        <span>
-                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a>
-                        </span>
-                        <p>
-                        Author:
-                        @foreach (var author in item.AuthorListByBookId)
-                        {
-                        <span>@author.AuthorName</span>
-                        }
-                        <br />
-                        @item.BookDescription.Substring(0,200) ...
-                        </p>
-                        <div class="purify my-purify">
-                        <select id="btn-filter"
-                        class="btn-change-progress-read-origin"
-                        data-book-id="@item.BookId"
-                        data-user-id="@userIdClaim"
-                        asp-for="@item.UserClaimProgressRead"
-                        asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()">
-                        </select>
-                        </div>
-                        </div>*@
                     <div class="we-video-info">
                         <ul>
                             <li>

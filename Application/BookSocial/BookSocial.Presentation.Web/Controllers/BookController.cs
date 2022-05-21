@@ -1,5 +1,4 @@
 ﻿using BookSocial.EntityClass.DTO;
-using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +18,7 @@ namespace BookSocial.Presentation.Web.Controllers
                 foreach (var review in convertBook.ReviewByBookId)
                 {
                     review.User = await _userService.GetById(review.UserId);
+                    review.Shelf = await _shelfService.GetByBookAndUserId(book.Id, review.UserId);
                 }
                 return View("~/Views/Book/Index.cshtml", convertBook);
             }
