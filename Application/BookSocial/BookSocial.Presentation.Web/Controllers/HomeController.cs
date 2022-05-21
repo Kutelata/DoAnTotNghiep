@@ -4,7 +4,7 @@ using BookSocial.EntityClass.Enum;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.Presentation.User.Controllers
+namespace BookSocial.Presentation.Web.Controllers
 {
     public partial class HomeController : BaseController
     {

@@ -4,7 +4,7 @@ using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.Presentation.Admin.Controllers
+namespace BookSocial.Presentation.Cms.Controllers
 {
     [Authorize(Policy = "All")]
     public partial class HomeController : BaseController

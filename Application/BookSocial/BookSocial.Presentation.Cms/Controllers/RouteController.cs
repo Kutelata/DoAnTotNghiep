@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BookSocial.Presentation.Admin.Controllers
+namespace BookSocial.Presentation.Cms.Controllers
 {
     public class RouteController : Controller
     {

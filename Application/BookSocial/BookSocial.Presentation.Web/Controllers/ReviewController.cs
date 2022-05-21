@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.Presentation.User.Controllers
+namespace BookSocial.Presentation.Web.Controllers
 {
     public partial class HomeController
     {

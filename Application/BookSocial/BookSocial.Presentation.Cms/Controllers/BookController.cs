@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Globalization;
 
-namespace BookSocial.Presentation.Admin.Controllers
+namespace BookSocial.Presentation.Cms.Controllers
 {
     public partial class HomeController
     {

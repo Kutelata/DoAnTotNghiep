@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BookSocial.Presentation.User": {
+    "BookSocial.Presentation.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "dotnetRunMessages": true,

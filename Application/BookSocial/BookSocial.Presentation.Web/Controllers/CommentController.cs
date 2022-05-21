@@ -3,7 +3,7 @@ using BookSocial.EntityClass.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace BookSocial.Presentation.User.Controllers
+namespace BookSocial.Presentation.Web.Controllers
 {
     public partial class HomeController
     {

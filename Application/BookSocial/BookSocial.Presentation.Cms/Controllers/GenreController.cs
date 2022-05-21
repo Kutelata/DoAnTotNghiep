@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.Presentation.Admin.Controllers
+namespace BookSocial.Presentation.Cms.Controllers
 {
     public partial class HomeController
     {

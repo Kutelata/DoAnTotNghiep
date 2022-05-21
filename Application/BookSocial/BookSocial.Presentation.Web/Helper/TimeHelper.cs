@@ -1,4 +1,4 @@
-﻿namespace BookSocial.Presentation.User.Helper
+﻿namespace BookSocial.Presentation.Web.Helper
 {
     public class TimeHelper
     {

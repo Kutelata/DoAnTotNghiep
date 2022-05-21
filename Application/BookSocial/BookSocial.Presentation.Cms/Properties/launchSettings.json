@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "BookSocial.Presentation.Admin": {
+    "BookSocial.Presentation.Cms": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
-namespace BookSocial.Presentation.Admin.Controllers
+namespace BookSocial.Presentation.Cms.Controllers
 {
     public partial class HomeController
     {

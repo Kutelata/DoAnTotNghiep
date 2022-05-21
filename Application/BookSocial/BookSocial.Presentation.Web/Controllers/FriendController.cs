@@ -2,7 +2,7 @@
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.Presentation.User.Controllers
+namespace BookSocial.Presentation.Web.Controllers
 {
     public partial class HomeController
     {
