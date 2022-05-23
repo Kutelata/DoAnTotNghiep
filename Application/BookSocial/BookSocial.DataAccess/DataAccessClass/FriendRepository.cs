@@ -54,6 +54,17 @@ namespace BookSocial.DataAccess.DataAccessClass
             }
         }
 
+        public async Task<double> GetTotalByUserAndUserFriendId(int userId, int userFriendId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<double>(
+                    @"SELECT COUNT(f.[user_id]) 
+                    FROM Friend f 
+                    WHERE f.[user_id] = @userId AND f.user_friend_id = @userFriendId", new { userId, userFriendId });
+            }
+        }
+
         public Task<int> Update(Friend entity)
         {
             throw new NotImplementedException();

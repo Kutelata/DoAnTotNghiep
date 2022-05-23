@@ -67,5 +67,13 @@ namespace BookSocial.Service.ServiceClass
             var data = response.IsSuccessStatusCode ? 1 : 0;
             return data;
         }
+
+        public async Task<double> GetTotalByUserId(int userId)
+        {
+            var response = await GetClient().GetAsync($"Comment/GetTotalByUserId?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<double>() : 0;
+            return data;
+        }
     }
 }

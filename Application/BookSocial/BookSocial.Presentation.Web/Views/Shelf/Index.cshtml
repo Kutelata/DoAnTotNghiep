@@ -24,11 +24,11 @@
     }
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
-            <input id="search" type="text" placeholder="Search ...">
+            <input id="search" type="text" placeholder="Tìm kiếm ...">
             <button id="btn-search"><i class="ti-search"></i></button>
         </form>
         <div class="purify">
-            <span>Filter by</span>
+            <span>Lọc theo:</span>
             <select id="btn-filter" data-default-selected="@((int)ProgressReadFilter.All)" asp-items="Html.GetEnumSelectList<ProgressReadFilter>()"></select>
         </div>
     </div>
@@ -75,7 +75,7 @@
                                 asp-for="@item.ProgressRead"
                                 asp-items="Html.GetEnumSelectList<ProgressRead>()">
                             </select>
-                            <a class="btn btn-danger my-btn btn-delete-shelf" data-book-id="@item.BookId">Delete</a>
+                            <a class="btn btn-danger my-btn btn-delete-shelf" data-book-id="@item.BookId">Xóa</a>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
                           new{page=ViewBag.CurrentPage-1,
                               search=ViewBag.CurrentSearch,
                               filter=ViewBag.CurrentFilter})">
-                    Previous
+                    Trước
                 </a>
             </li>
         }
@@ -127,7 +127,7 @@
                             new{page=ViewBag.CurrentPage+1,
                                 search=ViewBag.CurrentSearch,
                                 filter=ViewBag.CurrentFilter})">
-                    Next
+                    Sau
                 </a>
             </li>
         }

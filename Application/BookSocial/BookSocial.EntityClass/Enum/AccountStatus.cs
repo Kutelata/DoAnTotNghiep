@@ -4,9 +4,9 @@ namespace BookSocial.EntityClass.Enum
 {
     public enum AccountStatus
     {
-        [Display(Name="Locked")]
+        [Display(Name="Đã bị khóa")]
         Locked = 0,
-        [Display(Name = "Is Active")]
+        [Display(Name = "Đang hoạt động")]
         IsActive = 1
     }
 }

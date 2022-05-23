@@ -16,37 +16,37 @@
             <a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
         </span>
         <span class="mh-text">
-            <a href="newsfeed.html" title=""><img src="~/images/logo2.png"></a>
+            <a href="newsfeed.html">DanhGiaSach</a>
         </span>
     </div>
     <nav id="menu" class="res-menu">
         <ul>
-            <li><a href="@Url.Action("Index","Home")">Home</a></li>
-            <li><a href="@Url.Action("ShelfList","Home")">My Book</a></li>
-            <li><a href="@Url.Action("FriendList","Home")">My Friend</a></li>
-            <li><a href="@Url.Action("SearchBook","Home")">Discover</a></li>
-            <li><a href="@Url.Action("Logout","Route")">Log out</a></li>
+            <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+            <li><a href="@Url.Action("ShelfList","Home")">Giá sách</a></li>
+            <li><a href="@Url.Action("FriendList","Home")">Bạn bè</a></li>
+            <li><a href="@Url.Action("SearchBook","Home")">Tìm kiếm</a></li>
+            <li><a href="@Url.Action("Logout","Route")">Đăng xuất</a></li>
         </ul>
     </nav>
 </div><!-- responsive header -->
 
 <div class="topbar stick">
     <div class="logo">
-        <a title="" href="@Url.Action("Index","Home")"><img src="~/images/logo.png"></a>
+        <a style="color:#3FA8DC;font-size:30px" href="@Url.Action("Index","Home")"><b style="font-weight:500">DanhGiaSach</b></a>
     </div>
     <div class="top-area">
-        <ul class="main-menu">
-            <li><a href="@Url.Action("Index","Home")">Home</a></li>
-            <li><a href="@Url.Action("ShelfList","Home")">My Book</a></li>
-            <li><a href="@Url.Action("FriendList","Home")">My Friend</a></li>
-            <li><a href="@Url.Action("SearchBook","Home")">Discover</a></li>
-        </ul>
-        <div class="user-img">
+        <div class="user-img" style="float:right">
             <img src=@($"{host}assets/images/user/{userImageClaim}") width="50" />
             <span style="font-size:14px">@userNameClaim</span>
             <div class="user-setting">
-                <a href="@Url.Action("Logout","Route")"><i class="ti-power-off"></i>log out</a>
+                <a href="@Url.Action("Logout","Route")"><i class="ti-power-off"></i>Đăng xuất</a>
             </div>
         </div>
+        <ul class="main-menu" style="float:right">
+            <li><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+            <li><a href="@Url.Action("ShelfList","Home")">Giá sách</a></li>
+            <li><a href="@Url.Action("FriendList","Home")">Bạn bè</a></li>
+            <li><a href="@Url.Action("SearchBook","Home")">Tìm kiếm</a></li>
+        </ul>
     </div>
 </div><!-- topbar -->

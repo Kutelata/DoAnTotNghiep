@@ -132,5 +132,16 @@ namespace BookSocial.DataAccess.DataAccessClass
 					ORDER BY created_at DESC");
             }
         }
+
+        public async Task<double> GetTotalByUserId(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<double>(
+                    @"SELECT COUNT(r.[user_id]) 
+                    FROM Review r
+                    WHERE r.[user_id] = @userId", new { userId });
+            }
+        }
     }
 }

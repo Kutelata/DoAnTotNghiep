@@ -4,7 +4,7 @@
     var host = ConnectAdmin.BookSocialAdmin;
 }
 
-<h4 class="widget-title">CURRENTLY READING</h4>
+<h4 class="widget-title">SÁCH ĐANG ĐỌC</h4>
 @foreach (var item in Model)
 {
     <div class="your-page">
@@ -14,7 +14,7 @@
         <div class="page-meta">
             <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})" style="font-size:14px" class="underline">@item.BookName</a>
             <span>
-                    by
+                    của
                     @{
                         var count = 0;
                     }

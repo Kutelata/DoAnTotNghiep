@@ -53,5 +53,13 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<IEnumerable<ReviewList>>() : null;
             return data;
         }
+
+        public async Task<double> GetTotalByUserId(int userId)
+        {
+            var response = await GetClient().GetAsync($"Review/GetTotalByUserId?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<double>() : 0;
+            return data;
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
         Task<IEnumerable<Comment>> GetByReviewId(int reviewId);
         Task<IEnumerable<Comment>> GetByUserId(int userId);
         Task<IEnumerable<RecentActivityComment>> GetRecentActivityComment();
+        Task<double> GetTotalByUserId(int userId);
     }
 }

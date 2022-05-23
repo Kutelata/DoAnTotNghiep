@@ -28,6 +28,20 @@ namespace BookSocial.API.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetTotalByUserId(int userId)
+        {
+            try
+            {
+                var data = await _reviewRepository.GetTotalByUserId(userId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> GetReviewStatistic()
         {
             try

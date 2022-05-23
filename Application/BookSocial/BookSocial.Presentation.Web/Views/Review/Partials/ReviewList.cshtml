@@ -36,26 +36,33 @@
                             switch (item.UserProgressRead)
                             {
                                 case ProgressRead.WantToRead:
-                                    progressRead = "Want To Read";
+                                    progressRead = "Muốn đọc";
                                     break;
                                 case ProgressRead.CurrentlyReading:
-                                    progressRead = "Currently Reading";
+                                    progressRead = "Đang đọc";
                                     break;
                                 case ProgressRead.Read:
-                                    progressRead = "Read";
+                                    progressRead = "Đã đọc";
                                     break;
                             }
                         }
-                        Progress Read: @progressRead
+                        Trạng thái đọc: @progressRead
                     </p>
                     <p>
-                        Star:
-                        @for (int i = 0; i < (int)item.Star; i++)
+                        Xếp hạng:
+                        @if ((int)item.Star != 0)
                         {
-                            <i class="fa fa-star"></i>
+                            @for (int i = 0; i < (int)item.Star; i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                        }
+                        else
+                        {
+                            @Html.Raw("Chưa xếp hạng")
                         }
                     </p>
-                    <p>Review: @item.Text</p>
+                    <p>Đánh giá: @item.Text</p>
                 </div>
                 <div class="post-meta">
                     <div class="linked-image align-left">
@@ -68,10 +75,21 @@
                             <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a>
                         </span>
                         <p>
-                            Author:
+                            Tác giả:
+                            @{
+                                var count = 0;
+                            }
                             @foreach (var author in item.AuthorListByBookId)
                             {
-                                <span>@author.AuthorName</span>
+                                count++;
+                                if (count > 1)
+                                {
+                                    <span><a href="@Url.Action("AuthorProfile","Home",new{authorId=author.AuthorId})">, @author.AuthorName</a></span>
+                                }
+                                else
+                                {
+                                    <span><a href="@Url.Action("AuthorProfile","Home",new{authorId=author.AuthorId})">@author.AuthorName</a></span>
+                                }
                             }
                             <br />
                             @item.BookDescription.Substring(0,200) ...

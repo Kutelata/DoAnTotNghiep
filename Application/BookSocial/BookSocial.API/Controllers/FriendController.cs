@@ -26,6 +26,20 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetTotalByUserAndUserFriendId(int userId, int userFriendId)
+        {
+            try
+            {
+                var data = await _friendRepository.GetTotalByUserAndUserFriendId(userId, userFriendId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(Friend friend)

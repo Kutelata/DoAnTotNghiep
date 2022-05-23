@@ -7,6 +7,7 @@
 @{
     var host = ConnectAdmin.BookSocialAdmin;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+    var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
 }
 
 <div class="blog-sec">
@@ -34,6 +35,36 @@
                         <b>GenreId:</b> @Model.Genre.Name <br />
                         @Model.Description
                     </p>
+                    <div class="purify my-purify">
+                        <select id="btn-filter" asp-items="Html.GetEnumSelectList<ProgressReadOrigin>()"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-sec">
+    <div class="l-post my-l-post" style="padding:0px">
+        <div class="central-meta new-pst item" style="display: inline-block;margin-bottom:0px;border:none;padding:20px">
+            <div class="new-postbox">
+                <figure>
+                    <img src=@($"{host}assets/images/user/{userImageClaim}") width="50" />
+                </figure>
+                <div class="newpst-input">
+                    <form method="post">
+                        <div class="purify my-purify">
+                            <select id="btn-filter" asp-items="Html.GetEnumSelectList<Star>()"></select>
+                        </div>
+                        <textarea rows="2" placeholder="Viết đánh giá..."></textarea>
+                        <div class="attachments" style="border:none">
+                            <ul>
+                                <li>
+                                    <button type="submit">Đăng bài</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -43,3 +74,12 @@
 <div class="blog-sec">
     @await Html.PartialAsync("~/Views/Review/Partials/ReviewByBookId.cshtml", Model.ReviewByBookId)
 </div>
+
+<button id="btn-load-more" class="btn-view btn-load-more" data-current-page="@ViewBag.CurrentPage"></button>
+
+@section script{
+<script src="~/my_script/action_load_more.js"></script>
+<script src="~/my_script/comment/open_comment.js"></script>
+<script src="~/my_script/comment/action_delete.js"></script>
+<script src="~/my_script/review/action_delete.js"></script>
+}

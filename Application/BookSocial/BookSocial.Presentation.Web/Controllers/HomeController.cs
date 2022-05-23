@@ -79,7 +79,6 @@ namespace BookSocial.Presentation.Web.Controllers
 
                 int pages = (int)Math.Ceiling((double)dataInPage.ReviewList.Count / size);
                 dataInPage.ReviewList = dataInPage.ReviewList.Skip((page - 1) * size).Take(size).ToList();
-                ViewBag.CurrentPage = page;
             }
 
             return View("~/Views/Home/Index.cshtml", dataInPage);

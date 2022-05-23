@@ -1,20 +1,21 @@
 ﻿$(document).on("click", ".btn-delete-comment", function (e) {
     e.preventDefault()
     var commentId = $(this).data("comment-id")
-    if (confirm('Are you sure want to delete comment with id = ' + commentId + '?')) {
-        $.ajax({
-            method: "get",
-            url: `${baseUrl}/Home/DeleteComment`,
-            data: { commentId: commentId },
-            success: function (res) {
-                $(`.comment-id-${commentId}`).remove()
-                alert('Delete comment success!')
-            },
-            error: function (res) {
-                alert(res.responseText)
-            }
+    alertify
+        .confirm('Bạn có muốn xóa bình luận với id = ' + commentId + '?', function () {
+            $.ajax({
+                method: "get",
+                url: `${baseUrl}/Home/DeleteComment`,
+                data: { commentId: commentId },
+                success: function (res) {
+                    $(`.comment-id-${commentId}`).remove()
+                    alertify.success('Xóa bình luận thành công!')
+                },
+                error: function (res) {
+                    alertify.error(res.responseText)
+                }
+            })
         })
-    } else {
-        return false
-    }
+        .setHeader('Xóa')
+        .set('labels', { ok: 'Đồng ý', cancel: 'Hủy' })
 })

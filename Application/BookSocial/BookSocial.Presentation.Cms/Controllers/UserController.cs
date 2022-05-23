@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
 using CsvHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +12,15 @@ namespace BookSocial.Presentation.Cms.Controllers
         [Authorize(Policy = "Admin and User Manager")]
         public async Task<IActionResult> UserList(int page = 1, string search = null, string sort = "Id")
         {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
             var allData = await _userService.GetUserStatistic();
+
             var dataInPage = allData;
             int size = 5;
 
             if (allData != null)
             {
+               
                 if (Request.Query.ContainsKey("sort"))
                 {
                     var newSort = Request.Query["sort"].ToString();
@@ -78,6 +82,23 @@ namespace BookSocial.Presentation.Cms.Controllers
                     page = 1;
                 }
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size);
+                foreach (var data in dataInPage)
+                {
+                    double numberOfFriends = 0;
+                    foreach (var dataUserFriend in dataInPage)
+                    {
+                        var compareUserAndUserFriend = await _friendService.GetTotalByUserIdAndUserFriendId(data.Id, dataUserFriend.Id);
+                        var compareUserFriendAndUser = await _friendService.GetTotalByUserIdAndUserFriendId(dataUserFriend.Id, data.Id);
+                        if (compareUserAndUserFriend != 0 && compareUserFriendAndUser != 0)
+                        {
+                            numberOfFriends++;
+                        }
+                    }
+                    data.NumberOfFriends = numberOfFriends;
+                    data.NumberBooksOnShelf = await _shelfService.GetTotalByUserId(data.Id);
+                    data.NumberOfReviews = await _reviewService.GetTotalByUserId(data.Id);
+                    data.NumberOfComments = await _commentService.GetTotalByUserId(data.Id);
+                }
             }
 
             ViewBag.CurrentPage = page;
@@ -138,7 +159,7 @@ namespace BookSocial.Presentation.Cms.Controllers
         public async Task<IActionResult> DeleteUser(int id)
         {
             var userToDelete = await _userService.GetById(id);
-            
+
             if (userToDelete != null)
             {
                 int result = await _userService.Delete(id);

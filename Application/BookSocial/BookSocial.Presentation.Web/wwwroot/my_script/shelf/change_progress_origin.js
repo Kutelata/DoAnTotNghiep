@@ -8,10 +8,10 @@
         url: `${baseUrl}/Home/ChangeProgressReadOrigin`,
         data: { ProgressReadOrigin: progressReadOrigin, UserId: userId, BookId: bookId },
         success: function (data) {
-            alert("Change progress read success!!!")
+            alertify.success("Thay đổi tiến độ đọc thành công!!!")
         },
         error: function (data) {
-            alert("Change progress read fail!!!")
+            alertify.error("Thay đổi tiến độ đọc thất bại!!!")
         }
     })
 })

@@ -4,11 +4,11 @@ namespace BookSocial.EntityClass.Enum
 {
     public enum Gender
     {
-        [Display(Name = "Male")]
+        [Display(Name = "Nam")]
         Male = 0,
-        [Display(Name = "Female")]
+        [Display(Name = "Nữ")]
         Female = 1,
-        [Display(Name = "Others")]
+        [Display(Name = "Khác")]
         Others = 2
     }
 }

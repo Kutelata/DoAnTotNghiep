@@ -1,5 +1,4 @@
 ﻿using BookSocial.EntityClass.Enum;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Web.Controllers

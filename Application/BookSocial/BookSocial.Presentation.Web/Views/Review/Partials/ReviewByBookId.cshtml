@@ -14,11 +14,11 @@
                 <figure>
                     @if (string.IsNullOrEmpty(item.User?.Image))
                     {
-                        <img src=@($"{host}assets/images/user/user.png") />
+                        <img src=@($"{host}assets/images/user/user.png") width="50"/>
                     }
                     else
                     {
-                        <img src=@($"{host}assets/images/user/{item.User.Image}") />
+                        <img src=@($"{host}assets/images/user/{item.User.Image}") width="50"/>
                     }
                 </figure>
                 <div class="friend-name my-friend-name">

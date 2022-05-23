@@ -115,18 +115,9 @@ namespace BookSocial.DataAccess.DataAccessClass
                         u.account,
 						u.[image],
 						u.gender,
-                        u.[status],
-						COUNT(f.[user_id]) as 'numberOfFriends',
-                        COUNT(s.book_id) as 'numberBooksOnShelf',
-						COUNT(r.id) as 'numberOfReviews',
-						COUNT(c.id) as 'numberOfComments'
+                        u.[status]
                     FROM [User] u 
-					FULL OUTER JOIN Shelf s ON s.[user_id] = u.id
-					FULL OUTER JOIN Review r ON r.[user_id] = u.id
-					FULL OUTER JOIN Comment c ON c.[user_id] = u.id
-					FULL OUTER JOIN Friend f ON f.[user_id] = u.id
-					WHERE u.[role] = 0
-                    GROUP BY u.id, u.[name], u.email, u.account, u.[image], u.gender, u.[status]");
+					WHERE u.[role] = 0");
             }
         }
 

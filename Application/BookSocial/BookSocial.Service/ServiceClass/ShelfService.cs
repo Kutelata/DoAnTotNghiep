@@ -61,6 +61,14 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<double> GetTotalByUserId(int userId)
+        {
+            var response = await GetClient().GetAsync($"Shelf/GetTotalByUserId?userId={userId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<double>() : 0;
+            return data;
+        }
+
         public async Task<int> Update(Shelf shelf)
         {
             var response = await GetClient().PutAsJsonAsync($"Shelf/Update", shelf);

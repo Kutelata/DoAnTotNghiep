@@ -1,4 +1,0 @@
-Home: Review, Comment
-BookDetail
-Crud Review, Comment
-10 triệu ticks = 1 giây

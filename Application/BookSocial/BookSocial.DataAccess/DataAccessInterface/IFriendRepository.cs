@@ -6,5 +6,6 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         Task<Friend> GetByUserAndUserFriendId(int userId, int userFriendId);
         Task<int> DeleteByUserAndUserFriendId(int userId, int userFriendId);
+        Task<double> GetTotalByUserAndUserFriendId(int userId, int userFriendId);
     }
 }

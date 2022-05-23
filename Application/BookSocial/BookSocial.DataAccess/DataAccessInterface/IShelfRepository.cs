@@ -7,6 +7,7 @@ namespace BookSocial.DataAccess.DataAccessInterface
     {
         Task<IEnumerable<Shelf>> GetByBookId(int bookId);
         Task<IEnumerable<Shelf>> GetByUserId(int userId);
+        Task<double> GetTotalByUserId(int userId);
         Task<IEnumerable<ShelfListHome>> GetShelfListHomes(int userId);
         Task<Shelf> GetByBookAndUserId(int bookId, int userId);
         Task<IEnumerable<ShelfDetail>> GetByShelfDetail(int userId);

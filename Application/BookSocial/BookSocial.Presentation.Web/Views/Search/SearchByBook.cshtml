@@ -27,11 +27,12 @@
     }
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
-            <input id="search" type="text" placeholder="Search ...">
+            <input id="search" type="text" placeholder="Tìm kiếm ...">
             <button id="btn-search"><i class="ti-search"></i></button>
         </form>
+        <a class="btn btn-success">Thêm sách</a>
         <div class="purify">
-            <span>Search by</span>
+            <span>Tìm theo:</span>
             <select id="btn-search-by"
                     data-search-by-book="@searchByBook"
                     data-search-by-author="@searchByAuthor"
@@ -97,7 +98,7 @@
                 <a class="page-link" href="@Url.Action("SearchBook","Home",
                           new{page=ViewBag.CurrentPage-1,
                               search=ViewBag.CurrentSearch})">
-                    Previous
+                    Trước
                 </a>
             </li>
         }
@@ -130,7 +131,7 @@
                 <a class="page-link" href="@Url.Action("SearchBook","Home",
                             new{page=ViewBag.CurrentPage+1,
                                 search=ViewBag.CurrentSearch})">
-                    Next
+                    Sau
                 </a>
             </li>
         }

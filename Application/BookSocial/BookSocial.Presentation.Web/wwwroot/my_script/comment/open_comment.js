@@ -65,12 +65,12 @@ $(document).on("submit", ".my-post-comment", function (e) {
         data: form.serialize(),
         success: function (res) {
             if (res.trim().length != 0) {
-                $(`.comment-position-${reviewId}`).after(res)
+                $(`.post-comment-${reviewId}`).before(res)
                 form[0].reset()
             }
         },
         error: function (res) {
-            alert(res.responseText)
+            alertify.error(res.responseText)
         }
     })
 })

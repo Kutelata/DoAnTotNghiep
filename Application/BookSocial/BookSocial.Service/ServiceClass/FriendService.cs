@@ -29,5 +29,13 @@ namespace BookSocial.Service.ServiceClass
                 ? await response.Content.ReadFromJsonAsync<Friend>() : null;
             return data;
         }
+
+        public async Task<double> GetTotalByUserIdAndUserFriendId(int userId, int userFriendId)
+        {
+            var response = await GetClient().GetAsync($"Friend/GetTotalByUserAndUserFriendId?userId={userId}&userFriendId={userFriendId}");
+            var data = response.IsSuccessStatusCode
+                ? await response.Content.ReadFromJsonAsync<double>() : 0;
+            return data;
+        }
     }
 }

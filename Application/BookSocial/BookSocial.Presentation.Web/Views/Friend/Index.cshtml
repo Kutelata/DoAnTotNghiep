@@ -24,11 +24,11 @@
     }
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
-            <input id="search" type="text" placeholder="Search ...">
+            <input id="search" type="text" placeholder="Tìm kiếm ...">
             <button id="btn-search"><i class="ti-search"></i></button>
         </form>
         <div class="purify">
-            <span>Filter by</span>
+            <span>Lọc theo:</span>
             <select id="btn-filter" data-default-selected="@((int)FriendStatus.Friends)" asp-items="Html.GetEnumSelectList<FriendStatus>()"></select>
         </div>
     </div>
@@ -47,14 +47,11 @@
                             <div class="l-post-meta my-l-post-meta">
                                 <h4><a href="@Url.Action("UserDetail","Home",new{userId=item.Id})" title="">@item.Name</a></h4>
                                 <p>
-                                    Status: @item.Status <br />
-                                    Gender: @item.Gender <br />
-                                    @item.Description <br />
+                                    Giới tính: @item.Gender <br />
+                                    Mô tả: @item.Description <br />
                                     @if (Convert.ToInt32(ViewBag.CurrentFilter) == (int)FriendStatus.Friends)
                                     {
-                                        <b>Currently Reading: </b>
-
-                                        @item.SingleBookCurrentlyReading?.BookName
+                                        <b>Đang đọc: </b>@item.SingleBookCurrentlyReading?.BookName
                                     }
                                 </p>
                                 <div class="purify my-purify">
@@ -66,17 +63,17 @@
                                         {
                                             case (int)FriendStatus.Suggest:
                                                 background = "green";
-                                                text = "Add";
+                                                text = "Thêm";
                                                 action = "AddFriend";
                                                 break;
                                             case (int)FriendStatus.Request:
                                                 background = "blue";
-                                                text = "Confirm";
+                                                text = "Chấp thuận";
                                                 action = "ConfirmFriend";
                                                 break;
                                             case (int)FriendStatus.Friends:
                                                 background = "red";
-                                                text = "Delete";
+                                                text = "Xóa";
                                                 action = "DeleteFriend";
                                                 break;
                                         }
@@ -114,7 +111,7 @@
                           new{page=ViewBag.CurrentPage-1,
                               search=ViewBag.CurrentSearch,
                               filter=ViewBag.CurrentFilter})">
-                    Previous
+                    Trước
                 </a>
             </li>
         }
@@ -150,7 +147,7 @@
                             new{page=ViewBag.CurrentPage+1,
                                 search=ViewBag.CurrentSearch,
                                 filter=ViewBag.CurrentFilter})">
-                    Next
+                    Sau
                 </a>
             </li>
         }

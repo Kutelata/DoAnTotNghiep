@@ -1,4 +1,4 @@
-﻿var nextPage = parseInt($("#btn-load-more").data("current-page")) + 1
+﻿var nextPage = 2
 $("#btn-load-more").click(function (e) {
     e.preventDefault()
     $.ajax({

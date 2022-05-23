@@ -4,35 +4,35 @@ namespace BookSocial.EntityClass.Enum
 {
     public enum ProgressRead
     {
-        [Display(Name = "Want To Read")]
+        [Display(Name = "Muốn đọc")]
         WantToRead = 0,
-        [Display(Name = "Currently Reading")]
+        [Display(Name = "Đang đọc")]
         CurrentlyReading = 1,
-        [Display(Name = "Read")]
+        [Display(Name = "Đã đọc")]
         Read = 2
     }
     
     public enum ProgressReadFilter
     {
-        [Display(Name = "All")]
+        [Display(Name = "Tất cả")]
         All = -1,
-        [Display(Name = "Want To Read")]
+        [Display(Name = "Muốn đọc")]
         WantToRead = 0,
-        [Display(Name = "Currently Reading")]
+        [Display(Name = "Đang đọc")]
         CurrentlyReading = 1,
-        [Display(Name = "Read")]
+        [Display(Name = "Đã đọc")]
         Read = 2
     }
 
     public enum ProgressReadOrigin
     {
-        [Display(Name = "Not Read")]
+        [Display(Name = "Chưa đọc")]
         NotRead = -1,
-        [Display(Name = "Want To Read")]
+        [Display(Name = "Muốn đọc")]
         WantToRead = 0,
-        [Display(Name = "Currently Reading")]
+        [Display(Name = "Đang đọc")]
         CurrentlyReading = 1,
-        [Display(Name = "Read")]
+        [Display(Name = "Đã đọc")]
         Read = 2
     }
 }

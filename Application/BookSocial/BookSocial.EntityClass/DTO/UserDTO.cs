@@ -1,4 +1,5 @@
-﻿using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Entity;
+using BookSocial.EntityClass.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookSocial.EntityClass.DTO
@@ -67,10 +68,10 @@ namespace BookSocial.EntityClass.DTO
         public string Image { get; set; }
         public Gender Gender { get; set; }
         public AccountStatus Status { get; set; }
-        public int NumberOfFriends { get; set; }
-        public int NumberBooksOnShelf { get; set; }
-        public int NumberOfReviews { get; set; }
-        public int NumberOfComments { get; set; }
+        public double NumberOfFriends { get; set; }
+        public double NumberBooksOnShelf { get; set; }
+        public double NumberOfReviews { get; set; }
+        public double NumberOfComments { get; set; }
     }
 
     public class UserEmployeeStatistic
