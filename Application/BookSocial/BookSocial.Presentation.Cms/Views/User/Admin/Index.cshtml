@@ -6,10 +6,10 @@
         <div class="x_title">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <h2>Employee List</h2>
+                    <h2>Danh sách nhân viên</h2>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportEmployeeToCsv")"><i class="fa fa-download"></i> Export</a>
+                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportEmployeeToCsv")"><i class="fa fa-download"></i> Xuất file excel</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -17,26 +17,26 @@
         <div class="x_content">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                    <a class="btn btn-outline-dark" href="@Url.Action("CreateEmployee")"><i class='fa fa-plus'></i> Create New</a>
+                    <a class="btn btn-outline-dark" href="@Url.Action("CreateEmployee")"><i class='fa fa-plus'></i> Thêm mới</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Id">Id</option>
-                                <option value="UserName">User Name</option>
-                                <option value="Account">Account</option>
-                                <option value="Image">Image</option>
-                                <option value="Gender">Gender</option>
-                                <option value="Status">Status</option>
-                                <option value="Role">Role</option>
+                                <option selected value="Id">Mã nhân viên</option>
+                                <option value="UserName">Tên người dùng</option>
+                                <option value="Account">Tài khoản</option>
+                                <option value="Image">Ảnh</option>
+                                <option value="Gender">Giới tính</option>
+                                <option value="Status">Trạng thái</option>
+                                <option value="Role">Quyền</option>
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <div class="input-group my-input-group">
-                                <input id="search" type="text" class="form-control my-form-control" placeholder="Search ..." />
+                                <input id="search" type="text" class="form-control my-form-control" placeholder="Tìm kiếm ..." />
                                 <div class="input-group-append">
-                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Search</button>
+                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
@@ -59,16 +59,16 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                         <tr class="headings">
-                            <th class="column-title">Id</th>
-                            <th class="column-title">User Name</th>
-                            <th class="column-title">Account</th>
-                            <th class="column-title">Password</th>
-                            <th class="column-title">Image</th>
-                            <th class="column-title">Gender</th>
-                            <th class="column-title">Status</th>
-                            <th class="column-title">Role</th>
+                            <th class="column-title">Mã nhân viên</th>
+                            <th class="column-title">Tên nhân viên</th>
+                            <th class="column-title">Tài khoản</th>
+                            <th class="column-title">Mật khẩu</th>
+                            <th class="column-title">Ảnh</th>
+                            <th class="column-title">Giới tính</th>
+                            <th class="column-title">Trạng thái</th>
+                            <th class="column-title">Quyền</th>
                             <th class="column-title no-link last">
-                                <span class="nobr">Action</span>
+                                <span class="nobr">Hành động</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -97,11 +97,11 @@
                                     switch (item.Status)
                                     {
                                         case AccountStatus.Locked:
-                                            statusText = "Locked";
+                                            statusText = "Đã bị khóa";
                                             statusColor = "danger";
                                             break;
                                         case AccountStatus.IsActive:
-                                            statusText = "Is Active";
+                                            statusText = "Đang hoạt động";
                                             statusColor = "success";
                                             break;
                                     }
@@ -128,10 +128,10 @@
                                 <td class=" ">@role</td>
                                 <td class=" last">
                                     <a class="btn btn-outline-primary" href="@Url.Action("EditEmployee", "", new { id = @item.Id })">
-                                        <i class='fa fa-pencil'></i> Edit
+                                        <i class='fa fa-pencil'></i> Sửa
                                     </a>
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
-                                        <i class='fa fa-trash-o'></i> Delete
+                                        <i class='fa fa-trash-o'></i> Xóa
                                     </a>
                                 </td>
                             </tr>
@@ -143,7 +143,7 @@
                     {
                         <li>
                             <a href="@Url.Action("EmployeeList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Trước</a>
                         </li>
                     }
 
@@ -169,7 +169,7 @@
                     {
                         <li>
                             <a href="@Url.Action("EmployeeList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Sau</a>
                         </li>
                     }
                 </ul>

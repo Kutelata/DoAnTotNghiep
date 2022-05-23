@@ -4,7 +4,7 @@
     <div class="x_panel">
         <div class="x_title">
             <div class="row">
-                <h2>Review List</h2>
+                <h2>Danh sách đánh giá</h2>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -15,21 +15,21 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Id">Id</option>
-                                <option value="Text">Text</option>
-                                <option value="Star">Star</option>
-                                <option value="CreatedAt">Created At</option>
-                                <option value="BookId">Book Id</option>
-                                <option value="BookName">Book Name</option>
-                                <option value="UserId">User Id</option>
-                                <option value="UserName">User Name</option>
+                                <option selected value="Id">Mã đánh giá</option>
+                                <option value="Text">Văn bản</option>
+                                <option value="Star">Xếp hạng</option>
+                                <option value="CreatedAt">Ngày tạo</option>
+                                <option value="BookId">Mã sách</option>
+                                <option value="BookName">Tên sách</option>
+                                <option value="UserId">Mã người dùng</option>
+                                <option value="UserName">Tên người dùng</option>
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <div class="input-group my-input-group">
-                                <input id="search" type="text" class="form-control my-form-control" placeholder="Search ..." />
+                                <input id="search" type="text" class="form-control my-form-control" placeholder="Tìm kiếm ..." />
                                 <div class="input-group-append">
-                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Search</button>
+                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
@@ -52,17 +52,17 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                         <tr class="headings">
-                            <th class="column-title">Id</th>
-                            <th class="column-title">Text</th>
-                            <th class="column-title">Star</th>
-                            <th class="column-title">Created At</th>
-                            <th class="column-title">Book Id</th>
-                            <th class="column-title">Book Name</th>
-                            <th class="column-title">User Id</th>
-                            <th class="column-title">User Name</th>
-                            <th class="column-title">Number Of Comments</th>
+                            <th class="column-title">Mã đánh giá</th>
+                            <th class="column-title">Văn bản</th>
+                            <th class="column-title">Xếp hạng</th>
+                            <th class="column-title">Ngày tạo</th>
+                            <th class="column-title">Mã sách</th>
+                            <th class="column-title">Tên sách</th>
+                            <th class="column-title">Mã người dùng</th>
+                            <th class="column-title">Tên người dùng</th>
+                            <th class="column-title">Số bình luận</th>
                             <th class="column-title no-link last">
-                                <span class="nobr">Action</span>
+                                <span class="nobr">Hành động</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -85,7 +85,7 @@
                                 <td class=" ">@item.NumberOfComments</td>
                                 <td class=" last">
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
-                                        <i class='fa fa-trash-o'></i> Delete
+                                        <i class='fa fa-trash-o'></i> Xóa
                                     </a>
                                 </td>
                             </tr>
@@ -97,7 +97,7 @@
                     {
                         <li>
                             <a href="@Url.Action("ReviewList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Trước</a>
                         </li>
                     }
 
@@ -123,7 +123,7 @@
                     {
                         <li>
                             <a href="@Url.Action("ReviewList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Sau</a>
                         </li>
                     }
                 </ul>

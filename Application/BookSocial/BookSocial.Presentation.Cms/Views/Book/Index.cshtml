@@ -5,10 +5,10 @@
         <div class="x_title">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <h2>Book List</h2>
+                    <h2>Danh sách sách</h2>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="width:50%">
-                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportBookToCsv")"><i class="fa fa-download"></i> Export</a>
+                    <a class="mr-0 btn btn-dark my-col-sm-6" href="@Url.Action("ExportBookToCsv")"><i class="fa fa-download"></i> Xuất file excel</a>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -16,28 +16,28 @@
         <div class="x_content">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                    <a class="btn btn-outline-dark" href="@Url.Action("CreateBook")"><i class='fa fa-plus'></i> Create New</a>
+                    <a class="btn btn-outline-dark" href="@Url.Action("CreateBook")"><i class='fa fa-plus'></i> Thêm mới</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Id">Id</option>
+                                <option selected value="Id">Mã sách</option>
                                 <option value="Isbn">Isbn</option>
-                                <option value="BookName">Book Name</option>
-                                <option value="Image">Image</option>
-                                <option value="Published">Published</option>
-                                <option value="GenreName">Genre Name</option>
-                                <option value="NumberOfAuthors">Number Of Authors</option>
-                                <option value="NumberOfReviews">Number Of Reviews</option>
-                                <option value="NumberOfShelfs">Number Of Shelfs</option>
+                                <option value="BookName">Tên sách</option>
+                                <option value="Image">Ảnh</option>
+                                <option value="Published">Ngày xuất bản</option>
+                                <option value="GenreName">Thể loại</option>
+                                <option value="NumberOfAuthors">Số tác giả</option>
+                                <option value="NumberOfReviews">Số đánh giá</option>
+                                <option value="NumberOfShelfs">Số người quan tâm</option>
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <div class="input-group my-input-group">
-                                <input id="search" type="text" class="form-control my-form-control" placeholder="Search ..." />
+                                <input id="search" type="text" class="form-control my-form-control" placeholder="Tìm kiếm ..." />
                                 <div class="input-group-append">
-                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Search</button>
+                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
@@ -60,17 +60,17 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                         <tr class="headings">
-                            <th class="column-title">Id</th>
+                            <th class="column-title">Mã sách</th>
                             <th class="column-title">Isbn</th>
-                            <th class="column-title">Book Name</th>
-                            <th class="column-title">Image</th>
-                            <th class="column-title">Published</th>
-                            <th class="column-title">Genre Name</th>
-                            <th class="column-title">Number Of Authors</th>
-                            <th class="column-title">Number Of Reviews</th>
-                            <th class="column-title">Number Of Shelfs</th>
+                            <th class="column-title">Tên sách</th>
+                            <th class="column-title">Ảnh</th>
+                            <th class="column-title">Ngày xuất bản</th>
+                            <th class="column-title">Thể loại</th>
+                            <th class="column-title">Số tác giả</th>
+                            <th class="column-title">Số đánh giá</th>
+                            <th class="column-title">Số người quan tâm</th>
                             <th class="column-title no-link last">
-                                <span class="nobr">Action</span>
+                                <span class="nobr">Hành động</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -93,13 +93,13 @@
                                 <td class=" ">@item.NumberOfShelfs</td>
                                 <td class=" last">
                                     <a class="btn btn-outline-info" href="@Url.Action("DetailBook", "", new { id = @item.Id })">
-                                        <i class='fa fa-folder'></i> View
+                                        <i class='fa fa-folder'></i> Chi tiết
                                     </a>
                                     <a class="btn btn-outline-primary" href="@Url.Action("EditBook", "", new { id = @item.Id })">
-                                        <i class='fa fa-pencil'></i> Edit
+                                        <i class='fa fa-pencil'></i> Sửa
                                     </a>
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
-                                        <i class='fa fa-trash-o'></i> Delete
+                                        <i class='fa fa-trash-o'></i> Xóa
                                     </a>
                                 </td>
                             </tr>
@@ -111,7 +111,7 @@
                     {
                         <li>
                             <a href="@Url.Action("BookList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Trước</a>
                         </li>
                     }
 
@@ -137,7 +137,7 @@
                     {
                         <li>
                             <a href="@Url.Action("BookList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Sau</a>
                         </li>
                     }
                 </ul>

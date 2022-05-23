@@ -4,32 +4,32 @@
     <div class="x_panel">
         <div class="x_title">
             <div class="row">
-                <h2>Author List</h2>
+                <h2>Danh sách tác giả</h2>
                 <div class="clearfix"></div>
             </div>
         </div>
         <div class="x_content">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                    <a class="btn btn-outline-dark" href="@Url.Action("CreateAuthor")"><i class='fa fa-plus'></i> Create New</a>
+                    <a class="btn btn-outline-dark" href="@Url.Action("CreateAuthor")"><i class='fa fa-plus'></i> Thêm mới</a>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mb-2">
                             <select class="custom-select" id="btn-sort">
-                                <option selected value="Id">Id</option>
-                                <option value="AuthorName">Author Name</option>
-                                <option value="Image">Image</option>
-                                <option value="Description">Description</option>
-                                <option value="Birthday">Birthday</option>
-                                <option value="NumberOfBooks">Number Of Books</option>
+                                <option selected value="Id">Mã tác giả</option>
+                                <option value="AuthorName">Tên tác giả</option>
+                                <option value="Image">Ảnh</option>
+                                <option value="Description">Mô tả</option>
+                                <option value="Birthday">Ngày sinh</option>
+                                <option value="NumberOfBooks">Sách đã xuất bản</option>
                             </select>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                             <div class="input-group my-input-group">
-                                <input id="search" type="text" class="form-control my-form-control" placeholder="Search ..." />
+                                <input id="search" type="text" class="form-control my-form-control" placeholder="Tìm kiếm ..." />
                                 <div class="input-group-append">
-                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Search</button>
+                                    <button id="btn-search" class="btn mr-0 btn-outline-dark" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
                                 </div>
                             </div>
                         </div>
@@ -52,14 +52,14 @@
                 <table class="table table-striped jambo_table bulk_action">
                     <thead>
                         <tr class="headings">
-                            <th class="column-title">Id</th>
-                            <th class="column-title">Author Name</th>
-                            <th class="column-title">Image</th>
-                            <th class="column-title">Description</th>
-                            <th class="column-title">Birthday</th>
-                            <th class="column-title">Number Of Books</th>
+                            <th class="column-title">Mã tác giả</th>
+                            <th class="column-title">Tên tác giả</th>
+                            <th class="column-title">Ảnh</th>
+                            <th class="column-title">Mô tả</th>
+                            <th class="column-title">Ngày sinh</th>
+                            <th class="column-title">Sách đã xuất bản</th>
                             <th class="column-title no-link last">
-                                <span class="nobr">Action</span>
+                                <span class="nobr">Hành động</span>
                             </th>
                             <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -79,10 +79,10 @@
                                 <td class=" ">@item.NumberOfBooks</td>
                                 <td class=" last">
                                     <a class="btn btn-outline-primary" href="@Url.Action("EditAuthor", "", new { id = @item.Id })">
-                                        <i class='fa fa-pencil'></i> Edit
+                                        <i class='fa fa-pencil'></i> Sửa
                                     </a>
                                     <a data-id="@item.Id" href="#" class="btn-delete btn btn-outline-danger">
-                                        <i class='fa fa-trash-o'></i> Delete
+                                        <i class='fa fa-trash-o'></i> Xóa
                                     </a>
                                 </td>
                             </tr>
@@ -94,7 +94,7 @@
                     {
                         <li>
                             <a href="@Url.Action("AuthorList","Home",
-                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Previous</a>
+                            new{page=ViewBag.CurrentPage-1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Trước</a>
                         </li>
                     }
 
@@ -120,7 +120,7 @@
                     {
                         <li>
                             <a href="@Url.Action("AuthorList","Home",
-                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Next</a>
+                            new{page=ViewBag.CurrentPage+1,search=ViewBag.CurrentSearch,sort=ViewBag.CurrentSort})">Sau</a>
                         </li>
                     }
                 </ul>

@@ -4,7 +4,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Create User</h2>
+            <h2>Thêm nhân viên</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -13,7 +13,7 @@
                   enctype="multipart/form-data">
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        User name <span class="required">*</span> :
+                        Tên nhân viên <span class="required">*</span> :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Name" type="text" class="form-control" />
@@ -22,7 +22,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Account <span class="required">*</span> :
+                        Tài khoản <span class="required">*</span> :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Account" type="text" class="form-control" />
@@ -30,13 +30,29 @@
                     </div>
                 </div>
                 <div class="item form-group">
-                    <label class="col-form-label col-md-3 col-sm-3 label-align">Gender :</label>
+                    <label class="col-form-label col-md-3 col-sm-3 label-align">Giới tính :</label>
                     <div class="col-md-6 col-sm-6 ">
                         <div id="gender" class="" data-toggle="buttons">
                             @foreach (var item in System.Enum.GetValues(typeof(Gender)))
                             {
                                 <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                    <input type="radio" asp-for="Gender" value="@item" class="join-btn"> @item
+                                    <input type="radio" asp-for="Gender" value="@item" class="join-btn">
+                                    @{
+                                        var gender = "";
+                                        switch (item)
+                                        {
+                                            case Gender.Male:
+                                                gender = "Nam";
+                                                break;
+                                            case Gender.Female:
+                                                gender = "Nữ";
+                                                break;
+                                            case Gender.Others:
+                                                gender = "Khác";
+                                                break;
+                                        }
+                                    }
+                                    @gender
                                 </label>
                             }
                         </div>
@@ -44,7 +60,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Role :
+                        Quyền :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <select class="custom-select" asp-for="Role" asp-items="Html.GetEnumSelectList<RoleEmployee>()"></select>
@@ -53,8 +69,8 @@
                 </div>
                 <div class="item form-group justify-content-center">
                     <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
-                        <button type="submit" class="mt-2 btn btn-success">Submit</button>
-                        <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                        <button type="submit" class="mt-2 btn btn-success">Thêm mới</button>
+                        <button class="mt-2 btn btn-primary" type="reset">Làm mới</button>
                     </div>
                 </div>
             </form>

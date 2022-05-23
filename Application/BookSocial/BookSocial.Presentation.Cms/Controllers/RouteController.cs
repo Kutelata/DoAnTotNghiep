@@ -77,14 +77,14 @@ namespace BookSocial.Presentation.Cms.Controllers
         public IActionResult NotFound404()
         {
             ViewBag.ErrorName = "404";
-            ViewBag.ErrorContent = "Sorry but we couldn't find this page !!!";
+            ViewBag.ErrorContent = "Không tìm thấy trang bạn yêu cầu !!!";
             return View("~/Views/Error.cshtml");
         }
 
         public IActionResult Unauthorize401()
         {
             ViewBag.ErrorName = "401";
-            ViewBag.ErrorContent = "Sorry you don't have permission to access !!!";
+            ViewBag.ErrorContent = "Bạn không có quyền truy cập trang !!!";
             return View("~/Views/Error.cshtml");
         }
     }

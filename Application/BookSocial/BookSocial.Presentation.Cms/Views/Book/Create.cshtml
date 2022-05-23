@@ -3,7 +3,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Create Book</h2>
+            <h2>Thêm sách</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Book name <span class="required">*</span> :
+                        Tên sách <span class="required">*</span> :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Name" type="text" class="form-control" />
@@ -30,7 +30,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Image :
+                        Ảnh :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input id="img-file" asp-for="Image" type="file" class="my-input-file form-control" />
@@ -40,7 +40,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Description :
+                        Mô tả :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <textarea asp-for="Description" type="text" class="form-control"></textarea>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Page number :
+                        Số trang :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="PageNumber" type="number" class="form-control" />
@@ -58,7 +58,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Published :
+                        Ngày xuất bản :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Published" type="date" class="form-control" />
@@ -67,7 +67,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Genre name :
+                        Tên thể loại :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <select class="custom-select" asp-for="GenreId" asp-items="@ViewBag.Genres"></select>
@@ -76,8 +76,8 @@
                 </div>
                 <div class="item form-group justify-content-center">
                     <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
-                        <button type="submit" class="mt-2 btn btn-success">Submit</button>
-                        <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                        <button type="submit" class="mt-2 btn btn-success">Thêm mới</button>
+                        <button class="mt-2 btn btn-primary" type="reset">Làm mới</button>
                     </div>
                 </div>
             </form>

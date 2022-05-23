@@ -26,7 +26,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Detail Book</h2>
+            <h2>Chi tiết sách</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -34,18 +34,18 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <ul class="list-unstyled user_data">
-                        <li><b>Book Id:</b> @Model.Id</li>
+                        <li><b>Mã sách:</b> @Model.Id</li>
                         <li><b>Isbn:</b> @Model.Isbn</li>
-                        <li><b>Book Name:</b> @Model.Name</li>
-                        <li><b>Image:</b></li>
+                        <li><b>Tên sách:</b> @Model.Name</li>
+                        <li><b>Ảnh:</b></li>
                         <li>
                             <img class="@((Model.Image != null && Model.Image != "") ? "" : "d-none")"
                                  style="width:200px" src="~/assets/images/book/@Model.Image" />
                         </li>
-                        <li><b>Description:</b> @Model.Description</li>
-                        <li><b>Page Number:</b> @Model.PageNumber</li>
-                        <li><b>Published:</b> @Model.Published</li>
-                        <li><b>Genre Name:</b> @genre.Name</li>
+                        <li><b>Mô tả:</b> @Model.Description</li>
+                        <li><b>Số trang:</b> @Model.PageNumber</li>
+                        <li><b>Ngày xuất bản:</b> @Model.Published</li>
+                        <li><b>Tên thể loại:</b> @genre.Name</li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -53,13 +53,13 @@
                         @foreach (var a in author)
                         {
                             <li>
-                                <b>Author Id:</b>
+                                <b>Mã tác giả:</b>
                                 @a.Id
                                 <a class="btn-delete" data-author-id="@a.Id" data-book-id="@Model.Id" style="color:red" href="#">
                                     <i style="color:red" class="fa fa-trash-o"></i> Delete
                                 </a>
                             </li>
-                            <li><b>Author Name:</b> @a.Name</li>
+                            <li><b>Tên tác giả:</b> @a.Name</li>
                             <br />
                         }
                     </ul>
@@ -78,13 +78,13 @@
                         }
                         <input type="hidden" name="BookId" value="@Model.Id" />
                         <ul class="list-unstyled user_data">
-                            <li>Author Id: </li>
+                            <li>Mã tác giả: </li>
                             <li>
                                 <div class="ui-widget">
                                     <input id="assign-author-id" name="AuthorId" type="number" class="form-control" readonly="readonly" />
                                 </div>
                             </li>
-                            <li>Author Name: </li>
+                            <li>Tên tác giả: </li>
                             <li>
                                 <div class="ui-widget">
                                     <input id="assign-author-value" type="text" class="form-control" />
@@ -93,8 +93,8 @@
                         </ul>
                         <div class="item form-group justify-content-center">
                             <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
-                                <button type="submit" class="mt-2 btn btn-success">Assign Author</button>
-                                <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="mt-2 btn btn-success">Gán tác giả</button>
+                                <button class="mt-2 btn btn-primary" type="reset">Làm mới</button>
                             </div>
                         </div>
                     </form>

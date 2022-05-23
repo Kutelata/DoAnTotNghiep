@@ -3,7 +3,7 @@
 <div class="col-md-12 col-sm-12 ">
     <div class="x_panel">
         <div class="x_title">
-            <h2>Edit Author</h2>
+            <h2>Sửa tác giả</h2>
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
@@ -12,7 +12,7 @@
                   enctype="multipart/form-data">
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Author name <span class="required">*</span> :
+                        Tên tác giả <span class="required">*</span> :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Name" type="text" class="form-control" />
@@ -21,7 +21,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Image :
+                        Ảnh :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input id="img-file" asp-for="Image" type="file" class="my-input-file form-control" value="@Model.Image" />
@@ -32,7 +32,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Description :
+                        Mô tả :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <textarea asp-for="Description" class="form-control"></textarea>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="item form-group">
                     <label class="col-form-label col-md-3 col-sm-3 label-align">
-                        Birthday :
+                        Ngày sinh :
                     </label>
                     <div class="col-md-9 col-sm-9 ">
                         <input asp-for="Birthday" type="date" class="form-control" />
@@ -50,8 +50,8 @@
                 </div>
                 <div class="item form-group justify-content-center">
                     <div class="justify-content-center" style="padding-left:10px;padding-right:10px">
-                        <button type="submit" class="mt-2 btn btn-success">Submit</button>
-                        <button class="mt-2 btn btn-primary" type="reset">Reset</button>
+                        <button type="submit" class="mt-2 btn btn-success">Sửa</button>
+                        <button class="mt-2 btn btn-primary" type="reset">Làm mới</button>
                     </div>
                 </div>
             </form>

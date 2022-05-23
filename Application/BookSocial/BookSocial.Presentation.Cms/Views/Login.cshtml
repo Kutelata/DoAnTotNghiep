@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="~/images/favicon.ico" type="image/ico">
 
-    <title>Admin</title>
+    <title>DanhGiaSachCMS</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,16 +31,16 @@
             <div class="animate form login_form">
                 <section class="login_content">
                     <form action="@Url.Action("Login","Route")" method="post">
-                        <h1>Admin</h1>
+                        <h1>DanhGiaSachCMS</h1>
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div>
-                            <input type="text" class="form-control" asp-for="Account" placeholder="Username" />
+                            <input type="text" class="form-control" asp-for="Account" placeholder="Tài khoản" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
+                            <input type="password" class="form-control" asp-for="Password" placeholder="Mật khẩu" />
                         </div>
                         <div>
-                            <input type="submit" class="my-btn-login btn btn-default submit" value="Log in" />
+                            <input type="submit" class="my-btn-login btn btn-default submit" value="Đăng nhập" />
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator"></div>
