@@ -64,7 +64,7 @@ namespace BookSocial.Presentation.Cms.Controllers
             var user = await _userService.GetById(Convert.ToInt32(userIdClaim));
             if (user.Password != changePassword.OldPassword)
             {
-                ModelState.AddModelError("OldPassword", "Old Password is wrong");
+                ModelState.AddModelError("OldPassword", "Mật khẩu cũ không khớp");
             }
             if (ModelState.IsValid)
             {
@@ -72,11 +72,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _userService.Update(user);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Update Password success!";
+                    TempData["Success"] = "Cập nhật mật khẩu thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Update Password failed!";
+                    TempData["Fail"] = "Cập nhật mật khẩu thất bại!";
                 }
                 return RedirectToAction("Index", "Home");
             }

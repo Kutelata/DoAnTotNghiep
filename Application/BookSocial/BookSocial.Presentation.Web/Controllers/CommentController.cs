@@ -61,11 +61,11 @@ namespace BookSocial.Presentation.Web.Controllers
 
                         return PartialView("~/Views/Review/Partials/CommentInReview.cshtml", convertCommentAfterPost);
                     }
-                    return StatusCode((int)HttpStatusCode.InternalServerError, "Internal Server Error!");
+                    return StatusCode((int)HttpStatusCode.InternalServerError, "Lỗi phía máy chủ!");
                 }
-                return StatusCode((int)HttpStatusCode.BadRequest, "Text is empty!");
+                return StatusCode((int)HttpStatusCode.BadRequest, "Văn bản không được để rỗng!");
             }
-            return StatusCode((int)HttpStatusCode.BadRequest, "Bad request!");
+            return StatusCode((int)HttpStatusCode.BadRequest, "Yêu cầu không hợp lệ!");
         }
 
         public async Task<IActionResult> DeleteComment(int commentId)
@@ -78,7 +78,7 @@ namespace BookSocial.Presentation.Web.Controllers
                     return Ok();
                 }
             }
-            return StatusCode((int)HttpStatusCode.BadRequest, "Bad request!");
+            return StatusCode((int)HttpStatusCode.BadRequest, "Yêu cầu không hợp lệ!");
         }
     }
 }

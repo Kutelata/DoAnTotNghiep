@@ -1,4 +1,5 @@
 ﻿using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +10,15 @@ namespace BookSocial.Presentation.Web.Controllers
         public async Task<IActionResult> BookProfile(int bookId)
         {
             var book = await _bookService.GetById(bookId);
+            var page = 1;
+            var size = 2;
             if (book != null)
             {
                 var convertBook = _mapper.Map<BookProfile>(book);
                 convertBook.Genre = await _genreService.GetById(convertBook.Id);
                 convertBook.AuthorListByBookId = (List<AuthorListByBookId>)await _authorService.GetAuthorListByBookId(convertBook.Id);
-                convertBook.ReviewByBookId = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
+                var reviewByBookIds = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
+                convertBook.ReviewByBookId = reviewByBookIds.Skip((page - 1) * size).Take(size).ToList();
                 foreach (var review in convertBook.ReviewByBookId)
                 {
                     review.User = await _userService.GetById(review.UserId);
@@ -23,6 +27,17 @@ namespace BookSocial.Presentation.Web.Controllers
                 return View("~/Views/Book/Index.cshtml", convertBook);
             }
             return View("~/Views/Error.cshtml");
+        }
+
+        public IActionResult CreateBook()
+        {
+            return View("~/Views/Search/CreateBook.cshtml");
+        }
+        
+        [HttpPost]
+        public IActionResult CreateBook(Book book)
+        {
+            return View("~/Views/Search/CreateBook.cshtml");
         }
 
         public async Task<IActionResult> SearchBook(int page = 1, string search = null)

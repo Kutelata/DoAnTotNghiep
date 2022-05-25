@@ -23,6 +23,10 @@
         top: 0px;
     }
 
+.my-description > p {
+    margin-bottom: 0px;
+}
+
 .my-post-comment textarea {
     height: 100px !important;
 }
@@ -32,4 +36,11 @@
     top: 0px;
     right: 5px;
     color: red;
+}
+
+@media screen and (max-width: 980px) {
+    .central-meta {
+        margin: 20px 0px 0px 0px;
+        width: 100%;
+    }
 }

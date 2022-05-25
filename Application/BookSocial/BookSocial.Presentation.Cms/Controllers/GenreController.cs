@@ -81,18 +81,18 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkNameUnique = await _genreService.GetByName(genre.Name);
             if (checkNameUnique != null)
             {
-                ModelState.AddModelError("Name", "Genre Name must be unique");
+                ModelState.AddModelError("Name", "Tên thể loại không được trùng");
             }
             if (ModelState.IsValid)
             {
                 int result = await _genreService.Create(genre);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Create genre success!";
+                    TempData["Success"] = "Thêm thể loại thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Create genre failed!";
+                    TempData["Fail"] = "Thêm thể loại thất bại!";
                 }
                 return RedirectToAction("GenreList", "Home");
             }
@@ -119,18 +119,18 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkNameUnique = await _genreService.GetByName(genre.Name);
             if (checkNameUnique != null && checkNameUnique.Name != currentGenre.Name)
             {
-                ModelState.AddModelError("Name", "Genre Name must be unique");
+                ModelState.AddModelError("Name", "Tên thể loại không được trùng");
             }
             if (ModelState.IsValid)
             {
                 int result = await _genreService.Update(genre);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Update genre success!";
+                    TempData["Success"] = "Thêm thể loại thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Update genre failed!";
+                    TempData["Fail"] = "Thêm thể loại thất bại!";
                 }
                 return RedirectToAction("GenreList", "Home");
             }
@@ -149,16 +149,16 @@ namespace BookSocial.Presentation.Cms.Controllers
                     int result = await _genreService.Delete(id);
                     if (result != 0)
                     {
-                        TempData["Success"] = "Delete genre success!";
+                        TempData["Success"] = "Xóa thể loại thành công!";
                     }
                     else
                     {
-                        TempData["Fail"] = "Delete genre failed!";
+                        TempData["Fail"] = "Xóa thể loại thất bại!";
                     }
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete genre failed, still books left!";
+                    TempData["Fail"] = "Xóa thể loại thất bại, vẫn còn sách!";
                 }
                 return RedirectToAction("GenreList", "Home");
             }

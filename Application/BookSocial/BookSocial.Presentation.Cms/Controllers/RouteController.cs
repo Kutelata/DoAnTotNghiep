@@ -26,11 +26,11 @@ namespace BookSocial.Presentation.Cms.Controllers
         {
             if (userLogin.Account == null)
             {
-                ModelState.AddModelError("Account", "Account is required!");
+                ModelState.AddModelError("Account", "Tài khoản không được để trống!");
             }
             if (userLogin.Password == null)
             {
-                ModelState.AddModelError("Password", "Password is required!");
+                ModelState.AddModelError("Password", "Mật khẩu không được để trống!");
             }
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace BookSocial.Presentation.Cms.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Account or Password is not match!");
+                    ModelState.AddModelError(string.Empty, "Tài khoản hoặc mật khẩu không khớp!");
                 }
             }
             return View("~/Views/Login.cshtml");

@@ -89,11 +89,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _reviewService.Delete(id);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Delete Review success!";
+                    TempData["Success"] = "Xóa đánh giá thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete Review failed!";
+                    TempData["Fail"] = "Xóa đánh giá thất bại!";
                 }
                 return RedirectToAction("ReviewList", "Home");
             }

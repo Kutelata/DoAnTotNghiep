@@ -1,5 +1,4 @@
-﻿using BookSocial.EntityClass.Entity;
-using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Enum;
 using CsvHelper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -85,7 +84,7 @@ namespace BookSocial.Presentation.Cms.Controllers
                 foreach (var data in dataInPage)
                 {
                     double numberOfFriends = 0;
-                    foreach (var dataUserFriend in dataInPage)
+                    foreach (var dataUserFriend in allData)
                     {
                         var compareUserAndUserFriend = await _friendService.GetTotalByUserIdAndUserFriendId(data.Id, dataUserFriend.Id);
                         var compareUserFriendAndUser = await _friendService.GetTotalByUserIdAndUserFriendId(dataUserFriend.Id, data.Id);
@@ -144,11 +143,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _userService.Update(dataUser);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Change status success!";
+                    TempData["Success"] = "Thay đổi trạng thái thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Change status failed!";
+                    TempData["Fail"] = "Thay đổi trạng thái thất bại!";
                 }
                 return View("~/Views/User/User/Detail.cshtml", dataUser);
             }
@@ -174,11 +173,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             System.IO.File.Delete(imagePath);
                         }
                     }
-                    TempData["Success"] = "Delete User success!";
+                    TempData["Success"] = "Xóa người dùng thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete User failed!";
+                    TempData["Fail"] = "Xóa người dùng thất bại!";
                 }
                 return RedirectToAction("UserList", "Home");
             }

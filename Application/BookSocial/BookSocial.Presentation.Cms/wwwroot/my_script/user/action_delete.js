@@ -1,8 +1,9 @@
 ﻿$(document).on("click", ".btn-delete", function () {
     var id = $(this).data("id")
-    if (confirm('Are you sure want to delete user with id = ' + id + '?')) {
-        window.location.href = `${baseUrl}/Home/DeleteUser?id=${id}`
-    } else {
-        return false
-    }
+    alertify
+        .confirm(`Bạn có chắc muốn xóa người dùng với id = ${id} ?`, function () {
+            window.location.href = `${baseUrl}/Home/DeleteUser?id=${id}`
+        })
+        .setHeader('Xóa')
+        .set('labels', { ok: 'Đồng ý', cancel: 'Hủy' })
 })

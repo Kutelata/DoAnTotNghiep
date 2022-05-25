@@ -4,7 +4,7 @@ namespace BookSocial.EntityClass.Enum
 {
     public enum Star
     {
-        [Display(Name = "Không đánh giá")]
+        [Display(Name = "Chưa xếp hạng")]
         Zero = 0,
         [Display(Name = "1 sao")]
         One = 1,

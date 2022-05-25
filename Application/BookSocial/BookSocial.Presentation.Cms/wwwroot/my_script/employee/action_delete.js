@@ -1,8 +1,9 @@
 ﻿$(document).on("click", ".btn-delete", function () {
     var id = $(this).data("id")
-    if (confirm('Are you sure want to delete employee with id = ' + id + '?')) {
-        window.location.href = `${baseUrl}/Home/DeleteEmployee?id=${id}`
-    } else {
-        return false
-    }
+    alertify
+        .confirm(`Bạn có chắc muốn xóa nhân viên với id = ${id} ?`, function () {
+            window.location.href = `${baseUrl}/Home/DeleteEmployee?id=${id}`
+        })
+        .setHeader('Xóa')
+        .set('labels', { ok: 'Đồng ý', cancel: 'Hủy' })
 })

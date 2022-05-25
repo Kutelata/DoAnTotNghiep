@@ -1,2 +1,8 @@
-﻿body {
+﻿.comet-avatar {
+    display: inline-block;
+}
+
+.we-comment {
+    display: inline-block;
+    width: 80%;
 }

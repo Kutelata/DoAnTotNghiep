@@ -11,6 +11,7 @@ namespace BookSocial.Service.ServiceInterface
         Task<IEnumerable<Review>> GetByUserId(int userId);
         Task<double> GetTotalByUserId(int userId);
         Task<Review> GetById(int reviewId);
+        Task<int> Create(Review review);
         Task<int> Delete(int reviewId);
     }
 }

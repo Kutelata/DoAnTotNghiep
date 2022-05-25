@@ -76,11 +76,8 @@ namespace BookSocial.Presentation.Web.Controllers
                     data.AuthorListByBookId = await _authorService.GetAuthorListByBookId(data.BookId);
                 }
                 dataInPage.RecentActivityComment = commentLists.ToList();
-
-                int pages = (int)Math.Ceiling((double)dataInPage.ReviewList.Count / size);
                 dataInPage.ReviewList = dataInPage.ReviewList.Skip((page - 1) * size).Take(size).ToList();
             }
-
             return View("~/Views/Home/Index.cshtml", dataInPage);
         }
     }

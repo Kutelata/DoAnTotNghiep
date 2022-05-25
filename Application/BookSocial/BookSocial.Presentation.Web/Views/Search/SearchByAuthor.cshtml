@@ -42,9 +42,9 @@
                     <div class="l-post-meta my-l-post-meta">
                         <h4><a href="">@item.Name</a></h4>
                         <p>
-                            <b>Birthday:</b> @item.Birthday?.ToString("dd/MM/yyyy") <br />
+                            <b>Ngày sinh:</b> @item.Birthday?.ToString("dd/MM/yyyy") <br />
                             @item.Description <br />
-                            <b>Have Written: </b> @item.BookHaveBeenWrittens
+                            <b>Have Published: </b> @item.BookHaveBeenWrittens
                         </p>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                 <a class="page-link" href="@Url.Action("SearchAuthor","Home",
                           new{page=ViewBag.CurrentPage-1,
                               search=ViewBag.CurrentSearch})">
-                    Previous
+                    Trước
                 </a>
             </li>
         }
@@ -92,7 +92,7 @@
                 <a class="page-link" href="@Url.Action("SearchAuthor","Home",
                             new{page=ViewBag.CurrentPage+1,
                                 search=ViewBag.CurrentSearch})">
-                    Next
+                    Sau
                 </a>
             </li>
         }

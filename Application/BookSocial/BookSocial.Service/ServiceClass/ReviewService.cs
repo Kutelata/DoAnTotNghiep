@@ -31,6 +31,13 @@ namespace BookSocial.Service.ServiceClass
             return data;
         }
 
+        public async Task<int> Create(Review review)
+        {
+            var response = await GetClient().PostAsJsonAsync($"Review/Create", review);
+            var data = response.IsSuccessStatusCode ? await response.Content.ReadFromJsonAsync<int>() : 0;
+            return data;
+        }
+
         public async Task<int> Delete(int reviewId)
         {
             var response = await GetClient().DeleteAsync($"Review/Delete?id={reviewId}");

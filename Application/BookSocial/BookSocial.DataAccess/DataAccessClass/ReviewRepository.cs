@@ -12,7 +12,7 @@ namespace BookSocial.DataAccess.DataAccessClass
             using (var con = GetConnection())
             {
                 return await con.ExecuteAsync(
-                    @"INSERT INTO Review
+                    @"INSERT INTO Review OUTPUT INSERTED.ID
                     VALUES (
                         @text, @star, @createdAt, @bookId, @userId)",
                     entity);
@@ -129,6 +129,7 @@ namespace BookSocial.DataAccess.DataAccessClass
 					LEFT JOIN [User] u ON u.id = r.[user_id]
 					LEFT JOIN Shelf s ON s.[user_id] = r.[user_id] AND s.book_id = r.book_id
 					LEFT JOIN Book b ON b.id = r.book_id
+                    WHERE u.status != 0
 					ORDER BY created_at DESC");
             }
         }

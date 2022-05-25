@@ -8,17 +8,17 @@
 
 @foreach (var item in Model)
 {
-    <div class="l-post my-l-post">
+    <div class="l-post my-l-post box-display-review" data-review-exclude="@item.Id">
         <div class="user-post">
             <div class="friend-info">
                 <figure>
                     @if (string.IsNullOrEmpty(item.User?.Image))
                     {
-                        <img src=@($"{host}assets/images/user/user.png") width="50"/>
+                        <img src=@($"{host}assets/images/user/user.png") width="50" />
                     }
                     else
                     {
-                        <img src=@($"{host}assets/images/user/{item.User.Image}") width="50"/>
+                        <img src=@($"{host}assets/images/user/{item.User.Image}") width="50" />
                     }
                 </figure>
                 <div class="friend-name my-friend-name">
@@ -26,36 +26,50 @@
                     <span>@TimeHelper.GetPrettyDate(item.CreatedAt)</span>
                     @if (item.UserId == Convert.ToInt32(userIdClaim))
                     {
-                        <a class="btn-delete-review" href="#"><i class="fa fa-close"></i></a>
+                        <a class="btn-delete-review" data-review-id="@item.Id" href="#"><i class="fa fa-close"></i></a>
                     }
                 </div>
-                <div class="description my-description">
+                <div class="description my-description" style="float:right;width:91%">
                     <p>
                         @{
                             var progressRead = "";
-                            switch (item.Shelf.ProgressRead)
+                            if (item.Shelf != null)
                             {
-                                case ProgressRead.WantToRead:
-                                    progressRead = "Want To Read";
-                                    break;
-                                case ProgressRead.CurrentlyReading:
-                                    progressRead = "Currently Reading";
-                                    break;
-                                case ProgressRead.Read:
-                                    progressRead = "Read";
-                                    break;
+                                switch (item.Shelf.ProgressRead)
+                                {
+                                    case ProgressRead.WantToRead:
+                                        progressRead = "Muốn đọc";
+                                        break;
+                                    case ProgressRead.CurrentlyReading:
+                                        progressRead = "Đang đọc";
+                                        break;
+                                    case ProgressRead.Read:
+                                        progressRead = "Đã đọc";
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                progressRead = "Chưa đọc";
                             }
                         }
-                        Progress Read: @progressRead
+                        Tiến độ đọc: @progressRead
                     </p>
                     <p>
-                        Star:
-                        @for (int i = 0; i < (int)item.Star; i++)
+                        Xếp hạng:
+                        @if ((int)item.Star != 0)
                         {
-                            <i class="fa fa-star"></i>
+                            @for (int i = 0; i < (int)item.Star; i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                        }
+                        else
+                        {
+                            @Html.Raw("Chưa xếp hạng")
                         }
                     </p>
-                    <p>Review: @item.Text</p>
+                    <p>Đánh giá: @item.Text</p>
                 </div>
                 <div class="post-meta">
                     <div class="we-video-info">
@@ -74,7 +88,7 @@
             <div class="coment-area d-none comment-@item.Id">
                 <ul class="we-comet">
                     <li class="comment-position-@item.Id">
-                        <a href="#" data-review-id="@item.Id" class="btn-more-comment showmore underline">more comments</a>
+                        <a href="#" data-review-id="@item.Id" class="btn-more-comment showmore underline">Xem thêm bình luận</a>
                     </li>
                     <li class="post-comment post-comment-@item.Id">
                         <div class="comet-avatar">
@@ -82,10 +96,10 @@
                         </div>
                         <div class="post-comt-box">
                             <form data-review-id="@item.Id" action="@Url.Action("CreateComment", "Home")" method="post" class="my-post-comment">
-                                <textarea name="Text" placeholder="Post your comment ..."></textarea>
+                                <textarea name="Text" placeholder="Thêm bình luận ..."></textarea>
                                 <input hidden value="@item.Id" type="number" name="ReviewId" />
                                 <input hidden value="@userIdClaim" type="number" name="UserId" />
-                                <button class="my-btn" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
+                                <button class="my-btn my-btn-update" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
                             </form>
                         </div>
                     </li>

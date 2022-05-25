@@ -19,6 +19,8 @@
 
     <!-- My Style -->
     <link href="~/my_style/layout.css" rel="stylesheet">
+    <link href="~/my_style/alertify.min.css" rel="stylesheet">
+    <link href="~/my_style/default.min.css" rel="stylesheet">
     @await RenderSectionAsync("css", false)
 </head>
 <body class="nav-md">
@@ -47,6 +49,7 @@
     <script src="~/build/js/custom.min.js"></script>
 
     <!-- My Script -->
+    <script src="~/my_script/alertify.min.js"></script>
     @await RenderSectionAsync("script", false)
 </body>
 </html>
