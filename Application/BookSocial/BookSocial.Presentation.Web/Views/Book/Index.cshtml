@@ -11,6 +11,19 @@
     var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
 }
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Success"]
+    </div>
+}
+@if (TempData["Fail"] != null)
+{
+    <div class="alert alert-error" role="alert">
+        @TempData["Fail"]
+    </div>
+}
+
 <div class="blog-sec">
     <div class="l-post my-l-post">
         <h1 class="text-center">Thông tin sách</h1>
@@ -30,10 +43,10 @@
                     <h4><a href="">@Model.Name</a></h4>
                     <p>
                         <b>Isbn:</b> @Model.Isbn <br />
-                        <b>Name:</b> @Model.Name <br />
-                        <b>PageNumber:</b> @Model.PageNumber <br />
-                        <b>Published:</b> @(Model.Published == new DateTime(0001,01,01,00,00,00) ? "" : Model.Published?.ToShortDateString()) <br />
-                        <b>GenreId:</b> @Model.Genre.Name <br />
+                        <b>Tên sách:</b> @Model.Name <br />
+                        <b>Số trang:</b> @Model.PageNumber <br />
+                        <b>Ngày xuất bản:</b> @(Model.Published == new DateTime(0001,01,01,00,00,00) ? "" : Model.Published?.ToShortDateString()) <br />
+                        <b>Thể loại:</b> @Model.Genre?.Name <br />
                         @Model.Description
                     </p>
                     <div class="purify my-purify">

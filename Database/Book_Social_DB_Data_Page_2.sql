@@ -173,17 +173,17 @@ insert into Comment values
 (N'Bài viết rất đúng ý tôi','2001-02-12',1,8),
 (N'Tôi không đồng ý quan điểm này','2002-03-13',1,9),
 (N'Bài viết rất hay, giải thích đúng với nội dung của sách','2003-04-14',1,10),
-(N'Bạn nên đăng bài nhiều hơn','2022-05-15',1,11),
+(N'Bạn nên đăng bài nhiều hơn, tôi sẽ luôn đọc đánh giá của bạn','2022-05-15',1,11),
 
 (N'Tôi thích bình luận này','2004-06-16',2,12),
 (N'Bài viết rất đúng ý tôi','2005-07-17',2,13),
 (N'Tôi không đồng ý quan điểm này','2006-08-18',2,14),
 (N'Bài viết rất hay, giải thích đúng với nội dung của sách','2007-09-19',2,15),
-(N'Bạn nên đăng bài nhiều hơn','2008-10-20',2,16),
+(N'Bạn nên đăng bài nhiều hơn, tôi sẽ luôn đọc đánh giá của bạn','2008-10-20',2,16),
 
 (N'Tôi thích bình luận này','2009-11-21',3,17),
 (N'Bài viết rất đúng ý tôi','2010-12-22',3,18),
 (N'Tôi không đồng ý quan điểm này','2011-01-23',3,19),
 (N'Bài viết rất hay, giải thích đúng với nội dung của sách','2012-02-24',3,20),
-(N'Bạn nên đăng bài nhiều hơn','2013-03-25',3,21)
+(N'Bạn nên đăng bài nhiều hơn, tôi sẽ luôn đọc đánh giá của bạn','2013-03-25',3,21)
 go

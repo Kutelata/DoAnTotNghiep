@@ -30,7 +30,7 @@
             <input id="search" type="text" placeholder="Tìm kiếm ...">
             <button id="btn-search"><i class="ti-search"></i></button>
         </form>
-        <a class="btn btn-success">Thêm sách</a>
+        
         <div class="purify">
             <span>Tìm theo:</span>
             <select id="btn-search-by"
@@ -39,6 +39,7 @@
                     asp-for="@searchByDefault"
                     asp-items="Html.GetEnumSelectList<SearchBy>()">
             </select>
+            <a href="@Url.Action("CreateBook","Home")" class="btn">Thêm sách</a>
         </div>
     </div>
     @foreach (var item in Model)
@@ -47,12 +48,14 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <figure class="my-figure">
-                        <img src=@($"{host}assets/images/book/{item.BookImage}") />
+                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">
+                            <img src=@($"{host}assets/images/book/{item.BookImage}") />
+                        </a>
                     </figure>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="l-post-meta my-l-post-meta">
-                        <h4><a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})" title="">@item.BookName (@item.GenreName)</a></h4>
+                        <h4><a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName (@item.GenreName)</a></h4>
                         <div class="l-post-ranking">
                             @{
                                 var count = 0;
@@ -74,8 +77,8 @@
                             @item.BookDescription
                         </p>
                         <div class="g-post-ranking">
-                            <a class="likes" href="#"><i class="fa fa-star"></i>@item.AverageOfRating</a>
-                            <a class="coments" href="#"><i class="fa fa-comment-o"></i>@item.NumberOfReviews</a>
+                            <a class="likes"><i class="fa fa-star"></i>@item.AverageOfRating</a>
+                            <a class="coments"><i class="fa fa-comment-o"></i>@item.NumberOfReviews</a>
                         </div>
                         <div class="purify my-purify">
                             <select data-book-id="@item.BookId"

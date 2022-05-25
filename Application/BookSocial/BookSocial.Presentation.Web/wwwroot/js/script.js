@@ -376,15 +376,11 @@ jQuery(document).ready(function ($) {
         return false;
     });
     // new post box	
-    $(".new-postbox").click(function () {
+    $(".box-post-review").click(function () {
         $(".postoverlay").fadeIn(500);
     });
-    $(".postoverlay").not(".new-postbox").click(function () {
+    $(".postoverlay").not(".box-post-review").click(function () {
         $(".postoverlay").fadeOut(500);
-    });
-    $("[type = submit]").click(function () {
-        var post = $("textarea").val();
-        $("<p class='post'>" + post + "</p>").appendTo("section");
     });
 
 });//document ready end

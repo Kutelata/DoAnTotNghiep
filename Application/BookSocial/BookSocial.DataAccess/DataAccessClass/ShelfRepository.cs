@@ -141,5 +141,16 @@ namespace BookSocial.DataAccess.DataAccessClass
                     WHERE s.[user_id] = @userId", new { userId });
             }
         }
+        
+        public async Task<double> GetTotalReadByUserId(int userId)
+        {
+            using (var con = GetConnection())
+            {
+                return await con.QuerySingleAsync<double>(
+                    @"SELECT COUNT(s.[user_id]) 
+                    FROM Shelf s
+                    WHERE s.[user_id] = @userId AND s.progress_read = 2", new { userId });
+            }
+        }
     }
 }

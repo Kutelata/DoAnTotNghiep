@@ -42,7 +42,7 @@ namespace BookSocial.Service.ServiceClass
         public async Task<int> Create(Book book)
         {
             var response = await GetClient().PostAsJsonAsync($"Book/Create", book);
-            var data = response.IsSuccessStatusCode ? 1 : 0;
+            var data = response.IsSuccessStatusCode ? await response.Content.ReadFromJsonAsync<int>() : 0;
             return data;
         }
 

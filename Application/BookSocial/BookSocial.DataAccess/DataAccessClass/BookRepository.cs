@@ -11,8 +11,8 @@ namespace BookSocial.DataAccess.DataAccessClass
         {
             using (var con = GetConnection())
             {
-                return await con.ExecuteAsync(
-                    @"INSERT INTO Book VALUES (@isbn, @name, @image, @description, @pageNumber, @published, @genreId)", entity);
+                return await con.QuerySingleAsync<int>(
+                    @"INSERT INTO Book OUTPUT INSERTED.ID VALUES (@isbn, @name, @image, @description, @pageNumber, @published, @genreId)", entity);
             }
         }
 

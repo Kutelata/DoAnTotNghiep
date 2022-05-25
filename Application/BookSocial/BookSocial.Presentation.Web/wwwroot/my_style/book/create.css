@@ -1,0 +1,12 @@
+﻿.row.merged20 > div {
+    padding: 25px;
+}
+
+.form-group .my-control-label {
+    position: initial;
+    display: block;
+}
+
+.form-group .my-input {
+    padding: 0px;
+}

@@ -10,9 +10,10 @@
         data: form.serialize(),
         success: function (res) {
             if (res.trim().length != 0) {
-                alertify.success(res.responseText)
-                $(`after-post-review`).after(res)
+                $(`.after-post-review`).after(res)
                 form[0].reset()
+                $(".postoverlay").fadeOut(500);
+                alertify.success("Thêm đánh giá thành công!")
             }
         },
         error: function (res) {

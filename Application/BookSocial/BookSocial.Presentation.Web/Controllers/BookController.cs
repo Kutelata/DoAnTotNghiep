@@ -2,6 +2,7 @@
 using BookSocial.EntityClass.Entity;
 using BookSocial.EntityClass.Enum;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookSocial.Presentation.Web.Controllers
 {
@@ -15,10 +16,10 @@ namespace BookSocial.Presentation.Web.Controllers
             if (book != null)
             {
                 var convertBook = _mapper.Map<BookProfile>(book);
-                convertBook.Genre = await _genreService.GetById(convertBook.Id);
+                convertBook.Genre = await _genreService.GetById(convertBook.GenreId);
                 convertBook.AuthorListByBookId = (List<AuthorListByBookId>)await _authorService.GetAuthorListByBookId(convertBook.Id);
                 var reviewByBookIds = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
-                convertBook.ReviewByBookId = reviewByBookIds.Skip((page - 1) * size).Take(size).ToList();
+                convertBook.ReviewByBookId = reviewByBookIds.OrderByDescending(x => x.CreatedAt).Skip((page - 1) * size).Take(size).ToList();
                 foreach (var review in convertBook.ReviewByBookId)
                 {
                     review.User = await _userService.GetById(review.UserId);
@@ -29,15 +30,58 @@ namespace BookSocial.Presentation.Web.Controllers
             return View("~/Views/Error.cshtml");
         }
 
-        public IActionResult CreateBook()
+        public async Task<IActionResult> CreateBook()
         {
+            var genres = await _genreService.GetAll();
+            ViewBag.Genres = new SelectList(genres, "Id", "Name");
             return View("~/Views/Search/CreateBook.cshtml");
         }
-        
+
         [HttpPost]
-        public IActionResult CreateBook(Book book)
+        public async Task<IActionResult> CreateBook(Book book, IFormFile Image)
         {
-            return View("~/Views/Search/CreateBook.cshtml");
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
+            double numberBooksOnShelf = await _shelfService.GetTotalReadByUserId(Convert.ToInt32(userIdClaim));
+            if (numberBooksOnShelf < 10)
+            {
+                ModelState.AddModelError(String.Empty, "Người dùng phải đọc tối thiểu 10 cuốn sách mới có quyền thêm sách!");
+            }
+            if (checkIsbnUnique != null)
+            {
+                ModelState.AddModelError("Isbn", "Mã Isbn của sách bị trùng!");
+            }
+            if (ModelState.IsValid)
+            {
+                if (Image != null)
+                {
+                    book.Image = $"{book.Isbn}.jpg";
+                }
+                int result = await _bookService.Create(book);
+                if (result != 0)
+                {
+                    if (Image != null && Image.Length > 0)
+                    {
+                        var pathBook = Path.Combine(
+                            Directory.GetParent(Directory.GetCurrentDirectory()).FullName,
+                            @"BookSocial.Presentation.Cms\wwwroot\assets\images\book");
+                        var imagePath = Path.Combine(pathBook, book.Image);
+                        using (var stream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            await Image.CopyToAsync(stream);
+                        }
+                    }
+                    TempData["Success"] = "Thêm sách thành công!";
+                }
+                else
+                {
+                    TempData["Fail"] = "Thêm sách thất bại!";
+                }
+                return RedirectToAction("BookProfile", "Home", new { bookId = result });
+            }
+            var genres = await _genreService.GetAll();
+            ViewBag.Genres = new SelectList(genres, "Id", "Name", book.GenreId);
+            return View("~/Views/Search/CreateBook.cshtml", book);
         }
 
         public async Task<IActionResult> SearchBook(int page = 1, string search = null)

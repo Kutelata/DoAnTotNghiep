@@ -51,7 +51,8 @@ namespace BookSocial.Presentation.Web.Controllers
             if (reviewByBookIds.Any())
             {
                 reviewByBookIds =
-                    (from item in reviewByBookIds where !convertListReviewIdExclude.Contains(item.Id) select item).ToList();
+                    (from item in reviewByBookIds where !convertListReviewIdExclude.Contains(item.Id) select item)
+                    .OrderByDescending(x => x.CreatedAt).ToList();
 
                 reviewByBookIds = reviewByBookIds.Take(size).ToList();
                 foreach (var review in reviewByBookIds)

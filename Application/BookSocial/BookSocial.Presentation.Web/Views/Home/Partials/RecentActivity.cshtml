@@ -8,7 +8,9 @@
             <div class="activity-meta">
                 <i>@TimeHelper.GetPrettyDate(@item.CommentCreatedAt)</i>
                 <h6><a href="#">@item.UserCommentName</a></h6>
-                <span><a href="#">đã bình luận bài đánh giá của @item.UserReviewName</a></span>
+                <span>
+                    <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">đã bình luận bài đánh giá của @item.UserReviewName</a>
+                </span>
             </div>
         </li>
     }

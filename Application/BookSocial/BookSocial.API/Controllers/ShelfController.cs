@@ -40,6 +40,20 @@ namespace BookSocial.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetTotalReadByUserId(int userId)
+        {
+            try
+            {
+                var data = await _shelfRepository.GetTotalReadByUserId(userId);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetByUserId(int userId)
