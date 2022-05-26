@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookSocial.EntityClass.Entity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Web.Controllers
 {
@@ -68,6 +69,51 @@ namespace BookSocial.Presentation.Web.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.CurrentSearch = search;
             return View("~/Views/Search/SearchByAuthor.cshtml", dataInPage);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAuthor(Author author, IFormFile Image)
+        {
+            if (author != null)
+            {
+                if (String.IsNullOrEmpty(author.Name))
+                {
+                    TempData["Fail"] = "Tên tác giả không được để trống!";
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
+                else
+                {
+                    if (Image != null)
+                    {
+                        Random random = new Random();
+                        int randomNumber = random.Next(0, 1000);
+                        author.Image = $"{randomNumber}_{author.Name}.jpg";
+                    }
+                    int result = await _authorService.Create(author);
+                    if (result != 0)
+                    {
+                        if (Image != null && Image.Length > 0)
+                        {
+                            var pathBook = Path.Combine(
+                                Directory.GetParent(Directory.GetCurrentDirectory()).FullName,
+                                @"BookSocial.Presentation.Cms\wwwroot\assets\images\author");
+                            var imagePath = Path.Combine(pathBook, author.Image);
+                            using (var stream = new FileStream(imagePath, FileMode.Create))
+                            {
+                                await Image.CopyToAsync(stream);
+                            }
+                        }
+                        TempData["Success"] = "Thêm tác giả thành công!";
+                    }
+                    else
+                    {
+                        TempData["Fail"] = "Thêm tác giả thất bại!";
+                    }
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
+            }
+            TempData["Fail"] = "Dữ liệu rỗng!";
+            return Redirect(Request.Headers["Referer"].ToString());
         }
     }
 }

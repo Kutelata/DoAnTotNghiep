@@ -156,11 +156,11 @@ namespace BookSocial.Presentation.Web.Controllers
             int result = await _shelfService.DeleteByBookAndUserId(bookId, Convert.ToInt32(userIdClaim));
             if (result != 0)
             {
-                TempData["Success"] = "Delete Book success!";
+                TempData["Success"] = "Xóa sách thành công!";
             }
             else
             {
-                TempData["Fail"] = "Delete Book fail!";
+                TempData["Fail"] = "Xóa sách thất bại!";
             }
             return RedirectToAction("ShelfList", "Home");
         }

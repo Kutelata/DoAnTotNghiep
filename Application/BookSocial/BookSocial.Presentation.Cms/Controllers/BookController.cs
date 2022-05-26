@@ -134,7 +134,7 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
             if (checkIsbnUnique != null)
             {
-                ModelState.AddModelError("Isbn", "Isbn book must be unique");
+                ModelState.AddModelError("Isbn", "Mã Isbn không được phép trùng");
             }
             if (ModelState.IsValid)
             {
@@ -154,11 +154,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             await Image.CopyToAsync(stream);
                         }
                     }
-                    TempData["Success"] = "Create Book success!";
+                    TempData["Success"] = "Thêm sách thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Create Book failed!";
+                    TempData["Fail"] = "Thêm sách thất bại!";
                 }
                 return RedirectToAction("BookList", "Home");
             }
@@ -188,7 +188,7 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkIsbnUnique = await _bookService.GetByIsbn(book.Isbn);
             if (checkIsbnUnique != null && currentBook.Isbn != book.Isbn)
             {
-                ModelState.AddModelError("Isbn", "Isbn book must be unique");
+                ModelState.AddModelError("Isbn", "Mã Isbn không được trùng");
             }
             if (ModelState.IsValid)
             {
@@ -212,12 +212,12 @@ namespace BookSocial.Presentation.Cms.Controllers
                             await Image.CopyToAsync(stream);
                         }
                     }
-                    TempData["Success"] = "Edit Book success!";
+                    TempData["Success"] = "Sửa sách thành công!";
                     return RedirectToAction("BookList", "Home", new { search = book.Id });
                 }
                 else
                 {
-                    TempData["Fail"] = "Edit Book failed!";
+                    TempData["Fail"] = "Sửa sách thất bại!";
                     return RedirectToAction("BookList", "Home");
                 }
             }
@@ -236,17 +236,17 @@ namespace BookSocial.Presentation.Cms.Controllers
 
             if (authorAssignToBook.Any())
             {
-                TempData["Fail"] = "Delete Book failed, still assigned to author!";
+                TempData["Fail"] = "Xóa sách thất bại, vẫn đang được gán cho tác giả!";
                 return RedirectToAction("BookList", "Home");
             }
             if (reviewHaveBook.Any())
             {
-                TempData["Fail"] = "Delete Book failed, still have review!";
+                TempData["Fail"] = "Xóa sách thất bại, vẫn chứa đánh giá!";
                 return RedirectToAction("BookList", "Home");
             }
             if (shelfHaveBook.Any())
             {
-                TempData["Fail"] = "Delete Book failed, still have shelf!";
+                TempData["Fail"] = "Xóa sách thất bại, vẫn tồn tại ở giá sách người dùng!";
                 return RedirectToAction("BookList", "Home");
             }
             if (bookToDelete != null)
@@ -263,11 +263,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             System.IO.File.Delete(imagePath);
                         }
                     }
-                    TempData["Success"] = "Delete Book success!";
+                    TempData["Success"] = "Xóa sách thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete Book failed!";
+                    TempData["Fail"] = "Xóa sách thất bại!";
                 }
                 return RedirectToAction("BookList", "Home");
             }

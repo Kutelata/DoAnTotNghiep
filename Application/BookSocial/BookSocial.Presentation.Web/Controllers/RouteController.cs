@@ -26,11 +26,11 @@ namespace BookSocial.Presentation.Web.Controllers
         {
             if (userLogin.Account == null)
             {
-                ModelState.AddModelError("Account", "Account is required!");
+                ModelState.AddModelError("Account", "Tài khoản không được để trống!");
             }
             if (userLogin.Password == null)
             {
-                ModelState.AddModelError("Password", "Password is required!");
+                ModelState.AddModelError("Password", "Mật khẩu không được để trống!");
             }
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace BookSocial.Presentation.Web.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Account or Password is not match!");
+                    ModelState.AddModelError(string.Empty, "Tài khoản hoặc mật khẩu không khớp!");
                 }
             }
             return View("~/Views/Login.cshtml");
@@ -91,23 +91,23 @@ namespace BookSocial.Presentation.Web.Controllers
             var checkEmailUnique = await _userService.GetByEmail(user.Email);
             if (checkAccountUnique != null)
             {
-                ModelState.AddModelError("Account", "User Account must be unique");
+                ModelState.AddModelError("Account", "Tài khoản đã tồn tại");
             }
             if (checkEmailUnique != null)
             {
-                ModelState.AddModelError("Email", "User Email must be unique");
+                ModelState.AddModelError("Email", "Địa chỉ email đã tồn tại");
             }
             if (ModelState.IsValid)
             {
                 var result = await _userService.Create(user);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Register Account success!";
+                    TempData["Success"] = "Đăng ký tài khoản thành công!";
                     return RedirectToAction("Login", "Route");
                 }
                 else
                 {
-                    TempData["Fail"] = "Register Account failed!";
+                    TempData["Fail"] = "Đăng ký tài khoản thất bại!";
                 }
             }
             return View("~/Views/Register.cshtml", user);

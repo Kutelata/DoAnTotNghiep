@@ -1,3 +1,5 @@
 Việt hóa
-Gán tác giả, Thêm tác giả
+Gán tác giả
 Sửa href
+Sửa create Image
+Sửa xóa Image

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BookSocial.EntityClass.DTO.SearchAuthor>
 
 @section css{
-<link rel="stylesheet" href="~/my_style/shelf/index.css" />
+    <link rel="stylesheet" href="~/my_style/shelf/index.css" />
 }
 
-@{
+    @{
     var host = ConnectAdmin.BookSocialAdmin;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
     var searchByDefault = SearchBy.Author;
@@ -100,8 +100,8 @@
 </div>
 
 @section script{
-<script src="~/my_script/get_param_url.js"></script>
-<script src="~/my_script/action_in_list.js"></script>
-<script src="~/my_script/search/search_by.js"></script>
-<script src="~/my_script//shelf/change_progress_origin.js"></script>
+    <script src="~/my_script/get_param_url.js"></script>
+    <script src="~/my_script/action_in_list.js"></script>
+    <script src="~/my_script/search/search_by.js"></script>
+    <script src="~/my_script//shelf/change_progress_origin.js"></script>
 }

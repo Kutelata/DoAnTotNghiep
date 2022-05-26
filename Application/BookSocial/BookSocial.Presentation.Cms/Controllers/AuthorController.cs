@@ -94,11 +94,13 @@ namespace BookSocial.Presentation.Cms.Controllers
         {
             if (ModelState.IsValid)
             {
+                int result = await _authorService.Create(author);
                 if (Image != null)
                 {
-                    author.Image = $"{author.Id}_{author.Name}.jpg";
+                    Random random = new Random();
+                    int randomNumber = random.Next(0, 1000);
+                    author.Image = $"{randomNumber}_{author.Name}.jpg";
                 }
-                int result = await _authorService.Create(author);
                 if (result != 0)
                 {
                     if (Image != null && Image.Length > 0)
@@ -110,11 +112,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             await Image.CopyToAsync(stream);
                         }
                     }
-                    TempData["Success"] = "Create Author success!";
+                    TempData["Success"] = "Thêm tác giả thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Create Author failed!";
+                    TempData["Fail"] = "Thêm tác giả thất bại!";
                 }
                 return RedirectToAction("AuthorList", "Home");
             }
@@ -159,11 +161,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             await Image.CopyToAsync(stream);
                         }
                     }
-                    TempData["Success"] = "Edit Author success!";
+                    TempData["Success"] = "Sửa tác giả thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Edit Author failed!";
+                    TempData["Fail"] = "Sửa tác giả thất bại!";
                 }
                 return RedirectToAction("AuthorList", "Home");
             }
@@ -178,7 +180,7 @@ namespace BookSocial.Presentation.Cms.Controllers
 
             if (bookAssignToAuthor.Any())
             {
-                TempData["Fail"] = "Delete Author failed, still assigned to book!";
+                TempData["Fail"] = "Xóa tác giả thất bại, vẫn đang được gán cho sách!";
                 return RedirectToAction("AuthorList", "Home");
             }
             if (authorToDelete != null)
@@ -195,11 +197,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                             System.IO.File.Delete(imagePath);
                         }
                     }
-                    TempData["Success"] = "Delete Author success!";
+                    TempData["Success"] = "Xóa tác giả thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete Author failed!";
+                    TempData["Fail"] = "Xóa tác giả thất bại!";
                 }
                 return RedirectToAction("AuthorList", "Home");
             }

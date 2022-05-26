@@ -1,11 +1,11 @@
 ﻿@model BookSocial.EntityClass.DTO.BookProfile
 
 @section css{
-<link rel="stylesheet" href="~/my_style/book/index.css" />
-<link rel="stylesheet" href="~/my_style/comment/index.css" />
+    <link rel="stylesheet" href="~/my_style/book/index.css" />
+    <link rel="stylesheet" href="~/my_style/comment/index.css" />
 }
 
-@{
+    @{
     var host = ConnectAdmin.BookSocialAdmin;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
     var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
@@ -66,9 +66,9 @@
                         }
                         else
                         {
-                            <span>Chưa có tác giả (<a class="my-color-author" href="">Gán tác giả</a>)</span>
+                            <span>Chưa có tác giả </span>
                         }
-                        <br />
+                        (<a class="my-color-author" href="@Url.Action("AssignAuthor","Home", new{bookId = Model.Id})">Gán tác giả</a>)<br />
 
                         <b>Số trang:</b> @Model.PageNumber <br />
                         <b>Ngày xuất bản:</b> @(Model.Published == new DateTime(0001,01,01,00,00,00) ? "" : Model.Published?.ToShortDateString()) <br />
@@ -127,11 +127,11 @@
 <button id="btn-load-more" data-book-id="@Model.Id" class="btn-view btn-load-more"></button>
 
 @section script{
-<script src="~/my_script/get_param_url.js"></script>
-<script src="~/my_script/shelf/change_progress_origin.js"></script>
-<script src="~/my_script/action_load_more_book.js"></script>
-<script src="~/my_script/review/action_create.js"></script>
-<script src="~/my_script/comment/open_comment.js"></script>
-<script src="~/my_script/comment/action_delete.js"></script>
-<script src="~/my_script/review/action_delete.js"></script>
+    <script src="~/my_script/get_param_url.js"></script>
+    <script src="~/my_script/shelf/change_progress_origin.js"></script>
+    <script src="~/my_script/action_load_more_book.js"></script>
+    <script src="~/my_script/review/action_create.js"></script>
+    <script src="~/my_script/comment/open_comment.js"></script>
+    <script src="~/my_script/comment/action_delete.js"></script>
+    <script src="~/my_script/review/action_delete.js"></script>
 }

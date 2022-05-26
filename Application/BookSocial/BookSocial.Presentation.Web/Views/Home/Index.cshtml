@@ -4,11 +4,6 @@
 <link rel="stylesheet" href="~/my_style/home/index.css" />
 }
 
-@{
-    var host = ConnectAdmin.BookSocialAdmin;
-    var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
-}
-
 <div class="col-lg-3">
     <aside class="sidebar static left">
         <div class="widget my-widget">

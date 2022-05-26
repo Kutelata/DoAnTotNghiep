@@ -109,7 +109,7 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkAccountUnique = await _userService.GetByAccount(createEmployee.Account);
             if (checkAccountUnique != null)
             {
-                ModelState.AddModelError("Account", "User account must be unique");
+                ModelState.AddModelError("Account", "Tài khoản không được trùng");
             }
 
             createEmployee.Image = "";
@@ -122,11 +122,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _userService.Create(user);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Create User success!";
+                    TempData["Success"] = "Thêm nhân viên thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Create User failed!";
+                    TempData["Fail"] = "Thêm nhân viên thất bại!";
                 }
                 return RedirectToAction("EmployeeList", "Home");
             }
@@ -153,7 +153,7 @@ namespace BookSocial.Presentation.Cms.Controllers
             var checkAccountUnique = await _userService.GetByAccount(editEmployee.Account);
             if (checkAccountUnique != null && currentUser.Account != editEmployee.Account)
             {
-                ModelState.AddModelError("Account", "Employee account must be unique");
+                ModelState.AddModelError("Account", "Tài khoản không được trùng");
             }
 
             editEmployee.Image = "";
@@ -165,11 +165,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _userService.Update(user);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Edit Employee success!";
+                    TempData["Success"] = "Sửa nhân viên thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Edit Employee failed!";
+                    TempData["Fail"] = "Sửa nhân viên thất bại!";
                 }
                 return RedirectToAction("EmployeeList", "Home");
             }
@@ -186,11 +186,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _userService.Delete(id);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Delete Employee success!";
+                    TempData["Success"] = "Xóa nhân viên thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete Employee failed!";
+                    TempData["Fail"] = "Xóa nhân viên thất bại!";
                 }
                 return RedirectToAction("EmployeeList", "Home");
             }

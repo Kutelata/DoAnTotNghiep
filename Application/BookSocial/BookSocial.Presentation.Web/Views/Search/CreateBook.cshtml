@@ -1,60 +1,61 @@
 ﻿@model BookSocial.EntityClass.Entity.Book
 
 @section css{
-<link rel="stylesheet" href="~/my_style/book/create.css" />
+    <link rel="stylesheet" href="~/my_style/book/create.css" />
 }
 
-<div class="central-meta my-central-meta">
-    <div class="editing-info">
-        <h5 class="f-title">Thêm sách</h5>
+    <div class="central-meta my-central-meta">
+        <div class="editing-info">
+            <h5 class="f-title">Thêm sách</h5>
 
-        <form method="post"
+            <form method="post"
               action="@Url.Action("CreateBook","Home")"
               enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <input asp-for="Isbn" type="text" id="input" />
-                <label class="control-label" for="input">Mã ISBN</label><i class="mtrl-select"></i>
-                <span asp-validation-for="Isbn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Name" type="text" />
-                <label class="control-label" for="input">Tên sách</label><i class="mtrl-select"></i>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <img class="d-none mt-2" id="img-preview" style="width:200px" src="~/images/credit-cards.png" />
-                <input asp-for="Image" id="img-file" type="file" class="my-input mt-2" />
-                <label class="control-label my-control-label" for="input">Ảnh</label>
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="PageNumber" type="number" />
-                <label class="control-label" for="input">Số trang</label><i class="mtrl-select"></i>
-                <span asp-validation-for="PageNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Published" type="date" />
-                <label class="control-label" for="input">Ngày xuất bản</label><i class="mtrl-select"></i>
-                <span asp-validation-for="Published" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <select asp-for="GenreId" asp-items="@ViewBag.Genres"></select>
-                <span asp-validation-for="GenreId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <textarea asp-for="Description" rows="4" id="textarea"></textarea>
-                <label class="control-label" for="textarea">Mô tả</label><i class="mtrl-select"></i>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="submit-btns">
-                <button type="submit" class="mtr-btn"><span>Thêm mới</span></button>
-                <button type="reset" class="mtr-btn"><span>Làm mới</span></button>
-            </div>
-        </form>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Isbn" type="text" />
+                    <label class="control-label" for="input">Mã ISBN</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="Isbn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Name" type="text" />
+                    <label class="control-label" for="input">Tên sách</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <img class="d-none mt-2" id="img-preview" style="width:200px" src="~/images/credit-cards.png" />
+                    <input asp-for="Image" id="img-file" type="file" class="my-input mt-2" />
+                    <label class="control-label my-control-label" for="input">Ảnh</label>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="PageNumber" type="number" />
+                    <label class="control-label" for="input">Số trang</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="PageNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Published" type="date" />
+                    <label class="control-label" for="input">Ngày xuất bản</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="Published" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select asp-for="GenreId" asp-items="@ViewBag.Genres"></select>
+                    <label class="control-label" for="input">Thể loại</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="GenreId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <textarea asp-for="Description" rows="4"></textarea>
+                    <label class="control-label" for="textarea">Mô tả</label><i class="mtrl-select"></i>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="submit-btns">
+                    <button type="submit" class="mtr-btn"><span>Thêm mới</span></button>
+                    <button type="reset" class="mtr-btn"><span>Làm mới</span></button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-@section script{
-<script src="~/my_script/search/create.js"></script>
+    @section script{
+    <script src="~/my_script/search/create.js"></script>
 }

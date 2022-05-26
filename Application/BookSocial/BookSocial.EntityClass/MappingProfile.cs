@@ -36,7 +36,10 @@ namespace BookSocial.EntityClass
             CreateMap<BookProfile, Book>(); 
             
             CreateMap<Review, ReviewByBookId>();
-            CreateMap<ReviewByBookId, Review>();
+            CreateMap<ReviewByBookId, Review>(); 
+            
+            CreateMap<Book, BookAssignAuthor>();
+            CreateMap<BookAssignAuthor, Book>();
         }
     }
 }

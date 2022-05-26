@@ -6,6 +6,19 @@
     padding: 0px;
 }
 
+.chosen-single > span {
+    color: black;
+}
+
+.f-title {
+    margin-bottom: 0px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
 @media screen and (min-width:768px) {
     .form-group .my-control-label {
         font-size: 20px;

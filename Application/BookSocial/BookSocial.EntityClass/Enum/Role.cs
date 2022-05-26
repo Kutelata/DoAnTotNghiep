@@ -4,13 +4,13 @@ namespace BookSocial.EntityClass.Enum
 {
     public enum Role
     {
-        [Display(Name = "User")]
+        [Display(Name = "Người dùng")]
         User = 0,
-        [Display(Name = "Admin")]
+        [Display(Name = "Quản lý toàn bộ")]
         Admin = 1,
-        [Display(Name = "Library Manager")]
+        [Display(Name = "Quản lý thư viện")]
         LibraryManager = 2,
-        [Display(Name = "User Manager")]
+        [Display(Name = "Quản lý người dùng")]
         UserManager = 3
     }
 

@@ -83,11 +83,11 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _commentService.Delete(id);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Delete Comment success!";
+                    TempData["Success"] = "Xóa bình luận thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Delete Comment failed!";
+                    TempData["Fail"] = "Xóa bình luận thất bại!";
                 }
                 return RedirectToAction("CommentList", "Home");
             }

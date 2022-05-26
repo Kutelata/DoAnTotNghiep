@@ -1,5 +1,4 @@
-﻿using BookSocial.EntityClass.Entity;
-using BookSocial.EntityClass.Enum;
+﻿using BookSocial.EntityClass.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookSocial.EntityClass.DTO
@@ -42,13 +41,13 @@ namespace BookSocial.EntityClass.DTO
     public class UserRegister
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "User Name is required")]
+        [Required(ErrorMessage = "Tên người dùng không được để trống")]
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        [Required(ErrorMessage = "Account is required")]
+        [Required(ErrorMessage = "Tài khoản không được để trống")]
         public string Account { get; set; }
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string Password { get; set; }
         public string Image { get; set; }
         public string Address { get; set; }
@@ -89,11 +88,11 @@ namespace BookSocial.EntityClass.DTO
     public class CRUDEmployee
     {
         public int Id { get; set; }
-        [Required(ErrorMessage = "User Name is required")]
+        [Required(ErrorMessage = "Tên người dùng không được để trống")]
         public string Name { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        [Required(ErrorMessage = "Account is required")]
+        [Required(ErrorMessage = "Tài khoản không được để trống")]
         public string Account { get; set; }
         public string Password { get; set; }
         public string Image { get; set; }
@@ -108,11 +107,11 @@ namespace BookSocial.EntityClass.DTO
     public class ChangePassword
     {
         public int UserId { get; set; }
-        [Required(ErrorMessage = "Old Password is required")]
+        [Required(ErrorMessage = "Mật khẩu cũ không được để trống")]
         public string OldPassword { get; set; }
-        [Required(ErrorMessage = "New Password is required")]
+        [Required(ErrorMessage = "Mật khẩu mới không được để trống")]
         public string NewPassword { get; set; }
-        [Required(ErrorMessage = "Confirm Password is required")]
+        [Required(ErrorMessage = "Nhập lại mật khẩu mới không được để trống")]
         [Compare("NewPassword")]
         public string ConfirmPassword { get; set; }
     }

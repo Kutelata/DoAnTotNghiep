@@ -20,7 +20,7 @@ namespace BookSocial.Presentation.Web.Controllers
                 convertBook.Genre = await _genreService.GetById(convertBook.GenreId);
                 convertBook.AuthorListByBookId = (List<AuthorListByBookId>)await _authorService.GetAuthorListByBookId(convertBook.Id);
                 var reviewByBookIds = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
-                
+
                 int count = 0;
                 foreach (var review in reviewByBookIds)
                 {
@@ -166,5 +166,25 @@ namespace BookSocial.Presentation.Web.Controllers
             ViewBag.CurrentSearch = search;
             return View("~/Views/Search/SearchByBook.cshtml", dataInPage);
         }
+
+        public async Task<IActionResult> AssignAuthor(int bookId)
+        {
+            var book = await _bookService.GetById(bookId);
+            if (book != null)
+            {
+                var authors = await _authorService.GetAuthorListByBookId(bookId);
+                var convertBooks = _mapper.Map<BookAssignAuthor>(book);
+                convertBooks.AuthorListByBookId = (List<AuthorListByBookId>)authors;
+                return View("~/Views/Book/AssignAuthor.cshtml", convertBooks);
+            }
+            return View("~/Views/Error.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AssignAuthor(Author author)
+        {
+            return View("~/Views/Book/AssignAuthor.cshtml");
+        }
+
     }
 }

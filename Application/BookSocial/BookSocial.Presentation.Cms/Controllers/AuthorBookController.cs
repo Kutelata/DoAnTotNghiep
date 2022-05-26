@@ -12,7 +12,7 @@ namespace BookSocial.Presentation.Cms.Controllers
         {
             if (authorBook.BookId == 0 || authorBook.AuthorId == 0)
             {
-                TempData["Fail"] = "You must enter correctly!";
+                TempData["Fail"] = "Bạn phải nhập chính xác!";
                 return Redirect(Request.Headers["Referer"].ToString());
             }
             var checkAuthorBook = await _authorBookService.GetByAuthorBookId(authorBook.BookId, authorBook.AuthorId);
@@ -21,17 +21,17 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _authorBookService.Create(authorBook);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Assign author success!";
+                    TempData["Success"] = "Gán tác giả thành công!";
                     return RedirectToAction("DetailBook", "Home", new { id = authorBook.BookId });
                 }
                 else
                 {
-                    TempData["Fail"] = "Assign author fail!";
+                    TempData["Fail"] = "Gán tác giả thất bại!";
                 }
             }
             else
             {
-                TempData["Fail"] = "Author is assigned!";
+                TempData["Fail"] = "Gán tác giả thất bại!";
             }
             return Redirect(Request.Headers["Referer"].ToString());
         }
@@ -42,10 +42,10 @@ namespace BookSocial.Presentation.Cms.Controllers
             int result = await _authorBookService.Delete(bookId, authorId);
             if (result != 0)
             {
-                TempData["Success"] = "Delete author from book success!";
+                TempData["Success"] = "Bỏ gán tác giả thành công!";
                 return RedirectToAction("DetailBook", "Home", new { id = bookId });
             }
-            TempData["Fail"] = "Delete author from book fail!";
+            TempData["Fail"] = "Bỏ gán tác giả thất bại!";
             return Redirect(Request.Headers["Referer"].ToString());
         }
     }

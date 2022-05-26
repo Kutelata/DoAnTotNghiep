@@ -110,11 +110,11 @@ namespace BookSocial.Presentation.Web.Controllers
             int resultFromUserFriend = await _friendService.DeleteByUserAndUserFriendId(userFriendId, Convert.ToInt32(userIdClaim));
             if (resultFromUser != 0 && resultFromUserFriend != 0)
             {
-                TempData["Success"] = "Delete Friend success!";
+                TempData["Success"] = "Xóa bạn thành công!";
             }
             else
             {
-                TempData["Fail"] = "Delete Friend fail!";
+                TempData["Fail"] = "Xóa bạn thất bại!";
             }
             return RedirectToAction("FriendList", "Home");
         }
@@ -134,16 +134,16 @@ namespace BookSocial.Presentation.Web.Controllers
                 int result = await _friendService.Create(friend);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Add friend success!";
+                    TempData["Success"] = "Thêm bạn thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Add friend fail!";
+                    TempData["Fail"] = "Thêm bạn thất bại!";
                 }
             }
             else
             {
-                TempData["Fail"] = "Already add this friend!";
+                TempData["Fail"] = "Đã có người bạn này trong danh sách bạn bè!";
             }
             return RedirectToAction("FriendList", "Home", new { filter = ((int)FriendStatus.Suggest).ToString() });
         }
@@ -162,16 +162,16 @@ namespace BookSocial.Presentation.Web.Controllers
                 int result = await _friendService.Create(friend);
                 if (result != 0)
                 {
-                    TempData["Success"] = "Confirm friend success!";
+                    TempData["Success"] = "Chấp thuận bạn thành công!";
                 }
                 else
                 {
-                    TempData["Fail"] = "Confirm friend fail!";
+                    TempData["Fail"] = "Chấp thuận bạn thất bại!";
                 }
             }
             else
             {
-                TempData["Fail"] = "Already confirm this friend!";
+                TempData["Fail"] = "Đã chấp thuận người bạn này!";
             }
             return RedirectToAction("FriendList", "Home", new { filter = ((int)FriendStatus.Request).ToString() });
         }
