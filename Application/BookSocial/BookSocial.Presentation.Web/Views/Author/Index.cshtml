@@ -25,7 +25,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                 <div class="l-post-meta my-l-post-meta">
-                    <h4><a href="">@Model.Name</a></h4>
+                    <h4><a>@Model.Name</a></h4>
                     <p>
                         <b>Ngày sinh:</b> @Model.Birthday?.ToString("dd/MM/yyyy") <br />
                         @Model.Description
@@ -43,7 +43,9 @@
             <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                 <div class="l-post my-l-post" style="text-align:center">
                     <figure class="my-figure mb-2">
-                        <img src=@($"{host}assets/images/book/{item.BookImage}") />
+                        <a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">
+                            <img src=@($"{host}assets/images/book/{item.BookImage}") />
+                        </a>
                     </figure>
                     <div class="l-post-meta my-l-post-meta">
                         <h4><a href="@Url.Action("BookProfile","Home",new{bookId=item.BookId})">@item.BookName</a></h4>

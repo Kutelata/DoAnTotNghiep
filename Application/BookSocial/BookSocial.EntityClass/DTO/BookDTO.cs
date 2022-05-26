@@ -58,5 +58,7 @@ namespace BookSocial.EntityClass.DTO
         public Genre Genre { get; set; }
         public List<AuthorListByBookId> AuthorListByBookId { get; set; }
         public List<ReviewByBookId> ReviewByBookId { get; set; }
+        public ProgressReadOrigin UserClaimProgressRead { get; set; }
+        public double AverageOfStar { get; set; }
     }
 }

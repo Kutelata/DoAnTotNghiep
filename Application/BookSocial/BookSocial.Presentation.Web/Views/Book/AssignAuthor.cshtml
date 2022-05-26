@@ -1,6 +1,7 @@
 ﻿@model BookSocial.EntityClass.DTO.BookProfile
 
 @section css{
+<link rel="stylesheet" href="~/my_style/jquery-ui.min.css" />
 <link rel="stylesheet" href="~/my_style/book/index.css" />
 <link rel="stylesheet" href="~/my_style/comment/index.css" />
 }
@@ -42,7 +43,7 @@
                 <div class="l-post-meta my-l-post-meta">
                     <h4><a href="">@Model.Name</a></h4>
                     <p>
-                        <b>Xếp hạng:</b> @(!double.IsNaN(Model.AverageOfStar) ? Html.Raw($"{Model.AverageOfStar} <i class=\"fa fa-star\"></i>") : "Chưa xếp hạng")  <br />
+                        <b>Xếp hạng:</b> 5 <i class="fa fa-star"></i> <br />
                         <b>Isbn:</b> @Model.Isbn <br />
                         <b>Tên sách:</b> @Model.Name <br />
                         <b>Tác giả:</b>
@@ -127,6 +128,7 @@
 <button id="btn-load-more" data-book-id="@Model.Id" class="btn-view btn-load-more"></button>
 
 @section script{
+<script src="~/my_script/jquery-ui.min.js"></script>
 <script src="~/my_script/get_param_url.js"></script>
 <script src="~/my_script/shelf/change_progress_origin.js"></script>
 <script src="~/my_script/action_load_more_book.js"></script>

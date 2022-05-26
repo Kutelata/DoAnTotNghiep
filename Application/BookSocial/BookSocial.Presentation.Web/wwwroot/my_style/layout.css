@@ -38,6 +38,14 @@
     color: red;
 }
 
+.my-color-author {
+    color: #088DCD;
+}
+
+.my-color-author:hover{
+    color: #088DCD;
+}
+
 @media screen and (max-width: 980px) {
     .central-meta {
         margin: 20px 0px 0px 0px;

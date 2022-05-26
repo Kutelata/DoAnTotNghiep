@@ -11,6 +11,7 @@ namespace BookSocial.Presentation.Web.Controllers
         public async Task<IActionResult> BookProfile(int bookId)
         {
             var book = await _bookService.GetById(bookId);
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
             var page = 1;
             var size = 2;
             if (book != null)
@@ -19,7 +20,26 @@ namespace BookSocial.Presentation.Web.Controllers
                 convertBook.Genre = await _genreService.GetById(convertBook.GenreId);
                 convertBook.AuthorListByBookId = (List<AuthorListByBookId>)await _authorService.GetAuthorListByBookId(convertBook.Id);
                 var reviewByBookIds = _mapper.Map<List<ReviewByBookId>>(await _reviewService.GetByBookId(convertBook.Id));
+                
+                int count = 0;
+                foreach (var review in reviewByBookIds)
+                {
+                    if ((double)review.Star != 0)
+                    {
+                        count++;
+                        convertBook.AverageOfStar += (double)review.Star;
+                    }
+                }
+                convertBook.AverageOfStar /= count;
                 convertBook.ReviewByBookId = reviewByBookIds.OrderByDescending(x => x.CreatedAt).Skip((page - 1) * size).Take(size).ToList();
+
+                var checkBookInShelf = await _shelfService.GetByBookAndUserId(book.Id, Convert.ToInt32(userIdClaim));
+                if (checkBookInShelf != null)
+                {
+                    convertBook.UserClaimProgressRead = (ProgressReadOrigin)checkBookInShelf.ProgressRead;
+                }
+                else { convertBook.UserClaimProgressRead = ProgressReadOrigin.NotRead; }
+
                 foreach (var review in convertBook.ReviewByBookId)
                 {
                     review.User = await _userService.GetById(review.UserId);
