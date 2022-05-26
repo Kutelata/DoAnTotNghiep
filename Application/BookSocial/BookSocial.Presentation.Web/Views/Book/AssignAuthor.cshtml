@@ -93,16 +93,13 @@
         <div class="central-meta my-central-meta">
             <div class="editing-info">
                 <h5 class="f-title">Gán tác giả</h5>
-                <form method="post"
-                      action="@Url.Action("CreateAuthor","Home")"
-                      enctype="multipart/form-data">
-                    <input asp-for="Id" hidden />
+                <form method="post" action="@Url.Action("AssignAuthorToBook","Home")">
+                    <input id="assign-author-id" name="AuthorId" type="number" value="" hidden />
+                    <input name="BookId" type="number" value="@Model.Id" hidden />
+                        <img class="mt-2 d-none" id="assign-author-image" style="width:200px" src="~/images/book-icon.png" />
+                    <p class="d-none" id="assign-author-birthday">long</p>
                     <div class="form-group">
-                        <img class="mt-2" id="img-preview" style="width:200px" src="~/images/credit-cards.png" />
-                    </div>
-                    <p>long</p>
-                    <div class="form-group">
-                        <input name="Name" type="text" />
+                        <input id="assign-author-value" data-host=@($"{host}assets/images/author/") type="text" />
                         <label class="control-label" for="input">Tên tác giả</label><i class="mtrl-select"></i>
                     </div>
                     <div class="submit-btns">
@@ -115,5 +112,7 @@
 </div>
 
 @section script{
+    <script src="~/my_script/get_param_url.js"></script>
     <script src="~/my_script/search/create.js"></script>
+    <script src="~/my_script/book/action_autocomplete.js"></script>
     }

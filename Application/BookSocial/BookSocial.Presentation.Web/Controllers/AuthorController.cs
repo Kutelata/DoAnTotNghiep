@@ -23,6 +23,13 @@ namespace BookSocial.Presentation.Web.Controllers
 
         }
 
+        public async Task<IActionResult> AuthorData(string search)
+        {
+            var data = await _authorService.GetAll();
+            var handleData = data.Where(data => (data.Name != null && data.Name.Contains(search)));
+            return Json(handleData);
+        }
+
         public async Task<IActionResult> SearchAuthor(int page = 1, string search = null)
         {
             var allData = await _authorService.GetSearchAuthor();
@@ -113,6 +120,35 @@ namespace BookSocial.Presentation.Web.Controllers
                 }
             }
             TempData["Fail"] = "Dữ liệu rỗng!";
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AssignAuthorToBook(AuthorBook authorBook)
+        {
+            if (authorBook.BookId == 0 || authorBook.AuthorId == 0)
+            {
+                TempData["Fail"] = "Bạn phải nhập chính xác!";
+                return Redirect(Request.Headers["Referer"].ToString());
+            }
+            var checkAuthorBook = await _authorBookService.GetByAuthorBookId(authorBook.BookId, authorBook.AuthorId);
+            if (checkAuthorBook == null)
+            {
+                int result = await _authorBookService.Create(authorBook);
+                if (result != 0)
+                {
+                    TempData["Success"] = "Gán tác giả thành công!";
+                    return RedirectToAction("DetailBook", "Home", new { id = authorBook.BookId });
+                }
+                else
+                {
+                    TempData["Fail"] = "Gán tác giả thất bại!";
+                }
+            }
+            else
+            {
+                TempData["Fail"] = "Gán tác giả thất bại!";
+            }
             return Redirect(Request.Headers["Referer"].ToString());
         }
     }
