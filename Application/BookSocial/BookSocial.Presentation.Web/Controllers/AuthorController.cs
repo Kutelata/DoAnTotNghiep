@@ -1,4 +1,5 @@
 ﻿using BookSocial.EntityClass.Entity;
+using BookSocial.Presentation.Web.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookSocial.Presentation.Web.Controllers
@@ -83,6 +84,13 @@ namespace BookSocial.Presentation.Web.Controllers
         {
             if (author != null)
             {
+                var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+                double numberBooksOnShelf = await _shelfService.GetTotalReadByUserId(Convert.ToInt32(userIdClaim));
+                if (numberBooksOnShelf < 10)
+                {
+                    TempData["Fail"] = "Người dùng phải đọc tối thiểu 10 cuốn sách mới có quyền thêm sách!";
+                    return Redirect(Request.Headers["Referer"].ToString());
+                }
                 if (String.IsNullOrEmpty(author.Name))
                 {
                     TempData["Fail"] = "Tên tác giả không được để trống!";
@@ -92,19 +100,21 @@ namespace BookSocial.Presentation.Web.Controllers
                 {
                     if (Image != null)
                     {
-                        Random random = new Random();
+                        Random random = new();
                         int randomNumber = random.Next(0, 1000);
-                        author.Image = $"{randomNumber}_{author.Name}.jpg";
+                        string convertAuthorName = StringHelper
+                            .RemoveSign4VietnameseString(author.Name).Replace(" ", "").ToLower();
+                        author.Image = $"{randomNumber}_{convertAuthorName}.jpg";
                     }
                     int result = await _authorService.Create(author);
                     if (result != 0)
                     {
                         if (Image != null && Image.Length > 0)
                         {
-                            var pathBook = Path.Combine(
+                            var pathAuthor = Path.Combine(
                                 Directory.GetParent(Directory.GetCurrentDirectory()).FullName,
                                 @"BookSocial.Presentation.Cms\wwwroot\assets\images\author");
-                            var imagePath = Path.Combine(pathBook, author.Image);
+                            var imagePath = Path.Combine(pathAuthor, author.Image);
                             using (var stream = new FileStream(imagePath, FileMode.Create))
                             {
                                 await Image.CopyToAsync(stream);
@@ -126,6 +136,13 @@ namespace BookSocial.Presentation.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> AssignAuthorToBook(AuthorBook authorBook)
         {
+            var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
+            double numberBooksOnShelf = await _shelfService.GetTotalReadByUserId(Convert.ToInt32(userIdClaim));
+            if (numberBooksOnShelf < 10)
+            {
+                TempData["Fail"] = "Người dùng phải đọc tối thiểu 10 cuốn sách mới có quyền thêm sách!";
+                return Redirect(Request.Headers["Referer"].ToString());
+            }
             if (authorBook.BookId == 0 || authorBook.AuthorId == 0)
             {
                 TempData["Fail"] = "Bạn phải nhập chính xác!";
@@ -138,7 +155,7 @@ namespace BookSocial.Presentation.Web.Controllers
                 if (result != 0)
                 {
                     TempData["Success"] = "Gán tác giả thành công!";
-                    return RedirectToAction("DetailBook", "Home", new { id = authorBook.BookId });
+                    return Redirect(Request.Headers["Referer"].ToString());
                 }
                 else
                 {
@@ -147,7 +164,7 @@ namespace BookSocial.Presentation.Web.Controllers
             }
             else
             {
-                TempData["Fail"] = "Gán tác giả thất bại!";
+                TempData["Fail"] = "Gán tác giả thất bại, tác giả đã được gán!";
             }
             return Redirect(Request.Headers["Referer"].ToString());
         }

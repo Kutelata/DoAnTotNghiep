@@ -1,4 +1,5 @@
 ﻿using BookSocial.EntityClass.Entity;
+using BookSocial.Presentation.Cms.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -97,16 +98,18 @@ namespace BookSocial.Presentation.Cms.Controllers
                 int result = await _authorService.Create(author);
                 if (Image != null)
                 {
-                    Random random = new Random();
+                    Random random = new();
                     int randomNumber = random.Next(0, 1000);
-                    author.Image = $"{randomNumber}_{author.Name}.jpg";
+                    string convertAuthorName = StringHelper
+                        .RemoveSign4VietnameseString(author.Name).Replace(" ", "").ToLower();
+                    author.Image = $"{randomNumber}_{convertAuthorName}.jpg";
                 }
                 if (result != 0)
                 {
                     if (Image != null && Image.Length > 0)
                     {
-                        var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\author");
-                        var imagePath = Path.Combine(pathBook, author.Image);
+                        var pathAuthor = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\author");
+                        var imagePath = Path.Combine(pathAuthor, author.Image);
                         using (var stream = new FileStream(imagePath, FileMode.Create))
                         {
                             await Image.CopyToAsync(stream);
@@ -143,7 +146,9 @@ namespace BookSocial.Presentation.Cms.Controllers
             {
                 if (Image != null)
                 {
-                    author.Image = $"{author.Id}_{author.Name}.jpg";
+                    string convertAuthorName = StringHelper
+                        .RemoveSign4VietnameseString(author.Name).Replace(" ", "").ToLower();
+                    author.Image = $"{author.Id}_{convertAuthorName}.jpg";
                 }
                 else
                 {
@@ -154,8 +159,17 @@ namespace BookSocial.Presentation.Cms.Controllers
                 {
                     if (Image != null && Image.Length > 0)
                     {
-                        var pathBook = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\author");
-                        var imagePath = Path.Combine(pathBook, author.Image);
+                        if (!string.IsNullOrEmpty(currentAuthor.Image))
+                        {
+                            var pathOldAuthor = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\author");
+                            var imageOldPath = Path.Combine(pathOldAuthor, currentAuthor.Image);
+                            if (System.IO.File.Exists(imageOldPath))
+                            {
+                                System.IO.File.Delete(imageOldPath);
+                            }
+                        }
+                        var pathAuthor = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\assets\images\author");
+                        var imagePath = Path.Combine(pathAuthor, author.Image);
                         using (var stream = new FileStream(imagePath, FileMode.Create))
                         {
                             await Image.CopyToAsync(stream);

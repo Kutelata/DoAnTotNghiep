@@ -84,10 +84,10 @@ namespace BookSocial.DataAccess.DataAccessClass
 						COUNT(r.id) as 'NumberOfReviews',
                         AVG(cast(NULLIF(r.star, 0) AS BIGINT)) as 'AverageOfRating'
                     FROM [User] u
-                    JOIN Shelf s ON s.user_id = u.id
-                    JOIN Book b ON b.id = s.book_id
-                    JOIN Genre g ON g.id = b.genre_id
-					JOIN Review r ON r.book_id = s.book_id
+                    LEFT JOIN Shelf s ON s.user_id = u.id
+                    LEFT JOIN Book b ON b.id = s.book_id
+                    LEFT JOIN Genre g ON g.id = b.genre_id
+					LEFT JOIN Review r ON r.book_id = s.book_id
                     WHERE u.id = @userId
 					GROUP BY s.[user_id], g.id, g.[name], b.id, b.[name], 
                         b.[image], b.[description], s.progress_read", new { userId });
