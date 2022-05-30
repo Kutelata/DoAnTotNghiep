@@ -179,12 +179,5 @@ namespace BookSocial.Presentation.Web.Controllers
             }
             return View("~/Views/Error.cshtml");
         }
-
-        [HttpPost]
-        public async Task<IActionResult> AssignAuthor(Author author)
-        {
-            return View("~/Views/Book/AssignAuthor.cshtml");
-        }
-
     }
 }

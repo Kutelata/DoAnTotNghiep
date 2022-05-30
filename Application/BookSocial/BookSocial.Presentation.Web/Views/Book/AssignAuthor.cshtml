@@ -11,7 +11,10 @@
 
 <div class="blog-sec">
     <div class="l-post my-l-post">
-        <h1 class="text-center">Gán tác giả cho @Model.Name (@Model.Isbn)</h1>
+        <h1 class="text-center">
+            Gán tác giả cho cuốn sách
+            <a style="color:#088dcd" href="@Url.Action("BookProfile", "Home", new { bookId = Model.Id })">@Model.Name (@Model.Isbn)</a>
+        </h1>
     </div>
 </div>
 
@@ -96,7 +99,7 @@
                 <form method="post" action="@Url.Action("AssignAuthorToBook","Home")">
                     <input id="assign-author-id" name="AuthorId" type="number" value="" hidden />
                     <input name="BookId" type="number" value="@Model.Id" hidden />
-                        <img class="mt-2 d-none" id="assign-author-image" style="width:200px" src="~/images/book-icon.png" />
+                    <img class="mt-2 d-none" id="assign-author-image" style="width:200px" src="~/images/book-icon.png" />
                     <p class="d-none" id="assign-author-birthday">long</p>
                     <div class="form-group">
                         <input id="assign-author-value" data-host=@($"{host}assets/images/author/") type="text" />
