@@ -24,6 +24,17 @@
 
     <!-- My Style -->
     <link href="~/my_style/layout.css" rel="stylesheet">
+    <style>
+        #div-toggle-password {
+            position: relative;
+        }
+
+        #btn-toggle-password {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
 </head>
 <body class="login">
     <div>
@@ -36,8 +47,9 @@
                         <div>
                             <input type="text" class="form-control" asp-for="Account" placeholder="Tài khoản" />
                         </div>
-                        <div>
-                            <input type="password" class="form-control" asp-for="Password" placeholder="Mật khẩu" />
+                        <div id="div-toggle-password">
+                            <input id="input-toggle-password" type="password" class="form-control" asp-for="Password" placeholder="Mật khẩu" />
+                            <a href="#" id="btn-toggle-password"><i id="ic-toggle-password" class="fa fa-eye"></i></a>
                         </div>
                         <div>
                             <input type="submit" class="my-btn-login btn btn-default submit" value="Đăng nhập" />
@@ -49,5 +61,20 @@
             </div>
         </div>
     </div>
+    <!-- JQuery -->
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).on("click", "#btn-toggle-password", function(e) {
+            if ($('#ic-toggle-password').hasClass('fa-eye')) {
+                $('#ic-toggle-password').removeClass('fa-eye')
+                $('#ic-toggle-password').addClass('fa-eye-slash')
+                $('#input-toggle-password').attr('type', 'text')
+            } else {
+                $('#ic-toggle-password').addClass('fa-eye')
+                $('#ic-toggle-password').removeClass('fa-eye-slash')
+                $('#input-toggle-password').attr('type', 'password')
+            }
+        })
+    </script>
 </body>
 </html>

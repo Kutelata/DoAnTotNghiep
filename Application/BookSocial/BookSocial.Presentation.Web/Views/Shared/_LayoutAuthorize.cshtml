@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="~/css/style.css">
     <link rel="stylesheet" href="~/css/color.css">
     <link rel="stylesheet" href="~/css/responsive.css">
+
+    <!-- My Style -->
+    @await RenderSectionAsync("css", false)
 </head>
 <body>
     <div class="theme-layout">
@@ -47,5 +50,8 @@
 
     <script src="~/js/main.min.js"></script>
     <script src="~/js/script.js"></script>
+
+    <!-- My Script -->
+    @await RenderSectionAsync("script", false)
 </body>
 </html>
