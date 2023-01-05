@@ -42,8 +42,16 @@
     color: #088DCD;
 }
 
-.my-color-author:hover{
-    color: #088DCD;
+    .my-color-author:hover {
+        color: #088DCD;
+    }
+
+.top-area ul .my-main-menu-item a:hover {
+    color: #088dcd;
+}
+
+.top-area .user-img:hover span {
+    color: #088dcd;
 }
 
 @media screen and (max-width: 980px) {

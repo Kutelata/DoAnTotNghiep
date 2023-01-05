@@ -1,7 +1,9 @@
-﻿@{
+﻿@using BookSocial.EntityClass.DTO
+
+@{
     Layout = "_LayoutAuthorize";
 }
-@model BookSocial.EntityClass.Entity.User
+@model UserRegister
 
 @section css{
     <style>
@@ -10,43 +12,54 @@
             right: 0;
             top: 0;
         }
+
+        .forgot-pwd {
+            justify-content: end;
+            display: flex;
+        }
     </style>
 }
 
-<h2 class="log-title text-center">Đăng ký</h2>
+    <h2 class="log-title text-center">Đăng ký</h2>
 
-<form method="post" action="@Url.Action("Register","Route")">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <input type="text" asp-for="Name" />
-        <label class="control-label" for="input">Tên người dùng</label><i class="mtrl-select"></i>
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="text" asp-for="Account" />
-        <label class="control-label" for="input">Tài khoản</label><i class="mtrl-select"></i>
-        <span asp-validation-for="Account" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input id="input-toggle-password" type="password" asp-for="Password" />
-        <a href="#" id="btn-toggle-password"><i id="ic-toggle-password" class="fa fa-eye"></i></a>
-        <label class="control-label" for="input">Mật khẩu</label><i class="mtrl-select"></i>
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="text" asp-for="Email" />
-        <label class="control-label" for="input">Địa chỉ email</label><i class="mtrl-select"></i>
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <a href="@Url.Action("Login","Route")" title="" class="forgot-pwd" style="width:100%">Bạn đã có tài khoản?</a>
-    <div class="submit-btns" style="display:flex;justify-content:center">
-        <button class="mtr-btn" type="submit"><span>Đăng ký</span></button>
-    </div>
-</form>
+    <form method="post" action="@Url.Action("Register","Route")">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input type="text" asp-for="Name" />
+            <label class="control-label" for="input">Tên người dùng</label><i class="mtrl-select"></i>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="text" asp-for="Account" />
+            <label class="control-label" for="input">Tài khoản</label><i class="mtrl-select"></i>
+            <span asp-validation-for="Account" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input id="input-toggle-password" type="password" asp-for="Password" />
+            <a href="#" id="btn-toggle-password"><i id="ic-toggle-password" class="fa fa-eye"></i></a>
+            <label class="control-label" for="input">Mật khẩu</label><i class="mtrl-select"></i>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input id="input-toggle-password" type="password" asp-for="ConfirmPassword" />
+            <a href="#" id="btn-toggle-password"><i id="ic-toggle-password" class="fa fa-eye"></i></a>
+            <label class="control-label" for="input">Nhập lại mật khẩu</label><i class="mtrl-select"></i>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="text" asp-for="Email" />
+            <label class="control-label" for="input">Địa chỉ email</label><i class="mtrl-select"></i>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <a href="@Url.Action("Login","Route")" title="" class="forgot-pwd">Bạn đã có tài khoản?</a>
+        <div class="submit-btns" style="display:flex;justify-content:center">
+            <button class="mtr-btn" type="submit"><span>Đăng ký</span></button>
+        </div>
+    </form>
 
-@section script{
+    @section script{
     <script>
-        $(document).on("click", "#btn-toggle-password", function(e) { 
+        $(document).on("click", "#btn-toggle-password", function (e) {
             if ($('#ic-toggle-password').hasClass('fa-eye')) {
                 $('#ic-toggle-password').removeClass('fa-eye')
                 $('#ic-toggle-password').addClass('fa-eye-slash')

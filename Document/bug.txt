@@ -1,0 +1,8 @@
+Hiển thị rating ở phần chi tiết sách
+width của form đánh giá chưa full 100%
+Xem thêm bình luận sẽ ẩn đi khi hết comment
+Sửa db cho ngày tháng gần với hiện tại
+Sửa db 1 tài khoản đang đọc được 10 quyển sách
+Hover vào menu, active menu
+Click vào hoạt động người dùng trỏ dc đến đúng tọa độ 
+mm-selected

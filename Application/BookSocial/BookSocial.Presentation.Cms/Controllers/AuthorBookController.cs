@@ -42,10 +42,10 @@ namespace BookSocial.Presentation.Cms.Controllers
             int result = await _authorBookService.Delete(bookId, authorId);
             if (result != 0)
             {
-                TempData["Success"] = "Bỏ gán tác giả thành công!";
+                TempData["Success"] = "Gỡ tác giả thành công!";
                 return RedirectToAction("DetailBook", "Home", new { id = bookId });
             }
-            TempData["Fail"] = "Bỏ gán tác giả thất bại!";
+            TempData["Fail"] = "Gỡ tác giả thất bại!";
             return Redirect(Request.Headers["Referer"].ToString());
         }
     }

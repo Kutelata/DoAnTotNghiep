@@ -49,6 +49,9 @@ namespace BookSocial.EntityClass.DTO
         public string Account { get; set; }
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Nhập lại mật khẩu không được để trống")]
+        [Compare("Password", ErrorMessage = "Nhập lại không trùng khớp")]
+        public string ConfirmPassword { get; set; }
         public string Image { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
@@ -112,8 +115,7 @@ namespace BookSocial.EntityClass.DTO
         [Required(ErrorMessage = "Mật khẩu mới không được để trống")]
         public string NewPassword { get; set; }
         [Required(ErrorMessage = "Nhập lại mật khẩu mới không được để trống")]
-        [Compare("NewPassword")]
+        [Compare("NewPassword",ErrorMessage = "Nhập lại không trùng khớp")]
         public string ConfirmPassword { get; set; }
     }
-
 }

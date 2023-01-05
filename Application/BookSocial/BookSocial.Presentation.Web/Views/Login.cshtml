@@ -10,10 +10,15 @@
             right: 0;
             top: 0;
         }
+
+        .forgot-pwd {
+            justify-content: end;
+            display: flex;
+        }
     </style>
 }
 
-<h2 class="log-title text-center">Đăng nhập</h2>
+    <h2 class="log-title text-center">Đăng nhập</h2>
 
 @if (TempData["Success"] != null)
 {
@@ -41,7 +46,7 @@
         <label class="control-label" for="input">Mật khẩu</label><i class="mtrl-select"></i>
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-    <a href="@Url.Action("Register","Route")" class="forgot-pwd" style="width:100%">Bạn chưa có tài khoản?</a>
+    <a href="@Url.Action("Register","Route")" class="forgot-pwd">Bạn chưa có tài khoản?</a>
     <div class="submit-btns" style="display:flex;justify-content:center">
         <button class="mtr-btn signin" type="submit"><span>Đăng nhập</span></button>
     </div>
@@ -49,7 +54,7 @@
 
 @section script{
     <script>
-        $(document).on("click", "#btn-toggle-password", function(e) { 
+        $(document).on("click", "#btn-toggle-password", function (e) {
             if ($('#ic-toggle-password').hasClass('fa-eye')) {
                 $('#ic-toggle-password').removeClass('fa-eye')
                 $('#ic-toggle-password').addClass('fa-eye-slash')

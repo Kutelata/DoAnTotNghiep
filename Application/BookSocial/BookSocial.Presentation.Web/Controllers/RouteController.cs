@@ -1,4 +1,6 @@
-﻿using BookSocial.EntityClass.DTO;
+﻿using AutoMapper;
+using BookSocial.EntityClass.DTO;
+using BookSocial.EntityClass.Entity;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -9,10 +11,12 @@ namespace BookSocial.Presentation.Web.Controllers
 {
     public class RouteController : Controller
     {
+        private readonly IMapper _mapper;
         private readonly IUserService _userService;
 
-        public RouteController(IUserService userService)
+        public RouteController(IMapper mapper,IUserService userService)
         {
+            _mapper = mapper;
             _userService = userService;
         }
 
@@ -85,10 +89,10 @@ namespace BookSocial.Presentation.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(EntityClass.Entity.User user)
+        public async Task<IActionResult> Register(UserRegister userRegister)
         {
-            var checkAccountUnique = await _userService.GetByAccount(user.Account);
-            var checkEmailUnique = await _userService.GetByEmail(user.Email);
+            var checkAccountUnique = await _userService.GetByAccount(userRegister.Account);
+            var checkEmailUnique = await _userService.GetByEmail(userRegister.Email);
             if (checkAccountUnique != null)
             {
                 ModelState.AddModelError("Account", "Tài khoản đã tồn tại");
@@ -99,7 +103,8 @@ namespace BookSocial.Presentation.Web.Controllers
             }
             if (ModelState.IsValid)
             {
-                var result = await _userService.Create(user);
+                var convertToUser = _mapper.Map<User>(userRegister);
+                var result = await _userService.Create(convertToUser);
                 if (result != 0)
                 {
                     TempData["Success"] = "Đăng ký tài khoản thành công!";
@@ -110,7 +115,7 @@ namespace BookSocial.Presentation.Web.Controllers
                     TempData["Fail"] = "Đăng ký tài khoản thất bại!";
                 }
             }
-            return View("~/Views/Register.cshtml", user);
+            return View("~/Views/Register.cshtml", userRegister);
         }
 
         public IActionResult Error()

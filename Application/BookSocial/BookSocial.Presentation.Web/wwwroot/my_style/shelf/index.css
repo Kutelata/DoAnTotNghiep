@@ -28,6 +28,10 @@
     border-color: red !important;
 }
 
+.my-l-post-ranking .admin:hover {
+    color: #088dcd;
+}
+
 @media screen and (max-width:768px) {
     .my-l-post-meta {
         padding: 20px;

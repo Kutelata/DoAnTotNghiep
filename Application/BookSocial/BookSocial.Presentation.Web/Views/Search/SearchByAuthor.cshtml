@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="~/my_style/shelf/index.css" />
 }
 
-    @{
+@{
     var host = ConnectAdmin.BookSocialAdmin;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
     var searchByDefault = SearchBy.Author;
@@ -15,11 +15,11 @@
 <div class="blog-sec">
     <div class="post-filter-sec">
         <form method="post" class="filter-form">
-            <input id="search" type="text" placeholder="Search ...">
+            <input id="search" type="text" placeholder="Tìm kiếm ...">
             <button id="btn-search"><i class="ti-search"></i></button>
         </form>
         <div class="purify">
-            <span>Search by</span>
+            <span>Tìm theo:</span>
             <select id="btn-search-by"
                     data-search-by-book="@searchByBook"
                     data-search-by-author="@searchByAuthor"
@@ -40,11 +40,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="l-post-meta my-l-post-meta">
-                        <h4><a href="">@item.Name</a></h4>
+                        <h4><a href="@Url.Action("AuthorProfile","Home",new {authorId = item.Id})">@item.Name</a></h4>
                         <p>
                             <b>Ngày sinh:</b> @item.Birthday?.ToString("dd/MM/yyyy") <br />
                             @item.Description <br />
-                            <b>Have Published: </b> @item.BookHaveBeenWrittens
+                            <b>Đã xuất bản: </b> @item.BookHaveBeenWrittens
                         </p>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                     <a class="page-link paging_active" href="@Url.Action("SearchAuthor","Home",
                                 new{page=i+1,
                                     search=ViewBag.CurrentSearch})">
-                        @(i+1)
+                        @(i + 1)
                     </a>
                 </li>
             }
@@ -81,7 +81,7 @@
                     <a class="page-link" href="@Url.Action("SearchAuthor","Home",
                                 new{page=i+1,
                                     search=ViewBag.CurrentSearch})">
-                        @(i+1)
+                        @(i + 1)
                     </a>
                 </li>
             }
