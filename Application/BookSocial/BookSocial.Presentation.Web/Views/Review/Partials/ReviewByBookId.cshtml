@@ -90,7 +90,7 @@
                     <li class="comment-position-@item.Id">
                         <a href="#" data-review-id="@item.Id" class="btn-more-comment showmore underline">Xem thêm bình luận</a>
                     </li>
-                    <li class="post-comment post-comment-@item.Id">
+                    <li class="post-comment li-my-post-comment post-comment-@item.Id">
                         <div class="comet-avatar">
                             <img src=@($"{host}assets/images/user/{userImageClaim}") />
                         </div>
@@ -99,7 +99,7 @@
                                 <textarea name="Text" placeholder="Thêm bình luận ..."></textarea>
                                 <input hidden value="@item.Id" type="number" name="ReviewId" />
                                 <input hidden value="@userIdClaim" type="number" name="UserId" />
-                                <button class="my-btn my-btn-update" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
+                                <button class="my-btn-update" type="submit"><i class="fa fa-chevron-circle-right"></i></button>
                             </form>
                         </div>
                     </li>

@@ -30,6 +30,27 @@
     bottom: 8px !important;
 }
 
+.we-comet .my-comment {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.my-comment .we-comment {
+    width: 100%;
+}
+
+.we-comet .li-my-post-comment {
+    display: flex;
+    gap: 20px;
+}
+
+.li-my-post-comment .post-comt-box {
+    padding-left: 0;
+}
+
 @media screen and (max-width: 980px) {
     .sidebar .my-widget {
         width: 100%;

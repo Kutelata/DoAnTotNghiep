@@ -708,13 +708,6 @@
     .we-comet > li ul .we-comment {
         width: 21%;
     }
-    .post-comt-box {
-        width: 90%;
-    }
-    li.post-comment .comet-avatar {
-        max-width: 8%;
-        width: 8%;
-    }
     .sidebar .widget:last-child {
         margin-bottom: 0;
     }
@@ -860,10 +853,6 @@
         color: #fff;
         font-size: 22px;
         text-shadow: 0 2px 0 #4a4a4a;
-    }
-    .comet-avatar {
-        max-width: 3.5%;
-        width: 3.5%;
     }
     .chat-box {
         right: 0;
@@ -1138,10 +1127,6 @@
     }
     .we-comet > li ul {
         margin-left: 0;
-    }
-    .comet-avatar {
-        max-width: 5.3%;
-        width: 5.3%;
     }
     .timeline-info > ul li.admin-name {
         left: 190px;
@@ -1587,10 +1572,6 @@
         color: #424242;
         text-shadow: none;
     }
-    .comet-avatar {
-        max-width: 7.3%;
-        width: 7.3%;
-    }
     .liked-pages > li {
         max-width: 48.2%;
         min-width: 48.2%;
@@ -1789,10 +1770,6 @@
     .timeline-info .admin-name > h5 {
         color: #424242;
         font-size: 20px;
-    }
-    .comet-avatar {
-        max-width: 10%;
-        width: 10%;
     }
     .liked-pages > li {
         max-width: 48%;

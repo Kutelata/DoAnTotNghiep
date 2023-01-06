@@ -7,7 +7,7 @@
 
 @foreach (var item in Model)
 {
-    <li class="comment-view-@item.ReviewId comment-id-@item.Id" data-action-by="@item.Action" data-comment-id="@item.Id">
+    <li class="my-comment comment-view-@item.ReviewId comment-id-@item.Id" data-action-by="@item.Action" data-comment-id="@item.Id">
         <div class="comet-avatar">
             @if (item.User == null || string.IsNullOrEmpty(item.User.Image))
             {
