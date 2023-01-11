@@ -4,7 +4,7 @@ using BookSocial.Service.ServiceInterface;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class AuthorBookService : ConnectAPI, IAuthorBookService
+    public class AuthorBookService : ConnectApi, IAuthorBookService
     {
         public async Task<IEnumerable<AuthorBook>> GetByBookId(int bookId)
         {

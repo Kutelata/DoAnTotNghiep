@@ -1,5 +1,6 @@
 using AutoMapper;
 using BookSocial.EntityClass;
+using BookSocial.Presentation.Web.Helper;
 using BookSocial.Service;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -10,10 +11,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 // AddScoped HttpClientAPI
-builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
+builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectApi").Get<ConnectApi>());
 
 // AddScoped HttpClientAdmin
-builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAdmin").Get<ConnectAdmin>());
+builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectCms").Get<ConnectCms>());
+
+// AddTransient ViewHelper
+builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<IViewRenderService, ViewRenderService>();
 
 // AddScoped Service
 RegisterService.Register(builder.Services);

@@ -46,6 +46,10 @@
         color: #088DCD;
     }
 
+.top-area ul .my-main-menu-item.active a {
+    color: #088dcd;
+}
+
 .top-area ul .my-main-menu-item a:hover {
     color: #088dcd;
 }

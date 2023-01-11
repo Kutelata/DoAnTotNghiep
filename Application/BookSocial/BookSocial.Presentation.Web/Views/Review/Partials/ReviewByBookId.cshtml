@@ -1,7 +1,7 @@
 ﻿@model List<BookSocial.EntityClass.DTO.ReviewByBookId>
 
 @{
-    var host = ConnectAdmin.BookSocialAdmin;
+    var host = ConnectCms.BookSocialCms;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
     var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
 }

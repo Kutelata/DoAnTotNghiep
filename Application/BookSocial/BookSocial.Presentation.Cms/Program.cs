@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 // AddScoped HttpClient
-builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectAPI").Get<ConnectAPI>());
+builder.Services.AddSingleton(builder.Configuration.GetSection("ConnectApi").Get<ConnectApi>());
 
 // AddScoped Service
 RegisterService.Register(builder.Services);

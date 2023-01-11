@@ -30,7 +30,7 @@ namespace BookSocial.Presentation.Web.Controllers
                         convertBook.AverageOfStar += (double)review.Star;
                     }
                 }
-                convertBook.AverageOfStar /= count;
+                convertBook.AverageOfStar = Convert.ToDouble(string.Format("{0:0.0}", convertBook.AverageOfStar /= count));
                 convertBook.ReviewByBookId = reviewByBookIds.OrderByDescending(x => x.CreatedAt).Skip((page - 1) * size).Take(size).ToList();
 
                 var checkBookInShelf = await _shelfService.GetByBookAndUserId(book.Id, Convert.ToInt32(userIdClaim));

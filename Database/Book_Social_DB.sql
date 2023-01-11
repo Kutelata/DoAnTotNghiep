@@ -1,8 +1,8 @@
-create database Book_Social_DB
-go
+-- create database Book_Social_DB
+-- go
 
-use Book_Social_DB
-go
+-- use Book_Social_DB
+-- go
 
 create table [User]
 (

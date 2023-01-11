@@ -5,7 +5,7 @@
 }
 
 @{
-    var host = ConnectAdmin.BookSocialAdmin;
+    var host = ConnectCms.BookSocialCms;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
     var searchByDefault = SearchBy.Book;
     var searchByBook = Convert.ToInt32(SearchBy.Book);

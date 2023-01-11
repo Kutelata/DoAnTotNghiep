@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class FriendService : ConnectAPI, IFriendService
+    public class FriendService : ConnectApi, IFriendService
     {
         public async Task<int> Create(Friend friend)
         {

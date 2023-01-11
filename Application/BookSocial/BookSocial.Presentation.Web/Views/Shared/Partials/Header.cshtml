@@ -1,6 +1,6 @@
 ﻿@using BookSocial.Service
 @{
-    var host = ConnectAdmin.BookSocialAdmin;
+    var host = ConnectCms.BookSocialCms;
     var userImageClaim = User.Claims.Where(c => c.Type == "Image").Select(c => c.Value).SingleOrDefault();
     var userNameClaim = User.Claims.Where(c => c.Type == "UserName").Select(c => c.Value).SingleOrDefault();
 
@@ -43,10 +43,10 @@
             </div>
         </div>
         <ul class="main-menu" style="float:right">
-            <li class="my-main-menu-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
-            <li class="my-main-menu-item"><a href="@Url.Action("ShelfList","Home")">Giá sách</a></li>
-            <li class="my-main-menu-item"><a href="@Url.Action("FriendList","Home")">Bạn bè</a></li>
-            <li class="my-main-menu-item"><a href="@Url.Action("SearchBook","Home")">Tìm kiếm</a></li>
+            <li data-url="@Url.Action("Index","Home")" class="my-main-menu-item"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+            <li data-url="@Url.Action("ShelfList","Home")" class="my-main-menu-item"><a href="@Url.Action("ShelfList","Home")">Giá sách</a></li>
+            <li data-url="@Url.Action("FriendList","Home")" class="my-main-menu-item"><a href="@Url.Action("FriendList","Home")">Bạn bè</a></li>
+            <li data-url="@Url.Action("SearchBook","Home")" class="my-main-menu-item"><a href="@Url.Action("SearchBook","Home")">Tìm kiếm</a></li>
         </ul>
     </div>
 </div><!-- topbar -->

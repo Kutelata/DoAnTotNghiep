@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class GenreService : ConnectAPI, IGenreService
+    public class GenreService : ConnectApi, IGenreService
     {
         public async Task<int> Create(Genre genre)
         {

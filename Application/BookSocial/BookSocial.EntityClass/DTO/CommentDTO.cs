@@ -33,4 +33,16 @@ namespace BookSocial.EntityClass.DTO
         public User User { get; set; }
         public string Action { get; set; }
     }
+
+    public class ListCommentInReview
+    {
+        public ListCommentInReview()
+        {
+            LstCommentInReview = new List<CommentInReview>();
+        }
+
+        public List<CommentInReview> LstCommentInReview { get; set; }
+        public bool IsMoreData { get; set; } = true;
+
+    }
 }

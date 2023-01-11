@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class BookService : ConnectAPI, IBookService
+    public class BookService : ConnectApi, IBookService
     {
         public async Task<IEnumerable<Book>> GetByGenreId(int genreId)
         {

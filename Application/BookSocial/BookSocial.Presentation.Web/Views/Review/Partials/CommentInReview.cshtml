@@ -1,33 +1,37 @@
-﻿@model List<BookSocial.EntityClass.DTO.CommentInReview>
+﻿@using BookSocial.EntityClass.DTO
+@model List<CommentInReview>
 
 @{
-    var host = ConnectAdmin.BookSocialAdmin;
+    var host = ConnectCms.BookSocialCms;
     var userIdClaim = User.Claims.Where(c => c.Type == "Id").Select(c => c.Value).SingleOrDefault();
 }
 
-@foreach (var item in Model)
+@if (Model != null && Model.Any())
 {
-    <li class="my-comment comment-view-@item.ReviewId comment-id-@item.Id" data-action-by="@item.Action" data-comment-id="@item.Id">
-        <div class="comet-avatar">
-            @if (item.User == null || string.IsNullOrEmpty(item.User.Image))
-            {
-                <img src=@($"{host}assets/images/user/user.png") />
-            }
-            else
-            {
-                <img src=@($"{host}assets/images/user/{item.User.Image}") />
-            }
-        </div>
-        <div class="we-comment">
-            <div class="coment-head">
-                <h5><a href="#">@item.User?.Name</a></h5>
-                <span>@TimeHelper.GetPrettyDate(item.CreatedAt)</span>
+    foreach (var item in Model)
+    {
+        <li class="my-comment comment-view-@item.ReviewId comment-id-@item.Id" data-action-by="@item.Action" data-comment-id="@item.Id">
+            <div class="comet-avatar">
+                @if (item.User == null || string.IsNullOrEmpty(item.User.Image))
+                {
+                    <img src=@($"{host}assets/images/user/user.png") />
+                }
+                else
+                {
+                    <img src=@($"{host}assets/images/user/{item.User.Image}") />
+                }
             </div>
-            <p>@item.Text</p>
-            @if (item.UserId == Convert.ToInt32(userIdClaim))
-            {
-                <a class="btn-delete-comment" data-review-id="@item.ReviewId" data-comment-id="@item.Id" href="#"><i class="fa fa-close"></i></a>
-            }
-        </div>
-    </li>
+            <div class="we-comment">
+                <div class="coment-head">
+                    <h5><a href="#">@item.User?.Name</a></h5>
+                    <span>@TimeHelper.GetPrettyDate(item.CreatedAt)</span>
+                </div>
+                <p>@item.Text</p>
+                @if (item.UserId == Convert.ToInt32(userIdClaim))
+                {
+                    <a class="btn-delete-comment" data-review-id="@item.ReviewId" data-comment-id="@item.Id" href="#"><i class="fa fa-close"></i></a>
+                }
+            </div>
+        </li>
+    }
 }

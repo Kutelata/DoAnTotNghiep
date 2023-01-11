@@ -1,10 +1,11 @@
-Hiển thị rating ở phần chi tiết sách
-Khoảng cách giữa avatar và review ở trang book detail
-Phân chia lại bố cục trang chủ
 Xem thêm bình luận sẽ ẩn đi khi hết comment
-Sửa db cho ngày tháng gần với hiện tại
-Sửa db 1 tài khoản đang đọc được 10 quyển sách
-Hover vào menu, active menu
 Click vào hoạt động người dùng trỏ dc đến đúng tọa độ 
 mm-selected
+
 dung viec 20 page
+
+turn on window feature:
+	internet information service turn on all
+	internet information service host web core
+	
+run -> inetmgr

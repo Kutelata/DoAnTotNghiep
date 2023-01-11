@@ -5,7 +5,7 @@ using BookSocial.Service.ServiceInterface;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class ShelfService : ConnectAPI, IShelfService
+    public class ShelfService : ConnectApi, IShelfService
     {
         public async Task<int> Create(Shelf shelf)
         {

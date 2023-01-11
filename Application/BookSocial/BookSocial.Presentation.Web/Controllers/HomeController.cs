@@ -1,14 +1,18 @@
 ﻿using AutoMapper;
 using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Enum;
+using BookSocial.Presentation.Web.Helper;
 using BookSocial.Service.ServiceInterface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
 
 namespace BookSocial.Presentation.Web.Controllers
 {
     public partial class HomeController : BaseController
     {
         private readonly IMapper _mapper;
+        private readonly IViewRenderService _viewRenderService;
+        private readonly ICompositeViewEngine _viewEngine;
 
         private readonly IUserService _userService;
         private readonly IGenreService _genreService;
@@ -22,6 +26,8 @@ namespace BookSocial.Presentation.Web.Controllers
 
         public HomeController(
             IMapper mapper,
+            IViewRenderService viewRenderService,
+            ICompositeViewEngine viewEngine,
 
             IUserService userService,
             IGenreService genreService,
@@ -34,6 +40,8 @@ namespace BookSocial.Presentation.Web.Controllers
             IFriendService friendService)
         {
             _mapper = mapper;
+            _viewRenderService = viewRenderService;
+            _viewEngine = viewEngine;
 
             _userService = userService;
             _genreService = genreService;

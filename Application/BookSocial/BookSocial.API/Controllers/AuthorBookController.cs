@@ -2,7 +2,7 @@
 using BookSocial.EntityClass.Entity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookSocial.API.Controllers
+namespace BookSocial.Api.Controllers
 {
     public class AuthorBookController : BaseController
     {

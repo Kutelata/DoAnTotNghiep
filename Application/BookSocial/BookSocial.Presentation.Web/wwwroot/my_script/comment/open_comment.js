@@ -16,7 +16,27 @@ $(document).on("click", ".btn-open-comment", function (e) {
             url: `${baseUrl}/Home/CommentInReview`,
             data: { reviewId: reviewId, page: 1 },
             success: function (res) {
-                $(`.comment-position-${reviewId}`).before(res)
+                let isMoreData = res.isMoreData
+                let html = res.partialView.result
+                let nonCommentEle = $(`.my-non-comment`)
+                if (nonCommentEle !== 0) {
+                    nonCommentEle.remove()
+                }
+                if (!isMoreData) {
+                    if (!$(`.comment-position-${reviewId}`).hasClass("d-none")) {
+                        $(`.comment-position-${reviewId}`).addClass("d-none")
+                    }
+                }
+                $(`.comment-position-${reviewId}`).before(html)
+            },
+            error: function () {
+                let nonCommentEle = $(`.my-non-comment`)
+                if (nonCommentEle.length === 0) {
+                    $(`.comment-position-${reviewId}`).before(`<li class="my-non-comment">Không có comment</li>`)
+                }
+                if (!$(`.comment-position-${reviewId}`).hasClass("d-none")) {
+                    $(`.comment-position-${reviewId}`).addClass("d-none")
+                }
             }
         })
     } else {
@@ -42,8 +62,15 @@ $(document).on("click", ".btn-more-comment", function (e) {
         url: `${baseUrl}/Home/CommentInReview`,
         data: { reviewId: reviewId, page: nextPage, stringCommentIdExclude: stringCommentIdExclude },
         success: function (res) {
-            if (res.trim().length != 0) {
-                $(`.comment-position-${reviewId}`).before(res)
+            let isMoreData = res.isMoreData
+            let html = res.partialView.result
+            if (html.trim().length != 0) {
+                if (!isMoreData) {
+                    if (!$(`.comment-position-${reviewId}`).hasClass("d-none")) {
+                        $(`.comment-position-${reviewId}`).addClass("d-none")
+                    }
+                }
+                $(`.comment-position-${reviewId}`).before(html)
                 nextPage++
             } else {
                 $(`.comment-position-${reviewId}`).addClass("d-none")

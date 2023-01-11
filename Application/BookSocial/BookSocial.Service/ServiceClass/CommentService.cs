@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class CommentService : ConnectAPI, ICommentService
+    public class CommentService : ConnectApi, ICommentService
     {
         public async Task<int> Delete(int commentId)
         {

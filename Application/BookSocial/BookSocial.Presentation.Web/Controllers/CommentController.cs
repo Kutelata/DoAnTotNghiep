@@ -1,7 +1,14 @@
 ﻿using BookSocial.EntityClass.DTO;
 using BookSocial.EntityClass.Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Abstractions;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Net;
+using System.Numerics;
+using System.Reflection;
 
 namespace BookSocial.Presentation.Web.Controllers
 {
@@ -13,10 +20,12 @@ namespace BookSocial.Presentation.Web.Controllers
             string[] listCommentIdExclude = stringCommentIdExclude?.Split(',');
             List<CommentInReview> dataInPage = null;
             int size = 2;
+            bool isMoreData = true;
 
             if (comments != null)
             {
                 dataInPage = _mapper.Map<List<CommentInReview>>(comments);
+                int totalPage = (int)Math.Ceiling((double)dataInPage.Count() / 2);
                 foreach (var data in dataInPage.ToList())
                 {
                     data.User = await _userService.GetById(data.UserId);
@@ -33,8 +42,33 @@ namespace BookSocial.Presentation.Web.Controllers
                 }
 
                 dataInPage = dataInPage.Skip((page - 1) * size).Take(size).ToList();
+                if (totalPage == page)
+                {
+                    isMoreData = false;
+                }
             }
-            return PartialView("~/Views/Review/Partials/CommentInReview.cshtml", dataInPage);
+            if (dataInPage != null && dataInPage.Count != 0)
+            {
+                var htmlData = _viewRenderService.RenderToStringAsync("~/Views/Review/Partials/CommentInReview.cshtml", dataInPage);
+                object jsonData = new
+                {
+                    isMoreData,
+                    partialView = htmlData
+                };
+                return Json(jsonData);
+            }
+            return null;
+        }
+
+        public string ConvertViewToString(ControllerContext controllerContext, PartialViewResult pvr, ICompositeViewEngine _viewEngine)
+        {
+            using StringWriter writer = new();
+            ViewEngineResult vResult = _viewEngine.FindView(controllerContext, pvr.ViewName, false);
+            ViewContext viewContext = new(controllerContext, vResult.View, pvr.ViewData, pvr.TempData, writer, new HtmlHelperOptions());
+
+            vResult.View.RenderAsync(viewContext);
+
+            return writer.GetStringBuilder().ToString();
         }
 
         public async Task<IActionResult> CreateComment(Comment comment)

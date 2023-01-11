@@ -5,7 +5,7 @@ using BookSocial.Service.ServiceInterface;
 
 namespace BookSocial.Service.ServiceClass
 {
-    public class ReviewService : ConnectAPI, IReviewService
+    public class ReviewService : ConnectApi, IReviewService
     {
         public async Task<IEnumerable<ReviewStatistic>> GetReviewStatistic()
         {
